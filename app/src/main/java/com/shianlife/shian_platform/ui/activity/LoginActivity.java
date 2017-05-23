@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.base.BaseActivity;
 import com.shianlife.shian_platform.custom.view.loadbutton.LoadingButton;
+import com.shianlife.shian_platform.mvp.login.bean.UserLoginConfig;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.presenter.IUserLoginPresenter;
 import com.shianlife.shian_platform.mvp.login.presenter.impl.UserLoginPresenter;
@@ -39,7 +40,7 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
     @BindView(R.id.btn_login)
     LoadingButton btnLogin;
 
-    IUserLoginPresenter loginPresenter;
+    private IUserLoginPresenter loginPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,7 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
     @Override
     protected void initData() {
         loginPresenter = new UserLoginPresenter(this);
+        loginPresenter.getLoginConfig();
     }
 
 
@@ -75,8 +77,18 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
     }
 
     @Override
+    public void setUserName(String userName) {
+        etUsername.setText(userName);
+    }
+
+    @Override
     public String getPassWord() {
         return etPassword.getText().toString();
+    }
+
+    @Override
+    public void setPassWord(String passWord) {
+        etPassword.setText(passWord);
     }
 
     @Override
@@ -86,6 +98,7 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
 
     @Override
     public void loginSuccess(UserLoginResultBean result) {
+        loginPresenter.saveLoginConfig();
         btnLogin.setComplete();
         ToastUtils.showToastLong(getContent(), getString(R.string.login_success));
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -99,6 +112,32 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
         btnLogin.setOnClickListener(onViewClicked);
         ToastUtils.showToastLong(getContent(), message);
     }
+
+    @Override
+    public boolean getIsAutoLogin() {
+        return cbLoginAuto.isChecked();
+    }
+
+    @Override
+    public void setIsAutoLogin(boolean isAutoLogin) {
+        cbLoginAuto.setChecked(isAutoLogin);
+    }
+
+    @Override
+    public boolean getIsKeepAccount() {
+        return cbLoginRe.isChecked();
+    }
+
+    @Override
+    public void setIsKeepAccount(boolean isKeepAccount) {
+        cbLoginRe.setChecked(isKeepAccount);
+    }
+
+    @Override
+    public void setLoginConfig() {
+
+    }
+
 
     /**
      * 登陆

@@ -6,9 +6,11 @@ import com.shianlife.shian_platform.common.Constants;
 import com.shianlife.shian_platform.http.MHttpManagerFactory;
 import com.shianlife.shian_platform.http.base.HttpResponseHandler;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginBean;
+import com.shianlife.shian_platform.mvp.login.bean.UserLoginConfig;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.model.IUserLoginModel;
 import com.shianlife.shian_platform.mvp.login.presenter.OnUserLoginListener;
+import com.shianlife.shian_platform.utils.SharePerfrenceUtils;
 
 import okhttp3.Request;
 
@@ -20,11 +22,7 @@ public class UserLoginModelImpl implements IUserLoginModel {
 
 
     @Override
-    public void loginCemetery(Context context, String userName, String passWord, final OnUserLoginListener listener) {
-        UserLoginBean params = new UserLoginBean();
-        params.setUsername(userName);
-        params.setPassword(passWord);
-        params.setSystemType("2");
+    public void loginCemetery(Context context, UserLoginBean params, final OnUserLoginListener listener) {
         MHttpManagerFactory.getAccountManager().loginCemetery(context, params, new HttpResponseHandler<UserLoginResultBean>() {
             @Override
             public void onStart(Request request, int id) {
@@ -42,6 +40,16 @@ public class UserLoginModelImpl implements IUserLoginModel {
                 listener.loginFail(message);
             }
         });
+    }
+
+    @Override
+    public void saveLoginConfig(Context context, UserLoginConfig loginConfig) {
+        SharePerfrenceUtils.setLoginShare(context, loginConfig.getUserName(), loginConfig.getPassWord(), loginConfig.isKeepAccount(), loginConfig.isAutoLogin());
+    }
+
+    @Override
+    public UserLoginConfig getLoginConfig(Context context) {
+        return SharePerfrenceUtils.getLoginShare(context);
     }
 
 

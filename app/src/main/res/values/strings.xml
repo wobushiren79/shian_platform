@@ -6,5 +6,8 @@
     <string name="login_success">登陆成功</string>
     <string name="login_username_empty">账号不能为空</string>
     <string name="login_password_empty">密码不能为空</string>
+
+    <string name="main_back">再按一次退出程序</string>
+
     <string name="network_state">网络未连接</string>
 </resources>

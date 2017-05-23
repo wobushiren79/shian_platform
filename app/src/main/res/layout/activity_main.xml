@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.shianlife.shian_platform.ui.activity.MainActivity">
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"></FrameLayout>
+
+    <com.shianlife.shian_platform.custom.view.mainchange.MainChangeLayout
+        android:id="@+id/main_change_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_96dp"
+        android:background="@color/white"
+        android:paddingTop="@dimen/dimen_10dp"></com.shianlife.shian_platform.custom.view.mainchange.MainChangeLayout>
+</LinearLayout>
