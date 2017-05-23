@@ -90,6 +90,7 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
         ToastUtils.showToastLong(getContent(), getString(R.string.login_success));
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
     @Override

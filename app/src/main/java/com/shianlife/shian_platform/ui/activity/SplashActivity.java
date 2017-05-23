@@ -62,5 +62,6 @@ public class SplashActivity extends BaseActivity implements ISplashView {
     public void delayOver() {
         Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
         startActivity(intent);
+        finish();
     }
 }
