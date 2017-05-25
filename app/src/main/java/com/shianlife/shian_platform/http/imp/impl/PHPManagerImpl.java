@@ -7,11 +7,11 @@ import com.shianlife.shian_platform.http.base.HttpRequestExecutor;
 import com.shianlife.shian_platform.http.base.HttpResponseHandler;
 import com.shianlife.shian_platform.http.imp.PHPManager;
 import com.shianlife.shian_platform.http.phpparams.HpGetVersion;
-import com.shianlife.shian_platform.http.phpresult.PHPHrGetAdvertisement;
 import com.shianlife.shian_platform.http.phpresult.PHPHrGetDynamic;
 import com.shianlife.shian_platform.http.phpresult.PHPHrGetHotIssue;
-import com.shianlife.shian_platform.http.phpresult.PHPHrGetSiftListData;
 import com.shianlife.shian_platform.http.phpresult.PHPHrGetVersion;
+import com.shianlife.shian_platform.mvp.advert.bean.AdvertResultBean;
+import com.shianlife.shian_platform.mvp.find.bean.FindResultBean;
 
 
 /**
@@ -34,8 +34,8 @@ public class PHPManagerImpl implements PHPManager {
 
 
     @Override
-    public void getAdvertisement(Context context, BaseHttpParams params, HttpResponseHandler<PHPHrGetAdvertisement> handler) {
-        excutor.requestPHPGet(context, "Home/index/advertising", PHPHrGetAdvertisement.class,
+    public void getAdvertisement(Context context, BaseHttpParams params, HttpResponseHandler<AdvertResultBean> handler) {
+        excutor.requestPHPGet(context, "Home/index/advertising", AdvertResultBean.class,
                 params, handler, false);
     }
 
@@ -46,8 +46,8 @@ public class PHPManagerImpl implements PHPManager {
     }
 
     @Override
-    public void getSiftListData(Context context, BaseHttpParams params, HttpResponseHandler<PHPHrGetSiftListData> handler) {
-        excutor.requestPHPGet(context, "Home/index/sift", PHPHrGetSiftListData.class,
+    public void getSiftListData(Context context, BaseHttpParams params, HttpResponseHandler<FindResultBean> handler) {
+        excutor.requestPHPGet(context, "Home/index/sift", FindResultBean.class,
                 params, handler, false);
     }
 

@@ -93,7 +93,7 @@ public class SplashActivity extends BaseActivity implements ISplashView, IUserLo
 
     @Override
     public void setLoginConfig() {
-        IntentUtils.IntentStart(this, LoginActivity.class);
+        new IntentUtils.Build(this, LoginActivity.class).start();
         finish();
     }
 
@@ -104,13 +104,13 @@ public class SplashActivity extends BaseActivity implements ISplashView, IUserLo
 
     @Override
     public void loginSuccess(UserLoginResultBean result) {
-        IntentUtils.IntentStart(this, MainActivity.class);
+        new IntentUtils.Build(this, MainActivity.class).start();
         finish();
     }
 
     @Override
     public void loginFail(String message) {
-        IntentUtils.IntentStart(this, LoginActivity.class);
+        new IntentUtils.Build(this, LoginActivity.class).start();
         finish();
     }
 

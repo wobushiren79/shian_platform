@@ -20,4 +20,14 @@ public class DriverOrderFragment extends BaseFragment {
         view = inflater.inflate(R.layout.fragment_driver_order, null, false);
         return view;
     }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
 }

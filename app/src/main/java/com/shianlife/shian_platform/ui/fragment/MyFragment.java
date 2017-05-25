@@ -7,4 +7,14 @@ import com.shianlife.shian_platform.base.BaseFragment;
  */
 
 public class MyFragment extends BaseFragment {
+    @Override
+    protected void initView() {
+
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
 }

@@ -6,11 +6,11 @@ import com.shianlife.shian_platform.http.base.BaseHttpParams;
 import com.shianlife.shian_platform.http.base.HttpManager;
 import com.shianlife.shian_platform.http.base.HttpResponseHandler;
 import com.shianlife.shian_platform.http.phpparams.HpGetVersion;
-import com.shianlife.shian_platform.http.phpresult.PHPHrGetAdvertisement;
 import com.shianlife.shian_platform.http.phpresult.PHPHrGetDynamic;
 import com.shianlife.shian_platform.http.phpresult.PHPHrGetHotIssue;
-import com.shianlife.shian_platform.http.phpresult.PHPHrGetSiftListData;
 import com.shianlife.shian_platform.http.phpresult.PHPHrGetVersion;
+import com.shianlife.shian_platform.mvp.advert.bean.AdvertResultBean;
+import com.shianlife.shian_platform.mvp.find.bean.FindResultBean;
 
 
 /**
@@ -27,7 +27,7 @@ public interface PHPManager extends HttpManager {
      * @param params
      * @param handler
      */
-    public void getAdvertisement(Context context, BaseHttpParams params, HttpResponseHandler<PHPHrGetAdvertisement> handler);
+    public void getAdvertisement(Context context, BaseHttpParams params, HttpResponseHandler<AdvertResultBean> handler);
 
     /**
      * 获取重要通知
@@ -46,7 +46,7 @@ public interface PHPManager extends HttpManager {
      * @param params
      * @param handler
      */
-    public void getSiftListData(Context context, BaseHttpParams params, HttpResponseHandler<PHPHrGetSiftListData> handler);
+    public void getSiftListData(Context context, BaseHttpParams params, HttpResponseHandler<FindResultBean> handler);
 
 
     /**
@@ -78,6 +78,7 @@ public interface PHPManager extends HttpManager {
 
     /**
      * 获取版本号
+     *
      * @param context
      * @param params
      * @param handler

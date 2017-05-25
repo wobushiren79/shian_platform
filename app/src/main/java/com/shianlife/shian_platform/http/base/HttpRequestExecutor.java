@@ -16,6 +16,7 @@ import com.shianlife.shian_platform.utils.CheckUtils;
 import com.shianlife.shian_platform.utils.LogUtils;
 import com.shianlife.shian_platform.utils.ToastUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.builder.GetBuilder;
 import com.zhy.http.okhttp.builder.PostStringBuilder;
 import com.zhy.http.okhttp.callback.StringCallback;
 import com.zhy.http.okhttp.request.RequestCall;
@@ -50,18 +51,60 @@ public class HttpRequestExecutor {
                                   final String method,
                                   final Class<T> data,
                                   final BaseHttpParams params,
-                                  final HttpResponseHandler<T> responseHandler) {
-        requestPHPGet(context, method, data, params, responseHandler, false);
-
-    }
-
-    public <T> void requestPHPGet(final Context context,
-                                  final String method,
-                                  final Class<T> data,
-                                  final BaseHttpParams params,
                                   final HttpResponseHandler<T> responseHandler,
                                   final boolean isShowDialog) {
+        String baseUrl = Constants.PHP_URL;
+        String cookie = "";
+        Map<String, String> header = setHeader(cookie);
+        requestGet(context, method, data, params, responseHandler, isShowDialog, baseUrl, header);
+    }
+
+    public <T> void requestGet(final Context context,
+                               final String method,
+                               final Class<T> data,
+                               final BaseHttpParams params,
+                               final HttpResponseHandler<T> responseHandler,
+                               final boolean isShowDialog,
+                               final String baseUrl,
+                               final Map<String, String> header) {
         if (checkNetWorkAndDialog(context, responseHandler, isShowDialog)) return;
+
+        LogUtils.LogTagI(baseUrl + "/" + method);
+        LogUtils.LogTagE(params.getContentJson());
+
+        GetBuilder getBuilder = OkHttpUtils.get();
+        getBuilder.url(baseUrl + "/" + method);
+        getBuilder.headers(header);
+        getBuilder.params(params.getMapParams());
+        RequestCall requestCall = getBuilder.build();
+        requestCall.execute(new StringCallback() {
+            @Override
+            public void onBefore(Request request, int id) {
+                super.onBefore(request, id);
+                if (responseHandler != null) {
+                    responseHandler.onStart(request, id);
+                }
+            }
+
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                String errorMessage = e.getMessage();
+                onErrorCallBack(responseHandler, errorMessage, context);
+                if (dialog != null)
+                    dialog.cancel();
+                dialog = null;
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                LogUtils.LogTagI(response);
+                dataToJson(context, response, data, responseHandler);
+                if (dialog != null)
+                    dialog.cancel();
+                dialog = null;
+            }
+
+        });
     }
 
 
