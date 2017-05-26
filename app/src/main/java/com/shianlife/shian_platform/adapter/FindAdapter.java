@@ -52,7 +52,9 @@ public class FindAdapter extends BaseRCAdapter<FindResultBean.SiftListData> impl
         tvTime.setText(data.getTime());
         tvCollection.setText(data.getCollectionNum() + "");
         tvPraise.setText(data.getPraiseNum() + "");
-        holder.setImageResource(mContext, ivPic, data.getImg(), R.drawable.zhy_find_default_icon);
+
+        holder.setImageResource(mContext, ivPic, Constants.PHP_URL + data.getImg(), R.drawable.zhy_find_default_icon);
+
         ivPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

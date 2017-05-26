@@ -27,7 +27,9 @@ public abstract class BaseLayout extends LinearLayout {
         initData();
     }
 
+    protected abstract void initView();
+
     protected abstract void initData();
 
-    protected abstract void initView();
+
 }

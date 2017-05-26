@@ -17,6 +17,19 @@
             android:layout_marginTop="@dimen/dimen_18dp"
             android:visibility="gone"></com.shianlife.shian_platform.ui.custom.MainAdvertisementLayout>
 
+        <com.shianlife.shian_platform.ui.custom.MainDynamicLayout
+            android:id="@+id/maindynamic_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_18dp"
+            android:visibility="gone"></com.shianlife.shian_platform.ui.custom.MainDynamicLayout>
+
+
+        <com.shianlife.shian_platform.ui.custom.MainAppLayout
+            android:id="@+id/mainapp_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_18dp"></com.shianlife.shian_platform.ui.custom.MainAppLayout>
     </LinearLayout>
 
 </ScrollView>

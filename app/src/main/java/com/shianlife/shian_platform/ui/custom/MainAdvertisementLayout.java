@@ -42,6 +42,7 @@ public class MainAdvertisementLayout extends BaseLayout implements IAdvertView {
 
     private IAdvertPresenter advertPresenter;
     private AdvertResultBean data;
+    private int advertisementType;
 
     public MainAdvertisementLayout(Context context) {
         this(context, null);
@@ -55,6 +56,11 @@ public class MainAdvertisementLayout extends BaseLayout implements IAdvertView {
     @Override
     protected void initData() {
         advertPresenter = new AdvertPresenterImpl(this);
+
+    }
+
+    public void setType(int type) {
+        advertisementType = type;
         advertPresenter.getAdvertData();
     }
 
@@ -65,7 +71,7 @@ public class MainAdvertisementLayout extends BaseLayout implements IAdvertView {
 
     @Override
     public int getAdvertType() {
-        return AdvertisementEnum.MAIN.getCode();
+        return advertisementType;
     }
 
     @Override
@@ -96,7 +102,6 @@ public class MainAdvertisementLayout extends BaseLayout implements IAdvertView {
     RequestListener<String, GlideDrawable> drawableRequestListener = new RequestListener<String, GlideDrawable>() {
         @Override
         public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-
             return false;
         }
 

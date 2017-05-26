@@ -10,4 +10,8 @@
     <string name="main_back">再按一次退出程序</string>
 
     <string name="network_state">网络未连接</string>
+
+    <string name="title_name_dynamic">动态</string>
+    <string name="title_name_find">精选</string>
+    <string name="title_name_app">我的应用</string>
 </resources>

@@ -7,10 +7,10 @@ import com.shianlife.shian_platform.http.base.HttpRequestExecutor;
 import com.shianlife.shian_platform.http.base.HttpResponseHandler;
 import com.shianlife.shian_platform.http.imp.PHPManager;
 import com.shianlife.shian_platform.http.phpparams.HpGetVersion;
-import com.shianlife.shian_platform.http.phpresult.PHPHrGetDynamic;
 import com.shianlife.shian_platform.http.phpresult.PHPHrGetHotIssue;
 import com.shianlife.shian_platform.http.phpresult.PHPHrGetVersion;
 import com.shianlife.shian_platform.mvp.advert.bean.AdvertResultBean;
+import com.shianlife.shian_platform.mvp.dynamic.bean.DynamicResultBean;
 import com.shianlife.shian_platform.mvp.find.bean.FindResultBean;
 
 
@@ -40,8 +40,8 @@ public class PHPManagerImpl implements PHPManager {
     }
 
     @Override
-    public void getDynamicInfo(Context context, BaseHttpParams params, HttpResponseHandler<PHPHrGetDynamic> handler) {
-        excutor.requestPHPGet(context, "Home/index/dynamic", PHPHrGetDynamic.class,
+    public void getDynamicInfo(Context context, BaseHttpParams params, HttpResponseHandler<DynamicResultBean> handler) {
+        excutor.requestPHPGet(context, "Home/index/dynamic", DynamicResultBean.class,
                 params, handler, false);
     }
 

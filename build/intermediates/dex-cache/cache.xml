@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_e6d8b4463238e619555701f81611195e8a579371\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\Android\AndroidProjects\shian_platform\app\libs\BaiduLBS_Android.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a0eefe797576db408831b70abb6a9f112045f12a">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\transforms\dex\debug\folders\1000\2\BaiduLBS_Android_de6b9e6ed1e174b589f4ba0c9c6f79018ce6f407\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\Android\AndroidProjects\shian_platform\app\libs\IndoorscapeAlbumPlugin.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f4ac7ae5070911d02290331664a36475fb9a5ebb">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\transforms\dex\debug\folders\1000\2\IndoorscapeAlbumPlugin_5333bc1a5313fbbbe5006d0863c877fab06e2a6c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3c2c327bc58975e9c966022f1e24625d1515b181">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_d5a936da56bea3ef21cbf21fe4293fd22dab029e\classes.dex" />
+    </item>
+
+</items>

@@ -17,6 +17,8 @@ import com.shianlife.shian_platform.http.base.BaseDataResult;
 import com.shianlife.shian_platform.mvp.find.bean.FindResultBean;
 import com.shianlife.shian_platform.mvp.find.presenter.impl.FindPresenterImpl;
 import com.shianlife.shian_platform.mvp.find.view.IFindView;
+import com.shianlife.shian_platform.ui.activity.FindListActivity;
+import com.shianlife.shian_platform.utils.IntentUtils;
 import com.shianlife.shian_platform.utils.ToastUtils;
 
 import butterknife.BindView;
@@ -103,7 +105,7 @@ public class FindFragment extends BaseFragment implements IFindView {
     public void showMsg(String msg) {
         ptrLayout.refreshComplete();
         pagerNum = pagerNum > 0 ? pagerNum : pagerNum--;
-        ToastUtils.showToastShort(getContext(), msg);
+//        ToastUtils.showToastShort(getContext(), msg);
     }
 
 
@@ -123,7 +125,8 @@ public class FindFragment extends BaseFragment implements IFindView {
 
     @OnClick(R.id.iv_collection)
     public void onViewClicked() {
-
+        new IntentUtils.Build(getContext(), FindListActivity.class)
+                .start();
     }
 
 

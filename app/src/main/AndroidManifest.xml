@@ -32,7 +32,10 @@
             android:configChanges="orientation|screenSize"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.activity.WebActivity"></activity>
+        <activity android:name=".ui.activity.WebActivity" />
+        <activity android:name=".ui.activity.DynamicListActivity" />
+        <activity android:name=".ui.activity.FindListActivity" />
+        <activity android:name=".ui.activity.AllAppActivity"></activity>
     </application>
 
 </manifest>
