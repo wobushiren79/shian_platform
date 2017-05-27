@@ -23,6 +23,9 @@ public class Constants {
     //跳转页停留时间
     public static long SPLASH_TIME = 2000;
 
+    //客户电话
+    public static String helpPhone = "4009679678";
+
 
     public static String LocalString;
     public static String LOCAL_PROVINCE = "";

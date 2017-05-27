@@ -13,7 +13,6 @@ import com.shianlife.shian_platform.custom.view.scrollview.ScrollRecyclerView;
 import com.shianlife.shian_platform.ui.custom.MainAdvertisementLayout;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class AllAppActivity extends BaseActivity {
 

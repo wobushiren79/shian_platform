@@ -103,8 +103,12 @@ public class FindFragment extends BaseFragment implements IFindView {
 
     @Override
     public void showMsg(String msg) {
-        ptrLayout.refreshComplete();
-        pagerNum = pagerNum > 0 ? pagerNum : pagerNum--;
+        try {
+            pagerNum = pagerNum > 0 ? pagerNum : pagerNum--;
+            ptrLayout.refreshComplete();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 //        ToastUtils.showToastShort(getContext(), msg);
     }
 

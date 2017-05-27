@@ -14,4 +14,12 @@
     <string name="title_name_dynamic">动态</string>
     <string name="title_name_find">精选</string>
     <string name="title_name_app">我的应用</string>
+    <string name="title_name_ideaback">意见反馈</string>
+
+    <string name="ideaback_save_success">提交成功</string>
+    <string name="ideaback_save_fail">提交失败</string>
+
+    <string name="customerhelp_state_1">暂时不提供此项服务</string>
+
+
 </resources>

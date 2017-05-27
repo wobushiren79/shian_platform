@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shianlife.shian_platform">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -35,7 +36,9 @@
         <activity android:name=".ui.activity.WebActivity" />
         <activity android:name=".ui.activity.DynamicListActivity" />
         <activity android:name=".ui.activity.FindListActivity" />
-        <activity android:name=".ui.activity.AllAppActivity"></activity>
+        <activity android:name=".ui.activity.AllAppActivity" />
+        <activity android:name=".ui.activity.IdeaFeedbackActivity" />
+        <activity android:name=".ui.activity.CustomerHelpActivity"></activity>
     </application>
 
 </manifest>
