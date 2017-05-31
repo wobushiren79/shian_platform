@@ -1,6 +1,7 @@
 package com.shianlife.shian_platform.ui.activity;
 
 
+import android.content.Context;
 import android.os.Bundle;
 
 
@@ -15,26 +16,34 @@ import com.shianlife.shian_platform.appenum.MainChangeItemEnum;
 import com.shianlife.shian_platform.base.BaseActivity;
 import com.shianlife.shian_platform.base.BaseFragment;
 import com.shianlife.shian_platform.custom.view.mainchange.MainChangeLayout;
+import com.shianlife.shian_platform.http.base.BaseDataResult;
+import com.shianlife.shian_platform.mvp.main.bean.AppUpDateResultBean;
+import com.shianlife.shian_platform.mvp.main.presenter.IAppUpDatePresenter;
 import com.shianlife.shian_platform.mvp.main.presenter.IChangeItemPresenter;
-import com.shianlife.shian_platform.mvp.main.presenter.impl.ChangeItemPresenter;
+import com.shianlife.shian_platform.mvp.main.presenter.impl.AppUpDatePresenterImpl;
+import com.shianlife.shian_platform.mvp.main.presenter.impl.ChangeItemPresenterImpl;
+import com.shianlife.shian_platform.mvp.main.view.IAppUpDateView;
 import com.shianlife.shian_platform.mvp.main.view.IChangeItemView;
 import com.shianlife.shian_platform.ui.fragment.DriverOrderFragment;
 import com.shianlife.shian_platform.ui.fragment.FindFragment;
 import com.shianlife.shian_platform.ui.fragment.HomeFragment;
 import com.shianlife.shian_platform.ui.fragment.MyFragment;
+import com.shianlife.shian_platform.utils.AppUtils;
+import com.shianlife.shian_platform.utils.CheckUtils;
 import com.shianlife.shian_platform.utils.ToastUtils;
 
 import java.util.List;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseActivity implements IChangeItemView {
+public class MainActivity extends BaseActivity implements IChangeItemView, IAppUpDateView {
     @BindView(R.id.fl_fragment)
     FrameLayout flFragment;
     @BindView(R.id.main_change_layout)
     MainChangeLayout mainChangeLayout;
 
     private IChangeItemPresenter changeItemPresenter;
+    private IAppUpDatePresenter appUpDatePresenter;
     private FragmentManager mFragmentManager;
     private FragmentTransaction mTranscation;
     private long firstTime = 0;
@@ -75,8 +84,10 @@ public class MainActivity extends BaseActivity implements IChangeItemView {
     @Override
     protected void initData() {
         mFragmentManager = getSupportFragmentManager();
-        changeItemPresenter = new ChangeItemPresenter(this);
+        changeItemPresenter = new ChangeItemPresenterImpl(this);
+        appUpDatePresenter = new AppUpDatePresenterImpl(this);
         changeItemPresenter.setChangeItemData();
+        appUpDatePresenter.getAppUpDateInfo();
     }
 
 
@@ -100,6 +111,22 @@ public class MainActivity extends BaseActivity implements IChangeItemView {
         }
         mTranscation.replace(R.id.fl_fragment, fragment);
         mTranscation.commitAllowingStateLoss();
+    }
+
+
+    @Override
+    public Context getContext() {
+        return this;
+    }
+
+    @Override
+    public void getAppUpDateInfoSuccess(BaseDataResult result) {
+        CheckUtils.checkAppUpDate(this, (AppUpDateResultBean) result, false);
+    }
+
+    @Override
+    public void getAppUpDateInfoFail(String msg) {
+
     }
 
     @Override

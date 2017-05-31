@@ -13,11 +13,19 @@ import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.appenum.FindDataEnum;
 import com.shianlife.shian_platform.appenum.UserCenterEnum;
 import com.shianlife.shian_platform.base.BaseFragment;
+import com.shianlife.shian_platform.http.base.BaseDataResult;
+import com.shianlife.shian_platform.mvp.main.bean.AppUpDateResultBean;
+import com.shianlife.shian_platform.mvp.main.presenter.IAppUpDatePresenter;
+import com.shianlife.shian_platform.mvp.main.presenter.impl.AppUpDatePresenterImpl;
+import com.shianlife.shian_platform.mvp.main.view.IAppUpDateView;
 import com.shianlife.shian_platform.ui.activity.CustomerHelpActivity;
 import com.shianlife.shian_platform.ui.activity.FindListActivity;
 import com.shianlife.shian_platform.ui.activity.IdeaFeedbackActivity;
+import com.shianlife.shian_platform.ui.activity.SettingActivity;
 import com.shianlife.shian_platform.utils.AppUtils;
+import com.shianlife.shian_platform.utils.CheckUtils;
 import com.shianlife.shian_platform.utils.IntentUtils;
+import com.shianlife.shian_platform.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +39,7 @@ import butterknife.Unbinder;
  * Created by zm.
  */
 
-public class MyFragment extends BaseFragment {
+public class MyFragment extends BaseFragment implements IAppUpDateView {
     @BindView(R.id.tv_name)
     TextView mTVName;
     @BindView(R.id.tv_phone)
@@ -60,7 +68,7 @@ public class MyFragment extends BaseFragment {
     View view;
     UserCenterEnum[] layoutEnum;
     List<LinearLayout> listLayout = new ArrayList<>();
-
+    private IAppUpDatePresenter appUpDatePresenter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -103,6 +111,8 @@ public class MyFragment extends BaseFragment {
                 tvTitle.append(AppUtils.getVersion(getContext()));
             }
         }
+
+        appUpDatePresenter = new AppUpDatePresenterImpl(this);
     }
 
     @Override
@@ -127,12 +137,30 @@ public class MyFragment extends BaseFragment {
                 ideaBack();
                 break;
             case R.id.layout_setting:
+                setting();
                 break;
             case R.id.layout_platform:
                 break;
             case R.id.layout_vsersion:
+                appUpdate();
                 break;
         }
+    }
+
+    /**
+     * APP更新
+     */
+    private void appUpdate() {
+        appUpDatePresenter.getAppUpDateInfo();
+    }
+
+    /**
+     * 设置
+     */
+    private void setting() {
+        new IntentUtils
+                .Build(getContext(), SettingActivity.class)
+                .start();
     }
 
     /**
@@ -160,5 +188,16 @@ public class MyFragment extends BaseFragment {
         new IntentUtils
                 .Build(getContext(), FindListActivity.class)
                 .start();
+    }
+
+
+    @Override
+    public void getAppUpDateInfoSuccess(BaseDataResult result) {
+        CheckUtils.checkAppUpDate(getContext(), (AppUpDateResultBean) result, true);
+    }
+
+    @Override
+    public void getAppUpDateInfoFail(String msg) {
+        ToastUtils.showToastShort(getContext(), msg);
     }
 }

@@ -13,7 +13,6 @@ import com.shianlife.shian_platform.utils.AppUtils;
 import com.shianlife.shian_platform.utils.ToastUtils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class CustomerHelpActivity extends BaseActivity {
@@ -22,8 +21,6 @@ public class CustomerHelpActivity extends BaseActivity {
     LinearLayout llLinehelp;
     @BindView(R.id.ll_phonehelp)
     LinearLayout llPhonehelp;
-    @BindView(R.id.gridview)
-    ScrollRecyclerView rcListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +30,7 @@ public class CustomerHelpActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        setTitle(getString(R.string.ideaback_save_success), BaseTitleEnum.BACKNORMALTITLE.getTitleType());
+        setTitle(getString(R.string.title_name_help), BaseTitleEnum.BACKNORMALTITLE.getTitleType());
         AppUtils.call(llPhonehelp, Constants.helpPhone);
     }
 
@@ -51,6 +48,7 @@ public class CustomerHelpActivity extends BaseActivity {
 //            case R.id.ll_phonehelp:
 //                AppUtils.call(view, "4009679678");
 //                break;
+
         }
     }
 }

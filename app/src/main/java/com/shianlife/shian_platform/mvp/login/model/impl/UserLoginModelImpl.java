@@ -43,6 +43,26 @@ public class UserLoginModelImpl implements IUserLoginModel {
     }
 
     @Override
+    public void loginOutCemetery(Context context, final OnUserLoginListener listener) {
+        MHttpManagerFactory.getAccountManager().loginOutCemetery(context, new HttpResponseHandler<Object>() {
+            @Override
+            public void onStart(Request request, int id) {
+
+            }
+
+            @Override
+            public void onSuccess(Object result) {
+                listener.loginSuccess(null);
+            }
+
+            @Override
+            public void onError(String message) {
+                listener.loginFail(message);
+            }
+        });
+    }
+
+    @Override
     public void saveLoginConfig(Context context, UserLoginConfig loginConfig) {
         SharePerfrenceUtils.setLoginShare(context, loginConfig.getUserName(), loginConfig.getPassWord(), loginConfig.isKeepAccount(), loginConfig.isAutoLogin());
     }

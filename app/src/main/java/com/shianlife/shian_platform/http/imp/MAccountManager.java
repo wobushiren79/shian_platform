@@ -20,4 +20,12 @@ public interface MAccountManager extends HttpManager {
      * @param handler
      */
     void loginCemetery(Context context, UserLoginBean params, HttpResponseHandler<UserLoginResultBean> handler);
+
+    /**
+     * 登陸公墓
+     *
+     * @param context
+     * @param handler
+     */
+    void loginOutCemetery(Context context, HttpResponseHandler<Object> handler);
 }

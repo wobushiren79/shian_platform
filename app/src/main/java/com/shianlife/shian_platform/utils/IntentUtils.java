@@ -14,6 +14,8 @@ import java.io.Serializable;
 public class IntentUtils {
 
     public static final String INTENT_URL = "INTENT_URL";
+
+    public static final String INTENT_APPUPDATE = "INTENT_APPUPDATE";//APP更新
     public static final String INTENT_ISCOLLECTION = "INTENT_ISCOLLECTION";
     public static final String INTENT_SHAREDATA = "INTENT_SHAREDATA";
 

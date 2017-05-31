@@ -19,6 +19,13 @@ public interface IUserLoginModel {
      * @param listener
      */
     void loginCemetery(Context context, UserLoginBean params, OnUserLoginListener listener);
+    /**
+     * 退出公墓登陆
+     *
+     * @param context
+     * @param listener
+     */
+    void loginOutCemetery(Context context, OnUserLoginListener listener);
 
     /**
      * 保存登陆设置

@@ -6,12 +6,12 @@ import com.shianlife.shian_platform.http.base.BaseHttpParams;
 import com.shianlife.shian_platform.http.base.HttpRequestExecutor;
 import com.shianlife.shian_platform.http.base.HttpResponseHandler;
 import com.shianlife.shian_platform.http.imp.PHPManager;
-import com.shianlife.shian_platform.http.phpparams.HpGetVersion;
 import com.shianlife.shian_platform.http.phpresult.PHPHrGetHotIssue;
-import com.shianlife.shian_platform.http.phpresult.PHPHrGetVersion;
 import com.shianlife.shian_platform.mvp.advert.bean.AdvertResultBean;
 import com.shianlife.shian_platform.mvp.dynamic.bean.DynamicResultBean;
 import com.shianlife.shian_platform.mvp.find.bean.FindResultBean;
+import com.shianlife.shian_platform.mvp.main.bean.AppUpDateBean;
+import com.shianlife.shian_platform.mvp.main.bean.AppUpDateResultBean;
 
 
 /**
@@ -70,8 +70,8 @@ public class PHPManagerImpl implements PHPManager {
     }
 
     @Override
-    public void getVersion(Context context, HpGetVersion params, HttpResponseHandler<PHPHrGetVersion> handler, boolean isDialog) {
-        excutor.requestPHPGet(context, "Home/index/edition", PHPHrGetVersion.class,
+    public void getVersion(Context context, AppUpDateBean params, HttpResponseHandler<AppUpDateResultBean> handler, boolean isDialog) {
+        excutor.requestPHPGet(context, "Home/index/edition", AppUpDateResultBean.class,
                 params, handler, isDialog);
     }
 

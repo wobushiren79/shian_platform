@@ -15,11 +15,25 @@
     <string name="title_name_find">精选</string>
     <string name="title_name_app">我的应用</string>
     <string name="title_name_ideaback">意见反馈</string>
+    <string name="title_name_help">帮助</string>
+    <string name="title_name_setting">设置</string>
 
     <string name="ideaback_save_success">提交成功</string>
     <string name="ideaback_save_fail">提交失败</string>
 
+    <string name="setting_exit">是否退出当前账户</string>
+
     <string name="customerhelp_state_1">暂时不提供此项服务</string>
+
+    <string name="appupdate_text_1">新版本：</string>
+    <string name="appupdate_text_2">当前已是最新版</string>
+    <string name="appupdate_text_3">版本号获取异常</string>
+
+    <string name="dialog_true_1">是</string>
+    <string name="dialog_false_1">否</string>
+    <string name="dialog_true_2">更新</string>
+    <string name="dialog_false_2">取消</string>
+
 
 
 </resources>

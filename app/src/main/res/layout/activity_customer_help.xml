@@ -70,17 +70,6 @@
                     android:textSize="@dimen/dimen_32dp" />
             </LinearLayout>
         </LinearLayout>
-
-
-        <com.shianlife.shian_platform.custom.view.scrollview.ScrollRecyclerView
-            android:id="@+id/gridview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_16dp"
-            android:background="@color/white"
-            android:numColumns="3"></com.shianlife.shian_platform.custom.view.scrollview.ScrollRecyclerView>
-
-
     </LinearLayout>
 
 

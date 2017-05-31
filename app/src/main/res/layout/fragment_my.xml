@@ -17,7 +17,8 @@
             android:layout_marginBottom="@dimen/dimen_16dp"
             android:background="@color/white"
             android:orientation="horizontal"
-            android:padding="@dimen/dimen_16dp">
+            android:padding="@dimen/dimen_16dp"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/iv_icon"

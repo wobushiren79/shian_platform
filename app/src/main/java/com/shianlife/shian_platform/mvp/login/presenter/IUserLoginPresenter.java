@@ -11,6 +11,11 @@ public interface IUserLoginPresenter {
     void loginCemetery();
 
     /**
+     * 退出公墓
+     */
+    void loginOutCemetery();
+
+    /**
      * 保存配置信息
      */
     void saveLoginConfig();
