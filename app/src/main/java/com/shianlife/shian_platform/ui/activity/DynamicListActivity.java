@@ -69,11 +69,13 @@ public class DynamicListActivity extends BaseActivity implements IDynamicView {
     }
 
     @Override
-    public void showData(BaseDataResult result) {
+    public void showData(DynamicResultBean result) {
         ptrLayout.refreshComplete();
-        DynamicResultBean data = (DynamicResultBean) result;
+        DynamicResultBean data = result;
         dynamicListAdapter.setData(data.getItems());
+
     }
+
 
     @Override
     public void showMsg(String msg) {

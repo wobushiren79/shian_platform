@@ -3,6 +3,7 @@ package com.shianlife.shian_platform.mvp.ideaback.view;
 import android.content.Context;
 
 import com.shianlife.shian_platform.http.base.BaseDataResult;
+import com.shianlife.shian_platform.mvp.ideaback.bean.IdeaFeedBackResultBean;
 
 /**
  * Created by zm.
@@ -11,7 +12,7 @@ import com.shianlife.shian_platform.http.base.BaseDataResult;
 public interface IIdeaFeedBackView {
     Context getContent();
 
-    void showData(BaseDataResult result);
+    void showData(IdeaFeedBackResultBean result);
 
     void showMsg(String msg);
 

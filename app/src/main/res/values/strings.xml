@@ -34,6 +34,8 @@
     <string name="dialog_true_2">更新</string>
     <string name="dialog_false_2">取消</string>
 
+    <string name="bug_text_1">BUG啦！赶紧下载最新APP或重新启动APP</string>
+
 
 
 </resources>

@@ -2,11 +2,11 @@ package com.shianlife.shian_platform.mvp.find.model.impl;
 
 import android.content.Context;
 
+import com.shianlife.shian_platform.common.OnGetDataListener;
 import com.shianlife.shian_platform.http.MHttpManagerFactory;
 import com.shianlife.shian_platform.http.base.HttpResponseHandler;
 import com.shianlife.shian_platform.mvp.find.bean.FindDataBean;
 import com.shianlife.shian_platform.mvp.find.model.IFindDataModel;
-import com.shianlife.shian_platform.mvp.find.presenter.OnFindDataListener;
 
 import okhttp3.Request;
 
@@ -17,7 +17,7 @@ import okhttp3.Request;
 public class FindDataModelImpl implements IFindDataModel {
 
     @Override
-    public void saveData(Context context, FindDataBean params, final OnFindDataListener listener) {
+    public void saveData(Context context, FindDataBean params, final OnGetDataListener listener) {
         MHttpManagerFactory.getPHPManager().setSiftData(context, params, new HttpResponseHandler<Object>() {
             @Override
             public void onStart(Request request, int id) {
@@ -26,12 +26,12 @@ public class FindDataModelImpl implements IFindDataModel {
 
             @Override
             public void onSuccess(Object result) {
-                listener.changeDataSuccess();
+                listener.getDataSuccess(result);
             }
 
             @Override
             public void onError(String message) {
-                listener.changeDataFail(message);
+                listener.getDataFail(message);
             }
         });
     }

@@ -3,13 +3,13 @@ package com.shianlife.shian_platform.mvp.login.model.impl;
 import android.content.Context;
 
 import com.shianlife.shian_platform.common.Constants;
+import com.shianlife.shian_platform.common.OnGetDataListener;
 import com.shianlife.shian_platform.http.MHttpManagerFactory;
 import com.shianlife.shian_platform.http.base.HttpResponseHandler;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginBean;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginConfig;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.model.IUserLoginModel;
-import com.shianlife.shian_platform.mvp.login.presenter.OnUserLoginListener;
 import com.shianlife.shian_platform.utils.SharePerfrenceUtils;
 
 import okhttp3.Request;
@@ -22,7 +22,7 @@ public class UserLoginModelImpl implements IUserLoginModel {
 
 
     @Override
-    public void loginCemetery(Context context, UserLoginBean params, final OnUserLoginListener listener) {
+    public void loginCemetery(Context context, UserLoginBean params, final OnGetDataListener listener) {
         MHttpManagerFactory.getAccountManager().loginCemetery(context, params, new HttpResponseHandler<UserLoginResultBean>() {
             @Override
             public void onStart(Request request, int id) {
@@ -32,18 +32,18 @@ public class UserLoginModelImpl implements IUserLoginModel {
             @Override
             public void onSuccess(UserLoginResultBean result) {
                 Constants.userCemetery = result;
-                listener.loginSuccess(result);
+                listener.getDataSuccess(result);
             }
 
             @Override
             public void onError(String message) {
-                listener.loginFail(message);
+                listener.getDataFail(message);
             }
         });
     }
 
     @Override
-    public void loginOutCemetery(Context context, final OnUserLoginListener listener) {
+    public void loginOutCemetery(Context context, final OnGetDataListener listener) {
         MHttpManagerFactory.getAccountManager().loginOutCemetery(context, new HttpResponseHandler<Object>() {
             @Override
             public void onStart(Request request, int id) {
@@ -52,12 +52,12 @@ public class UserLoginModelImpl implements IUserLoginModel {
 
             @Override
             public void onSuccess(Object result) {
-                listener.loginSuccess(null);
+                listener.getDataSuccess(null);
             }
 
             @Override
             public void onError(String message) {
-                listener.loginFail(message);
+                listener.getDataFail(message);
             }
         });
     }

@@ -2,13 +2,12 @@ package com.shianlife.shian_platform.mvp.main.model.impl;
 
 import android.content.Context;
 
+import com.shianlife.shian_platform.common.OnGetDataListener;
 import com.shianlife.shian_platform.http.MHttpManagerFactory;
 import com.shianlife.shian_platform.http.base.HttpResponseHandler;
 import com.shianlife.shian_platform.mvp.main.bean.AppUpDateBean;
 import com.shianlife.shian_platform.mvp.main.bean.AppUpDateResultBean;
 import com.shianlife.shian_platform.mvp.main.model.IAppUpDateModel;
-import com.shianlife.shian_platform.mvp.main.presenter.OnAppUpDateListener;
-import com.shianlife.shian_platform.mvp.main.view.IAppUpDateView;
 
 import okhttp3.Request;
 
@@ -18,7 +17,7 @@ import okhttp3.Request;
 
 public class AppUpDateModelImpl implements IAppUpDateModel {
     @Override
-    public void getAppUpDateInfo(Context context, AppUpDateBean params, final OnAppUpDateListener listener) {
+    public void getAppUpDateInfo(Context context, AppUpDateBean params, final OnGetDataListener listener) {
         MHttpManagerFactory.getPHPManager().getVersion(context, params, new HttpResponseHandler<AppUpDateResultBean>() {
             @Override
             public void onStart(Request request, int id) {
@@ -27,12 +26,12 @@ public class AppUpDateModelImpl implements IAppUpDateModel {
 
             @Override
             public void onSuccess(AppUpDateResultBean result) {
-                listener.getAppUpDateSuccess(result);
+                listener.getDataSuccess(result);
             }
 
             @Override
             public void onError(String message) {
-                listener.getAppUpDateFail(message);
+                listener.getDataFail(message);
             }
         }, true);
     }

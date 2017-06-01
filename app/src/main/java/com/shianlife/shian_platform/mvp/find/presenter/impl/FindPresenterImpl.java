@@ -3,12 +3,14 @@ package com.shianlife.shian_platform.mvp.find.presenter.impl;
 import android.content.Context;
 
 import com.shianlife.shian_platform.common.Constants;
+import com.shianlife.shian_platform.common.OnGetDataListener;
 import com.shianlife.shian_platform.http.base.BaseDataResult;
 import com.shianlife.shian_platform.mvp.find.bean.FindBean;
+import com.shianlife.shian_platform.mvp.find.bean.FindDataResultBean;
+import com.shianlife.shian_platform.mvp.find.bean.FindResultBean;
 import com.shianlife.shian_platform.mvp.find.model.IFindModel;
 import com.shianlife.shian_platform.mvp.find.model.impl.FindModelImpl;
 import com.shianlife.shian_platform.mvp.find.presenter.IFindPresenter;
-import com.shianlife.shian_platform.mvp.find.presenter.OnFindListener;
 import com.shianlife.shian_platform.mvp.find.view.IFindView;
 
 /**
@@ -32,9 +34,9 @@ public class FindPresenterImpl implements IFindPresenter {
         params.setPagerNumber(findView.getPagerNum());
         params.setType(findView.getFindType());
         params.setUserid(Constants.userCemetery.getUserId());
-        findModel.getFindData(context, params, new OnFindListener() {
+        findModel.getFindData(context, params, new OnGetDataListener<FindResultBean>() {
             @Override
-            public void getDataSuccess(BaseDataResult result) {
+            public void getDataSuccess(FindResultBean result) {
                 findView.showData(result);
             }
 

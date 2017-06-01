@@ -1,11 +1,12 @@
 package com.shianlife.shian_platform.mvp.find.presenter.impl;
 
 import com.shianlife.shian_platform.common.Constants;
+import com.shianlife.shian_platform.common.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.find.bean.FindDataBean;
+import com.shianlife.shian_platform.mvp.find.bean.FindDataResultBean;
 import com.shianlife.shian_platform.mvp.find.model.IFindDataModel;
 import com.shianlife.shian_platform.mvp.find.model.impl.FindDataModelImpl;
 import com.shianlife.shian_platform.mvp.find.presenter.IFindDataPresenter;
-import com.shianlife.shian_platform.mvp.find.presenter.OnFindDataListener;
 import com.shianlife.shian_platform.mvp.find.view.IFindDataView;
 
 /**
@@ -27,14 +28,14 @@ public class FindDataPresenterImpl implements IFindDataPresenter {
         params.setType(findDataView.getChangeType());
         params.setSiftid(findDataView.getSiftid());
         params.setUserid(Constants.userCemetery.getUserId());
-        findDataModel.saveData(findDataView.getContext(), params, new OnFindDataListener() {
+        findDataModel.saveData(findDataView.getContext(), params, new OnGetDataListener<FindDataResultBean>() {
             @Override
-            public void changeDataSuccess() {
+            public void getDataSuccess(FindDataResultBean result) {
                 findDataView.changeSuccess();
             }
 
             @Override
-            public void changeDataFail(String msg) {
+            public void getDataFail(String msg) {
                 findDataView.changeFail(msg);
             }
         });

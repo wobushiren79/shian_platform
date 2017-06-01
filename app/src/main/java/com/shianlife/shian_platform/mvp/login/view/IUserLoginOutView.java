@@ -22,12 +22,12 @@ public interface IUserLoginOutView {
      *
      * @param result
      */
-    void loginSuccess(UserLoginResultBean result);
+    void loginOutSuccess(Object result);
 
     /**
      * 退出登陆失败
      *
      * @param message
      */
-    void loginFail(String message);
+    void loginOutFail(String message);
 }

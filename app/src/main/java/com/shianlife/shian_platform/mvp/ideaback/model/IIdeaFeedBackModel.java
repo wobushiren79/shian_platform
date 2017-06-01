@@ -2,8 +2,8 @@ package com.shianlife.shian_platform.mvp.ideaback.model;
 
 import android.content.Context;
 
+import com.shianlife.shian_platform.common.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.ideaback.bean.IdeaFeedBackBean;
-import com.shianlife.shian_platform.mvp.ideaback.presenter.OnIdeaFeedBackListener;
 
 /**
  * Created by zm.
@@ -16,5 +16,5 @@ public interface IIdeaFeedBackModel {
      * @param params
      * @param listener
      */
-    void saveIdeaFeedBackData(Context context, IdeaFeedBackBean params, OnIdeaFeedBackListener listener);
+    void saveIdeaFeedBackData(Context context, IdeaFeedBackBean params, OnGetDataListener listener);
 }

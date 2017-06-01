@@ -78,11 +78,13 @@ public class MainDynamicLayout extends BaseLayout implements IDynamicView {
     }
 
     @Override
-    public void showData(BaseDataResult result) {
-        DynamicResultBean data = (DynamicResultBean) result;
+    public void showData(DynamicResultBean result) {
+        DynamicResultBean data =  result;
         dynamicAdapter.setData(data.getItems());
         this.setVisibility(VISIBLE);
     }
+
+
 
     @Override
     public void showMsg(String msg) {

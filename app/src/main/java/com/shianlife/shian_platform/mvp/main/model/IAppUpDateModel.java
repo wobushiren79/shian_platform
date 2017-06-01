@@ -2,8 +2,8 @@ package com.shianlife.shian_platform.mvp.main.model;
 
 import android.content.Context;
 
+import com.shianlife.shian_platform.common.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.main.bean.AppUpDateBean;
-import com.shianlife.shian_platform.mvp.main.presenter.OnAppUpDateListener;
 
 /**
  * Created by zm.
@@ -17,5 +17,5 @@ public interface IAppUpDateModel {
      * @param params
      * @param listener
      */
-    void getAppUpDateInfo(Context context, AppUpDateBean params, OnAppUpDateListener listener);
+    void getAppUpDateInfo(Context context, AppUpDateBean params, OnGetDataListener listener);
 }

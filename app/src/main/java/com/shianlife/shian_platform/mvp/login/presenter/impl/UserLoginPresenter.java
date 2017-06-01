@@ -1,12 +1,12 @@
 package com.shianlife.shian_platform.mvp.login.presenter.impl;
 
+import com.shianlife.shian_platform.common.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginBean;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginConfig;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.model.IUserLoginModel;
 import com.shianlife.shian_platform.mvp.login.model.impl.UserLoginModelImpl;
 import com.shianlife.shian_platform.mvp.login.presenter.IUserLoginPresenter;
-import com.shianlife.shian_platform.mvp.login.presenter.OnUserLoginListener;
 import com.shianlife.shian_platform.mvp.login.view.IUserLoginOutView;
 import com.shianlife.shian_platform.mvp.login.view.IUserLoginView;
 
@@ -36,30 +36,32 @@ public class UserLoginPresenter implements IUserLoginPresenter {
         params.setUsername(userLoginView.getUserName());
         params.setPassword(userLoginView.getPassWord());
         params.setSystemType("2");
-        userLoginModel.loginCemetery(userLoginView.getContent(), params, new OnUserLoginListener() {
+        userLoginModel.loginCemetery(userLoginView.getContent(), params, new OnGetDataListener<UserLoginResultBean>() {
             @Override
-            public void loginSuccess(UserLoginResultBean result) {
+            public void getDataSuccess(UserLoginResultBean result) {
                 userLoginView.loginSuccess(result);
             }
 
             @Override
-            public void loginFail(String message) {
-                userLoginView.loginFail(message);
+            public void getDataFail(String msg) {
+                userLoginView.loginFail(msg);
             }
+
+
         });
     }
 
     @Override
     public void loginOutCemetery() {
-        userLoginModel.loginOutCemetery(userLoginOutView.getContent(), new OnUserLoginListener() {
+        userLoginModel.loginOutCemetery(userLoginOutView.getContent(), new OnGetDataListener<Object>() {
             @Override
-            public void loginSuccess(UserLoginResultBean result) {
-                userLoginOutView.loginSuccess(result);
+            public void getDataSuccess(Object result) {
+                userLoginOutView.loginOutSuccess(null);
             }
 
             @Override
-            public void loginFail(String message) {
-                userLoginOutView.loginFail(message);
+            public void getDataFail(String msg) {
+                userLoginOutView.loginOutFail(msg);
             }
         });
     }

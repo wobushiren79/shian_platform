@@ -1,12 +1,12 @@
 package com.shianlife.shian_platform.mvp.ideaback.presenter.impl;
 
-import com.shianlife.shian_platform.R;
+import com.shianlife.shian_platform.common.OnGetDataListener;
 import com.shianlife.shian_platform.http.base.BaseDataResult;
 import com.shianlife.shian_platform.mvp.ideaback.bean.IdeaFeedBackBean;
+import com.shianlife.shian_platform.mvp.ideaback.bean.IdeaFeedBackResultBean;
 import com.shianlife.shian_platform.mvp.ideaback.model.IIdeaFeedBackModel;
 import com.shianlife.shian_platform.mvp.ideaback.model.impl.IdeaFeedBackModelImpl;
 import com.shianlife.shian_platform.mvp.ideaback.presenter.IIdeaFeedBackPresenter;
-import com.shianlife.shian_platform.mvp.ideaback.presenter.OnIdeaFeedBackListener;
 import com.shianlife.shian_platform.mvp.ideaback.view.IIdeaFeedBackView;
 
 /**
@@ -28,14 +28,14 @@ public class IdeaFeedBackPresenterImpl implements IIdeaFeedBackPresenter {
         params.setContent(ideaFeedBackView.getEdContent());
         params.setTel(ideaFeedBackView.getUserPhone());
         params.setUser(ideaFeedBackView.getUserName());
-        ideaFeedBackModel.saveIdeaFeedBackData(ideaFeedBackView.getContent(), params, new OnIdeaFeedBackListener() {
+        ideaFeedBackModel.saveIdeaFeedBackData(ideaFeedBackView.getContent(), params, new OnGetDataListener<IdeaFeedBackResultBean>() {
             @Override
-            public void saveIdeaFeedBackSuccess(BaseDataResult result) {
+            public void getDataSuccess(IdeaFeedBackResultBean result) {
                 ideaFeedBackView.showData(result);
             }
 
             @Override
-            public void saveIdeaFeedBackFail(String msg) {
+            public void getDataFail(String msg) {
                 ideaFeedBackView.showMsg(msg);
             }
         });

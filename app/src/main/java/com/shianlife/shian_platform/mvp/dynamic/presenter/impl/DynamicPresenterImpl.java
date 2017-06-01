@@ -1,11 +1,12 @@
 package com.shianlife.shian_platform.mvp.dynamic.presenter.impl;
 
+import com.shianlife.shian_platform.common.OnGetDataListener;
 import com.shianlife.shian_platform.http.base.BaseDataResult;
 import com.shianlife.shian_platform.mvp.dynamic.bean.DynamicBean;
+import com.shianlife.shian_platform.mvp.dynamic.bean.DynamicResultBean;
 import com.shianlife.shian_platform.mvp.dynamic.model.IDynamicModel;
 import com.shianlife.shian_platform.mvp.dynamic.model.impl.DynamicModelImpl;
 import com.shianlife.shian_platform.mvp.dynamic.presenter.IDynamicPresenter;
-import com.shianlife.shian_platform.mvp.dynamic.presenter.OnDynamicListener;
 import com.shianlife.shian_platform.mvp.dynamic.view.IDynamicView;
 
 /**
@@ -26,9 +27,10 @@ public class DynamicPresenterImpl implements IDynamicPresenter {
         DynamicBean params = new DynamicBean();
         params.setNumber(dynamicView.getPagerSize());
         params.setPagerNumber(dynamicView.getPagerNum());
-        dynamicModel.getDynamicData(dynamicView.getContext(), params, new OnDynamicListener() {
+        dynamicModel.getDynamicData(dynamicView.getContext(), params, new OnGetDataListener<DynamicResultBean>() {
+
             @Override
-            public void getDataSuccess(BaseDataResult result) {
+            public void getDataSuccess(DynamicResultBean result) {
                 dynamicView.showData(result);
             }
 

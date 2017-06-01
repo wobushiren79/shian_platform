@@ -3,6 +3,7 @@ package com.shianlife.shian_platform.mvp.dynamic.view;
 import android.content.Context;
 
 import com.shianlife.shian_platform.http.base.BaseDataResult;
+import com.shianlife.shian_platform.mvp.dynamic.bean.DynamicResultBean;
 
 /**
  * Created by zm.
@@ -15,7 +16,7 @@ public interface IDynamicView {
 
     int getPagerNum();
 
-    void showData(BaseDataResult result);
+    void showData(DynamicResultBean result);
 
     void showMsg(String msg);
 }

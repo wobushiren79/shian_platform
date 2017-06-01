@@ -3,6 +3,7 @@ package com.shianlife.shian_platform.mvp.main.view;
 import android.content.Context;
 
 import com.shianlife.shian_platform.http.base.BaseDataResult;
+import com.shianlife.shian_platform.mvp.main.bean.AppUpDateResultBean;
 
 /**
  * Created by zm.
@@ -16,7 +17,7 @@ public interface IAppUpDateView {
      */
     Context getContext();
 
-    void getAppUpDateInfoSuccess(BaseDataResult result);
+    void getAppUpDateInfoSuccess(AppUpDateResultBean result);
 
     void getAppUpDateInfoFail(String msg);
 }

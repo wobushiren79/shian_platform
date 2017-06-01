@@ -11,6 +11,7 @@ import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.appenum.BaseTitleEnum;
 import com.shianlife.shian_platform.base.BaseActivity;
 import com.shianlife.shian_platform.http.base.BaseDataResult;
+import com.shianlife.shian_platform.mvp.ideaback.bean.IdeaFeedBackResultBean;
 import com.shianlife.shian_platform.mvp.ideaback.presenter.IIdeaFeedBackPresenter;
 import com.shianlife.shian_platform.mvp.ideaback.presenter.impl.IdeaFeedBackPresenterImpl;
 import com.shianlife.shian_platform.mvp.ideaback.view.IIdeaFeedBackView;
@@ -86,7 +87,7 @@ public class IdeaFeedbackActivity extends BaseActivity implements IIdeaFeedBackV
     }
 
     @Override
-    public void showData(BaseDataResult result) {
+    public void showData(IdeaFeedBackResultBean result) {
         ToastUtils.showToastShort(this, getString(R.string.ideaback_save_success));
         finish();
     }

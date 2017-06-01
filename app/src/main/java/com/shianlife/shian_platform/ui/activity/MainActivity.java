@@ -120,9 +120,10 @@ public class MainActivity extends BaseActivity implements IChangeItemView, IAppU
     }
 
     @Override
-    public void getAppUpDateInfoSuccess(BaseDataResult result) {
-        CheckUtils.checkAppUpDate(this, (AppUpDateResultBean) result, false);
+    public void getAppUpDateInfoSuccess(AppUpDateResultBean result) {
+        CheckUtils.checkAppUpDate(this, result, false);
     }
+
 
     @Override
     public void getAppUpDateInfoFail(String msg) {

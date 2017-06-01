@@ -78,9 +78,9 @@ public class FindListActivity extends BaseActivity implements IFindView {
     }
 
     @Override
-    public void showData(BaseDataResult result) {
+    public void showData(FindResultBean result) {
         ptrLayout.refreshComplete();
-        FindResultBean resultBean = (FindResultBean) result;
+        FindResultBean resultBean = result;
         findAdapter.setData(resultBean.getItems());
     }
 

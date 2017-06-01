@@ -192,8 +192,8 @@ public class MyFragment extends BaseFragment implements IAppUpDateView {
 
 
     @Override
-    public void getAppUpDateInfoSuccess(BaseDataResult result) {
-        CheckUtils.checkAppUpDate(getContext(), (AppUpDateResultBean) result, true);
+    public void getAppUpDateInfoSuccess(AppUpDateResultBean result) {
+        CheckUtils.checkAppUpDate(getContext(), result, true);
     }
 
     @Override

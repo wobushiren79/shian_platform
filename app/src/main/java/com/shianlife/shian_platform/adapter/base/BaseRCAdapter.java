@@ -19,11 +19,18 @@ public abstract class BaseRCAdapter<T> extends RecyclerView.Adapter<BaseViewHold
     protected List<T> mDatas = new ArrayList<>();
     protected LayoutInflater mInflater;
 
+    /**
+     * 单布局初始化
+     *
+     * @param context
+     * @param layoutId
+     */
     public BaseRCAdapter(Context context, int layoutId) {
         mContext = context;
         mInflater = LayoutInflater.from(context);
         mLayoutId = layoutId;
     }
+
 
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -35,6 +42,7 @@ public abstract class BaseRCAdapter<T> extends RecyclerView.Adapter<BaseViewHold
     public void onBindViewHolder(BaseViewHolder holder, int position) {
         convert(holder, mDatas.get(position), position);
     }
+
 
     @Override
     public int getItemCount() {
@@ -84,6 +92,4 @@ public abstract class BaseRCAdapter<T> extends RecyclerView.Adapter<BaseViewHold
     }
 
     public abstract void convert(BaseViewHolder holder, T t, int index);
-
-
 }

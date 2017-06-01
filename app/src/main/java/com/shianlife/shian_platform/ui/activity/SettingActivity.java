@@ -72,12 +72,13 @@ public class SettingActivity extends BaseActivity implements IUserLoginOutView {
     }
 
     @Override
-    public void loginSuccess(UserLoginResultBean result) {
+    public void loginOutSuccess(Object result) {
 
     }
 
     @Override
-    public void loginFail(String message) {
+    public void loginOutFail(String message) {
 
     }
+
 }

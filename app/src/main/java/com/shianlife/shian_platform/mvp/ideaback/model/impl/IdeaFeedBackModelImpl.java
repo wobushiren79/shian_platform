@@ -2,12 +2,11 @@ package com.shianlife.shian_platform.mvp.ideaback.model.impl;
 
 import android.content.Context;
 
+import com.shianlife.shian_platform.common.OnGetDataListener;
 import com.shianlife.shian_platform.http.MHttpManagerFactory;
 import com.shianlife.shian_platform.http.base.HttpResponseHandler;
 import com.shianlife.shian_platform.mvp.ideaback.bean.IdeaFeedBackBean;
 import com.shianlife.shian_platform.mvp.ideaback.model.IIdeaFeedBackModel;
-import com.shianlife.shian_platform.mvp.ideaback.presenter.OnIdeaFeedBackListener;
-import com.shianlife.shian_platform.ui.activity.IdeaFeedbackActivity;
 
 import okhttp3.Request;
 
@@ -24,7 +23,7 @@ public class IdeaFeedBackModelImpl implements IIdeaFeedBackModel {
      * @param listener
      */
     @Override
-    public void saveIdeaFeedBackData(Context context, IdeaFeedBackBean params, final OnIdeaFeedBackListener listener) {
+    public void saveIdeaFeedBackData(Context context, IdeaFeedBackBean params, final OnGetDataListener listener) {
         MHttpManagerFactory.getPHPManager().setOpinion(context, params, new HttpResponseHandler<Object>() {
 
             @Override
@@ -34,12 +33,12 @@ public class IdeaFeedBackModelImpl implements IIdeaFeedBackModel {
 
             @Override
             public void onSuccess(Object result) {
-                listener.saveIdeaFeedBackSuccess(null);
+                listener.getDataSuccess(result);
             }
 
             @Override
             public void onError(String message) {
-                listener.saveIdeaFeedBackFail(message);
+                listener.getDataSuccess(message);
             }
         }, true);
     }

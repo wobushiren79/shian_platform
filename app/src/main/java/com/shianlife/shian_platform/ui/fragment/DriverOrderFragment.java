@@ -10,8 +10,11 @@ import android.widget.TextView;
 
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.adapter.DriverOrderViewPagerAdapter;
+import com.shianlife.shian_platform.appenum.DriverOrderListEnum;
 import com.shianlife.shian_platform.base.BaseFragment;
 import com.shianlife.shian_platform.listener.DriverPagerListener;
+import com.shianlife.shian_platform.ui.order.driver.BaseDriverLayout;
+import com.shianlife.shian_platform.ui.order.driver.WaitService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +38,7 @@ public class DriverOrderFragment extends BaseFragment {
 
     private DriverOrderViewPagerAdapter mDriverPagerAdapter;
     private DriverPagerListener mPagerListener;
+    private DriverOrderListEnum[] mDriverOrderListEna;
     public static boolean isRefesh = false;
 
     @Override
@@ -54,11 +58,24 @@ public class DriverOrderFragment extends BaseFragment {
 
     @Override
     protected void initData() {
+
+        mDriverOrderListEna = new DriverOrderListEnum[]{
+                DriverOrderListEnum.waitservice,
+                DriverOrderListEnum.inservice,
+                DriverOrderListEnum.successservice,
+                DriverOrderListEnum.failservice
+        };
+
         List<View> viewList = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            TextView tvContent = new TextView(getContext());
-            tvContent.setText(i + "test");
-            viewList.add(tvContent);
+
+        for (int i = 0; i < mDriverOrderListEna.length; i++) {
+            BaseDriverLayout baseView = null;
+            if (mDriverOrderListEna[i].getCode() == DriverOrderListEnum.waitservice.getCode()) {
+                baseView = new WaitService(getContext());
+            } else {
+                baseView = new WaitService(getContext());
+            }
+            viewList.add(baseView);
         }
         mDriverPagerAdapter = new DriverOrderViewPagerAdapter(getContext(), viewList);
         mPagerListener = new DriverPagerListener();
@@ -66,6 +83,9 @@ public class DriverOrderFragment extends BaseFragment {
         viewpager.addOnPageChangeListener(mPagerListener);
         tablayout.setupWithViewPager(viewpager);
 
+        for (int i = 0; i < mDriverOrderListEna.length; i++) {
+            tablayout.getTabAt(i).setText(mDriverOrderListEna[i].getName());
+        }
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.shianlife.shian_platform.mvp.find.view;
 import android.content.Context;
 
 import com.shianlife.shian_platform.http.base.BaseDataResult;
+import com.shianlife.shian_platform.mvp.find.bean.FindResultBean;
 
 /**
  * Created by zm.
@@ -37,7 +38,7 @@ public interface IFindView {
      *
      * @param result
      */
-    void showData(BaseDataResult result);
+    void showData(FindResultBean result);
 
     /**
      * 展示提示

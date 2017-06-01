@@ -1,11 +1,12 @@
 package com.shianlife.shian_platform.mvp.advert.presenter.impl;
 
+import com.shianlife.shian_platform.common.OnGetDataListener;
 import com.shianlife.shian_platform.http.base.BaseDataResult;
 import com.shianlife.shian_platform.mvp.advert.bean.AdvertBean;
+import com.shianlife.shian_platform.mvp.advert.bean.AdvertResultBean;
 import com.shianlife.shian_platform.mvp.advert.model.IAdvertModel;
 import com.shianlife.shian_platform.mvp.advert.model.impl.AdvertModelImpl;
 import com.shianlife.shian_platform.mvp.advert.presenter.IAdvertPresenter;
-import com.shianlife.shian_platform.mvp.advert.presenter.OnAdvertListener;
 import com.shianlife.shian_platform.mvp.advert.view.IAdvertView;
 
 /**
@@ -28,9 +29,10 @@ public class AdvertPresenterImpl implements IAdvertPresenter {
         params.setType(advertView.getAdvertType());
         params.setNumber(advertView.getPagerSize());
         params.setPagerNumber(advertView.getPagerNum());
-        advertModel.getAdvertData(advertView.getContext(), params, new OnAdvertListener() {
+        advertModel.getAdvertData(advertView.getContext(), params, new OnGetDataListener<AdvertResultBean>() {
+
             @Override
-            public void getDataSuccess(BaseDataResult result) {
+            public void getDataSuccess(AdvertResultBean result) {
                 advertView.showData(result);
             }
 
