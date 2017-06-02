@@ -1,5 +1,6 @@
 package com.shianlife.shian_platform.mvp.ideaback.presenter.impl;
 
+import com.shianlife.shian_platform.appenum.SystemTypeEnum;
 import com.shianlife.shian_platform.common.OnGetDataListener;
 import com.shianlife.shian_platform.http.base.BaseDataResult;
 import com.shianlife.shian_platform.mvp.ideaback.bean.IdeaFeedBackBean;
@@ -28,6 +29,7 @@ public class IdeaFeedBackPresenterImpl implements IIdeaFeedBackPresenter {
         params.setContent(ideaFeedBackView.getEdContent());
         params.setTel(ideaFeedBackView.getUserPhone());
         params.setUser(ideaFeedBackView.getUserName());
+        params.setUserType(SystemTypeEnum.platform.getCode());
         ideaFeedBackModel.saveIdeaFeedBackData(ideaFeedBackView.getContent(), params, new OnGetDataListener<IdeaFeedBackResultBean>() {
             @Override
             public void getDataSuccess(IdeaFeedBackResultBean result) {

@@ -28,6 +28,7 @@ public abstract class BaseRCSAdapter<T> extends RecyclerView.Adapter<BaseViewHol
      */
     public BaseRCSAdapter(Context context) {
         mContext = context;
+        addLayout(mListLayoutId);
     }
 
     @Override
@@ -97,5 +98,5 @@ public abstract class BaseRCSAdapter<T> extends RecyclerView.Adapter<BaseViewHol
 
     public abstract void convert(BaseViewHolder holder, T t, int index);
 
-
+    public abstract void addLayout(List<Integer> mListLayoutId);
 }

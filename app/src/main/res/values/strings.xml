@@ -36,6 +36,16 @@
 
     <string name="bug_text_1">BUG啦！赶紧下载最新APP或重新启动APP</string>
 
+    <string name="driver_order_text_carnum">车牌号</string>
+    <string name="driver_order_text_personnum">看&#160;&#160;&#160;&#160;墓</string>
+    <string name="driver_order_text_time">时&#160;&#160;&#160;&#160;间</string>
+    <string name="driver_order_text_meetlocation">预约地</string>
+    <string name="driver_order_text_finallocation">目的地</string>
+    <string name="driver_order_text_carlocation">取车地</string>
+    <string name="driver_order_text_customer">客&#160;&#160;&#160;&#160;戶</string>
 
+    <string name="driver_order_text_golocation">出发地</string>
 
+    <string name="driver_order_text_accept">接单</string>
+    <string name="driver_order_text_reject">拒单</string>
 </resources>

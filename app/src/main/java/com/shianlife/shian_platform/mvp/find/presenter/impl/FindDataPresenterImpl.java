@@ -1,5 +1,6 @@
 package com.shianlife.shian_platform.mvp.find.presenter.impl;
 
+import com.shianlife.shian_platform.appenum.SystemTypeEnum;
 import com.shianlife.shian_platform.common.Constants;
 import com.shianlife.shian_platform.common.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.find.bean.FindDataBean;
@@ -28,6 +29,7 @@ public class FindDataPresenterImpl implements IFindDataPresenter {
         params.setType(findDataView.getChangeType());
         params.setSiftid(findDataView.getSiftid());
         params.setUserid(Constants.userCemetery.getUserId());
+        params.setUserType(SystemTypeEnum.platform.getCode());
         findDataModel.saveData(findDataView.getContext(), params, new OnGetDataListener<FindDataResultBean>() {
             @Override
             public void getDataSuccess(FindDataResultBean result) {

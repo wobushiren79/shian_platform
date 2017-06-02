@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/dimen_26dp"
+    android:paddingLeft="@dimen/dimen_16dp"
+    android:paddingRight="@dimen/dimen_16dp"
+    android:paddingTop="@dimen/dimen_26dp">
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/orderlist_text_28dp_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test" />
+
+    <TextView
+        style="@style/orderlist_text_28dp_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_16dp"
+        android:layout_marginRight="@dimen/dimen_16dp"
+        android:text="：" />
+
+    <EditText
+        android:id="@+id/tv_content"
+        style="@style/orderlist_text_28dp_1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginRight="@dimen/dimen_16dp"
+        android:layout_weight="1"
+        android:background="@null"
+        android:text=""
+        android:textColorHint="@color/font_wood" />
+
+    <ImageView
+        android:id="@+id/iv_map"
+        android:layout_width="@dimen/dimen_36dp"
+        android:layout_height="@dimen/dimen_36dp"
+        android:src="@drawable/button_map_icon"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_mileage"
+        style="@style/orderlist_text_28dp_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="KM"
+        android:visibility="gone" />
+</LinearLayout>

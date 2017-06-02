@@ -1,10 +1,13 @@
 package com.shianlife.shian_platform.base;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import com.shianlife.shian_platform.R;
 
 import butterknife.ButterKnife;
 
@@ -15,6 +18,13 @@ import butterknife.ButterKnife;
 public abstract class BaseLayout extends LinearLayout {
     View view;
 
+    protected TypedArray typedArray = null;
+    protected String titleName;
+    protected String contentText;
+    protected String hintText;
+    protected int layoutType;
+
+
     public BaseLayout(Context context, int layoutId) {
         this(context, layoutId, null);
     }
@@ -23,8 +33,18 @@ public abstract class BaseLayout extends LinearLayout {
         super(context, attrs);
         view = View.inflate(context, layoutId, this);
         ButterKnife.bind(this);
+        typedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomAttr);
+        getAttrs();
         initView();
         initData();
+    }
+
+    protected void getAttrs() {
+        titleName = typedArray.getString(R.styleable.CustomAttr_titleName);
+        hintText = typedArray.getString(R.styleable.CustomAttr_hintText);
+        contentText = typedArray.getString(R.styleable.CustomAttr_contentText);
+        layoutType = typedArray.getInt(R.styleable.CustomAttr_layoutType, -1);
+        typedArray.recycle();
     }
 
     protected abstract void initView();
