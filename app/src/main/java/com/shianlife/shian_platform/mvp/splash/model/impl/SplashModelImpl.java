@@ -22,6 +22,15 @@ public class SplashModelImpl implements ISplashModel {
     @Override
     public void delay(int delayTime, final OnSplashListener listener) {
         Observable.timer(delayTime, TimeUnit.SECONDS).subscribe(new Observer<Long>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(Long value) {
+
+            }
 
             @Override
             public void onError(Throwable e) {
@@ -31,16 +40,6 @@ public class SplashModelImpl implements ISplashModel {
             @Override
             public void onComplete() {
                 listener.delayOver();
-            }
-
-            @Override
-            public void onSubscribe(Disposable d) {
-
-            }
-
-            @Override
-            public void onNext(Long aLong) {
-
             }
         });
     }

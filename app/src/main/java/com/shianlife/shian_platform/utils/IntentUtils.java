@@ -18,6 +18,7 @@ public class IntentUtils {
     public static final String INTENT_APPUPDATE = "INTENT_APPUPDATE";//APP更新
     public static final String INTENT_ISCOLLECTION = "INTENT_ISCOLLECTION";
     public static final String INTENT_SHAREDATA = "INTENT_SHAREDATA";
+    public static final String INTENT_ADEVERT="INTENT_ADEVERT";//廣告跳轉
 
     public static class Build {
         Context context;

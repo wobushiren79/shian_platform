@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/iv_pic"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_220dp"
+        android:layout_height="@dimen/dimen_480dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:src="@drawable/zhy_find_default_icon" />

@@ -70,14 +70,14 @@ public class WebActivity extends BaseActivity implements IFindDataView {
     }
 
     private void initWebView() {
+        String dir = this.getApplicationContext().getDir("database", Context.MODE_PRIVATE).getPath();
         WebSettings webSettings = webView.getSettings();
+        webSettings.setDatabaseEnabled(true);
         webSettings.setJavaScriptEnabled(true);
         webSettings.setAllowFileAccess(true);
+
+        webSettings.setGeolocationDatabasePath(dir);
         webSettings.setGeolocationEnabled(true);
-        webSettings.setDatabaseEnabled(true);
-        webSettings.setBlockNetworkImage(false);
-        webSettings.setBlockNetworkLoads(false);
-        webSettings.setGeolocationDatabasePath(getFilesDir().getPath());
         webSettings.setDomStorageEnabled(true);//允许DCOM
 
         webView.loadUrl(url);
@@ -102,10 +102,6 @@ public class WebActivity extends BaseActivity implements IFindDataView {
             }
 
 
-            @Override
-            public void onReceivedIcon(WebView view, Bitmap icon) {
-                super.onReceivedIcon(view, icon);
-            }
 
             @Override
             public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {

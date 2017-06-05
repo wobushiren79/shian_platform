@@ -36,7 +36,7 @@ public class UserLoginPresenter implements IUserLoginPresenter {
         params.setUsername(userLoginView.getUserName());
         params.setPassword(userLoginView.getPassWord());
         params.setSystemType("2");
-        userLoginModel.loginCemetery(userLoginView.getContent(), params, new OnGetDataListener<UserLoginResultBean>() {
+        userLoginModel.loginCemetery(userLoginView.getContext(), params, new OnGetDataListener<UserLoginResultBean>() {
             @Override
             public void getDataSuccess(UserLoginResultBean result) {
                 userLoginView.loginSuccess(result);
@@ -73,12 +73,12 @@ public class UserLoginPresenter implements IUserLoginPresenter {
         loginConfig.setPassWord(userLoginView.getPassWord());
         loginConfig.setAutoLogin(userLoginView.getIsAutoLogin());
         loginConfig.setKeepAccount(userLoginView.getIsKeepAccount());
-        userLoginModel.saveLoginConfig(userLoginView.getContent(), loginConfig);
+        userLoginModel.saveLoginConfig(userLoginView.getContext(), loginConfig);
     }
 
     @Override
     public void getLoginConfig() {
-        UserLoginConfig loginConfig = userLoginModel.getLoginConfig(userLoginView.getContent());
+        UserLoginConfig loginConfig = userLoginModel.getLoginConfig(userLoginView.getContext());
         if (loginConfig.isKeepAccount()) {
             userLoginView.setUserName(loginConfig.getUserName());
             userLoginView.setPassWord(loginConfig.getPassWord());

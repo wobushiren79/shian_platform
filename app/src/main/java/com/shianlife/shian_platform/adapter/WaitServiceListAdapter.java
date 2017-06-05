@@ -1,13 +1,17 @@
 package com.shianlife.shian_platform.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.adapter.base.BaseRCSAdapter;
 import com.shianlife.shian_platform.adapter.base.BaseViewHolder;
+import com.shianlife.shian_platform.custom.dialog.DriverOrderDataDialog;
+import com.shianlife.shian_platform.custom.show.EditTextShowLayout;
+import com.shianlife.shian_platform.custom.show.ImageUpLoadShowLayout;
 import com.shianlife.shian_platform.custom.show.TextShowLayout;
 import com.shianlife.shian_platform.mvp.driver.bean.AcceptOrderResultBean;
 import com.shianlife.shian_platform.mvp.driver.bean.RejectOrderResultBean;
@@ -23,7 +27,8 @@ import com.shianlife.shian_platform.utils.ToastUtils;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.OnClick;
+
+import static com.shianlife.shian_platform.custom.dialog.DriverOrderDataDialog.STYLE_PIC;
 
 /**
  * Created by zm.
@@ -53,6 +58,7 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
 
     @Override
     public void convert(BaseViewHolder holder, WaitServiceListResultBean.WaitServiceItemData waitServiceItemData, int index) {
+//        holder.setIsRecyclable(false);
         if (getItemViewType(index) == LAYOUT_WAITGETORDER) {
             setLayoutDataWaitGetOrder(holder, waitServiceItemData, index);
         } else if (getItemViewType(index) == LAYOUT_WAITGETCAR) {
@@ -125,6 +131,22 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
      * @param index
      */
     private void setLayoutDataWaitGetCar(BaseViewHolder holder, WaitServiceListResultBean.WaitServiceItemData waitServiceItemData, int index) {
+
+        TextShowLayout layoutCarnum = holder.getView(R.id.layout_carnum);
+        TextShowLayout layoutPersonnum = holder.getView(R.id.layout_personnum);
+        TextShowLayout layoutTime = holder.getView(R.id.layout_time);
+        TextShowLayout layoutCustomer = holder.getView(R.id.layout_customer);
+        TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
+        TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
+        TextShowLayout layoutCarlocation = holder.getView(R.id.layout_carlocation);
+        TextView tvGo = holder.getView(R.id.tv_go);
+        tvGo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DriverOrderDataDialog dataDialog = new DriverOrderDataDialog(getContext(), STYLE_PIC);
+                dataDialog.show();
+            }
+        });
     }
 
     /**
@@ -135,6 +157,7 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
      * @param index
      */
     private void setLayoutDataWaitGo(BaseViewHolder holder, WaitServiceListResultBean.WaitServiceItemData waitServiceItemData, int index) {
+
 
     }
 
@@ -150,7 +173,6 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
     @Override
     public int getItemViewType(int position) {
         WaitServiceListResultBean.WaitServiceItemData waitServiceItemData = mDatas.get(position);
-
         if (position % 3 == 0) {
             return LAYOUT_WAITGETORDER;
         } else if (position % 3 == 1) {
@@ -158,7 +180,7 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
         } else if (position % 3 == 2) {
             return LAYOUT_WAITGO;
         }
-        return 4;
+        return LAYOUT_WAITGETCAR;
     }
 
     @Override

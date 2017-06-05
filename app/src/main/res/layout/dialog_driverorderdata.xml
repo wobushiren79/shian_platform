@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:CustomAttr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_1dp"
+            android:background="@color/zhy_line_8" />
+
+        <com.shianlife.shian_platform.custom.show.EditTextShowLayout
+            android:id="@+id/show_nowcarlocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            CustomAttr:hintText="@string/driver_order_hinttext_1"
+            CustomAttr:layoutType="2"
+            CustomAttr:titleName="@string/driver_order_text_nowcarlocation"></com.shianlife.shian_platform.custom.show.EditTextShowLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_1dp"
+            android:background="@color/zhy_line_8" />
+
+        <com.shianlife.shian_platform.custom.show.EditTextShowLayout
+            android:id="@+id/show_nowmileage_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            CustomAttr:hintText="@string/driver_order_hinttext_2"
+            CustomAttr:layoutType="1"
+            CustomAttr:titleName="@string/driver_order_text_nowmileage"></com.shianlife.shian_platform.custom.show.EditTextShowLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_1dp"
+            android:background="@color/zhy_line_8" />
+
+        <com.shianlife.shian_platform.custom.show.ImageUpLoadShowLayout
+            android:id="@+id/show_nowmileage_pic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            CustomAttr:titleName="@string/driver_order_text_mileagephoto"></com.shianlife.shian_platform.custom.show.ImageUpLoadShowLayout>
+    </LinearLayout>
+</LinearLayout>

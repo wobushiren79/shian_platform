@@ -16,13 +16,25 @@ import okhttp3.OkHttpClient;
  */
 
 public class BaseApplication extends Application {
-    private static BaseApplication baseAppliction = null;
+    private static BaseApplication baseApplication = null;
     List<Activity> listActivity = new ArrayList<>();
 
     @Override
     public void onCreate() {
         super.onCreate();
         initOkHttp();
+    }
+
+    /**
+     * 单例
+     *
+     * @return
+     */
+    public static BaseApplication getApplication() {
+        if (baseApplication == null) {
+            baseApplication = new BaseApplication();
+        }
+        return baseApplication;
     }
 
     /**

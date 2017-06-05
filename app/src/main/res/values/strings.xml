@@ -42,10 +42,29 @@
     <string name="driver_order_text_meetlocation">预约地</string>
     <string name="driver_order_text_finallocation">目的地</string>
     <string name="driver_order_text_carlocation">取车地</string>
+    <string name="driver_order_text_nowcarlocation">当前取车地</string>
+
     <string name="driver_order_text_customer">客&#160;&#160;&#160;&#160;戶</string>
 
     <string name="driver_order_text_golocation">出发地</string>
+    <string name="driver_order_text_nowmileage">当前里程</string>
+
+    <string name="driver_order_text_mileagephoto">里程照片</string>
+
+    <string name="driver_order_hinttext_1">请点击进行定位</string>
+    <string name="driver_order_hinttext_2">请填写当前里程</string>
 
     <string name="driver_order_text_accept">接单</string>
+    <string name="driver_order_text_go">出发</string>
     <string name="driver_order_text_reject">拒单</string>
+
+    <string name="splash_jump">跳过</string>
+
+    <string name="base_permissions_1">已获取权限请重新选择</string>
+    <string name="base_permissions_2">没有权限打开相册</string>
+
+    <string name="fileupload_permissions">读取相册照片需要相应权限</string>
+
+    <string name="fileupload_change">修改</string>
+    <string name="fileupload_delete">删除</string>
 </resources>

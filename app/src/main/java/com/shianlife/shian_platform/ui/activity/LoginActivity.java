@@ -21,6 +21,7 @@ import com.shianlife.shian_platform.mvp.login.bean.UserLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.presenter.IUserLoginPresenter;
 import com.shianlife.shian_platform.mvp.login.presenter.impl.UserLoginPresenter;
 import com.shianlife.shian_platform.mvp.login.view.IUserLoginView;
+import com.shianlife.shian_platform.utils.IntentUtils;
 import com.shianlife.shian_platform.utils.ToastUtils;
 
 import butterknife.BindView;
@@ -92,7 +93,7 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
     }
 
     @Override
-    public Context getContent() {
+    public Context getContext() {
         return LoginActivity.this;
     }
 
@@ -100,9 +101,8 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
     public void loginSuccess(UserLoginResultBean result) {
         loginPresenter.saveLoginConfig();
         btnLogin.setComplete();
-        ToastUtils.showToastLong(getContent(), getString(R.string.login_success));
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(intent);
+        ToastUtils.showToastLong(getContext(), getString(R.string.login_success));
+        new IntentUtils.Build(LoginActivity.this, MainActivity.class).start();
         finish();
     }
 
@@ -110,7 +110,7 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
     public void loginFail(String message) {
         btnLogin.setNormal();
         btnLogin.setOnClickListener(onViewClicked);
-        ToastUtils.showToastLong(getContent(), message);
+        ToastUtils.showToastLong(getContext(), message);
     }
 
     @Override
@@ -138,17 +138,16 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
 
     }
 
-
     /**
      * 登陆
      */
     private void checkLogin() {
         if (getUserName().isEmpty()) {
-            ToastUtils.showToastShort(getContent(), getString(R.string.login_username_empty));
+            ToastUtils.showToastShort(getContext(), getString(R.string.login_username_empty));
             return;
         }
         if (getPassWord().isEmpty()) {
-            ToastUtils.showToastShort(getContent(), getString(R.string.login_password_empty));
+            ToastUtils.showToastShort(getContext(), getString(R.string.login_password_empty));
             return;
         }
         btnLogin.setLoading();

@@ -32,6 +32,8 @@ public class UserLoginModelImpl implements IUserLoginModel {
             @Override
             public void onSuccess(UserLoginResultBean result) {
                 Constants.userCemetery = result;
+                Constants.userId = result.getUserId();
+                Constants.sessionId = result.getSessionId();
                 listener.getDataSuccess(result);
             }
 

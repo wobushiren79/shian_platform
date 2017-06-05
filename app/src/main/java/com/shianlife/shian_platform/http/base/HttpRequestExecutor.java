@@ -127,7 +127,7 @@ public class HttpRequestExecutor {
         String baseUrl = Constants.CEMETERY_URL;
         String cookie = "";
         if (!method.contains("doLogin/marketing") && Constants.userCemetery != null) {
-            cookie = Constants.userCemetery.getSessionId();
+            cookie = Constants.sessionId;
         }
         Map<String, String> header = setHeader(cookie);
         requestPost(context, method, data, params, responseHandler, isShowDialog, baseUrl, header);
@@ -230,8 +230,7 @@ public class HttpRequestExecutor {
      */
     private <T> void onErrorCallBack(HttpResponseHandler<T> response, String error,
                                      Context context) {
-        if (response != null && ((context instanceof Activity) && !((Activity) context)
-                .isFinishing()) && error != null) {
+        if (response != null && ((context instanceof Activity) && !((Activity) context).isFinishing()) && error != null) {
             if (showToast(context, error)) {
                 response.onError(error);
             }

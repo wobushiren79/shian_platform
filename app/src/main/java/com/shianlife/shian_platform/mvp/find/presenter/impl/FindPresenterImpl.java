@@ -32,7 +32,7 @@ public class FindPresenterImpl implements IFindPresenter {
         params.setNumber(findView.getPagerSize());
         params.setPagerNumber(findView.getPagerNum());
         params.setType(findView.getFindType());
-        params.setUserid(Constants.userCemetery.getUserId());
+        params.setUserid(Constants.userId);
         params.setUserType(SystemTypeEnum.platform.getCode());
         findModel.getFindData(context, params, new OnGetDataListener<FindResultBean>() {
             @Override

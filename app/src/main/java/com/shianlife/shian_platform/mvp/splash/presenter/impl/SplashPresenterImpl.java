@@ -22,12 +22,13 @@ public class SplashPresenterImpl implements ISplashPresenter {
         this.splashModel = new SplashModelImpl();
     }
 
+
     @Override
-    public void delay() {
+    public void delay(final int typeNum) {
         splashModel.delay(splashView.getDelayTime(), new OnSplashListener() {
             @Override
             public void delayOver() {
-                splashView.delayOver();
+                splashView.delayOver(typeNum);
             }
         });
     }

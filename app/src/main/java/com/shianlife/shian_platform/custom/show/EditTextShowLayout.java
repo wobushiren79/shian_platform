@@ -93,6 +93,13 @@ public class EditTextShowLayout extends BaseLayout implements ILayoutDataView {
     }
 
     /**
+     * 设置是否可点击
+     */
+    private void setUncheck(boolean isCheck) {
+        tvContent.setClickable(false);
+    }
+
+    /**
      * 设置布局状态
      *
      * @param state

@@ -28,7 +28,7 @@ public class FindDataPresenterImpl implements IFindDataPresenter {
         FindDataBean params = new FindDataBean();
         params.setType(findDataView.getChangeType());
         params.setSiftid(findDataView.getSiftid());
-        params.setUserid(Constants.userCemetery.getUserId());
+        params.setUserid(Constants.userId);
         params.setUserType(SystemTypeEnum.platform.getCode());
         findDataModel.saveData(findDataView.getContext(), params, new OnGetDataListener<FindDataResultBean>() {
             @Override

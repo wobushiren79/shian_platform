@@ -86,20 +86,20 @@
         CustomAttr:layoutType="3"
         CustomAttr:titleName="@string/driver_order_text_carlocation"></com.shianlife.shian_platform.custom.show.TextShowLayout>
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="@dimen/dimen_1dp"
+        android:background="@color/zhy_line_8" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_1dp"
-            android:background="@color/zhy_line_8" />
+    <TextView
+        android:id="@+id/tv_go"
+        style="@style/zhy_button_submit_level_1"
+        android:layout_width="@dimen/dimen_656dp"
+        android:layout_height="@dimen/dimen_66dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/dimen_16dp"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:text="@string/driver_order_text_go" />
 
-        <com.shianlife.shian_platform.custom.show.EditTextShowLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            CustomAttr:layoutType="1"
-            CustomAttr:titleName="@string/driver_order_text_golocation"></com.shianlife.shian_platform.custom.show.EditTextShowLayout>
-    </LinearLayout>
+
 </LinearLayout>

@@ -7,13 +7,9 @@ import android.content.Context;
  */
 
 public interface ISplashView {
-
-
-    Context getContent();
-
-    Class<?> getIntentClass();
+    Context getContext();
 
     int getDelayTime();
 
-    void delayOver();
+    void delayOver(int typeNum);
 }

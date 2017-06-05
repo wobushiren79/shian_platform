@@ -10,5 +10,5 @@ public interface ISplashPresenter {
     /**
      * 延时
      */
-    void delay();
+    void delay(int typeNum);
 }

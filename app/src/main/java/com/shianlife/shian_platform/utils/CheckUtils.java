@@ -1,13 +1,21 @@
 package com.shianlife.shian_platform.utils;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.widget.Toast;
 
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.appenum.UpDataImportantEnum;
+import com.shianlife.shian_platform.base.BaseActivity;
 import com.shianlife.shian_platform.common.Constants;
 import com.shianlife.shian_platform.custom.dialog.TipsDialog;
 import com.shianlife.shian_platform.http.base.BaseDataResult;
@@ -84,5 +92,64 @@ public class CheckUtils {
         }
     }
 
+    /**
+     * 檢測是否有獲取照片權限
+     *
+     * @param context
+     * @param resultCode
+     */
+    public static boolean checkPhotoPermission(Context context, int resultCode, String whyText) {
+        boolean hasPermission = CheckUtils.getPermissionToReadUserContacts(
+                context,
+                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                whyText,
+                resultCode);
+        return hasPermission;
+    }
 
+    /**
+     * 权限检测
+     */
+    public static boolean getPermissionToReadUserContacts(Context context, String[] permissions, String toastContent, int requestCode) {
+        /**
+         * 1)使用ContextCompat.chefkSelfPermission(),因为Context.permission
+         * 只在棒棒糖系统中使用
+         * 2）总是检查权限（即使权限被授予）因为用户可能会在设置中移除你的权限*/
+        boolean isPermission = true;
+        for (String permission : permissions) {
+            if (ContextCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                //权限为获取，检查用户是否被询问过并且拒绝了，如果是这样的话，给予更多
+                //解释
+                if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) context, permission)) {
+                    //在界面上展示为什么需要該權限
+                    Toast.makeText(context, toastContent, Toast.LENGTH_SHORT).show();
+                }
+                //发起请求获得用户许可,可以在此请求多个权限
+                isPermission = false;
+            }
+        }
+        if (isPermission) {
+            return isPermission;
+        } else {
+            ActivityCompat.requestPermissions((Activity) context, permissions, requestCode);
+            return isPermission;
+        }
+    }
+
+
+    /**
+     * 判断能否转为Activity
+     *
+     * @param cont
+     * @return
+     */
+    public static BaseActivity scanForActivity(Context cont) {
+        if (cont == null)
+            return null;
+        else if (cont instanceof BaseActivity)
+            return (BaseActivity) cont;
+        else if (cont instanceof ContextWrapper)
+            return scanForActivity(((ContextWrapper) cont).getBaseContext());
+        return null;
+    }
 }

@@ -77,7 +77,7 @@ public interface IUserLoginView {
      *
      * @return
      */
-    Context getContent();
+    Context getContext();
 
 
     /**
