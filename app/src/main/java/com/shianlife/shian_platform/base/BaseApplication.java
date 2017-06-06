@@ -3,6 +3,8 @@ package com.shianlife.shian_platform.base;
 import android.app.Activity;
 import android.app.Application;
 
+import com.baidu.mapapi.SDKInitializer;
+import com.shianlife.shian_platform.common.local.LocationService;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import java.util.ArrayList;
@@ -18,11 +20,13 @@ import okhttp3.OkHttpClient;
 public class BaseApplication extends Application {
     private static BaseApplication baseApplication = null;
     List<Activity> listActivity = new ArrayList<>();
+    public LocationService locationService;
 
     @Override
     public void onCreate() {
         super.onCreate();
         initOkHttp();
+        initMap();
     }
 
     /**
@@ -35,6 +39,17 @@ public class BaseApplication extends Application {
             baseApplication = new BaseApplication();
         }
         return baseApplication;
+    }
+
+    /**
+     * 初始化地图
+     */
+    private void initMap() {
+        /***
+         * 初始化定位sdk，建议在Application中创建
+         */        //百度地图初始化
+        locationService = new LocationService(getApplicationContext());
+        SDKInitializer.initialize(getApplicationContext());
     }
 
     /**

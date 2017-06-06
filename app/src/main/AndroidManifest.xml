@@ -68,6 +68,15 @@
         <activity android:name=".ui.activity.ImagePreviewActivity"></activity>
 
         <service android:name=".service.UpDataService"></service>
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="nk8sqFigNn0D0eQPPdgkXSsjCPCUpF6G" />
     </application>
 
 </manifest>

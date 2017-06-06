@@ -20,8 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             CustomAttr:hintText="@string/driver_order_hinttext_1"
-            CustomAttr:layoutType="2"
-            CustomAttr:titleName="@string/driver_order_text_nowcarlocation"></com.shianlife.shian_platform.custom.show.EditTextShowLayout>
+            CustomAttr:layoutType="2"></com.shianlife.shian_platform.custom.show.EditTextShowLayout>
 
         <TextView
             android:layout_width="match_parent"
@@ -33,8 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             CustomAttr:hintText="@string/driver_order_hinttext_2"
-            CustomAttr:layoutType="1"
-            CustomAttr:titleName="@string/driver_order_text_nowmileage"></com.shianlife.shian_platform.custom.show.EditTextShowLayout>
+            CustomAttr:layoutType="1"></com.shianlife.shian_platform.custom.show.EditTextShowLayout>
 
         <TextView
             android:layout_width="match_parent"
@@ -44,7 +42,6 @@
         <com.shianlife.shian_platform.custom.show.ImageUpLoadShowLayout
             android:id="@+id/show_nowmileage_pic"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            CustomAttr:titleName="@string/driver_order_text_mileagephoto"></com.shianlife.shian_platform.custom.show.ImageUpLoadShowLayout>
+            android:layout_height="wrap_content"></com.shianlife.shian_platform.custom.show.ImageUpLoadShowLayout>
     </LinearLayout>
 </LinearLayout>

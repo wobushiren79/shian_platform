@@ -7,14 +7,20 @@ import android.os.Bundle;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.FrameLayout;
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.appenum.BaseTitleEnum;
 import com.shianlife.shian_platform.appenum.MainChangeItemEnum;
 import com.shianlife.shian_platform.base.BaseActivity;
+import com.shianlife.shian_platform.base.BaseApplication;
 import com.shianlife.shian_platform.base.BaseFragment;
+import com.shianlife.shian_platform.common.Constants;
+import com.shianlife.shian_platform.common.local.LocationService;
 import com.shianlife.shian_platform.custom.view.mainchange.MainChangeLayout;
 import com.shianlife.shian_platform.http.base.BaseDataResult;
 import com.shianlife.shian_platform.mvp.main.bean.AppUpDateResultBean;
@@ -47,6 +53,8 @@ public class MainActivity extends BaseActivity implements IChangeItemView, IAppU
     private FragmentManager mFragmentManager;
     private FragmentTransaction mTranscation;
     private long firstTime = 0;
+
+    private LocationService locationService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,4 +157,55 @@ public class MainActivity extends BaseActivity implements IChangeItemView, IAppU
         }
         return super.onKeyUp(keyCode, event);
     }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // -----------location config ------------
+        locationService = ((BaseApplication) getApplication()).locationService;
+        // 获取locationservice实例，建议应用中只初始化1个location实例，然后使用，可以参考其他示例的activity，都是通过此种方式获取locationservice实例的
+        locationService.registerListener(mLocationListener);
+        // 注册监听
+        locationService.setLocationOption(locationService.getDefaultLocationClientOption());
+        locationService.start();
+        // 定位SDK
+        // start之后会默认发起一次定位请求，开发者无须判断isstart并主动调用request
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        locationService.unregisterListener(mLocationListener); // 注销掉监听
+        locationService.stop(); // 停止定位服务
+    }
+
+    /**
+     * 定位监听
+     */
+    private BDLocationListener mLocationListener = new BDLocationListener() {
+
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+            // TODO Auto-generated method stub
+            if (null != location && location.getLocType() != BDLocation.TypeServerError) {
+                if (location.getAddrStr() == null) return;
+                Constants.LocalString = location.getAddrStr();
+                Constants.LOCAL_PROVINCE = location.getAddress().province;
+                Constants.LOCAL_CITY = location.getAddress().city;
+                Constants.LOCAL_COUNTY = location.getAddress().district;
+                Constants.LOCAL_STREET = location.getAddress().street;
+                Constants.LOCAL_STREETNUM = location.getAddress().streetNumber;
+                Constants.LOCAL_ADDRESS = location.getAddress().address;
+                Constants.LOCAL_latitude = location.getLatitude();
+                Constants.LOCAL_longitude = location.getLongitude();
+            }
+        }
+
+        @Override
+        public void onConnectHotSpotMessage(String s, int i) {
+
+        }
+
+    };
 }

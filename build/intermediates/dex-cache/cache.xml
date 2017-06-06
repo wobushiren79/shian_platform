@@ -2,13 +2,76 @@
 <items version="2" >
 
     <item
+        is-multidex="false"
+        jar="E:\Android\AndroidSdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\support-annotations-25.3.1_ef9c6c63005fe93977cdb6d415c62c664eea3d7d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.android\build-cache\1075c6232b226bead31d268b97a2af87288541a5\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\classes_0f86ef47a6d9d20fe0b0774e38b20375e071aeb1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.7.0\9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4\glide-3.7.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\glide-3.7.0_1f3ddf859a86296da03fddcf50d19f29d652df81.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.android\build-cache\4ec867dda2f549f0cc52b98b018842117b7160f1\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\classes_7f11e4b6e9aa7e6804a12b3f0605424fb7ba9910.jar" />
+    </item>
+    <item
         is-multidex="true"
-        jar="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
-        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_e6d8b4463238e619555701f81611195e8a579371\classes.dex" />
+        sha1="fa5207b3d40fa8a855457c207955f34e2654659f">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_d5a936da56bea3ef21cbf21fe4293fd22dab029e\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.android\build-cache\c74aa1e8dea0aefa9b5332bfcdae9e2eb9774549\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\classes_42cadedb5bc648bfc00b3e2e8303341ab8353ebf.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.android\build-cache\79df1b0872a8f5b948733109226d6fb2b7a4fd8d\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\classes_06323b61f738580f411ad8d881473186aafb06bd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Android\AndroidProjects\shian_platform\ImageSelector\build\intermediates\bundles\default\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d4f9703df54be21c7633096d524960e54dead8ba">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\classes_9629357af2b688b7d6237863bdacba9c1a9acbcc.jar" />
     </item>
     <item
         is-multidex="true"
@@ -20,13 +83,94 @@
         <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\transforms\dex\debug\folders\1000\2\BaiduLBS_Android_de6b9e6ed1e174b589f4ba0c9c6f79018ce6f407\classes.dex" />
     </item>
     <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.android\build-cache\d7275fd4c8133298db2c41f59c07d1cdae594201\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\classes_ae4948064b657e20751ac70710e9c268d4cc18f9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\io.reactivex.rxjava2\rxjava\2.0.1\57f850a6b317e5582f1dbaff10a9e7d7e1fcdcfb\rxjava-2.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="57f850a6b317e5582f1dbaff10a9e7d7e1fcdcfb">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\rxjava-2.0.1_88fc17d5d72694fd01b893bb935156af845d463f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.android\build-cache\7d60a6bd078409dafa30d8455db66aff27873bd2\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\classes_7f6969c7fb3e9c42d9eb8c5ee340bc79d62c8195.jar" />
+    </item>
+    <item
         is-multidex="true"
-        jar="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="1e2e785deba1f419785ecf18b3fbd2971af0793e">
-        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_d5a936da56bea3ef21cbf21fe4293fd22dab029e\classes.dex" />
+        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_e6d8b4463238e619555701f81611195e8a579371\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife-annotations\8.6.0\48efa6f14074e1a6b16e02ac05eba3fc5c7c7ec8\butterknife-annotations-8.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="48efa6f14074e1a6b16e02ac05eba3fc5c7c7ec8">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\butterknife-annotations-8.6.0_1e9486226db940d9ca5d43c77ccdeae15ca35a19.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.android\build-cache\08b27a6df720d2e49d6649e9d0a5a87f3b15ea72\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\classes_861b4ba1f1f81521a51b843d0fcfc6c85d5ccdbd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.android\build-cache\61e347273ac7993ab9f1a441619c88f8fd6ec26d\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\classes_182015c15a921de9618d20205c2302be038d5464.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.android\build-cache\f1632f140f4c7a64baaaed52244377aeb0c6a651\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\classes_4161fe665e78837d6889941f25af466ccf325eed.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.android\build-cache\86bc1c7febc2a6126b18516374354f2adc015a67\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\classes_fe5cbc885827ef0d899604e39b08cf397ff744be.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.android\build-cache\6f7ea03b17da3ff497b8ad0ca831502245458e02\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4119ea97a7191ff9b8f33b534ea220448f62f491">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\classes_2431638dcc01c975aa937d44f480af636ceda622.jar" />
     </item>
     <item
         is-multidex="true"
@@ -36,6 +180,69 @@
         revision="25.0.2"
         sha1="f4ac7ae5070911d02290331664a36475fb9a5ebb">
         <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\transforms\dex\debug\folders\1000\2\IndoorscapeAlbumPlugin_5333bc1a5313fbbbe5006d0863c877fab06e2a6c\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Android\AndroidProjects\shian_platform\app\libs\BaiduLBS_Android.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a0eefe797576db408831b70abb6a9f112045f12a">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\BaiduLBS_Android_de6b9e6ed1e174b589f4ba0c9c6f79018ce6f407.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Android\AndroidProjects\shian_platform\app\libs\IndoorscapeAlbumPlugin.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f4ac7ae5070911d02290331664a36475fb9a5ebb">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\IndoorscapeAlbumPlugin_5333bc1a5313fbbbe5006d0863c877fab06e2a6c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\org.reactivestreams\reactive-streams\1.0.0\14b8c877d98005ba3941c9257cfe09f6ed0e0d74\reactive-streams-1.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="14b8c877d98005ba3941c9257cfe09f6ed0e0d74">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\reactive-streams-1.0.0_5ea215fafe26757b3eaa9e791da078c680959e41.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.android\build-cache\d8122330221839ae496eb13a1eed9aec35316523\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\classes_7717cd6915ba93772a6ca5e62d5e67186a0875e5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.android\build-cache\cded25a15041ff550924eb2af6339b442564ae9c\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="be587097e648eabfb7f9eca23ab03369894e2d5d">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\classes_3a487eff1359b68c91ce70ffbab0301416793c94.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.android\build-cache\9e126892f8cc1b0ced6521da39fbe4030f1dee96\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4b025c568a4e97b63b8e137400bad367865d5c80">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\classes_9f45c4bfc283aaf4f2f222af277662420b7eb5cd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.android\build-cache\f63c76758f1b9005cfdda61c9f1e9589e4b56c0f\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\classes_12203faa7ffaf5d0096f32e135b700d055b88ad1.jar" />
     </item>
 
 </items>

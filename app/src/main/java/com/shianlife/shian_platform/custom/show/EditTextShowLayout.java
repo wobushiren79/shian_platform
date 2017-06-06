@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,6 +37,7 @@ public class EditTextShowLayout extends BaseLayout implements ILayoutDataView {
     //地图模式
     public static final int MAP = 2;
 
+    private CallBack callBack;
 
     public EditTextShowLayout(Context context) {
         super(context, R.layout.layout_show_edittext);
@@ -58,11 +60,22 @@ public class EditTextShowLayout extends BaseLayout implements ILayoutDataView {
         setHintText(hintText);
     }
 
+    public void setCallBack(CallBack callBack) {
+        this.callBack = callBack;
+    }
+
     /**
      * 设置提示信息
      */
     private void setHintText(String hintText) {
         tvContent.setHint(hintText);
+    }
+
+    /**
+     * 设置输入类型
+     */
+    public void setInputType(int inputType) {
+        tvContent.setInputType(inputType);
     }
 
     /**
@@ -95,8 +108,8 @@ public class EditTextShowLayout extends BaseLayout implements ILayoutDataView {
     /**
      * 设置是否可点击
      */
-    private void setUncheck(boolean isCheck) {
-        tvContent.setClickable(false);
+    public void setUncheck(boolean isCheck) {
+        tvContent.setFocusable(isCheck);
     }
 
     /**
@@ -118,7 +131,29 @@ public class EditTextShowLayout extends BaseLayout implements ILayoutDataView {
         }
     }
 
-    @OnClick(R.id.iv_map)
-    public void onViewClicked() {
+
+    public String getData() {
+        return tvContent.getText().toString();
+    }
+
+    @OnClick({R.id.tv_content, R.id.iv_map})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv_content:
+                if (callBack != null)
+                    callBack.clickContent();
+                break;
+            case R.id.iv_map:
+                if (callBack != null)
+                    callBack.clickMap();
+                break;
+        }
+    }
+
+
+    public interface CallBack {
+        void clickMap();
+
+        void clickContent();
     }
 }

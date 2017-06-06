@@ -148,12 +148,16 @@ public class FileManagerImpl implements FileManager {
      */
     private <T> void onErrorCallBack(FileHttpResponseHandler<T> response, String error,
                                      Context context) {
-        if (response != null && ((context instanceof Activity) && !((Activity) context)
-                .isFinishing()) && error != null) {
-            if (showToast(context, error)) {
-                response.onError(error);
-            }
+        if (response != null && error != null) {
+            response.onError(error);
         }
+
+//        if (response != null && ((context instanceof Activity) && !((Activity) context)
+//                .isFinishing()) && error != null) {
+//            if (showToast(context, error)) {
+//                response.onError(error);
+//            }
+//        }
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.shianlife.shian_platform.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -15,13 +16,17 @@ import com.shianlife.shian_platform.custom.show.ImageUpLoadShowLayout;
 import com.shianlife.shian_platform.custom.show.TextShowLayout;
 import com.shianlife.shian_platform.mvp.driver.bean.AcceptOrderResultBean;
 import com.shianlife.shian_platform.mvp.driver.bean.RejectOrderResultBean;
+import com.shianlife.shian_platform.mvp.driver.bean.TakeCarResultBean;
 import com.shianlife.shian_platform.mvp.driver.bean.WaitServiceListResultBean;
 import com.shianlife.shian_platform.mvp.driver.presenter.IAcceptOrderPresenter;
 import com.shianlife.shian_platform.mvp.driver.presenter.IRejectOrderPresenter;
+import com.shianlife.shian_platform.mvp.driver.presenter.ITakeCarPresenter;
 import com.shianlife.shian_platform.mvp.driver.presenter.impl.AcceptOrderPresenterImpl;
 import com.shianlife.shian_platform.mvp.driver.presenter.impl.RejectOrderPresenterImpl;
+import com.shianlife.shian_platform.mvp.driver.presenter.impl.TalkCarPresenterImpl;
 import com.shianlife.shian_platform.mvp.driver.view.IAcceptOrderView;
 import com.shianlife.shian_platform.mvp.driver.view.IRejectOrderView;
+import com.shianlife.shian_platform.mvp.driver.view.ITakeCarView;
 import com.shianlife.shian_platform.utils.ToastUtils;
 
 import java.util.List;
@@ -34,10 +39,10 @@ import static com.shianlife.shian_platform.custom.dialog.DriverOrderDataDialog.S
  * Created by zm.
  */
 
-public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResultBean.WaitServiceItemData> implements IAcceptOrderView, IRejectOrderView {
+public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResultBean.WaitServiceItemData> implements IAcceptOrderView, IRejectOrderView, ITakeCarView {
     private IAcceptOrderPresenter acceptOrderPresenter;
     private IRejectOrderPresenter rejectOrderPresenter;
-
+    private ITakeCarPresenter takeCarPresenter;
     //等待接单
     private final int LAYOUT_WAITGETORDER = 0;
     //等待取车
@@ -54,6 +59,7 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
         super(context);
         acceptOrderPresenter = new AcceptOrderPresenterImpl(this);
         rejectOrderPresenter = new RejectOrderPresenterImpl(this);
+        takeCarPresenter = new TalkCarPresenterImpl(this);
     }
 
     @Override
@@ -143,7 +149,34 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
         tvGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DriverOrderDataDialog dataDialog = new DriverOrderDataDialog(getContext(), STYLE_PIC);
+                DriverOrderDataDialog dataDialog = new DriverOrderDataDialog(getContext(), DriverOrderDataDialog.STYLE_PIC);
+                dataDialog.setLocationText(getContext().getString(R.string.driver_order_text_nowcarlocation));
+                dataDialog.setMileageText(getContext().getString(R.string.driver_order_text_nowmileage));
+                dataDialog.setPhoteText(getContext().getString(R.string.driver_order_text_mileagephoto));
+                dataDialog.setCallBack(new DriverOrderDataDialog.CallBack() {
+                    @Override
+                    public void clickTop(DialogInterface dialog) {
+                        dialog.cancel();
+                    }
+
+                    @Override
+                    public void clickBottom(DialogInterface dialog, String location, String mileage, List<String> fileUrlList) {
+                        if (location == null || location.isEmpty()) {
+                            ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_check_1));
+                            return;
+                        }
+                        if (mileage == null || mileage.isEmpty()) {
+                            ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_check_2));
+                            return;
+                        }
+                        if (fileUrlList == null || fileUrlList.size() == 0) {
+                            ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_check_3));
+                            return;
+                        }
+                        takeCarPresenter.saveTakeCarData();
+                        dialog.cancel();
+                    }
+                });
                 dataDialog.show();
             }
         });
@@ -157,7 +190,41 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
      * @param index
      */
     private void setLayoutDataWaitGo(BaseViewHolder holder, WaitServiceListResultBean.WaitServiceItemData waitServiceItemData, int index) {
+        TextShowLayout layoutCarnum = holder.getView(R.id.layout_carnum);
+        TextShowLayout layoutPersonnum = holder.getView(R.id.layout_personnum);
+        TextShowLayout layoutTime = holder.getView(R.id.layout_time);
+        TextShowLayout layoutCustomer = holder.getView(R.id.layout_customer);
+        TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
+        TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
+        TextView tvGo = holder.getView(R.id.tv_go);
+        tvGo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DriverOrderDataDialog dataDialog = new DriverOrderDataDialog(getContext(), DriverOrderDataDialog.STYLE_NOPIC);
+                dataDialog.setLocationText(getContext().getString(R.string.driver_order_text_go_location));
+                dataDialog.setMileageText(getContext().getString(R.string.driver_order_text_gomileage));
+                dataDialog.setCallBack(new DriverOrderDataDialog.CallBack() {
+                    @Override
+                    public void clickTop(DialogInterface dialog) {
+                        dialog.cancel();
+                    }
 
+                    @Override
+                    public void clickBottom(DialogInterface dialog, String location, String mileage, List<String> fileUrlList) {
+                        if (location == null || location.isEmpty()) {
+                            ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_check_1));
+                            return;
+                        }
+                        if (mileage == null || mileage.isEmpty()) {
+                            ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_check_2));
+                            return;
+                        }
+                        dialog.cancel();
+                    }
+                });
+                dataDialog.show();
+            }
+        });
 
     }
 
@@ -189,6 +256,16 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
     }
 
     @Override
+    public void saveTalkCarDataSuccess(TakeCarResultBean result) {
+        ToastUtils.showToastShort(mContext, "接单");
+    }
+
+    @Override
+    public void saveTalkCarDataFail(String msg) {
+
+    }
+
+    @Override
     public void rejectOrderSuccess(RejectOrderResultBean result) {
         ToastUtils.showToastShort(mContext, "拒单");
     }
@@ -207,4 +284,5 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
     public void acceptOrderFail(String msg) {
 
     }
+
 }

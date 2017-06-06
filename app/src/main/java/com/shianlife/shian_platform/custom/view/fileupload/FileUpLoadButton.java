@@ -42,7 +42,7 @@ public class FileUpLoadButton extends BaseLayout implements IFileUpLoadView {
     @BindView(R.id.pb_loading)
     ProgressBar pbLoading;
 
-
+    private CallBack callBack;
     private IFileUpLoadPresenter fileUpLoadPresenter;
     private FileUpLoadBean mFileData;
     private boolean isLoading = false;
@@ -62,7 +62,11 @@ public class FileUpLoadButton extends BaseLayout implements IFileUpLoadView {
     @Override
     protected void initData() {
         fileUpLoadPresenter = new FileUpLoadPresenterImpl(this);
+    }
 
+
+    public void setCallBack(CallBack callBack) {
+        this.callBack = callBack;
     }
 
     @Override
@@ -80,11 +84,17 @@ public class FileUpLoadButton extends BaseLayout implements IFileUpLoadView {
         return mFileData.getFilePath();
     }
 
+    public String getFileUrl(){
+        return mFileData.getFileUrl();
+    }
+
     @Override
     public void fileUpLoadSuccess(FileUpLoadResultBean result) {
         isLoading = false;
         pbLoading.setVisibility(GONE);
-        mFileData.setFilePath((String) result.getNameMap().get(mFileData.getFileClass()));
+        mFileData.setFileUrl((String) result.getNameMap().get(mFileData.getFileClass()));
+        if (callBack != null)
+            callBack.fileUpLoadSuccess(this);
     }
 
     @Override
@@ -94,6 +104,8 @@ public class FileUpLoadButton extends BaseLayout implements IFileUpLoadView {
         mFileData.setFilePath(null);
         ivAdd.setImageResource(R.drawable.zhy_fileupload_button_normal);
         ToastUtils.showToastShort(getContext(), msg);
+        if (callBack != null)
+            callBack.fileUpLoadFail(this);
     }
 
     @Override
@@ -125,8 +137,7 @@ public class FileUpLoadButton extends BaseLayout implements IFileUpLoadView {
                         if (which == 0) {
                             getAndUpPhoto();
                         } else {
-                            mFileData.setFilePath(null);
-                            ivAdd.setImageResource(R.drawable.zhy_fileupload_button_normal);
+                            deleteData();
                         }
                     }
                 });
@@ -137,12 +148,22 @@ public class FileUpLoadButton extends BaseLayout implements IFileUpLoadView {
     }
 
     /**
+     * 删除
+     */
+    private void deleteData() {
+        mFileData.setFilePath(null);
+        ivAdd.setImageResource(R.drawable.zhy_fileupload_button_normal);
+        if (callBack != null)
+            callBack.fileDelete(FileUpLoadButton.this);
+    }
+
+    /**
      * 查看圖片詳情
      */
     private void checkDetails() {
         new IntentUtils
                 .Build(getContext(), ImagePreviewActivity.class)
-                .setString(IntentUtils.INTENT_URL, Constants.QINIUURL + mFileData.getFilePath())
+                .setString(IntentUtils.INTENT_URL, Constants.QINIUURL + mFileData.getFileUrl())
                 .start();
     }
 
@@ -163,5 +184,11 @@ public class FileUpLoadButton extends BaseLayout implements IFileUpLoadView {
         });
     }
 
+    public interface CallBack {
+        void fileUpLoadSuccess(View view);
 
+        void fileUpLoadFail(View view);
+
+        void fileDelete(View view);
+    }
 }

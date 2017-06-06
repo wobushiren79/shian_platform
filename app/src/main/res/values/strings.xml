@@ -33,8 +33,15 @@
     <string name="dialog_false_1">否</string>
     <string name="dialog_true_2">更新</string>
     <string name="dialog_false_2">取消</string>
+    <string name="dialog_true_3">确定</string>
+    <string name="dialog_false_3">取消</string>
+
+    <string name="dialog_true_4">确认</string>
+    <string name="dialog_false_4">还未到达</string>
+    <string name="dialog_text_1">你已到达预约地，确认后客户将知道你已到达的信息</string>
 
     <string name="bug_text_1">BUG啦！赶紧下载最新APP或重新启动APP</string>
+    <string name="bug_text_2">定位失败，请打开APP权限并重启APP</string>
 
     <string name="driver_order_text_carnum">车牌号</string>
     <string name="driver_order_text_personnum">看&#160;&#160;&#160;&#160;墓</string>
@@ -42,12 +49,22 @@
     <string name="driver_order_text_meetlocation">预约地</string>
     <string name="driver_order_text_finallocation">目的地</string>
     <string name="driver_order_text_carlocation">取车地</string>
-    <string name="driver_order_text_nowcarlocation">当前取车地</string>
+    <string name="driver_order_text_nowcarlocation">取&#160;&#160;车&#160;&#160;地</string>
+    <string name="driver_order_text_go_location">出&#160;&#160;发&#160;&#160;地</string>
 
     <string name="driver_order_text_customer">客&#160;&#160;&#160;&#160;戶</string>
 
     <string name="driver_order_text_golocation">出发地</string>
+    <string name="driver_order_text_nowlocation">当前地址</string>
     <string name="driver_order_text_nowmileage">当前里程</string>
+    <string name="driver_order_text_gomileage">出发里程</string>
+
+    <string name="driver_order_text_back_location">归还地址</string>
+    <string name="driver_order_text_back_mileage">归还里程</string>
+
+
+    <string name="driver_order_text_arrive_location">到达地址</string>
+    <string name="driver_order_text_arrive_mileage">到达里程</string>
 
     <string name="driver_order_text_mileagephoto">里程照片</string>
 
@@ -57,6 +74,16 @@
     <string name="driver_order_text_accept">接单</string>
     <string name="driver_order_text_go">出发</string>
     <string name="driver_order_text_reject">拒单</string>
+    <string name="driver_order_text_takego">已取车！出发</string>
+    <string name="driver_order_text_arrivelocation">到达预约地</string>
+    <string name="driver_order_text_takecustomer">接到客户！出发</string>
+    <string name="driver_order_text_inlocation">到达目的地</string>
+    <string name="driver_order_text_returncar">归还车辆</string>
+
+
+    <string name="driver_order_check_1">还没有定位取车地址</string>
+    <string name="driver_order_check_2">还没有填写当前里程</string>
+    <string name="driver_order_check_3">还没有上传里程图片</string>
 
     <string name="splash_jump">跳过</string>
 

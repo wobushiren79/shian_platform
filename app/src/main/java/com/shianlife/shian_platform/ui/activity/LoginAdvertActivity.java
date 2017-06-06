@@ -65,7 +65,7 @@ public class LoginAdvertActivity extends BaseActivity implements IAdvertView {
 
     @Override
     public void initView() {
-
+        llAdvert.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -142,6 +142,7 @@ public class LoginAdvertActivity extends BaseActivity implements IAdvertView {
     @Override
     public void showMsg(String msg) {
         checkAndJump();
+        llAdvert.setVisibility(View.VISIBLE);
     }
 
 

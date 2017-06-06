@@ -3,6 +3,7 @@ package com.shianlife.shian_platform.custom.show;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -28,6 +29,9 @@ public class ImageUpLoadShowLayout extends BaseLayout implements ILayoutDataView
 
     public List<FileUpLoadButton> listFiles;
 
+    private String fileClass;
+    private String fileName;
+
     public ImageUpLoadShowLayout(Context context) {
         this(context, null);
     }
@@ -44,11 +48,61 @@ public class ImageUpLoadShowLayout extends BaseLayout implements ILayoutDataView
     @Override
     protected void initData() {
         setTitle(titleName);
-
-        FileUpLoadButton item = new FileUpLoadButton(getContext(), "testClass", "testName");
-        llContent.addView(item);
         listFiles = new ArrayList<>();
-        listFiles.add(item);
+        fileClass = "unknown";
+    }
+
+    public void setBaseData(String fileClass) {
+        this.fileClass = fileClass;
+        addView();
+    }
+
+
+    private void addView() {
+        FileUpLoadButton button = new FileUpLoadButton(getContext(), fileClass, fileClass);
+        button.setCallBack(itemCallBack);
+        listFiles.add(button);
+        llContent.addView(button);
+    }
+
+    FileUpLoadButton.CallBack itemCallBack = new FileUpLoadButton.CallBack() {
+        @Override
+        public void fileUpLoadSuccess(View view) {
+            //判斷是否已经有一个待添加按钮
+            boolean isHasAdd = false;
+            for (FileUpLoadButton item : listFiles) {
+                if (item.getFilePath() == null) {
+                    isHasAdd = true;
+                }
+            }
+            if (!isHasAdd)
+                addView();
+        }
+
+        @Override
+        public void fileUpLoadFail(View view) {
+
+        }
+
+        @Override
+        public void fileDelete(View view) {
+            listFiles.remove(view);
+            llContent.removeView(view);
+        }
+    };
+
+    /**
+     * 获取数据
+     * @return
+     */
+    public List<String> getData() {
+        List<String> data = new ArrayList<>();
+        for (FileUpLoadButton item : listFiles) {
+            if (item.getFileUrl() != null && !item.getFileUrl().isEmpty()) {
+                data.add(item.getFileUrl());
+            }
+        }
+        return data;
     }
 
     @Override
@@ -70,4 +124,6 @@ public class ImageUpLoadShowLayout extends BaseLayout implements ILayoutDataView
     public void setState(int state) {
 
     }
+
+
 }

@@ -103,6 +103,7 @@ public class BaseDialog extends Dialog {
     public void setTopButton(String text, OnClickListener onClickListener) {
         isBtn1V = true;
         mBtn1Text = text;
+        tvBtn1.setText(mBtn1Text);
         topClickListener = onClickListener;
     }
 
@@ -115,19 +116,18 @@ public class BaseDialog extends Dialog {
     public void setBottomButton(String text, OnClickListener onClickListener) {
         isBtn2V = true;
         mBtn2Text = text;
+        tvBtn2.setText(mBtn2Text);
         bottomClickListener = onClickListener;
     }
 
 
     void topClick() {
-        cancel();
         if (topClickListener != null) {
             topClickListener.onClick(this, 0);
         }
     }
 
     void bottomClick() {
-        cancel();
         if (bottomClickListener != null) {
             bottomClickListener.onClick(this, 0);
         }
@@ -150,9 +150,9 @@ public class BaseDialog extends Dialog {
         @Override
         public void onClick(View v) {
             if (v == tvBtn1) {
-
+                topClick();
             } else if (v == tvBtn2) {
-
+                bottomClick();
             }
         }
     };

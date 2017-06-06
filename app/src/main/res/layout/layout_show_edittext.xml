@@ -27,7 +27,7 @@
         android:id="@+id/tv_content"
         style="@style/orderlist_text_28dp_1"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/dimen_16dp"
         android:layout_weight="1"
         android:background="@null"

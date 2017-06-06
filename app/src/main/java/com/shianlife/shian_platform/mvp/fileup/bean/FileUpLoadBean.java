@@ -13,6 +13,16 @@ public class FileUpLoadBean extends BaseHttpParams {
     private String fileName;
     //文件路径
     private String filePath;
+    //文件保存后的地址
+    private String fileUrl;
+
+    public String getFileUrl() {
+        return fileUrl;
+    }
+
+    public void setFileUrl(String fileUrl) {
+        this.fileUrl = fileUrl;
+    }
 
     public String getFileClass() {
         return fileClass;

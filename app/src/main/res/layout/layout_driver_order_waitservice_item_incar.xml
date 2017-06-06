@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:CustomAttr="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimen_16dp"
+    android:background="@drawable/zhy_button_state_item_white"
+    android:orientation="vertical">
+
+
+    <com.shianlife.shian_platform.custom.show.TextShowLayout
+        android:id="@+id/layout_carnum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        CustomAttr:layoutType="1"
+        CustomAttr:titleName="@string/driver_order_text_carnum"></com.shianlife.shian_platform.custom.show.TextShowLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1dp"
+        android:background="@color/zhy_line_8" />
+
+    <com.shianlife.shian_platform.custom.show.TextShowLayout
+        android:id="@+id/layout_personnum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        CustomAttr:layoutType="4"
+        CustomAttr:titleName="@string/driver_order_text_personnum"></com.shianlife.shian_platform.custom.show.TextShowLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1dp"
+        android:background="@color/zhy_line_8" />
+
+    <com.shianlife.shian_platform.custom.show.TextShowLayout
+        android:id="@+id/layout_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        CustomAttr:titleName="@string/driver_order_text_time"></com.shianlife.shian_platform.custom.show.TextShowLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1dp"
+        android:background="@color/zhy_line_8" />
+
+    <com.shianlife.shian_platform.custom.show.TextShowLayout
+        android:id="@+id/layout_customer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        CustomAttr:titleName="@string/driver_order_text_customer"></com.shianlife.shian_platform.custom.show.TextShowLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1dp"
+        android:background="@color/zhy_line_8" />
+
+    <com.shianlife.shian_platform.custom.show.TextShowLayout
+        android:id="@+id/layout_meetlocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        CustomAttr:layoutType="3"
+        CustomAttr:titleName="@string/driver_order_text_meetlocation"></com.shianlife.shian_platform.custom.show.TextShowLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1dp"
+        android:background="@color/zhy_line_8" />
+
+    <com.shianlife.shian_platform.custom.show.TextShowLayout
+        android:id="@+id/layout_finallocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        CustomAttr:layoutType="3"
+        CustomAttr:titleName="@string/driver_order_text_finallocation"></com.shianlife.shian_platform.custom.show.TextShowLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1dp"
+        android:background="@color/zhy_line_8" />
+
+
+    <TextView
+        android:id="@+id/tv_go"
+        style="@style/zhy_button_submit_level_1"
+        android:layout_width="@dimen/dimen_656dp"
+        android:layout_height="@dimen/dimen_66dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/dimen_16dp"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:text="@string/driver_order_text_inlocation" />
+
+
+</LinearLayout>
