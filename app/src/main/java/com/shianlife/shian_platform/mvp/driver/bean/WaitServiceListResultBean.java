@@ -17,7 +17,7 @@ public class WaitServiceListResultBean {
         this.items = items;
     }
 
-    public static class WaitServiceItemData {
+    public static class WaitServiceItemData extends BaseDriverOrderResultItemBean{
 
     }
 }

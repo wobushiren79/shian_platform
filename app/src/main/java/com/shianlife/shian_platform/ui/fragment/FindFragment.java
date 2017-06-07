@@ -13,6 +13,7 @@ import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.adapter.FindAdapter;
 import com.shianlife.shian_platform.appenum.FindEnum;
 import com.shianlife.shian_platform.base.BaseFragment;
+import com.shianlife.shian_platform.custom.view.ptr.CustomPtrFramelayout;
 import com.shianlife.shian_platform.http.base.BaseDataResult;
 import com.shianlife.shian_platform.mvp.find.bean.FindResultBean;
 import com.shianlife.shian_platform.mvp.find.presenter.impl.FindPresenterImpl;
@@ -38,7 +39,7 @@ public class FindFragment extends BaseFragment implements IFindView {
     @BindView(R.id.rc_content)
     RecyclerView rcContent;
     @BindView(R.id.ptr_layout)
-    PtrClassicFrameLayout ptrLayout;
+    CustomPtrFramelayout ptrLayout;
     @BindView(R.id.iv_collection)
     ImageView ivCollection;
     Unbinder unbinder;

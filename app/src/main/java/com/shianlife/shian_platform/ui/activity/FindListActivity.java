@@ -11,6 +11,7 @@ import com.shianlife.shian_platform.adapter.FindAdapter;
 import com.shianlife.shian_platform.appenum.BaseTitleEnum;
 import com.shianlife.shian_platform.appenum.FindEnum;
 import com.shianlife.shian_platform.base.BaseActivity;
+import com.shianlife.shian_platform.custom.view.ptr.CustomPtrFramelayout;
 import com.shianlife.shian_platform.http.base.BaseDataResult;
 import com.shianlife.shian_platform.mvp.find.bean.FindResultBean;
 import com.shianlife.shian_platform.mvp.find.presenter.impl.FindPresenterImpl;
@@ -28,7 +29,7 @@ public class FindListActivity extends BaseActivity implements IFindView {
     @BindView(R.id.rc_content)
     RecyclerView rcContent;
     @BindView(R.id.ptr_layout)
-    PtrClassicFrameLayout ptrLayout;
+    CustomPtrFramelayout ptrLayout;
 
     private int pagerSize = 10;
     private int pagerNum = 0;

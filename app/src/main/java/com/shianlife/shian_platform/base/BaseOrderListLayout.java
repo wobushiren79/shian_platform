@@ -27,6 +27,7 @@ public abstract class BaseOrderListLayout extends LinearLayout {
         initData();
     }
 
+
     protected abstract void initView();
 
     protected abstract void initData();

@@ -37,9 +37,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TestActivity">
-
-        </activity>
+        <activity android:name=".TestActivity"></activity>
         <activity android:name=".ui.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -63,12 +61,11 @@
         <activity android:name=".ui.activity.AllAppActivity" />
         <activity android:name=".ui.activity.IdeaFeedbackActivity" />
         <activity android:name=".ui.activity.CustomerHelpActivity" />
-        <activity android:name=".ui.activity.SettingActivity"></activity>
-        <activity android:name=".ui.activity.LoginAdvertActivity"></activity>
-        <activity android:name=".ui.activity.ImagePreviewActivity"></activity>
+        <activity android:name=".ui.activity.SettingActivity" />
+        <activity android:name=".ui.activity.LoginAdvertActivity" />
+        <activity android:name=".ui.activity.ImagePreviewActivity" />
 
-        <service android:name=".service.UpDataService"></service>
-
+        <service android:name=".service.UpDataService" />
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
@@ -77,6 +74,8 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="nk8sqFigNn0D0eQPPdgkXSsjCPCUpF6G" />
+
+        <activity android:name=".ui.activity.DriverOrderDetailsActivity"></activity>
     </application>
 
 </manifest>

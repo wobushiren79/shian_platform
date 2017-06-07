@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
 
-    <in.srain.cube.views.ptr.PtrClassicFrameLayout xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    <com.shianlife.shian_platform.custom.view.ptr.CustomPtrFramelayout
         android:id="@+id/ptr_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -14,6 +14,6 @@
             android:id="@+id/rc_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-    </in.srain.cube.views.ptr.PtrClassicFrameLayout>
+    </com.shianlife.shian_platform.custom.view.ptr.CustomPtrFramelayout>
 
 </LinearLayout>

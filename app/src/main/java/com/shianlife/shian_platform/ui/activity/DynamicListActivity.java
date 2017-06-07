@@ -9,6 +9,7 @@ import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.adapter.DynamicListAdapter;
 import com.shianlife.shian_platform.appenum.BaseTitleEnum;
 import com.shianlife.shian_platform.base.BaseActivity;
+import com.shianlife.shian_platform.custom.view.ptr.CustomPtrFramelayout;
 import com.shianlife.shian_platform.http.base.BaseDataResult;
 import com.shianlife.shian_platform.mvp.dynamic.bean.DynamicResultBean;
 import com.shianlife.shian_platform.mvp.dynamic.presenter.IDynamicPresenter;
@@ -25,7 +26,7 @@ public class DynamicListActivity extends BaseActivity implements IDynamicView {
     @BindView(R.id.rc_content)
     RecyclerView rcContent;
     @BindView(R.id.ptr_layout)
-    PtrClassicFrameLayout ptrLayout;
+    CustomPtrFramelayout ptrLayout;
 
     private int pagerSize = 10;
     private int pagerNum = 0;

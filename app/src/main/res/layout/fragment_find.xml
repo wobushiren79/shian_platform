@@ -4,22 +4,16 @@
     android:layout_height="match_parent"
     android:background="@color/zhy_backgroud_1">
 
-    <in.srain.cube.views.ptr.PtrClassicFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    <com.shianlife.shian_platform.custom.view.ptr.CustomPtrFramelayout
         android:id="@+id/ptr_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        ptr:ptr_duration_to_close_either="1000"
-        ptr:ptr_keep_header_when_refresh="true"
-        ptr:ptr_pull_to_fresh="false"
-        ptr:ptr_ratio_of_header_height_to_refresh="1.2"
-        ptr:ptr_resistance="1.7">
+        android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rc_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-    </in.srain.cube.views.ptr.PtrClassicFrameLayout>
+    </com.shianlife.shian_platform.custom.view.ptr.CustomPtrFramelayout>
 
     <ImageView
         android:id="@+id/iv_collection"

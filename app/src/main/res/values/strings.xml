@@ -79,6 +79,7 @@
     <string name="driver_order_text_takecustomer">接到客户！出发</string>
     <string name="driver_order_text_inlocation">到达目的地</string>
     <string name="driver_order_text_returncar">归还车辆</string>
+    <string name="driver_order_text_details">行驶记录</string>
 
 
     <string name="driver_order_check_1">还没有定位取车地址</string>

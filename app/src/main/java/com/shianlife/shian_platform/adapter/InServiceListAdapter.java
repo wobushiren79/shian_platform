@@ -11,8 +11,23 @@ import com.shianlife.shian_platform.adapter.base.BaseViewHolder;
 import com.shianlife.shian_platform.custom.dialog.DriverOrderDataDialog;
 import com.shianlife.shian_platform.custom.dialog.TipsDialog;
 import com.shianlife.shian_platform.custom.show.TextShowLayout;
+import com.shianlife.shian_platform.mvp.driver.bean.ArriveDestinationResultBean;
+import com.shianlife.shian_platform.mvp.driver.bean.GetOnCarResultBean;
 import com.shianlife.shian_platform.mvp.driver.bean.InServiceListResultBean;
-import com.shianlife.shian_platform.mvp.driver.bean.WaitServiceListResultBean;
+import com.shianlife.shian_platform.mvp.driver.bean.ReturnCarResultBean;
+import com.shianlife.shian_platform.mvp.driver.bean.TakePersonResultBean;
+import com.shianlife.shian_platform.mvp.driver.presenter.IArriveDestinationPresenter;
+import com.shianlife.shian_platform.mvp.driver.presenter.IGetOnCarPresenter;
+import com.shianlife.shian_platform.mvp.driver.presenter.IReturnCarPresenter;
+import com.shianlife.shian_platform.mvp.driver.presenter.ITakePersonPresenter;
+import com.shianlife.shian_platform.mvp.driver.presenter.impl.ArriveDestinationPresenterImpl;
+import com.shianlife.shian_platform.mvp.driver.presenter.impl.GetOnCarPresenterImpl;
+import com.shianlife.shian_platform.mvp.driver.presenter.impl.ReturnCarPresenterImpl;
+import com.shianlife.shian_platform.mvp.driver.presenter.impl.TakePersonPresenterImpl;
+import com.shianlife.shian_platform.mvp.driver.view.IArriveDestinationView;
+import com.shianlife.shian_platform.mvp.driver.view.IGetOnCarView;
+import com.shianlife.shian_platform.mvp.driver.view.IReturnCarView;
+import com.shianlife.shian_platform.mvp.driver.view.ITakePersonView;
 import com.shianlife.shian_platform.utils.ToastUtils;
 
 import java.util.List;
@@ -21,7 +36,7 @@ import java.util.List;
  * Created by zm.
  */
 
-public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean.InServiceItemData> {
+public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean.InServiceItemData> implements ITakePersonView, IGetOnCarView, IArriveDestinationView, IReturnCarView {
 
     //接人
     private final int LAYOUT_TAKEPERSON = 0;
@@ -32,6 +47,12 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
     //到达
     private final int LAYOUT_ARRIVE = 3;
 
+
+    private ITakePersonPresenter takePersonPresenter;
+    private IGetOnCarPresenter getOnCarPresenter;
+    private IArriveDestinationPresenter arriveDestinationPresenter;
+    private IReturnCarPresenter returnCarPresenter;
+
     /**
      * 多布局初始化
      *
@@ -39,6 +60,10 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
      */
     public InServiceListAdapter(Context context) {
         super(context);
+        takePersonPresenter = new TakePersonPresenterImpl(this);
+        getOnCarPresenter = new GetOnCarPresenterImpl(this);
+        arriveDestinationPresenter = new ArriveDestinationPresenterImpl(this);
+        returnCarPresenter = new ReturnCarPresenterImpl(this);
     }
 
     @Override
@@ -77,7 +102,7 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
                 tipsDialog.setBottomButton(getContext().getString(R.string.dialog_true_4), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        takePersonPresenter.takePerson();
                     }
                 });
                 tipsDialog.setTopButton(getContext().getString(R.string.dialog_false_4), new DialogInterface.OnClickListener() {
@@ -128,6 +153,7 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
                             ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_check_2));
                             return;
                         }
+                        getOnCarPresenter.getOnCar();
                         dialog.cancel();
                     }
                 });
@@ -173,6 +199,7 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
                             ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_check_2));
                             return;
                         }
+                        arriveDestinationPresenter.arriveDestination();
                         dialog.cancel();
                     }
                 });
@@ -223,6 +250,7 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
                             ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_check_3));
                             return;
                         }
+                        returnCarPresenter.returnCar();
                         dialog.cancel();
                     }
                 });
@@ -234,10 +262,10 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
 
     @Override
     public void addLayout(List<Integer> mListLayoutId) {
-        mListLayoutId.add(R.layout.layout_driver_order_waitservice_item_takeperson);
-        mListLayoutId.add(R.layout.layout_driver_order_waitservice_item_waitgocar);
-        mListLayoutId.add(R.layout.layout_driver_order_waitservice_item_incar);
-        mListLayoutId.add(R.layout.layout_driver_order_waitservice_item_arrive);
+        mListLayoutId.add(R.layout.layout_driver_order_inservice_item_takeperson);
+        mListLayoutId.add(R.layout.layout_driver_order_inservice_item_waitgocar);
+        mListLayoutId.add(R.layout.layout_driver_order_inservice_item_incar);
+        mListLayoutId.add(R.layout.layout_driver_order_inservice_item_arrive);
     }
 
     @Override
@@ -258,5 +286,46 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
 
     public Context getContext() {
         return mContext;
+    }
+
+
+    @Override
+    public void takePersonSuccess(TakePersonResultBean result) {
+        ToastUtils.showToastShort(getContext(), "test");
+    }
+
+    @Override
+    public void takePersonFail(String msg) {
+
+    }
+
+    @Override
+    public void getOnCarSuccess(GetOnCarResultBean result) {
+        ToastUtils.showToastShort(getContext(), "test");
+    }
+
+    @Override
+    public void getOnCarFail(String msg) {
+
+    }
+
+    @Override
+    public void arriveDestinationSuccess(ArriveDestinationResultBean result) {
+        ToastUtils.showToastShort(getContext(), "test");
+    }
+
+    @Override
+    public void arriveDestinationFail(String msg) {
+
+    }
+
+    @Override
+    public void returnCarSuccess(ReturnCarResultBean result) {
+        ToastUtils.showToastShort(getContext(), "test");
+    }
+
+    @Override
+    public void returnCarFail(String msg) {
+
     }
 }

@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.adapter.InServiceListAdapter;
 import com.shianlife.shian_platform.adapter.WaitServiceListAdapter;
+import com.shianlife.shian_platform.custom.view.ptr.CustomPtrFramelayout;
 import com.shianlife.shian_platform.mvp.driver.bean.InServiceListResultBean;
 import com.shianlife.shian_platform.mvp.driver.presenter.IInServiceListPresenter;
 import com.shianlife.shian_platform.mvp.driver.presenter.impl.InServiceListPresenterImpl;
@@ -14,6 +15,8 @@ import com.shianlife.shian_platform.mvp.driver.view.IInServiceListView;
 
 import butterknife.BindView;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
+import in.srain.cube.views.ptr.PtrDefaultHandler2;
+import in.srain.cube.views.ptr.PtrFrameLayout;
 
 /**
  * Created by zm.
@@ -24,15 +27,18 @@ public class InService extends BaseDriverLayout implements IInServiceListView {
     @BindView(R.id.rc_content)
     RecyclerView rcContent;
     @BindView(R.id.ptr_layout)
-    PtrClassicFrameLayout ptrLayout;
+    CustomPtrFramelayout ptrLayout;
 
     private InServiceListAdapter mListAdapter;
     private IInServiceListPresenter inServiceListPresenter;
 
     public InService(Context context) {
         super(context, R.layout.layout_driver_order_inservice);
+        init();
     }
-
+    private void init() {
+        ptrLayout.setPtrHandler(ptrDefaultHandler2);
+    }
     @Override
     protected void initView() {
         mListAdapter = new InServiceListAdapter(getContext());
@@ -60,4 +66,17 @@ public class InService extends BaseDriverLayout implements IInServiceListView {
     public void getInServiceListFail(String msg) {
 
     }
+
+
+    PtrDefaultHandler2 ptrDefaultHandler2 = new PtrDefaultHandler2() {
+        @Override
+        public void onLoadMoreBegin(PtrFrameLayout frame) {
+
+        }
+
+        @Override
+        public void onRefreshBegin(PtrFrameLayout frame) {
+
+        }
+    };
 }

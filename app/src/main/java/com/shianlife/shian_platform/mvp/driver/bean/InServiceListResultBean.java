@@ -19,7 +19,7 @@ public class InServiceListResultBean extends BaseDataResult {
         this.items = items;
     }
 
-    public static class InServiceItemData {
+    public static class InServiceItemData extends BaseDriverOrderResultItemBean{
 
     }
 }

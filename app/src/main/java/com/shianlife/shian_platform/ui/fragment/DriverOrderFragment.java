@@ -14,7 +14,9 @@ import com.shianlife.shian_platform.appenum.DriverOrderListEnum;
 import com.shianlife.shian_platform.base.BaseFragment;
 import com.shianlife.shian_platform.listener.DriverPagerListener;
 import com.shianlife.shian_platform.ui.order.driver.BaseDriverLayout;
+import com.shianlife.shian_platform.ui.order.driver.FailService;
 import com.shianlife.shian_platform.ui.order.driver.InService;
+import com.shianlife.shian_platform.ui.order.driver.SuccessService;
 import com.shianlife.shian_platform.ui.order.driver.WaitService;
 
 import java.util.ArrayList;
@@ -75,6 +77,10 @@ public class DriverOrderFragment extends BaseFragment {
                 baseView = new WaitService(getContext());
             } else if (mDriverOrderListEna[i].getCode() == DriverOrderListEnum.inservice.getCode()) {
                 baseView = new InService(getContext());
+            } else if (mDriverOrderListEna[i].getCode() == DriverOrderListEnum.successservice.getCode()) {
+                baseView = new SuccessService(getContext());
+            } else if (mDriverOrderListEna[i].getCode() == DriverOrderListEnum.failservice.getCode()) {
+                baseView = new FailService(getContext());
             } else {
                 baseView = new WaitService(getContext());
             }
