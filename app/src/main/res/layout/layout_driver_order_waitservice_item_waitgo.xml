@@ -45,6 +45,7 @@
         android:background="@color/zhy_line_8" />
 
     <com.shianlife.shian_platform.custom.show.TextShowLayout
+        CustomAttr:layoutType="2"
         android:id="@+id/layout_customer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

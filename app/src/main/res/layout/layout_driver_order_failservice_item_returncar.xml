@@ -47,6 +47,7 @@
     <com.shianlife.shian_platform.custom.show.TextShowLayout
         android:id="@+id/layout_customer"
         android:layout_width="match_parent"
+        CustomAttr:layoutType="2"
         android:layout_height="wrap_content"
         CustomAttr:titleName="@string/driver_order_text_customer"></com.shianlife.shian_platform.custom.show.TextShowLayout>
 

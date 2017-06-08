@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -22,6 +23,8 @@ import com.shianlife.shian_platform.http.base.BaseDataResult;
 import com.shianlife.shian_platform.mvp.main.bean.AppUpDateResultBean;
 import com.shianlife.shian_platform.service.UpDataService;
 import com.shianlife.shian_platform.ui.activity.MainActivity;
+
+import java.util.List;
 
 /**
  * Created by zm.
@@ -151,5 +154,24 @@ public class CheckUtils {
         else if (cont instanceof ContextWrapper)
             return scanForActivity(((ContextWrapper) cont).getBaseContext());
         return null;
+    }
+
+    /**
+     * 检查手机上是否安装了指定的软件
+     *
+     * @param context
+     * @param packageName：应用包名
+     * @return
+     */
+    public static boolean isInstalled(Context context, String packageName) {
+        final PackageManager packageManager = context.getPackageManager();
+        List<PackageInfo> packageInfos = packageManager.getInstalledPackages(0);
+        if (packageInfos != null) {
+            for (int i = 0; i < packageInfos.size(); i++) {
+                String pkName = packageInfos.get(i).packageName;
+                if (pkName.equals(packageName)) return true;
+            }
+        }
+        return false;
     }
 }

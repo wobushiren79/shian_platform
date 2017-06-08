@@ -20,6 +20,8 @@ public class IntentUtils {
     public static final String INTENT_SHAREDATA = "INTENT_SHAREDATA";
     public static final String INTENT_ADEVERT="INTENT_ADEVERT";//廣告跳轉
 
+    public static final String INTENT_LOCATION="INTENT_LOCATION";//需要查詢地址
+
     public static class Build {
         Context context;
         Intent intent;

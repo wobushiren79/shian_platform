@@ -47,6 +47,11 @@ public class Constants {
     public static String LOCAL_STREET = "";
     public static String LOCAL_STREETNUM = "";
     public static String LOCAL_ADDRESS = "";
+
     public static double LOCAL_latitude = 30.6634450000;//纬度;
     public static double LOCAL_longitude = 104.0722210000;//经度;
+
+    //默认地图中心
+    private final static double mapCenterlatitude = 30.6634450000;
+    private final static double mapCenterlongitude = 104.0722210000;
 }

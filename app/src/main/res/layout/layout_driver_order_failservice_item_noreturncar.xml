@@ -48,6 +48,7 @@
         android:id="@+id/layout_customer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        CustomAttr:layoutType="2"
         CustomAttr:titleName="@string/driver_order_text_customer"></com.shianlife.shian_platform.custom.show.TextShowLayout>
 
     <TextView

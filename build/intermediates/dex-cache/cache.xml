@@ -2,13 +2,13 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="E:\Android\AndroidProjects\shian_platform\ImageSelector\build\intermediates\bundles\default\classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
-        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_e6d8b4463238e619555701f81611195e8a579371\classes.dex" />
+        sha1="d4f9703df54be21c7633096d524960e54dead8ba">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\classes_9629357af2b688b7d6237863bdacba9c1a9acbcc.jar" />
     </item>
     <item
         is-multidex="true"
@@ -21,11 +21,20 @@
     </item>
     <item
         is-multidex="true"
+        jar="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_e6d8b4463238e619555701f81611195e8a579371\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="2d3b9d3d0712b602fa86149ac3aa6e8568f5322c">
+        sha1="4928effa77e3078090157541e5c36f578f7c4623">
         <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_d5a936da56bea3ef21cbf21fe4293fd22dab029e\classes.dex" />
     </item>
     <item
@@ -36,6 +45,24 @@
         revision="25.0.2"
         sha1="f4ac7ae5070911d02290331664a36475fb9a5ebb">
         <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\transforms\dex\debug\folders\1000\2\IndoorscapeAlbumPlugin_5333bc1a5313fbbbe5006d0863c877fab06e2a6c\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Android\AndroidProjects\shian_platform\app\libs\BaiduLBS_Android.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a0eefe797576db408831b70abb6a9f112045f12a">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\BaiduLBS_Android_de6b9e6ed1e174b589f4ba0c9c6f79018ce6f407.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Android\AndroidProjects\shian_platform\app\libs\IndoorscapeAlbumPlugin.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f4ac7ae5070911d02290331664a36475fb9a5ebb">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\IndoorscapeAlbumPlugin_5333bc1a5313fbbbe5006d0863c877fab06e2a6c.jar" />
     </item>
 
 </items>

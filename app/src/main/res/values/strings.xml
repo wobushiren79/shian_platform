@@ -17,6 +17,8 @@
     <string name="title_name_ideaback">意见反馈</string>
     <string name="title_name_help">帮助</string>
     <string name="title_name_setting">设置</string>
+    <string name="title_name_drvier_details">行驶记录</string>
+    <string name="title_name_drvier_findlocation">查询位置</string>
 
     <string name="ideaback_save_success">提交成功</string>
     <string name="ideaback_save_fail">提交失败</string>
@@ -95,4 +97,34 @@
 
     <string name="fileupload_change">修改</string>
     <string name="fileupload_delete">删除</string>
+
+    <string name="driver_order_text_orderid">服务单号</string>
+    <string name="driver_order_details_title_1">接单</string>
+    <string name="driver_order_details_title_2">取车</string>
+    <string name="driver_order_details_title_3">出发</string>
+    <string name="driver_order_details_title_4">到达预约地</string>
+    <string name="driver_order_details_title_5">接到客户</string>
+    <string name="driver_order_details_title_6">到达目的地</string>
+    <string name="driver_order_details_title_1_time">接单时间</string>
+    <string name="driver_order_details_title_2_location">取车地点</string>
+    <string name="driver_order_details_title_2_time">取车时间</string>
+    <string name="driver_order_details_title_2_mileage">取车里程</string>
+    <string name="driver_order_details_title_2_pic">里程照片</string>
+    <string name="driver_order_details_title_3_location">出发地点</string>
+    <string name="driver_order_details_title_3_time">出发时间</string>
+    <string name="driver_order_details_title_3_mileage">出发里程</string>
+    <string name="driver_order_details_title_4_time">到达预约地时间</string>
+    <string name="driver_order_details_title_5_location">接到客户地点</string>
+    <string name="driver_order_details_title_5_time">接到客户时间</string>
+    <string name="driver_order_details_title_5_mileage">接到客户里程</string>
+    <string name="driver_order_details_title_6_location">到达目的地地址</string>
+    <string name="driver_order_details_title_6_time">到达目的地时间</string>
+    <string name="driver_order_details_title_6_mileage">到达目的地里程</string>
+    <string name="driver_order_details_title_7">还车</string>
+    <string name="driver_order_details_title_7_location">还车地址</string>
+    <string name="driver_order_details_title_7_time">还车时间</string>
+    <string name="driver_order_details_title_7_mileage">还车里程</string>
+    <string name="driver_order_details_title_7_pic">里程图片</string>
+    <string name="map_select_1">到这里去</string>
+
 </resources>

@@ -27,6 +27,8 @@ import com.shianlife.shian_platform.mvp.driver.presenter.impl.TalkCarPresenterIm
 import com.shianlife.shian_platform.mvp.driver.view.IAcceptOrderView;
 import com.shianlife.shian_platform.mvp.driver.view.IRejectOrderView;
 import com.shianlife.shian_platform.mvp.driver.view.ITakeCarView;
+import com.shianlife.shian_platform.ui.activity.MapFindLocationActivity;
+import com.shianlife.shian_platform.utils.IntentUtils;
 import com.shianlife.shian_platform.utils.ToastUtils;
 
 import java.util.List;
@@ -108,8 +110,7 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
 
             @Override
             public void clickRemark(View view) {
-                if (view == layoutCarnum) {
-                }
+
             }
 
             @Override
@@ -120,7 +121,15 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
             @Override
             public void clickMap(View view) {
                 if (view == layoutMeetlocation) {
+                    new IntentUtils
+                            .Build(getContext(), MapFindLocationActivity.class)
+                            .setString(IntentUtils.INTENT_LOCATION, "轿子音乐厅")
+                            .start();
                 } else if (view == layoutFinallocation) {
+                    new IntentUtils
+                            .Build(getContext(), MapFindLocationActivity.class)
+                            .setString(IntentUtils.INTENT_LOCATION, "轿子音乐厅")
+                            .start();
                 }
             }
         };
@@ -137,14 +146,13 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
      * @param index
      */
     private void setLayoutDataWaitGetCar(BaseViewHolder holder, WaitServiceListResultBean.WaitServiceItemData waitServiceItemData, int index) {
-
-        TextShowLayout layoutCarnum = holder.getView(R.id.layout_carnum);
+        final TextShowLayout layoutCarnum = holder.getView(R.id.layout_carnum);
         TextShowLayout layoutPersonnum = holder.getView(R.id.layout_personnum);
         TextShowLayout layoutTime = holder.getView(R.id.layout_time);
         TextShowLayout layoutCustomer = holder.getView(R.id.layout_customer);
-        TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
-        TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
-        TextShowLayout layoutCarlocation = holder.getView(R.id.layout_carlocation);
+        final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
+        final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
+        final TextShowLayout layoutCarlocation = holder.getView(R.id.layout_carlocation);
         TextView tvGo = holder.getView(R.id.tv_go);
         tvGo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,6 +188,42 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
                 dataDialog.show();
             }
         });
+
+        TextShowLayout.CallBack buttonClick = new TextShowLayout.CallBack() {
+            @Override
+            public void clickRemark(View view) {
+
+            }
+
+            @Override
+            public void clickPhone(View view) {
+
+            }
+
+            @Override
+            public void clickMap(View view) {
+                if (view == layoutMeetlocation) {
+                    new IntentUtils
+                            .Build(getContext(), MapFindLocationActivity.class)
+                            .setString(IntentUtils.INTENT_LOCATION, "轿子音乐厅")
+                            .start();
+                } else if (view == layoutFinallocation) {
+                    new IntentUtils
+                            .Build(getContext(), MapFindLocationActivity.class)
+                            .setString(IntentUtils.INTENT_LOCATION, "轿子音乐厅")
+                            .start();
+                } else if (view == layoutCarlocation) {
+                    new IntentUtils
+                            .Build(getContext(), MapFindLocationActivity.class)
+                            .setString(IntentUtils.INTENT_LOCATION, "轿子音乐厅")
+                            .start();
+                }
+            }
+        };
+        layoutPersonnum.setCallBack(buttonClick);
+        layoutMeetlocation.setCallBack(buttonClick);
+        layoutFinallocation.setCallBack(buttonClick);
+        layoutCarlocation.setCallBack(buttonClick);
     }
 
     /**
@@ -190,12 +234,12 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
      * @param index
      */
     private void setLayoutDataWaitGo(BaseViewHolder holder, WaitServiceListResultBean.WaitServiceItemData waitServiceItemData, int index) {
-        TextShowLayout layoutCarnum = holder.getView(R.id.layout_carnum);
+        final TextShowLayout layoutCarnum = holder.getView(R.id.layout_carnum);
         TextShowLayout layoutPersonnum = holder.getView(R.id.layout_personnum);
         TextShowLayout layoutTime = holder.getView(R.id.layout_time);
         TextShowLayout layoutCustomer = holder.getView(R.id.layout_customer);
-        TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
-        TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
+        final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
+        final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
         TextView tvGo = holder.getView(R.id.tv_go);
         tvGo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -225,7 +269,36 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
                 dataDialog.show();
             }
         });
+        TextShowLayout.CallBack buttonClick = new TextShowLayout.CallBack() {
+            @Override
+            public void clickRemark(View view) {
+                if (view == layoutCarnum) {
+                }
+            }
 
+            @Override
+            public void clickPhone(View view) {
+
+            }
+
+            @Override
+            public void clickMap(View view) {
+                if (view == layoutMeetlocation) {
+                    new IntentUtils
+                            .Build(getContext(), MapFindLocationActivity.class)
+                            .setString(IntentUtils.INTENT_LOCATION, "轿子音乐厅")
+                            .start();
+                } else if (view == layoutFinallocation) {
+                    new IntentUtils
+                            .Build(getContext(), MapFindLocationActivity.class)
+                            .setString(IntentUtils.INTENT_LOCATION, "轿子音乐厅")
+                            .start();
+                }
+            }
+        };
+        layoutPersonnum.setCallBack(buttonClick);
+        layoutMeetlocation.setCallBack(buttonClick);
+        layoutFinallocation.setCallBack(buttonClick);
     }
 
 

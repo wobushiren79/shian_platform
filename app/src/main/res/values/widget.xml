@@ -29,10 +29,18 @@
         <item name="android:textColor">@color/dimgray</item>
     </style>
 
+    <style name="orderlist_text_28dp_2">
+        <item name="android:textSize">@dimen/dimen_28dp</item>
+        <item name="android:textColor">@color/zhy_text_color_1</item>
+    </style>
+
     <style name="orderlist_text_32dp_1">
         <item name="android:textSize">@dimen/dimen_32dp</item>
         <item name="android:textColor">@color/zhy_text_color_4</item>
     </style>
 
-
+    <style name="orderlist_text_32dp_2">
+        <item name="android:textSize">@dimen/dimen_32dp</item>
+        <item name="android:textColor">@color/zhy_text_color_1</item>
+    </style>
 </resources>

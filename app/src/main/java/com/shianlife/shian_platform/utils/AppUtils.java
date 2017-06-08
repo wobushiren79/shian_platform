@@ -15,6 +15,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.search.core.RouteNode;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
@@ -22,7 +24,10 @@ import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.adapter.base.BaseViewHolder;
 import com.shianlife.shian_platform.base.BaseActivity;
+import com.shianlife.shian_platform.common.Constants;
 import com.yongchun.library.view.ImageSelectorActivity;
+
+import java.net.URISyntaxException;
 
 /**
  * Created by zm.
@@ -133,4 +138,37 @@ public class AppUtils {
         }
     }
 
+
+    public static void intentOtherMap(Context context, LatLng startLatLng, LatLng endLatLng, String nameStart, String nameEnd) {
+        Intent intent = new Intent();
+        if (CheckUtils.isInstalled(context, "com.baidu.BaiduMap")) {
+            try {
+                intent = Intent.parseUri("intent://map/direction?" +
+                        "origin=latlng:" + startLatLng.latitude + "," + startLatLng.longitude +
+                        "|name:" + nameStart +
+                        "&destination=latlng:" + endLatLng.latitude + "," + endLatLng.longitude +
+                        "|name:" + nameEnd +
+                        "&mode=driving" +
+                        "&src=Name|AppName" +
+                        "#Intent;scheme=bdapp;package=com.baidu.BaiduMap;end", 0);
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+            context.startActivity(intent);
+        } else if (CheckUtils.isInstalled(context, "com.autonavi.minimap")) {
+            intent.setData(Uri
+                    .parse("androidamap://route?" +
+                            "sourceApplication=softname" +
+                            "&slat=" + startLatLng.latitude +
+                            "&slon=" + startLatLng.longitude +
+                            "&dlat=" + endLatLng.latitude +
+                            "&dlon=" + endLatLng.longitude +
+                            "&dev=0" +
+                            "&m=0" +
+                            "&t=2"));
+            context.startActivity(intent);
+        } else {
+            ToastUtils.showToastShort(context, "请先下载百度地图或高德地图");
+        }
+    }
 }
