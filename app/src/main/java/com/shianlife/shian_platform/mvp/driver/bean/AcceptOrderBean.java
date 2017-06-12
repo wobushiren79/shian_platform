@@ -7,4 +7,13 @@ import com.shianlife.shian_platform.http.base.BaseHttpParams;
  */
 
 public class AcceptOrderBean extends BaseHttpParams {
+    private long orderId;
+
+    public long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(long orderId) {
+        this.orderId = orderId;
+    }
 }

@@ -27,21 +27,13 @@ public class WaitServiceListPresenterImpl implements IWaitServiceListPresenter {
     @Override
     public void getWaitServiceListData() {
         WaitServiceListBean params = new WaitServiceListBean();
+        params.setPageNum(waitServiceListView.getPageNum());
+        params.setPageSize(waitServiceListView.getPageSize());
         waitServiceListModel.getWaitServiceListData(waitServiceListView.getContext(), params, new OnGetDataListener<WaitServiceListResultBean>() {
 
             @Override
             public void getDataSuccess(WaitServiceListResultBean result) {
-
-
-                WaitServiceListResultBean ceshi = new WaitServiceListResultBean();
-                List<WaitServiceListResultBean.WaitServiceItemData> ceshiList = new ArrayList<WaitServiceListResultBean.WaitServiceItemData>();
-                for (int i = 0; i < 100; i++) {
-                    ceshiList.add(new WaitServiceListResultBean.WaitServiceItemData());
-                }
-                ceshi.setItems(ceshiList);
-
-
-                waitServiceListView.getWaitServiceListSuccess(ceshi);
+                waitServiceListView.getWaitServiceListSuccess(result);
             }
 
             @Override

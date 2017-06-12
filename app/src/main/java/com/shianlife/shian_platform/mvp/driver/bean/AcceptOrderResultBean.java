@@ -7,4 +7,5 @@ import com.shianlife.shian_platform.http.base.BaseDataResult;
  */
 
 public class AcceptOrderResultBean extends BaseDataResult {
+
 }

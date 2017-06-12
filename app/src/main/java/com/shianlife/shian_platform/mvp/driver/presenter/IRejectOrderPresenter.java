@@ -8,5 +8,5 @@ public interface IRejectOrderPresenter {
     /**
      * 拒單
      */
-    void rejectOrder();
+    void rejectOrder(long orderId);
 }

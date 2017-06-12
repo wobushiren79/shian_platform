@@ -17,7 +17,7 @@ import com.shianlife.shian_platform.mvp.driver.view.IRejectOrderView;
  * Created by zm.
  */
 
-public class RejectOrderPresenterImpl implements IRejectOrderPresenter{
+public class RejectOrderPresenterImpl implements IRejectOrderPresenter {
     IRejectOrderView rejectOrderView;
     IRejectOrderModel rejectOrderModel;
 
@@ -29,8 +29,9 @@ public class RejectOrderPresenterImpl implements IRejectOrderPresenter{
 
 
     @Override
-    public void rejectOrder() {
+    public void rejectOrder(long orderId) {
         RejectOrderBean params = new RejectOrderBean();
+        params.setOrderId(orderId);
         rejectOrderModel.rejectOrder(rejectOrderView.getContext(), params, new OnGetDataListener<RejectOrderResultBean>() {
 
             @Override

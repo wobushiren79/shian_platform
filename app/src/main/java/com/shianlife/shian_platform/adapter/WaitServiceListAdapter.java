@@ -10,7 +10,9 @@ import android.widget.TextView;
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.adapter.base.BaseRCSAdapter;
 import com.shianlife.shian_platform.adapter.base.BaseViewHolder;
+import com.shianlife.shian_platform.appenum.DriverStateEnum;
 import com.shianlife.shian_platform.custom.dialog.DriverOrderDataDialog;
+import com.shianlife.shian_platform.custom.dialog.TipsDialog;
 import com.shianlife.shian_platform.custom.show.EditTextShowLayout;
 import com.shianlife.shian_platform.custom.show.ImageUpLoadShowLayout;
 import com.shianlife.shian_platform.custom.show.TextShowLayout;
@@ -51,6 +53,8 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
     private final int LAYOUT_WAITGETCAR = 1;
     //等待出发
     private final int LAYOUT_WAITGO = 2;
+    //错误布局
+    private final int LAYOUT_ERROR = 3;
 
     /**
      * 多布局初始化
@@ -65,6 +69,14 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
     }
 
     @Override
+    public void addLayout(List<Integer> mListLayoutId) {
+        mListLayoutId.add(R.layout.layout_driver_order_waitservice_item_waitgetorder);
+        mListLayoutId.add(R.layout.layout_driver_order_waitservice_item_waitgetcar);
+        mListLayoutId.add(R.layout.layout_driver_order_waitservice_item_waitgo);
+        mListLayoutId.add(R.layout.layout_driver_order_waitservice_item_error);
+    }
+
+    @Override
     public void convert(BaseViewHolder holder, WaitServiceListResultBean.WaitServiceItemData waitServiceItemData, int index) {
 //        holder.setIsRecyclable(false);
         if (getItemViewType(index) == LAYOUT_WAITGETORDER) {
@@ -73,6 +85,8 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
             setLayoutDataWaitGetCar(holder, waitServiceItemData, index);
         } else if (getItemViewType(index) == LAYOUT_WAITGO) {
             setLayoutDataWaitGo(holder, waitServiceItemData, index);
+        } else if (getItemViewType(index) == LAYOUT_ERROR) {
+
         }
     }
 
@@ -83,26 +97,33 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
      * @param waitServiceItemData
      * @param index
      */
-    private void setLayoutDataWaitGetOrder(final BaseViewHolder holder, WaitServiceListResultBean.WaitServiceItemData waitServiceItemData, int index) {
+    private void setLayoutDataWaitGetOrder(final BaseViewHolder holder, final WaitServiceListResultBean.WaitServiceItemData waitServiceItemData, int index) {
         final TextShowLayout layoutCarnum = holder.getView(R.id.layout_carnum);
         final TextShowLayout layoutPersonnum = holder.getView(R.id.layout_personnum);
         final TextShowLayout layoutTime = holder.getView(R.id.layout_time);
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
-
         TextView tvReject = holder.getView(R.id.tv_reject);
         TextView tvAccept = holder.getView(R.id.tv_accept);
+
+        layoutCarnum.setContent(waitServiceItemData.getCarNum());
+        layoutCarnum.setContentBold();
+        layoutCarnum.setStateText(DriverStateEnum.isAttribute.getName());
+        layoutPersonnum.setContent(waitServiceItemData.getPersonNum());
+        layoutTime.setContent(waitServiceItemData.getGetPersonTime());
+        layoutMeetlocation.setContent(waitServiceItemData.getSource());
+        layoutFinallocation.setContent(waitServiceItemData.getTarget());
 
         tvAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                acceptOrderPresenter.acceptOrder();
+                acceptOrderPresenter.acceptOrder(waitServiceItemData.getOrderId());
             }
         });
         tvReject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rejectOrderPresenter.rejectOrder();
+                rejectOrderPresenter.rejectOrder(waitServiceItemData.getOrderId());
             }
         });
 
@@ -110,7 +131,20 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
 
             @Override
             public void clickRemark(View view) {
+                if (!waitServiceItemData.getRemark().isEmpty()) {
+                    TipsDialog tipsDialog = new TipsDialog(getContext());
+                    tipsDialog.setTop(getContext().getString(R.string.driver_order_text_remark));
+                    tipsDialog.setTitle(waitServiceItemData.getRemark());
+                    tipsDialog.setBottomButton(getContext().getString(R.string.dialog_true_3), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
 
+                        }
+                    });
+                    tipsDialog.show();
+                } else {
+                    ToastUtils.showToastShort(getContext(), getContext().getString(R.string.bug_text_3));
+                }
             }
 
             @Override
@@ -123,12 +157,12 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
                 if (view == layoutMeetlocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
-                            .setString(IntentUtils.INTENT_LOCATION, "轿子音乐厅")
+                            .setString(IntentUtils.INTENT_LOCATION, waitServiceItemData.getSource())
                             .start();
                 } else if (view == layoutFinallocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
-                            .setString(IntentUtils.INTENT_LOCATION, "轿子音乐厅")
+                            .setString(IntentUtils.INTENT_LOCATION, waitServiceItemData.getTarget())
                             .start();
                 }
             }
@@ -147,13 +181,23 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
      */
     private void setLayoutDataWaitGetCar(BaseViewHolder holder, WaitServiceListResultBean.WaitServiceItemData waitServiceItemData, int index) {
         final TextShowLayout layoutCarnum = holder.getView(R.id.layout_carnum);
-        TextShowLayout layoutPersonnum = holder.getView(R.id.layout_personnum);
-        TextShowLayout layoutTime = holder.getView(R.id.layout_time);
-        TextShowLayout layoutCustomer = holder.getView(R.id.layout_customer);
+        final TextShowLayout layoutPersonnum = holder.getView(R.id.layout_personnum);
+        final TextShowLayout layoutTime = holder.getView(R.id.layout_time);
+        final TextShowLayout layoutCustomer = holder.getView(R.id.layout_customer);
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
         final TextShowLayout layoutCarlocation = holder.getView(R.id.layout_carlocation);
         TextView tvGo = holder.getView(R.id.tv_go);
+
+        layoutCarnum.setContent(waitServiceItemData.getCarNum());
+        layoutCarnum.setContentBold();
+        layoutCarnum.setStateText(DriverStateEnum.waitGetCar.getName());
+        layoutPersonnum.setContent(waitServiceItemData.getPersonNum());
+        layoutTime.setContent(waitServiceItemData.getGetPersonTime());
+        layoutCustomer.setContent(waitServiceItemData.getCustomer());
+        layoutMeetlocation.setContent(waitServiceItemData.getSource());
+        layoutFinallocation.setContent(waitServiceItemData.getTarget());
+
         tvGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -235,12 +279,22 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
      */
     private void setLayoutDataWaitGo(BaseViewHolder holder, WaitServiceListResultBean.WaitServiceItemData waitServiceItemData, int index) {
         final TextShowLayout layoutCarnum = holder.getView(R.id.layout_carnum);
-        TextShowLayout layoutPersonnum = holder.getView(R.id.layout_personnum);
-        TextShowLayout layoutTime = holder.getView(R.id.layout_time);
-        TextShowLayout layoutCustomer = holder.getView(R.id.layout_customer);
+        final TextShowLayout layoutPersonnum = holder.getView(R.id.layout_personnum);
+        final TextShowLayout layoutTime = holder.getView(R.id.layout_time);
+        final TextShowLayout layoutCustomer = holder.getView(R.id.layout_customer);
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
         TextView tvGo = holder.getView(R.id.tv_go);
+
+        layoutCarnum.setContent(waitServiceItemData.getCarNum());
+        layoutCarnum.setContentBold();
+        layoutCarnum.setStateText(DriverStateEnum.setOff.getName());
+        layoutPersonnum.setContent(waitServiceItemData.getPersonNum());
+        layoutTime.setContent(waitServiceItemData.getGetPersonTime());
+        layoutCustomer.setContent(waitServiceItemData.getCustomer());
+        layoutMeetlocation.setContent(waitServiceItemData.getSource());
+        layoutFinallocation.setContent(waitServiceItemData.getTarget());
+
         tvGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -303,24 +357,17 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
 
 
     @Override
-    public void addLayout(List<Integer> mListLayoutId) {
-        mListLayoutId.add(R.layout.layout_driver_order_waitservice_item_waitgetorder);
-        mListLayoutId.add(R.layout.layout_driver_order_waitservice_item_waitgetcar);
-        mListLayoutId.add(R.layout.layout_driver_order_waitservice_item_waitgo);
-    }
-
-
-    @Override
     public int getItemViewType(int position) {
         WaitServiceListResultBean.WaitServiceItemData waitServiceItemData = mDatas.get(position);
-        if (position % 3 == 0) {
+        if (waitServiceItemData.getOrderState() == DriverStateEnum.isAttribute.getCode()) {
             return LAYOUT_WAITGETORDER;
-        } else if (position % 3 == 1) {
+        } else if (waitServiceItemData.getOrderState() == DriverStateEnum.waitGetCar.getCode()) {
             return LAYOUT_WAITGETCAR;
-        } else if (position % 3 == 2) {
+        } else if (waitServiceItemData.getOrderState() == DriverStateEnum.setOff.getCode()) {
             return LAYOUT_WAITGO;
+        } else {
+            return LAYOUT_ERROR;
         }
-        return LAYOUT_WAITGETCAR;
     }
 
     @Override
@@ -328,9 +375,10 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
         return mContext;
     }
 
+
     @Override
     public void saveTalkCarDataSuccess(TakeCarResultBean result) {
-        ToastUtils.showToastShort(mContext, "接单");
+
     }
 
     @Override
@@ -340,7 +388,7 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
 
     @Override
     public void rejectOrderSuccess(RejectOrderResultBean result) {
-        ToastUtils.showToastShort(mContext, "拒单");
+        ToastUtils.showToastShort(mContext, "此功能还未开放~！");
     }
 
     @Override
@@ -350,12 +398,12 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
 
     @Override
     public void acceptOrderSuccess(AcceptOrderResultBean result) {
-        ToastUtils.showToastShort(mContext, "接单");
+        ToastUtils.showToastShort(mContext, mContext.getString(R.string.driver_order_accept_success));
     }
 
     @Override
     public void acceptOrderFail(String msg) {
-
+        ToastUtils.showToastShort(mContext, mContext.getString(R.string.driver_order_accept_fail));
     }
 
 }

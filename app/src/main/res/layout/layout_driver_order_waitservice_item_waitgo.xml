@@ -89,7 +89,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="@dimen/dimen_16dp"
         android:layout_marginTop="@dimen/dimen_16dp"
-        android:text="@string/driver_order_text_takego" />
+        android:text="@string/driver_order_text_go" />
 
 
 </LinearLayout>

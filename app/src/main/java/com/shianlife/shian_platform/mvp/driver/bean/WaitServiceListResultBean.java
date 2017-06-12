@@ -7,17 +7,36 @@ import java.util.List;
  */
 
 public class WaitServiceListResultBean {
-    List<WaitServiceItemData> items;
 
-    public List<WaitServiceItemData> getItems() {
-        return items;
+    private List<WaitServiceItemData> list;
+    private long pageSize;
+    private long pageNum;
+
+    public List<WaitServiceItemData> getList() {
+        return list;
     }
 
-    public void setItems(List<WaitServiceItemData> items) {
-        this.items = items;
+    public void setList(List<WaitServiceItemData> list) {
+        this.list = list;
     }
 
-    public static class WaitServiceItemData extends BaseDriverOrderResultItemBean{
+    public long getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(long pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public long getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(long pageNum) {
+        this.pageNum = pageNum;
+    }
+
+    public static class WaitServiceItemData extends BaseDriverOrderResultItemBean {
 
     }
 }

@@ -45,6 +45,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="继续洽谈"
+            android:visibility="gone"
             android:textColor="@color/zhy_text_color_11" />
 
         <TextView
@@ -58,6 +59,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:visibility="gone"
             android:text="结束洽谈"
             android:textColor="@color/zhy_text_color_1" />
     </LinearLayout>

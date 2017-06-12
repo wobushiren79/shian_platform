@@ -21,6 +21,8 @@ public class IntentUtils {
     public static final String INTENT_ADEVERT="INTENT_ADEVERT";//廣告跳轉
 
     public static final String INTENT_LOCATION="INTENT_LOCATION";//需要查詢地址
+    public static final String INTENT_LOCATION_LONGITUDE="INTENT_LOCATION_LONGITUDE";//经度
+    public static final String INTENT_LOCATION_LATITUDE="INTENT_LOCATION_LATITUDE";//纬度
 
     public static class Build {
         Context context;

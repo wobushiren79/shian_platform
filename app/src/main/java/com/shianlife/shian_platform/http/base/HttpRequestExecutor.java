@@ -132,7 +132,20 @@ public class HttpRequestExecutor {
         Map<String, String> header = setHeader(cookie);
         requestPost(context, method, data, params, responseHandler, isShowDialog, baseUrl, header);
     }
-
+    public <T> void requestCemeteryPost(final Context context,
+                                        final String method,
+                                        final Class<T> data,
+                                        final BaseHttpParams params,
+                                        final HttpResponseHandler<T> responseHandler,
+                                        final boolean isShowDialog) {
+        String baseUrl = Constants.CEMETERY_URL;
+        String cookie = "";
+        if (!method.contains("doLogin/marketing") && Constants.userCemetery != null) {
+            cookie = Constants.sessionId;
+        }
+        Map<String, String> header = setHeader(cookie);
+        requestPost(context, method, data, params, responseHandler, isShowDialog, baseUrl, header);
+    }
 
     public <T> void requestPost(final Context context,
                                 final String method,

@@ -8,5 +8,5 @@ public interface IAcceptOrderPresenter {
     /**
      * 接單
      */
-    void acceptOrder();
+    void acceptOrder(long orderId);
 }

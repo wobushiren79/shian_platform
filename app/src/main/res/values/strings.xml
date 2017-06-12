@@ -44,8 +44,10 @@
 
     <string name="bug_text_1">BUG啦！赶紧下载最新APP或重新启动APP</string>
     <string name="bug_text_2">定位失败，请打开APP权限并重启APP</string>
+    <string name="bug_text_3">没有备注</string>
 
     <string name="driver_order_text_carnum">车牌号</string>
+    <string name="driver_order_text_remark">备注</string>
     <string name="driver_order_text_personnum">看&#160;&#160;&#160;&#160;墓</string>
     <string name="driver_order_text_time">时&#160;&#160;&#160;&#160;间</string>
     <string name="driver_order_text_meetlocation">预约地</string>
@@ -76,7 +78,7 @@
     <string name="driver_order_text_accept">接单</string>
     <string name="driver_order_text_go">出发</string>
     <string name="driver_order_text_reject">拒单</string>
-    <string name="driver_order_text_takego">已取车！出发</string>
+    <string name="driver_order_text_getcar">取车</string>
     <string name="driver_order_text_arrivelocation">到达预约地</string>
     <string name="driver_order_text_takecustomer">接到客户！出发</string>
     <string name="driver_order_text_inlocation">到达目的地</string>
@@ -126,5 +128,8 @@
     <string name="driver_order_details_title_7_mileage">还车里程</string>
     <string name="driver_order_details_title_7_pic">里程图片</string>
     <string name="map_select_1">到这里去</string>
+
+    <string name="driver_order_accept_fail">接单失败</string>
+    <string name="driver_order_accept_success">接单成功</string>
 
 </resources>

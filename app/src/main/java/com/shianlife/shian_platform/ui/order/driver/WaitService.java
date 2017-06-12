@@ -29,6 +29,10 @@ public class WaitService extends BaseDriverLayout implements IWaitServiceListVie
     @BindView(R.id.ptr_layout)
     CustomPtrFramelayout ptrLayout;
 
+
+    private long pageSize;
+    private long pageNum;
+
     private IWaitServiceListPresenter mWaitServiceListPresenter;
     private WaitServiceListAdapter mListAdapter;
 
@@ -43,6 +47,13 @@ public class WaitService extends BaseDriverLayout implements IWaitServiceListVie
 
     @Override
     protected void initView() {
+     /* 延时100秒,自动刷新 */
+        ptrLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ptrLayout.autoRefresh();
+            }
+        }, 100);
         mListAdapter = new WaitServiceListAdapter(getContext());
         rcContent.setLayoutManager(new LinearLayoutManager(getContext()));
         rcContent.setAdapter(mListAdapter);
@@ -50,6 +61,9 @@ public class WaitService extends BaseDriverLayout implements IWaitServiceListVie
 
     @Override
     protected void initData() {
+        pageSize = 10;
+        pageNum = 1;
+
         mWaitServiceListPresenter = new WaitServiceListPresenterImpl(this);
         mWaitServiceListPresenter.getWaitServiceListData();
     }
@@ -60,24 +74,46 @@ public class WaitService extends BaseDriverLayout implements IWaitServiceListVie
     }
 
     @Override
+    public long getPageSize() {
+        return pageSize;
+    }
+
+    @Override
+    public long getPageNum() {
+        return pageNum;
+    }
+
+    @Override
     public void getWaitServiceListSuccess(WaitServiceListResultBean result) {
-        mListAdapter.setData(result.getItems());
+        if (result.getPageNum() < pageNum && pageNum > 1) {
+            pageNum--;
+        } else {
+            if (pageNum == 1) {
+                mListAdapter.setData(result.getList());
+            } else {
+                mListAdapter.addData(result.getList());
+            }
+        }
+        ptrLayout.refreshComplete();
     }
 
     @Override
     public void getWaitServiceListFail(String msg) {
-
+        ptrLayout.refreshComplete();
     }
 
     PtrDefaultHandler2 ptrDefaultHandler2 = new PtrDefaultHandler2() {
         @Override
         public void onLoadMoreBegin(PtrFrameLayout frame) {
+            pageNum++;
+            mWaitServiceListPresenter.getWaitServiceListData();
 
         }
 
         @Override
         public void onRefreshBegin(PtrFrameLayout frame) {
-
+            pageNum = 1;
+            mWaitServiceListPresenter.getWaitServiceListData();
         }
     };
 }

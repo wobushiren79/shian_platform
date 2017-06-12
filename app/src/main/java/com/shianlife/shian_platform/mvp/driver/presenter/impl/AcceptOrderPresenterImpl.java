@@ -23,8 +23,9 @@ public class AcceptOrderPresenterImpl implements IAcceptOrderPresenter {
 
 
     @Override
-    public void acceptOrder() {
+    public void acceptOrder(long orderId) {
         AcceptOrderBean params = new AcceptOrderBean();
+        params.setOrderId(orderId);
         acceptOrderModel.acceptOrder(acceptOrderView.getContext(), params, new OnGetDataListener<AcceptOrderResultBean>() {
 
             @Override
