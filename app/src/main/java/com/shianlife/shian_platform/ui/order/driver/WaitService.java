@@ -22,13 +22,12 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
  * Created by zm.
  */
 
-public class WaitService extends BaseDriverLayout implements IWaitServiceListView {
+public class WaitService extends BaseDriverLayout implements IWaitServiceListView, WaitServiceListAdapter.CallBack {
 
     @BindView(R.id.rc_content)
     RecyclerView rcContent;
     @BindView(R.id.ptr_layout)
     CustomPtrFramelayout ptrLayout;
-
 
     private long pageSize;
     private long pageNum;
@@ -69,8 +68,9 @@ public class WaitService extends BaseDriverLayout implements IWaitServiceListVie
     }
 
     @Override
-    protected void refesh() {
-
+    public void refesh() {
+        pageNum = 1;
+        mWaitServiceListPresenter.getWaitServiceListData();
     }
 
     @Override

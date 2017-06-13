@@ -28,7 +28,8 @@ public class SuccessService extends BaseDriverLayout implements ISuccessServiceL
     RecyclerView rcContent;
     @BindView(R.id.ptr_layout)
     CustomPtrFramelayout ptrLayout;
-
+    private long pageSize;
+    private long pageNum;
     private ISuccessServiceListPresenter successServiceListPresenter;
     private SuccessServiceListAdapter mListAdapter;
 
@@ -43,6 +44,13 @@ public class SuccessService extends BaseDriverLayout implements ISuccessServiceL
 
     @Override
     protected void initView() {
+                /* 延时100秒,自动刷新 */
+        ptrLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ptrLayout.autoRefresh();
+            }
+        }, 100);
         mListAdapter = new SuccessServiceListAdapter(getContext());
         rcContent.setLayoutManager(new LinearLayoutManager(getContext()));
         rcContent.setAdapter(mListAdapter);
@@ -50,34 +58,59 @@ public class SuccessService extends BaseDriverLayout implements ISuccessServiceL
 
     @Override
     protected void initData() {
+        pageSize = 10;
+        pageNum = 1;
+
         successServiceListPresenter = new SuccessServiceListPresenterImpl(this);
         successServiceListPresenter.getSuccessServiceListData();
     }
 
     @Override
     protected void refesh() {
+        pageNum = 1;
+        successServiceListPresenter.getSuccessServiceListData();
+    }
 
+    @Override
+    public long getPageSize() {
+        return pageSize;
+    }
+
+    @Override
+    public long getPageNum() {
+        return pageNum;
     }
 
     @Override
     public void getSuccessServiceListSuccess(SuccessServiceListResultBean result) {
-        mListAdapter.setData(result.getItems());
+        if (result.getPageNum() < pageNum && pageNum > 1) {
+            pageNum--;
+        } else {
+            if (pageNum == 1) {
+                mListAdapter.setData(result.getList());
+            } else {
+                mListAdapter.addData(result.getList());
+            }
+        }
+        ptrLayout.refreshComplete();
     }
 
     @Override
     public void getSuccessServiceListFail(String msg) {
-
+        ptrLayout.refreshComplete();
     }
 
     PtrDefaultHandler2 ptrDefaultHandler2 = new PtrDefaultHandler2() {
         @Override
         public void onLoadMoreBegin(PtrFrameLayout frame) {
-
+            pageNum++;
+            successServiceListPresenter.getSuccessServiceListData();
         }
 
         @Override
         public void onRefreshBegin(PtrFrameLayout frame) {
-
+            pageNum = 1;
+            successServiceListPresenter.getSuccessServiceListData();
         }
     };
 }

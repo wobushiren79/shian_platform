@@ -24,6 +24,7 @@ public class OrderDetailsPresenterImpl implements IOrderDetailsPresenter {
     @Override
     public void getOrderDeails() {
         OrderDetailsBean params = new OrderDetailsBean();
+        params.setOrderId(orderDetailsView.getOrderId());
         orderDetailsModel.getOrderDetails(orderDetailsView.getContext(), params, new OnGetDataListener<OrderDetailsResultBean>() {
             @Override
             public void getDataSuccess(OrderDetailsResultBean result) {

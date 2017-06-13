@@ -27,16 +27,12 @@ public class SuccessServiceListPresenterImpl implements ISuccessServiceListPrese
     @Override
     public void getSuccessServiceListData() {
         SuccessServiceListBean params = new SuccessServiceListBean();
+        params.setPageNum(successServiceListView.getPageNum());
+        params.setPageSize(successServiceListView.getPageSize());
         successServiceListModel.getSuccessServiceListData(successServiceListView.getContext(), params, new OnGetDataListener<SuccessServiceListResultBean>() {
             @Override
             public void getDataSuccess(SuccessServiceListResultBean result) {
-                SuccessServiceListResultBean ceshi = new SuccessServiceListResultBean();
-                List<SuccessServiceListResultBean.SuccessServiceItemData> ceshiList = new ArrayList<>();
-                for (int i = 0; i < 100; i++) {
-                    ceshiList.add(new SuccessServiceListResultBean.SuccessServiceItemData());
-                }
-                ceshi.setItems(ceshiList);
-                successServiceListView.getSuccessServiceListSuccess(ceshi);
+                successServiceListView.getSuccessServiceListSuccess(result);
             }
 
             @Override

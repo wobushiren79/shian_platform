@@ -8,12 +8,16 @@ import android.widget.TextView;
 
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.appenum.BaseTitleEnum;
+import com.shianlife.shian_platform.appenum.DriverStateEnum;
 import com.shianlife.shian_platform.base.BaseActivity;
 import com.shianlife.shian_platform.custom.show.orderdetails.DetailsLayout;
 import com.shianlife.shian_platform.mvp.driver.bean.OrderDetailsResultBean;
 import com.shianlife.shian_platform.mvp.driver.presenter.IOrderDetailsPresenter;
 import com.shianlife.shian_platform.mvp.driver.presenter.impl.OrderDetailsPresenterImpl;
 import com.shianlife.shian_platform.mvp.driver.view.IOrderDetailsView;
+import com.shianlife.shian_platform.utils.AppUtils;
+import com.shianlife.shian_platform.utils.IntentUtils;
+import com.shianlife.shian_platform.utils.ToastUtils;
 
 import butterknife.BindView;
 
@@ -24,6 +28,7 @@ public class DriverOrderDetailsActivity extends BaseActivity implements IOrderDe
     @BindView(R.id.ll_content)
     LinearLayout llContent;
 
+    private long orderId = -1;
 
     private IOrderDetailsPresenter orderDetailsPresenter;
 
@@ -40,9 +45,9 @@ public class DriverOrderDetailsActivity extends BaseActivity implements IOrderDe
 
     @Override
     protected void initData() {
+        orderId = getIntent().getLongExtra(IntentUtils.INTENT_ORDERID, -1);
         orderDetailsPresenter = new OrderDetailsPresenterImpl(this);
         orderDetailsPresenter.getOrderDeails();
-
     }
 
 
@@ -53,18 +58,60 @@ public class DriverOrderDetailsActivity extends BaseActivity implements IOrderDe
 
     @Override
     public void getOrderDetailsSuccess(OrderDetailsResultBean result) {
-        addAcceptOrderView("test");
-        addGetCarView("test", "test", "test", "test");
-        addGoView("test", "test", "test");
-        addArriveMeetLocation("test");
-        addGetPersonView("test", "test", "test");
-        addArriveFinalLocation("test", "test", "test");
-        addReturnCarView("test", "test", "test", "test");
+//        addAcceptOrderView("test");
+        if (result.getSysOrderNo() != null && !result.getSysOrderNo().isEmpty())
+            tvOrderid.setText(result.getSysOrderNo());
+        if (result.getOrderDetailsList() != null) {
+            for (OrderDetailsResultBean.CarOrderDetail itemData : result.getOrderDetailsList()) {
+                String location = itemData.getAddress();
+                String time = "";
+                String km = "";
+                String files = "";
+                if (itemData.getAddress() != null)
+                    location = itemData.getAddress();
+                if (itemData.getCreatedAt() != null)
+                    try {
+                        time = AppUtils.formatTime(Long.valueOf(itemData.getCreatedAt()));
+                    } catch (Exception e) {
+                        time = "";
+                    }
+                if (itemData.getKm() != null)
+                    km = itemData.getKm();
+                if (itemData.getFiles() != null)
+                    files = itemData.getFiles();
+                if (itemData.getOpeType() == DriverStateEnum.isAttribute.getCode()) {
+
+                } else if (itemData.getOpeType() == DriverStateEnum.waitGetCar.getCode()) {
+                    addGetCarView(location, time, km, files);
+                } else if (itemData.getOpeType() == DriverStateEnum.setOff.getCode()) {
+                    addGoView(location, time, km);
+                } else if (itemData.getOpeType() == DriverStateEnum.callFor.getCode()) {
+                    addArriveMeetLocation(time);
+                } else if (itemData.getOpeType() == DriverStateEnum.waitGoOnCar.getCode()) {
+                    addGetPersonView(location, time, km);
+                } else if (itemData.getOpeType() == DriverStateEnum.alreadyGoOnCar.getCode()) {
+                    addArriveFinalLocation(location, time, km);
+                } else if (itemData.getOpeType() == DriverStateEnum.deliverd.getCode()) {
+                    addReturnCarView(location, time, km, files);
+                } else if (itemData.getOpeType() == DriverStateEnum.successService.getCode()) {
+
+                } else if (itemData.getOpeType() == DriverStateEnum.cancel.getCode()) {
+                    addReturnCarView(location, time, km, files);
+                }
+            }
+        }
+
+
     }
 
     @Override
     public void getOrderDetailsFail(String msg) {
+        ToastUtils.showToastShort(this, msg);
+    }
 
+    @Override
+    public long getOrderId() {
+        return orderId;
     }
 
     private LinearLayout.LayoutParams getLayoutParams() {

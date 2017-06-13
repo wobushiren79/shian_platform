@@ -93,6 +93,7 @@ public class ImageUpLoadShowLayout extends BaseLayout implements ILayoutDataView
 
     /**
      * 获取数据
+     *
      * @return
      */
     public List<String> getData() {
@@ -103,6 +104,20 @@ public class ImageUpLoadShowLayout extends BaseLayout implements ILayoutDataView
             }
         }
         return data;
+    }
+
+    public String getDataString() {
+        StringBuffer temp = new StringBuffer();
+        boolean isFirst = true;
+        for (int i = 0; i < listFiles.size(); i++) {
+            if (listFiles.get(i).getFileUrl() != null && !listFiles.get(i).getFileUrl().isEmpty()) {
+                if (!isFirst)
+                    temp.append(",");
+                temp.append(listFiles.get(i).getFileUrl());
+                isFirst = false;
+            }
+        }
+        return temp.toString();
     }
 
     @Override

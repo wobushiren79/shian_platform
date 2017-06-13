@@ -15,6 +15,11 @@ import com.shianlife.shian_platform.base.BaseDialog;
 import com.shianlife.shian_platform.common.Constants;
 import com.shianlife.shian_platform.custom.show.EditTextShowLayout;
 import com.shianlife.shian_platform.custom.show.ImageUpLoadShowLayout;
+import com.shianlife.shian_platform.mvp.driver.bean.BaseDriverOrderResultItemBean;
+import com.shianlife.shian_platform.mvp.driver.bean.ServiceOngoingResultBean;
+import com.shianlife.shian_platform.mvp.driver.presenter.IServiceOngoingPresenter;
+import com.shianlife.shian_platform.mvp.driver.presenter.impl.ServiceOngoingPresenterImpl;
+import com.shianlife.shian_platform.mvp.driver.view.IServiceOngoingView;
 import com.shianlife.shian_platform.utils.ToastUtils;
 
 import java.util.List;
@@ -23,7 +28,8 @@ import java.util.List;
  * Created by zm.
  */
 
-public class DriverOrderDataDialog extends BaseDialog {
+public class DriverOrderDataDialog extends BaseDialog implements IServiceOngoingView {
+
     EditTextShowLayout showNowcarlocation;
     EditTextShowLayout showNowmileageText;
     ImageUpLoadShowLayout showNowmileagePic;
@@ -32,8 +38,10 @@ public class DriverOrderDataDialog extends BaseDialog {
     String mileageText;
     String photoText;
 
-    private CallBack callBack;
     private int styleType = -1;
+    private CallBack callBack;
+    private BaseDriverOrderResultItemBean data;
+    private IServiceOngoingPresenter serviceOngoingPresenter;
     //没有图片的布局
     public final static int STYLE_NOPIC = 1;
     //有图片的布局
@@ -41,9 +49,11 @@ public class DriverOrderDataDialog extends BaseDialog {
     //fileClass
     public final static String FILECLASS = "order/driver";
 
-    public DriverOrderDataDialog(Context context, int styleType) {
+    public DriverOrderDataDialog(Context context, int styleType, BaseDriverOrderResultItemBean data) {
         super(context);
+        serviceOngoingPresenter = new ServiceOngoingPresenterImpl(this);
         this.styleType = styleType;
+        this.data = data;
     }
 
     @Override
@@ -122,22 +132,20 @@ public class DriverOrderDataDialog extends BaseDialog {
     public void show() {
         super.show();
         setLayout();
+        setButton();
+    }
+
+    private void setButton() {
         setTopButton(getContext().getString(R.string.dialog_false_3), new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if (callBack != null)
-                    callBack.clickTop(dialog);
+                dialog.cancel();
             }
         });
         setBottomButton(getContext().getString(R.string.dialog_true_3), new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if (callBack != null) {
-                    String getLocation = showNowcarlocation.getData();
-                    String getMileage = showNowmileageText.getData();
-                    List<String> fileUrlList = showNowmileagePic.getData();
-                    callBack.clickBottom(dialog, getLocation, getMileage, fileUrlList);
-                }
+                serviceOngoingPresenter.saveServiceOngoing();
             }
         });
     }
@@ -152,9 +160,65 @@ public class DriverOrderDataDialog extends BaseDialog {
         getWindow().setAttributes(params);
     }
 
-    public interface CallBack {
-        void clickTop(DialogInterface dialog);
+    @Override
+    public void saveServiceOngoingSuccess(ServiceOngoingResultBean result) {
+        if (callBack != null)
+            callBack.getDataSuccess(result);
+        ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_serviceonoing_success));
+        this.cancel();
+    }
 
-        void clickBottom(DialogInterface dialog, String location, String mileage, List<String> fileUrlList);
+    @Override
+    public void saveServiceOngoingFail(String msg) {
+        if (callBack != null)
+            callBack.getDataFail(msg);
+        ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_serviceonoing_fail));
+
+    }
+
+    @Override
+    public Long getOrderId() {
+        return data.getOrderId();
+    }
+
+    @Override
+    public String getLongitude() {
+        return Constants.LOCAL_longitude + "";
+    }
+
+    @Override
+    public String getLatitude() {
+        return Constants.LOCAL_latitude + "";
+    }
+
+    @Override
+    public String getAddress() {
+        return Constants.LOCAL_ADDRESS;
+    }
+
+    @Override
+    public String getFiles() {
+        return showNowmileagePic.getDataString();
+    }
+
+    @Override
+    public String getKM() {
+        return showNowmileageText.getData();
+    }
+
+    @Override
+    public int getServiceStep() {
+        return data.getOrderState();
+    }
+
+    @Override
+    public int getLayoutType() {
+        return styleType;
+    }
+
+    public interface CallBack {
+        void getDataSuccess(ServiceOngoingResultBean result);
+
+        void getDataFail(String msg);
     }
 }

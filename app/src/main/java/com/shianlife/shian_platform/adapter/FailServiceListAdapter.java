@@ -65,16 +65,6 @@ public class FailServiceListAdapter extends BaseRCSAdapter<FailServiceListResult
             }
         });
         TextShowLayout.CallBack buttonClick = new TextShowLayout.CallBack() {
-            @Override
-            public void clickRemark(View view) {
-                if (view == layoutCarnum) {
-                }
-            }
-
-            @Override
-            public void clickPhone(View view) {
-
-            }
 
             @Override
             public void clickMap(View view) {
@@ -96,7 +86,7 @@ public class FailServiceListAdapter extends BaseRCSAdapter<FailServiceListResult
         layoutFinallocation.setCallBack(buttonClick);
     }
 
-    private void setLayoutDataNoReturnCar(BaseViewHolder holder, FailServiceListResultBean.FailServiceItemData failServiceItemData, int index) {
+    private void setLayoutDataNoReturnCar(BaseViewHolder holder, final FailServiceListResultBean.FailServiceItemData failServiceItemData, int index) {
         final TextShowLayout layoutCarnum = holder.getView(R.id.layout_carnum);
         TextShowLayout layoutPersonnum = holder.getView(R.id.layout_personnum);
         TextShowLayout layoutTime = holder.getView(R.id.layout_time);
@@ -107,47 +97,14 @@ public class FailServiceListAdapter extends BaseRCSAdapter<FailServiceListResult
         tvGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DriverOrderDataDialog dataDialog = new DriverOrderDataDialog(getContext(), DriverOrderDataDialog.STYLE_PIC);
+                DriverOrderDataDialog dataDialog = new DriverOrderDataDialog(getContext(), DriverOrderDataDialog.STYLE_PIC, failServiceItemData);
                 dataDialog.setLocationText(getContext().getString(R.string.driver_order_text_back_location));
                 dataDialog.setMileageText(getContext().getString(R.string.driver_order_text_back_mileage));
                 dataDialog.setPhoteText(getContext().getString(R.string.driver_order_text_mileagephoto));
-                dataDialog.setCallBack(new DriverOrderDataDialog.CallBack() {
-                    @Override
-                    public void clickTop(DialogInterface dialog) {
-                        dialog.cancel();
-                    }
-
-                    @Override
-                    public void clickBottom(DialogInterface dialog, String location, String mileage, List<String> fileUrlList) {
-                        if (location == null || location.isEmpty()) {
-                            ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_check_1));
-                            return;
-                        }
-                        if (mileage == null || mileage.isEmpty()) {
-                            ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_check_2));
-                            return;
-                        }
-                        if (fileUrlList == null || fileUrlList.size() == 0) {
-                            ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_check_3));
-                            return;
-                        }
-                        dialog.cancel();
-                    }
-                });
                 dataDialog.show();
             }
         });
         TextShowLayout.CallBack buttonClick = new TextShowLayout.CallBack() {
-            @Override
-            public void clickRemark(View view) {
-                if (view == layoutCarnum) {
-                }
-            }
-
-            @Override
-            public void clickPhone(View view) {
-
-            }
 
             @Override
             public void clickMap(View view) {

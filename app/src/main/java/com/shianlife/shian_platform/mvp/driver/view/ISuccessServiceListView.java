@@ -11,6 +11,19 @@ import com.shianlife.shian_platform.mvp.driver.bean.SuccessServiceListResultBean
 public interface ISuccessServiceListView {
     Context getContext();
 
+    /**
+     * 获取页大小
+     *
+     * @return
+     */
+    long getPageSize();
+
+    /**
+     * 获取页数量
+     *
+     * @return
+     */
+    long getPageNum();
     void getSuccessServiceListSuccess(SuccessServiceListResultBean result);
 
     void getSuccessServiceListFail(String msg);

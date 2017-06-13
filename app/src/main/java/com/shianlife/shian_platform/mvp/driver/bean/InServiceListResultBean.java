@@ -9,14 +9,32 @@ import java.util.List;
  */
 
 public class InServiceListResultBean extends BaseDataResult {
-    List<InServiceItemData> items;
+    List<InServiceItemData> list;
+    private long pageSize;
+    private long pageNum;
 
-    public List<InServiceItemData> getItems() {
-        return items;
+    public long getPageSize() {
+        return pageSize;
     }
 
-    public void setItems(List<InServiceItemData> items) {
-        this.items = items;
+    public void setPageSize(long pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public long getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(long pageNum) {
+        this.pageNum = pageNum;
+    }
+
+    public List<InServiceItemData> getList() {
+        return list;
+    }
+
+    public void setList(List<InServiceItemData> list) {
+        this.list = list;
     }
 
     public static class InServiceItemData extends BaseDriverOrderResultItemBean{

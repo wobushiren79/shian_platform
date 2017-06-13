@@ -28,6 +28,9 @@ import com.shianlife.shian_platform.common.Constants;
 import com.yongchun.library.view.ImageSelectorActivity;
 
 import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by zm.
@@ -139,6 +142,14 @@ public class AppUtils {
     }
 
 
+    /**
+     * 调用地图导航
+     * @param context
+     * @param startLatLng
+     * @param endLatLng
+     * @param nameStart
+     * @param nameEnd
+     */
     public static void intentOtherMap(Context context, LatLng startLatLng, LatLng endLatLng, String nameStart, String nameEnd) {
         Intent intent = new Intent();
         if (CheckUtils.isInstalled(context, "com.baidu.BaiduMap")) {
@@ -170,5 +181,25 @@ public class AppUtils {
         } else {
             ToastUtils.showToastShort(context, "请先下载百度地图或高德地图");
         }
+    }
+
+
+
+
+
+    /**
+     * 時間戳轉換
+     *
+     * @param time
+     * @return
+     */
+    public static String formatTime(long time) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
+        return format.format(new Date(time));
+    }
+
+    public static String formatTime(long time, String data) {
+        SimpleDateFormat format = new SimpleDateFormat(data, Locale.CHINA);
+        return format.format(new Date(time));
     }
 }

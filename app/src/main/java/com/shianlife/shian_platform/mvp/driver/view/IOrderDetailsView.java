@@ -14,4 +14,6 @@ public interface IOrderDetailsView {
     void getOrderDetailsSuccess(OrderDetailsResultBean result);
 
     void getOrderDetailsFail(String msg);
+
+    long getOrderId();
 }

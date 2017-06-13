@@ -11,6 +11,20 @@ import com.shianlife.shian_platform.mvp.driver.bean.InServiceListResultBean;
 public interface IInServiceListView {
     Context getContext();
 
+    /**
+     * 获取页大小
+     *
+     * @return
+     */
+    long getPageSize();
+
+    /**
+     * 获取页数量
+     *
+     * @return
+     */
+    long getPageNum();
+
     void getInServiceListSuccess(InServiceListResultBean result);
 
     void getInServiceListFail(String msg);

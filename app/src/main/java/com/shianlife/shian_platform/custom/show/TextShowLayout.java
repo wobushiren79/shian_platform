@@ -1,6 +1,7 @@
 package com.shianlife.shian_platform.custom.show;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.Nullable;
 import android.text.TextPaint;
 import android.util.AttributeSet;
@@ -10,6 +11,9 @@ import android.widget.TextView;
 
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.base.BaseLayout;
+import com.shianlife.shian_platform.custom.dialog.TipsDialog;
+import com.shianlife.shian_platform.utils.AppUtils;
+import com.shianlife.shian_platform.utils.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -45,6 +49,7 @@ public class TextShowLayout extends BaseLayout implements ILayoutDataView {
     public static final int REMARK = 4;
 
     private CallBack callBack;
+    private String remark;
 
     public TextShowLayout(Context context, @Nullable AttributeSet attrs) {
         super(context, R.layout.layout_show_text, attrs);
@@ -108,6 +113,24 @@ public class TextShowLayout extends BaseLayout implements ILayoutDataView {
     }
 
     /**
+     * 设置电话
+     *
+     * @param phone
+     */
+    public void setPhone(String phone) {
+        AppUtils.call(ivPhone, phone);
+    }
+
+    /**
+     * 设置备注
+     *
+     * @param remark
+     */
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    /**
      * 设置类型
      *
      * @param state
@@ -137,10 +160,20 @@ public class TextShowLayout extends BaseLayout implements ILayoutDataView {
         if (callBack != null) {
             switch (view.getId()) {
                 case R.id.iv_remark:
-                    callBack.clickRemark(this);
-                    break;
-                case R.id.iv_phone:
-                    callBack.clickPhone(this);
+                    if (remark != null && !remark.isEmpty()) {
+                        TipsDialog tipsDialog = new TipsDialog(getContext());
+                        tipsDialog.setTop(getContext().getString(R.string.driver_order_text_remark));
+                        tipsDialog.setTitle(remark);
+                        tipsDialog.setBottomButton(getContext().getString(R.string.dialog_true_3), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+                        tipsDialog.show();
+                    } else {
+                        ToastUtils.showToastShort(getContext(), getContext().getString(R.string.bug_text_3));
+                    }
                     break;
                 case R.id.iv_map:
                     callBack.clickMap(this);
@@ -150,10 +183,6 @@ public class TextShowLayout extends BaseLayout implements ILayoutDataView {
     }
 
     public interface CallBack {
-        void clickRemark(View view);
-
-        void clickPhone(View view);
-
         void clickMap(View view);
     }
 }

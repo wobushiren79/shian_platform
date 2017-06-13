@@ -20,6 +20,7 @@ public abstract class BaseRCSAdapter<T> extends RecyclerView.Adapter<BaseViewHol
     protected List<T> mDatas = new ArrayList<>();
     protected List<Integer> mListLayoutId = new ArrayList<>();
     protected Context mContext;
+    protected CallBack callBack;
 
     /**
      * 多布局初始化
@@ -52,6 +53,11 @@ public abstract class BaseRCSAdapter<T> extends RecyclerView.Adapter<BaseViewHol
     @Override
     public int getItemCount() {
         return mDatas.size();
+    }
+
+
+    public void setCallBack(CallBack callBack) {
+        this.callBack = callBack;
     }
 
     @Override
@@ -99,4 +105,8 @@ public abstract class BaseRCSAdapter<T> extends RecyclerView.Adapter<BaseViewHol
     public abstract void convert(BaseViewHolder holder, T t, int index);
 
     public abstract void addLayout(List<Integer> mListLayoutId);
+
+    public interface CallBack {
+        void refesh();
+    }
 }

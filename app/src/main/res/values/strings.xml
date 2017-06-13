@@ -38,6 +38,7 @@
     <string name="dialog_true_3">确定</string>
     <string name="dialog_false_3">取消</string>
 
+
     <string name="dialog_true_4">确认</string>
     <string name="dialog_false_4">还未到达</string>
     <string name="dialog_text_1">你已到达预约地，确认后客户将知道你已到达的信息</string>
@@ -86,8 +87,8 @@
     <string name="driver_order_text_details">行驶记录</string>
 
 
-    <string name="driver_order_check_1">还没有定位取车地址</string>
-    <string name="driver_order_check_2">还没有填写当前里程</string>
+    <string name="driver_order_check_1">还没有定位地址</string>
+    <string name="driver_order_check_2">还没有填写里程</string>
     <string name="driver_order_check_3">还没有上传里程图片</string>
 
     <string name="splash_jump">跳过</string>
@@ -131,5 +132,8 @@
 
     <string name="driver_order_accept_fail">接单失败</string>
     <string name="driver_order_accept_success">接单成功</string>
+
+    <string name="driver_order_serviceonoing_success">保存成功</string>
+    <string name="driver_order_serviceonoing_fail">保存失败</string>
 
 </resources>

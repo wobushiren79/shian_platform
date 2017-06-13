@@ -28,16 +28,12 @@ public class InServiceListPresenterImpl implements IInServiceListPresenter {
     @Override
     public void getInServiceListData() {
         InServiceListBean params = new InServiceListBean();
+        params.setPageNum(inServiceListView.getPageNum());
+        params.setPageSize(inServiceListView.getPageSize());
         inServiceListModel.getInServiceListData(inServiceListView.getContext(), params, new OnGetDataListener<InServiceListResultBean>() {
             @Override
             public void getDataSuccess(InServiceListResultBean result) {
-                InServiceListResultBean ceshi = new InServiceListResultBean();
-                List<InServiceListResultBean.InServiceItemData> ceshiList = new ArrayList<InServiceListResultBean.InServiceItemData>();
-                for (int i = 0; i < 100; i++) {
-                    ceshiList.add(new InServiceListResultBean.InServiceItemData());
-                }
-                ceshi.setItems(ceshiList);
-                inServiceListView.getInServiceListSuccess(ceshi);
+                inServiceListView.getInServiceListSuccess(result);
             }
 
             @Override

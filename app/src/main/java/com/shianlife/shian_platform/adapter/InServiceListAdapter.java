@@ -8,26 +8,16 @@ import android.widget.TextView;
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.adapter.base.BaseRCSAdapter;
 import com.shianlife.shian_platform.adapter.base.BaseViewHolder;
+import com.shianlife.shian_platform.appenum.DriverStateEnum;
 import com.shianlife.shian_platform.custom.dialog.DriverOrderDataDialog;
 import com.shianlife.shian_platform.custom.dialog.TipsDialog;
 import com.shianlife.shian_platform.custom.show.TextShowLayout;
-import com.shianlife.shian_platform.mvp.driver.bean.ArriveDestinationResultBean;
-import com.shianlife.shian_platform.mvp.driver.bean.GetOnCarResultBean;
 import com.shianlife.shian_platform.mvp.driver.bean.InServiceListResultBean;
-import com.shianlife.shian_platform.mvp.driver.bean.ReturnCarResultBean;
-import com.shianlife.shian_platform.mvp.driver.bean.TakePersonResultBean;
-import com.shianlife.shian_platform.mvp.driver.presenter.IArriveDestinationPresenter;
-import com.shianlife.shian_platform.mvp.driver.presenter.IGetOnCarPresenter;
-import com.shianlife.shian_platform.mvp.driver.presenter.IReturnCarPresenter;
-import com.shianlife.shian_platform.mvp.driver.presenter.ITakePersonPresenter;
-import com.shianlife.shian_platform.mvp.driver.presenter.impl.ArriveDestinationPresenterImpl;
-import com.shianlife.shian_platform.mvp.driver.presenter.impl.GetOnCarPresenterImpl;
-import com.shianlife.shian_platform.mvp.driver.presenter.impl.ReturnCarPresenterImpl;
-import com.shianlife.shian_platform.mvp.driver.presenter.impl.TakePersonPresenterImpl;
-import com.shianlife.shian_platform.mvp.driver.view.IArriveDestinationView;
-import com.shianlife.shian_platform.mvp.driver.view.IGetOnCarView;
-import com.shianlife.shian_platform.mvp.driver.view.IReturnCarView;
-import com.shianlife.shian_platform.mvp.driver.view.ITakePersonView;
+import com.shianlife.shian_platform.mvp.driver.bean.ServiceOngoingBean;
+import com.shianlife.shian_platform.mvp.driver.bean.ServiceOngoingResultBean;
+import com.shianlife.shian_platform.mvp.driver.presenter.IServiceOngoingPresenter;
+import com.shianlife.shian_platform.mvp.driver.presenter.impl.ServiceOngoingPresenterImpl;
+import com.shianlife.shian_platform.mvp.driver.view.IServiceOngoingRequestView;
 import com.shianlife.shian_platform.ui.activity.MapFindLocationActivity;
 import com.shianlife.shian_platform.utils.IntentUtils;
 import com.shianlife.shian_platform.utils.ToastUtils;
@@ -38,7 +28,7 @@ import java.util.List;
  * Created by zm.
  */
 
-public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean.InServiceItemData> implements ITakePersonView, IGetOnCarView, IArriveDestinationView, IReturnCarView {
+public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean.InServiceItemData> implements IServiceOngoingRequestView {
 
     //接人
     private final int LAYOUT_TAKEPERSON = 0;
@@ -48,12 +38,10 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
     private final int LAYOUT_INCAR = 2;
     //到达
     private final int LAYOUT_ARRIVE = 3;
+    //错误布局
+    private final int LAYOUT_ERROR = 4;
 
-
-    private ITakePersonPresenter takePersonPresenter;
-    private IGetOnCarPresenter getOnCarPresenter;
-    private IArriveDestinationPresenter arriveDestinationPresenter;
-    private IReturnCarPresenter returnCarPresenter;
+    private IServiceOngoingPresenter serviceOngoingPresenter;
 
     /**
      * 多布局初始化
@@ -62,10 +50,16 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
      */
     public InServiceListAdapter(Context context) {
         super(context);
-        takePersonPresenter = new TakePersonPresenterImpl(this);
-        getOnCarPresenter = new GetOnCarPresenterImpl(this);
-        arriveDestinationPresenter = new ArriveDestinationPresenterImpl(this);
-        returnCarPresenter = new ReturnCarPresenterImpl(this);
+        serviceOngoingPresenter = new ServiceOngoingPresenterImpl(this);
+    }
+
+    @Override
+    public void addLayout(List<Integer> mListLayoutId) {
+        mListLayoutId.add(R.layout.layout_driver_order_inservice_item_takeperson);
+        mListLayoutId.add(R.layout.layout_driver_order_inservice_item_waitgocar);
+        mListLayoutId.add(R.layout.layout_driver_order_inservice_item_incar);
+        mListLayoutId.add(R.layout.layout_driver_order_inservice_item_arrive);
+        mListLayoutId.add(R.layout.layout_driver_order_waitservice_item_error);
     }
 
     @Override
@@ -78,6 +72,8 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
             setLayoutDataInCar(holder, inServiceItemData, index);
         } else if (getItemViewType(index) == LAYOUT_ARRIVE) {
             setLayoutDataArrive(holder, inServiceItemData, index);
+        } else if (getItemViewType(index) == LAYOUT_ERROR) {
+
         }
     }
 
@@ -88,14 +84,26 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
      * @param inServiceItemData
      * @param index
      */
-    private void setLayoutDataTakePerson(BaseViewHolder holder, InServiceListResultBean.InServiceItemData inServiceItemData, int index) {
+    private void setLayoutDataTakePerson(BaseViewHolder holder, final InServiceListResultBean.InServiceItemData inServiceItemData, int index) {
         final TextShowLayout layoutCarnum = holder.getView(R.id.layout_carnum);
-        TextShowLayout layoutPersonnum = holder.getView(R.id.layout_personnum);
-        TextShowLayout layoutTime = holder.getView(R.id.layout_time);
-        TextShowLayout layoutCustomer = holder.getView(R.id.layout_customer);
+        final TextShowLayout layoutPersonnum = holder.getView(R.id.layout_personnum);
+        final TextShowLayout layoutTime = holder.getView(R.id.layout_time);
+        final TextShowLayout layoutCustomer = holder.getView(R.id.layout_customer);
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
         TextView tvGo = holder.getView(R.id.tv_go);
+
+        layoutCarnum.setContent(inServiceItemData.getCarNum());
+        layoutCarnum.setContentBold();
+        layoutCarnum.setStateText(DriverStateEnum.callFor.getName());
+        layoutPersonnum.setContent(inServiceItemData.getPersonNum());
+        layoutPersonnum.setRemark(inServiceItemData.getRemark());
+        layoutTime.setContent(inServiceItemData.getGetPersonTime());
+        layoutCustomer.setContent(inServiceItemData.getCustomer());
+        layoutCustomer.setPhone(inServiceItemData.getCustomerPhone());
+        layoutMeetlocation.setContent(inServiceItemData.getSource());
+        layoutFinallocation.setContent(inServiceItemData.getTarget());
+
         tvGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,7 +112,10 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
                 tipsDialog.setBottomButton(getContext().getString(R.string.dialog_true_4), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        takePersonPresenter.takePerson();
+                        ServiceOngoingBean serviceOngoingBean = new ServiceOngoingBean();
+                        serviceOngoingBean.setOrderId(inServiceItemData.getOrderId());
+                        serviceOngoingBean.setServiceStep(inServiceItemData.getOrderState());
+                        serviceOngoingPresenter.saveServiceOngoing(serviceOngoingBean);
                     }
                 });
                 tipsDialog.setTopButton(getContext().getString(R.string.dialog_false_4), new DialogInterface.OnClickListener() {
@@ -117,28 +128,18 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
             }
         });
         TextShowLayout.CallBack buttonClick = new TextShowLayout.CallBack() {
-            @Override
-            public void clickRemark(View view) {
-                if (view == layoutCarnum) {
-                }
-            }
-
-            @Override
-            public void clickPhone(View view) {
-
-            }
 
             @Override
             public void clickMap(View view) {
                 if (view == layoutMeetlocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
-                            .setString(IntentUtils.INTENT_LOCATION, "轿子音乐厅")
+                            .setString(IntentUtils.INTENT_LOCATION, inServiceItemData.getSource())
                             .start();
                 } else if (view == layoutFinallocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
-                            .setString(IntentUtils.INTENT_LOCATION, "轿子音乐厅")
+                            .setString(IntentUtils.INTENT_LOCATION, inServiceItemData.getTarget())
                             .start();
                 }
             }
@@ -155,66 +156,61 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
      * @param inServiceItemData
      * @param index
      */
-    private void setLayoutDataWaitGoCar(BaseViewHolder holder, InServiceListResultBean.InServiceItemData inServiceItemData, int index) {
+    private void setLayoutDataWaitGoCar(BaseViewHolder holder, final InServiceListResultBean.InServiceItemData inServiceItemData, int index) {
         final TextShowLayout layoutCarnum = holder.getView(R.id.layout_carnum);
-        TextShowLayout layoutPersonnum = holder.getView(R.id.layout_personnum);
-        TextShowLayout layoutTime = holder.getView(R.id.layout_time);
-        TextShowLayout layoutCustomer = holder.getView(R.id.layout_customer);
+        final TextShowLayout layoutPersonnum = holder.getView(R.id.layout_personnum);
+        final TextShowLayout layoutTime = holder.getView(R.id.layout_time);
+        final TextShowLayout layoutCustomer = holder.getView(R.id.layout_customer);
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
         TextView tvGo = holder.getView(R.id.tv_go);
+
+        layoutCarnum.setContent(inServiceItemData.getCarNum());
+        layoutCarnum.setContentBold();
+        layoutCarnum.setStateText(DriverStateEnum.waitGoOnCar.getName());
+        layoutPersonnum.setContent(inServiceItemData.getPersonNum());
+        layoutPersonnum.setRemark(inServiceItemData.getRemark());
+        layoutTime.setContent(inServiceItemData.getGetPersonTime());
+        layoutCustomer.setContent(inServiceItemData.getCustomer());
+        layoutCustomer.setPhone(inServiceItemData.getCustomerPhone());
+        layoutMeetlocation.setContent(inServiceItemData.getSource());
+        layoutFinallocation.setContent(inServiceItemData.getTarget());
+
         tvGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DriverOrderDataDialog dataDialog = new DriverOrderDataDialog(getContext(), DriverOrderDataDialog.STYLE_NOPIC);
+                DriverOrderDataDialog dataDialog = new DriverOrderDataDialog(getContext(), DriverOrderDataDialog.STYLE_NOPIC, inServiceItemData);
                 dataDialog.setLocationText(getContext().getString(R.string.driver_order_text_nowlocation));
                 dataDialog.setMileageText(getContext().getString(R.string.driver_order_text_nowmileage));
                 dataDialog.setCallBack(new DriverOrderDataDialog.CallBack() {
                     @Override
-                    public void clickTop(DialogInterface dialog) {
-                        dialog.cancel();
+                    public void getDataSuccess(ServiceOngoingResultBean result) {
+                        if (callBack != null)
+                            callBack.refesh();
                     }
 
                     @Override
-                    public void clickBottom(DialogInterface dialog, String location, String mileage, List<String> fileUrlList) {
-                        if (location == null || location.isEmpty()) {
-                            ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_check_1));
-                            return;
-                        }
-                        if (mileage == null || mileage.isEmpty()) {
-                            ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_check_2));
-                            return;
-                        }
-                        getOnCarPresenter.getOnCar();
-                        dialog.cancel();
+                    public void getDataFail(String msg) {
+
                     }
                 });
                 dataDialog.show();
             }
         });
         TextShowLayout.CallBack buttonClick = new TextShowLayout.CallBack() {
-            @Override
-            public void clickRemark(View view) {
-                if (view == layoutCarnum) {
-                }
-            }
 
-            @Override
-            public void clickPhone(View view) {
-
-            }
 
             @Override
             public void clickMap(View view) {
                 if (view == layoutMeetlocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
-                            .setString(IntentUtils.INTENT_LOCATION, "轿子音乐厅")
+                            .setString(IntentUtils.INTENT_LOCATION, inServiceItemData.getSource())
                             .start();
                 } else if (view == layoutFinallocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
-                            .setString(IntentUtils.INTENT_LOCATION, "轿子音乐厅")
+                            .setString(IntentUtils.INTENT_LOCATION, inServiceItemData.getTarget())
                             .start();
                 }
             }
@@ -231,66 +227,60 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
      * @param inServiceItemData
      * @param index
      */
-    private void setLayoutDataInCar(BaseViewHolder holder, InServiceListResultBean.InServiceItemData inServiceItemData, int index) {
+    private void setLayoutDataInCar(BaseViewHolder holder, final InServiceListResultBean.InServiceItemData inServiceItemData, int index) {
         final TextShowLayout layoutCarnum = holder.getView(R.id.layout_carnum);
-        TextShowLayout layoutPersonnum = holder.getView(R.id.layout_personnum);
-        TextShowLayout layoutTime = holder.getView(R.id.layout_time);
-        TextShowLayout layoutCustomer = holder.getView(R.id.layout_customer);
+        final TextShowLayout layoutPersonnum = holder.getView(R.id.layout_personnum);
+        final TextShowLayout layoutTime = holder.getView(R.id.layout_time);
+        final TextShowLayout layoutCustomer = holder.getView(R.id.layout_customer);
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
         TextView tvGo = holder.getView(R.id.tv_go);
+
+        layoutCarnum.setContent(inServiceItemData.getCarNum());
+        layoutCarnum.setContentBold();
+        layoutCarnum.setStateText(DriverStateEnum.alreadyGoOnCar.getName());
+        layoutPersonnum.setContent(inServiceItemData.getPersonNum());
+        layoutPersonnum.setRemark(inServiceItemData.getRemark());
+        layoutTime.setContent(inServiceItemData.getGetPersonTime());
+        layoutCustomer.setContent(inServiceItemData.getCustomer());
+        layoutCustomer.setPhone(inServiceItemData.getCustomerPhone());
+        layoutMeetlocation.setContent(inServiceItemData.getSource());
+        layoutFinallocation.setContent(inServiceItemData.getTarget());
         tvGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DriverOrderDataDialog dataDialog = new DriverOrderDataDialog(getContext(), DriverOrderDataDialog.STYLE_NOPIC);
+                DriverOrderDataDialog dataDialog = new DriverOrderDataDialog(getContext(), DriverOrderDataDialog.STYLE_NOPIC, inServiceItemData);
                 dataDialog.setLocationText(getContext().getString(R.string.driver_order_text_arrive_location));
                 dataDialog.setMileageText(getContext().getString(R.string.driver_order_text_arrive_mileage));
                 dataDialog.setCallBack(new DriverOrderDataDialog.CallBack() {
                     @Override
-                    public void clickTop(DialogInterface dialog) {
-                        dialog.cancel();
+                    public void getDataSuccess(ServiceOngoingResultBean result) {
+                        if (callBack != null)
+                            callBack.refesh();
                     }
 
                     @Override
-                    public void clickBottom(DialogInterface dialog, String location, String mileage, List<String> fileUrlList) {
-                        if (location == null || location.isEmpty()) {
-                            ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_check_1));
-                            return;
-                        }
-                        if (mileage == null || mileage.isEmpty()) {
-                            ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_check_2));
-                            return;
-                        }
-                        arriveDestinationPresenter.arriveDestination();
-                        dialog.cancel();
+                    public void getDataFail(String msg) {
+
                     }
                 });
                 dataDialog.show();
             }
         });
         TextShowLayout.CallBack buttonClick = new TextShowLayout.CallBack() {
-            @Override
-            public void clickRemark(View view) {
-                if (view == layoutCarnum) {
-                }
-            }
 
-            @Override
-            public void clickPhone(View view) {
-
-            }
 
             @Override
             public void clickMap(View view) {
                 if (view == layoutMeetlocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
-                            .setString(IntentUtils.INTENT_LOCATION, "轿子音乐厅")
+                            .setString(IntentUtils.INTENT_LOCATION, inServiceItemData.getSource())
                             .start();
                 } else if (view == layoutFinallocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
-                            .setString(IntentUtils.INTENT_LOCATION, "轿子音乐厅")
+                            .setString(IntentUtils.INTENT_LOCATION, inServiceItemData.getTarget())
                             .start();
                 }
             }
@@ -307,71 +297,61 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
      * @param inServiceItemData
      * @param index
      */
-    private void setLayoutDataArrive(BaseViewHolder holder, InServiceListResultBean.InServiceItemData inServiceItemData, int index) {
+    private void setLayoutDataArrive(BaseViewHolder holder, final InServiceListResultBean.InServiceItemData inServiceItemData, int index) {
         final TextShowLayout layoutCarnum = holder.getView(R.id.layout_carnum);
-        TextShowLayout layoutPersonnum = holder.getView(R.id.layout_personnum);
-        TextShowLayout layoutTime = holder.getView(R.id.layout_time);
-        TextShowLayout layoutCustomer = holder.getView(R.id.layout_customer);
+        final TextShowLayout layoutPersonnum = holder.getView(R.id.layout_personnum);
+        final TextShowLayout layoutTime = holder.getView(R.id.layout_time);
+        final TextShowLayout layoutCustomer = holder.getView(R.id.layout_customer);
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
         TextView tvGo = holder.getView(R.id.tv_go);
+
+        layoutCarnum.setContent(inServiceItemData.getCarNum());
+        layoutCarnum.setContentBold();
+        layoutCarnum.setStateText(DriverStateEnum.deliverd.getName());
+        layoutPersonnum.setContent(inServiceItemData.getPersonNum());
+        layoutPersonnum.setRemark(inServiceItemData.getRemark());
+        layoutTime.setContent(inServiceItemData.getGetPersonTime());
+        layoutCustomer.setContent(inServiceItemData.getCustomer());
+        layoutCustomer.setPhone(inServiceItemData.getCustomerPhone());
+        layoutMeetlocation.setContent(inServiceItemData.getSource());
+        layoutFinallocation.setContent(inServiceItemData.getTarget());
         tvGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DriverOrderDataDialog dataDialog = new DriverOrderDataDialog(getContext(), DriverOrderDataDialog.STYLE_PIC);
+                DriverOrderDataDialog dataDialog = new DriverOrderDataDialog(getContext(), DriverOrderDataDialog.STYLE_PIC, inServiceItemData);
                 dataDialog.setLocationText(getContext().getString(R.string.driver_order_text_back_location));
                 dataDialog.setMileageText(getContext().getString(R.string.driver_order_text_back_mileage));
                 dataDialog.setPhoteText(getContext().getString(R.string.driver_order_text_mileagephoto));
                 dataDialog.setCallBack(new DriverOrderDataDialog.CallBack() {
                     @Override
-                    public void clickTop(DialogInterface dialog) {
-                        dialog.cancel();
+                    public void getDataSuccess(ServiceOngoingResultBean result) {
+                        if (callBack != null)
+                            callBack.refesh();
                     }
 
                     @Override
-                    public void clickBottom(DialogInterface dialog, String location, String mileage, List<String> fileUrlList) {
-                        if (location == null || location.isEmpty()) {
-                            ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_check_1));
-                            return;
-                        }
-                        if (mileage == null || mileage.isEmpty()) {
-                            ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_check_2));
-                            return;
-                        }
-                        if (fileUrlList == null || fileUrlList.size() == 0) {
-                            ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_check_3));
-                            return;
-                        }
-                        returnCarPresenter.returnCar();
-                        dialog.cancel();
+                    public void getDataFail(String msg) {
+
                     }
                 });
                 dataDialog.show();
             }
         });
         TextShowLayout.CallBack buttonClick = new TextShowLayout.CallBack() {
-            @Override
-            public void clickRemark(View view) {
-                if (view == layoutCarnum) {
-                }
-            }
 
-            @Override
-            public void clickPhone(View view) {
-
-            }
 
             @Override
             public void clickMap(View view) {
                 if (view == layoutMeetlocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
-                            .setString(IntentUtils.INTENT_LOCATION, "轿子音乐厅")
+                            .setString(IntentUtils.INTENT_LOCATION, inServiceItemData.getSource())
                             .start();
                 } else if (view == layoutFinallocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
-                            .setString(IntentUtils.INTENT_LOCATION, "轿子音乐厅")
+                            .setString(IntentUtils.INTENT_LOCATION, inServiceItemData.getTarget())
                             .start();
                 }
             }
@@ -383,26 +363,19 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
 
 
     @Override
-    public void addLayout(List<Integer> mListLayoutId) {
-        mListLayoutId.add(R.layout.layout_driver_order_inservice_item_takeperson);
-        mListLayoutId.add(R.layout.layout_driver_order_inservice_item_waitgocar);
-        mListLayoutId.add(R.layout.layout_driver_order_inservice_item_incar);
-        mListLayoutId.add(R.layout.layout_driver_order_inservice_item_arrive);
-    }
-
-    @Override
     public int getItemViewType(int position) {
         InServiceListResultBean.InServiceItemData inServiceItemData = mDatas.get(position);
-        if (position % 4 == 0) {
+        if (inServiceItemData.getOrderState() == DriverStateEnum.callFor.getCode()) {
             return LAYOUT_TAKEPERSON;
-        } else if (position % 4 == 1) {
+        } else if (inServiceItemData.getOrderState() == DriverStateEnum.waitGoOnCar.getCode()) {
             return LAYOUT_WAITGOCAR;
-        } else if (position % 4 == 2) {
+        } else if (inServiceItemData.getOrderState() == DriverStateEnum.alreadyGoOnCar.getCode()) {
             return LAYOUT_INCAR;
-        } else if (position % 4 == 3) {
+        } else if (inServiceItemData.getOrderState() == DriverStateEnum.deliverd.getCode()) {
             return LAYOUT_ARRIVE;
+        } else {
+            return LAYOUT_ERROR;
         }
-        return LAYOUT_TAKEPERSON;
     }
 
 
@@ -410,44 +383,17 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
         return mContext;
     }
 
-
     @Override
-    public void takePersonSuccess(TakePersonResultBean result) {
-        ToastUtils.showToastShort(getContext(), "test");
+    public void saveServiceOngoingSuccess(ServiceOngoingResultBean result) {
+        if (callBack != null)
+            callBack.refesh();
+        ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_serviceonoing_success));
     }
 
     @Override
-    public void takePersonFail(String msg) {
-
+    public void saveServiceOngoingFail(String msg) {
+        ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_serviceonoing_fail));
     }
 
-    @Override
-    public void getOnCarSuccess(GetOnCarResultBean result) {
-        ToastUtils.showToastShort(getContext(), "test");
-    }
 
-    @Override
-    public void getOnCarFail(String msg) {
-
-    }
-
-    @Override
-    public void arriveDestinationSuccess(ArriveDestinationResultBean result) {
-        ToastUtils.showToastShort(getContext(), "test");
-    }
-
-    @Override
-    public void arriveDestinationFail(String msg) {
-
-    }
-
-    @Override
-    public void returnCarSuccess(ReturnCarResultBean result) {
-        ToastUtils.showToastShort(getContext(), "test");
-    }
-
-    @Override
-    public void returnCarFail(String msg) {
-
-    }
 }

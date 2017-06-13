@@ -17,7 +17,7 @@ public class BaseDriverOrderResultItemBean extends BaseDataResult {
     private String source;//接人地
     private String target;//目的地
     private String remark;//备注
-
+    private String takeCarLocation;//取车地
     /**
      * 出发地_经度
      */
@@ -37,7 +37,39 @@ public class BaseDriverOrderResultItemBean extends BaseDataResult {
      * 目的地_维度
      */
     private String targetLatitude;
+    /**
+     * 取车地_经度
+     */
+    private String takeCarLocationLongitude;
 
+    /**
+     * 取车地_维度
+     */
+    private String takeCarLocationLatitude;
+
+    public String getTakeCarLocation() {
+        return takeCarLocation;
+    }
+
+    public void setTakeCarLocation(String takeCarLocation) {
+        this.takeCarLocation = takeCarLocation;
+    }
+
+    public String getTakeCarLocationLongitude() {
+        return takeCarLocationLongitude;
+    }
+
+    public void setTakeCarLocationLongitude(String takeCarLocationLongitude) {
+        this.takeCarLocationLongitude = takeCarLocationLongitude;
+    }
+
+    public String getTakeCarLocationLatitude() {
+        return takeCarLocationLatitude;
+    }
+
+    public void setTakeCarLocationLatitude(String takeCarLocationLatitude) {
+        this.takeCarLocationLatitude = takeCarLocationLatitude;
+    }
 
     public String getCustomer() {
         return customer;

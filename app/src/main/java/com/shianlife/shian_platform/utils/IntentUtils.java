@@ -18,11 +18,13 @@ public class IntentUtils {
     public static final String INTENT_APPUPDATE = "INTENT_APPUPDATE";//APP更新
     public static final String INTENT_ISCOLLECTION = "INTENT_ISCOLLECTION";
     public static final String INTENT_SHAREDATA = "INTENT_SHAREDATA";
-    public static final String INTENT_ADEVERT="INTENT_ADEVERT";//廣告跳轉
+    public static final String INTENT_ADEVERT = "INTENT_ADEVERT";//廣告跳轉
 
-    public static final String INTENT_LOCATION="INTENT_LOCATION";//需要查詢地址
-    public static final String INTENT_LOCATION_LONGITUDE="INTENT_LOCATION_LONGITUDE";//经度
-    public static final String INTENT_LOCATION_LATITUDE="INTENT_LOCATION_LATITUDE";//纬度
+    public static final String INTENT_LOCATION = "INTENT_LOCATION";//需要查詢地址
+    public static final String INTENT_LOCATION_LONGITUDE = "INTENT_LOCATION_LONGITUDE";//经度
+    public static final String INTENT_LOCATION_LATITUDE = "INTENT_LOCATION_LATITUDE";//纬度
+
+    public static final String INTENT_ORDERID = "INTENT_ORDERID";//订单ID
 
     public static class Build {
         Context context;
@@ -39,6 +41,11 @@ public class IntentUtils {
         }
 
         public Build setInt(String name, int content) {
+            intent.putExtra(name, content);
+            return this;
+        }
+
+        public Build setLong(String name, long content) {
             intent.putExtra(name, content);
             return this;
         }
