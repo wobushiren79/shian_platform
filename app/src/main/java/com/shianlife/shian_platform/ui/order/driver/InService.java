@@ -52,6 +52,7 @@ public class InService extends BaseDriverLayout implements IInServiceListView,In
             }
         }, 100);
         mListAdapter = new InServiceListAdapter(getContext());
+        mListAdapter.setCallBack(this);
         rcContent.setLayoutManager(new LinearLayoutManager(getContext()));
         rcContent.setAdapter(mListAdapter);
     }
@@ -60,7 +61,7 @@ public class InService extends BaseDriverLayout implements IInServiceListView,In
     protected void initData() {
         pageSize = 10;
         pageNum = 1;
-
+        ptrLayout.autoRefresh();
         inServiceListPresenter = new InServiceListPresenterImpl(this);
         inServiceListPresenter.getInServiceListData();
     }

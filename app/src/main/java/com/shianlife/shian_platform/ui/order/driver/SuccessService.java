@@ -23,7 +23,7 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
  * Created by zm.
  */
 
-public class SuccessService extends BaseDriverLayout implements ISuccessServiceListView {
+public class SuccessService extends BaseDriverLayout implements ISuccessServiceListView, SuccessServiceListAdapter.CallBack {
     @BindView(R.id.rc_content)
     RecyclerView rcContent;
     @BindView(R.id.ptr_layout)
@@ -52,6 +52,7 @@ public class SuccessService extends BaseDriverLayout implements ISuccessServiceL
             }
         }, 100);
         mListAdapter = new SuccessServiceListAdapter(getContext());
+        mListAdapter.setCallBack(this);
         rcContent.setLayoutManager(new LinearLayoutManager(getContext()));
         rcContent.setAdapter(mListAdapter);
     }
@@ -60,13 +61,13 @@ public class SuccessService extends BaseDriverLayout implements ISuccessServiceL
     protected void initData() {
         pageSize = 10;
         pageNum = 1;
-
+        ptrLayout.autoRefresh();
         successServiceListPresenter = new SuccessServiceListPresenterImpl(this);
         successServiceListPresenter.getSuccessServiceListData();
     }
 
     @Override
-    protected void refesh() {
+    public void refesh() {
         pageNum = 1;
         successServiceListPresenter.getSuccessServiceListData();
     }

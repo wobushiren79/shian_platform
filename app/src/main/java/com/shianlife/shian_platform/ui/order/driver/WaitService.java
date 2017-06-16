@@ -54,6 +54,7 @@ public class WaitService extends BaseDriverLayout implements IWaitServiceListVie
             }
         }, 100);
         mListAdapter = new WaitServiceListAdapter(getContext());
+        mListAdapter.setCallBack(this);
         rcContent.setLayoutManager(new LinearLayoutManager(getContext()));
         rcContent.setAdapter(mListAdapter);
     }
@@ -62,8 +63,8 @@ public class WaitService extends BaseDriverLayout implements IWaitServiceListVie
     protected void initData() {
         pageSize = 10;
         pageNum = 1;
-
         mWaitServiceListPresenter = new WaitServiceListPresenterImpl(this);
+        ptrLayout.autoRefresh();
         mWaitServiceListPresenter.getWaitServiceListData();
     }
 

@@ -64,7 +64,7 @@ public class SuccessServiceListAdapter extends BaseRCSAdapter<SuccessServiceList
 
         layoutCarnum.setContent(successServiceItemData.getCarNum());
         layoutCarnum.setContentBold();
-        layoutCarnum.setStateText(DriverStateEnum.callFor.getName());
+        layoutCarnum.setStateText(DriverStateEnum.successService.getName());
         layoutPersonnum.setContent(successServiceItemData.getPersonNum());
         layoutPersonnum.setRemark(successServiceItemData.getRemark());
         layoutTime.setContent(successServiceItemData.getGetPersonTime());

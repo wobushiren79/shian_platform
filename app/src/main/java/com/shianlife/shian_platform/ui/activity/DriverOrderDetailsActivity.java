@@ -70,11 +70,7 @@ public class DriverOrderDetailsActivity extends BaseActivity implements IOrderDe
                 if (itemData.getAddress() != null)
                     location = itemData.getAddress();
                 if (itemData.getCreatedAt() != null)
-                    try {
-                        time = AppUtils.formatTime(Long.valueOf(itemData.getCreatedAt()));
-                    } catch (Exception e) {
-                        time = "";
-                    }
+                    time = itemData.getCreatedAt();
                 if (itemData.getKm() != null)
                     km = itemData.getKm();
                 if (itemData.getFiles() != null)

@@ -34,6 +34,13 @@ public class DetailsItemPicLayout extends BaseLayout {
         this.title = title;
         tvTitle.setText(title);
         urls = url.split(",");
+        init();
+    }
+
+    private void init() {
+        for (String url : urls) {
+            addPic(url);
+        }
     }
 
     @Override
@@ -43,14 +50,13 @@ public class DetailsItemPicLayout extends BaseLayout {
 
     @Override
     protected void initData() {
-        for (String url : urls) {
-            addPic(url);
-        }
+
     }
 
 
     private void addPic(final String url) {
         ImageView iv = new ImageView(getContext());
+        iv.setScaleType(ImageView.ScaleType.FIT_CENTER);
         iv.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +66,6 @@ public class DetailsItemPicLayout extends BaseLayout {
             }
         });
         llContent.addView(iv);
-        AppUtils.loadPic(getContext(), iv, url, R.drawable.zhy_details_def_pic);
+        AppUtils.loadPic(getContext(), iv, Constants.QINIUURL + url, R.drawable.zhy_details_def_pic);
     }
 }
