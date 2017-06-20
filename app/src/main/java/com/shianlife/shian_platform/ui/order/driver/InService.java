@@ -61,7 +61,7 @@ public class InService extends BaseDriverLayout implements IInServiceListView,In
     protected void initData() {
         pageSize = 10;
         pageNum = 1;
-        ptrLayout.autoRefresh();
+
         inServiceListPresenter = new InServiceListPresenterImpl(this);
         inServiceListPresenter.getInServiceListData();
     }

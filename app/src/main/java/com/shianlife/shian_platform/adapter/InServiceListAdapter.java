@@ -91,7 +91,9 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
         final TextShowLayout layoutCustomer = holder.getView(R.id.layout_customer);
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
+        final TextShowLayout layoutResaon = holder.getView(R.id.layout_resaon);
         TextView tvGo = holder.getView(R.id.tv_go);
+        layoutResaon.setContent(inServiceItemData.getReason());
 
         layoutCarnum.setContent(inServiceItemData.getCarNum());
         layoutCarnum.setContentBold();
@@ -163,7 +165,9 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
         final TextShowLayout layoutCustomer = holder.getView(R.id.layout_customer);
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
+        final TextShowLayout layoutResaon = holder.getView(R.id.layout_resaon);
         TextView tvGo = holder.getView(R.id.tv_go);
+        layoutResaon.setContent(inServiceItemData.getReason());
 
         layoutCarnum.setContent(inServiceItemData.getCarNum());
         layoutCarnum.setContentBold();
@@ -234,7 +238,9 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
         final TextShowLayout layoutCustomer = holder.getView(R.id.layout_customer);
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
+        final TextShowLayout layoutResaon = holder.getView(R.id.layout_resaon);
         TextView tvGo = holder.getView(R.id.tv_go);
+        layoutResaon.setContent(inServiceItemData.getReason());
 
         layoutCarnum.setContent(inServiceItemData.getCarNum());
         layoutCarnum.setContentBold();
@@ -304,7 +310,9 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
         final TextShowLayout layoutCustomer = holder.getView(R.id.layout_customer);
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
+        final TextShowLayout layoutResaon = holder.getView(R.id.layout_resaon);
         TextView tvGo = holder.getView(R.id.tv_go);
+        layoutResaon.setContent(inServiceItemData.getReason());
 
         layoutCarnum.setContent(inServiceItemData.getCarNum());
         layoutCarnum.setContentBold();

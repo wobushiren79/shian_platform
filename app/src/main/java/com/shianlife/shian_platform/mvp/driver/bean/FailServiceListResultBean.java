@@ -9,17 +9,44 @@ import java.util.List;
  */
 
 public class FailServiceListResultBean extends BaseDataResult {
-    List<FailServiceItemData> items;
+    List<FailServiceItemData> list;
+    private long pageSize;
+    private long pageNum;
 
-    public List<FailServiceItemData> getItems() {
-        return items;
+    public long getPageSize() {
+        return pageSize;
     }
 
-    public void setItems(List<FailServiceItemData> items) {
-        this.items = items;
+    public void setPageSize(long pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public long getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(long pageNum) {
+        this.pageNum = pageNum;
+    }
+
+    public List<FailServiceItemData> getList() {
+        return list;
+    }
+
+    public void setList(List<FailServiceItemData> list) {
+        this.list = list;
     }
 
     public static class FailServiceItemData extends BaseDriverOrderResultItemBean {
+        //取消订单后是否还车
+        private boolean cancelReturnCar;
 
+        public boolean isCancelReturnCar() {
+            return cancelReturnCar;
+        }
+
+        public void setCancelReturnCar(boolean cancelReturnCar) {
+            this.cancelReturnCar = cancelReturnCar;
+        }
     }
 }

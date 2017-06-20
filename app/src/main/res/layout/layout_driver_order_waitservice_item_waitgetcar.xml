@@ -34,6 +34,18 @@
         android:background="@color/zhy_line_8" />
 
     <com.shianlife.shian_platform.custom.show.TextShowLayout
+        android:id="@+id/layout_resaon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        CustomAttr:layoutType="5"
+        CustomAttr:titleName="@string/driver_order_text_resaon"></com.shianlife.shian_platform.custom.show.TextShowLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1dp"
+        android:background="@color/zhy_line_8" />
+
+    <com.shianlife.shian_platform.custom.show.TextShowLayout
         android:id="@+id/layout_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

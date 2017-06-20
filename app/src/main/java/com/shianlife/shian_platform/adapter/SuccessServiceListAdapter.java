@@ -60,7 +60,9 @@ public class SuccessServiceListAdapter extends BaseRCSAdapter<SuccessServiceList
         final TextShowLayout layoutCustomer = holder.getView(R.id.layout_customer);
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
+        final TextShowLayout layoutResaon = holder.getView(R.id.layout_resaon);
         TextView tvGo = holder.getView(R.id.tv_go);
+        layoutResaon.setContent(successServiceItemData.getReason());
 
         layoutCarnum.setContent(successServiceItemData.getCarNum());
         layoutCarnum.setContentBold();

@@ -96,6 +96,7 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
         final TextShowLayout layoutTime = holder.getView(R.id.layout_time);
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
+        final TextShowLayout layoutResaon = holder.getView(R.id.layout_resaon);
         TextView tvReject = holder.getView(R.id.tv_reject);
         TextView tvAccept = holder.getView(R.id.tv_accept);
 
@@ -107,7 +108,7 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
         layoutTime.setContent(waitServiceItemData.getGetPersonTime());
         layoutMeetlocation.setContent(waitServiceItemData.getSource());
         layoutFinallocation.setContent(waitServiceItemData.getTarget());
-
+        layoutResaon.setContent(waitServiceItemData.getReason());
         tvAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,11 +129,15 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, waitServiceItemData.getSource())
+//                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, waitServiceItemData.getSourceLongitude())
+//                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, waitServiceItemData.getSourceLatitude())
                             .start();
                 } else if (view == layoutFinallocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, waitServiceItemData.getTarget())
+//                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, waitServiceItemData.getTargetLongitude())
+//                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, waitServiceItemData.getTargetLatitude())
                             .start();
                 }
             }
@@ -157,8 +162,9 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
         final TextShowLayout layoutCarlocation = holder.getView(R.id.layout_carlocation);
+        final TextShowLayout layoutResaon = holder.getView(R.id.layout_resaon);
         TextView tvGo = holder.getView(R.id.tv_go);
-
+        layoutResaon.setContent(waitServiceItemData.getReason());
         layoutCarnum.setContent(waitServiceItemData.getCarNum());
         layoutCarnum.setContentBold();
         layoutCarnum.setStateText(DriverStateEnum.waitGetCar.getName());
@@ -201,16 +207,22 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, waitServiceItemData.getSource())
+//                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, waitServiceItemData.getSourceLongitude())
+//                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, waitServiceItemData.getSourceLatitude())
                             .start();
                 } else if (view == layoutFinallocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, waitServiceItemData.getTarget())
+//                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, waitServiceItemData.getTargetLongitude())
+//                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, waitServiceItemData.getTargetLatitude())
                             .start();
                 } else if (view == layoutCarlocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, waitServiceItemData.getTakeCarLocation())
+//                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, waitServiceItemData.getTakeCarLocationLongitude())
+//                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, waitServiceItemData.getTakeCarLocationLatitude())
                             .start();
                 }
             }
@@ -235,8 +247,10 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
         final TextShowLayout layoutCustomer = holder.getView(R.id.layout_customer);
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
+        final TextShowLayout layoutResaon = holder.getView(R.id.layout_resaon);
         TextView tvGo = holder.getView(R.id.tv_go);
 
+        layoutResaon.setContent(waitServiceItemData.getReason());
         layoutCarnum.setContent(waitServiceItemData.getCarNum());
         layoutCarnum.setContentBold();
         layoutCarnum.setStateText(DriverStateEnum.setOff.getName());
@@ -276,11 +290,15 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, waitServiceItemData.getSource())
+//                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, waitServiceItemData.getSourceLongitude())
+//                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, waitServiceItemData.getSourceLatitude())
                             .start();
                 } else if (view == layoutFinallocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, waitServiceItemData.getTarget())
+//                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, waitServiceItemData.getTargetLongitude())
+//                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, waitServiceItemData.getTargetLatitude())
                             .start();
                 }
             }
@@ -313,12 +331,14 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
 
     @Override
     public void rejectOrderSuccess(RejectOrderResultBean result) {
-        ToastUtils.showToastShort(mContext, "此功能还未开放~！");
+        if (callBack != null)
+            callBack.refesh();
+        ToastUtils.showToastShort(mContext, mContext.getString(R.string.driver_order_reject_success));
     }
 
     @Override
     public void rejectOrderFail(String msg) {
-
+        ToastUtils.showToastShort(mContext, mContext.getString(R.string.driver_order_reject_fail));
     }
 
     @Override

@@ -28,16 +28,12 @@ public class FailServiceListPresenterImpl implements IFailServiceListPresenter {
     @Override
     public void getFailServiceListData() {
         FailServiceListBean params = new FailServiceListBean();
+        params.setPageNum(failServiceListView.getPageNum());
+        params.setPageSize(failServiceListView.getPageSize());
         failServiceListModel.getFailServiceListData(failServiceListView.getContext(), params, new OnGetDataListener<FailServiceListResultBean>() {
             @Override
             public void getDataSuccess(FailServiceListResultBean result) {
-                FailServiceListResultBean ceshi = new FailServiceListResultBean();
-                List<FailServiceListResultBean.FailServiceItemData> ceshiList = new ArrayList<>();
-                for (int i = 0; i < 100; i++) {
-                    ceshiList.add(new FailServiceListResultBean.FailServiceItemData());
-                }
-                ceshi.setItems(ceshiList);
-                failServiceListView.getFailServiceListDataSuccess(ceshi);
+                failServiceListView.getFailServiceListDataSuccess(result);
             }
 
             @Override

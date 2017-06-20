@@ -61,7 +61,7 @@ public class SuccessService extends BaseDriverLayout implements ISuccessServiceL
     protected void initData() {
         pageSize = 10;
         pageNum = 1;
-        ptrLayout.autoRefresh();
+
         successServiceListPresenter = new SuccessServiceListPresenterImpl(this);
         successServiceListPresenter.getSuccessServiceListData();
     }

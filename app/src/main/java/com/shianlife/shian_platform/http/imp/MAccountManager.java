@@ -65,7 +65,7 @@ public interface MAccountManager extends HttpManager {
     void getInServiceList(Context context, InServiceListBean params, HttpResponseHandler<InServiceListResultBean> handler);
 
     /**
-     * 获取服务中列表
+     * 获取服务成功列表
      *
      * @param context
      * @param params
@@ -75,7 +75,7 @@ public interface MAccountManager extends HttpManager {
 
 
     /**
-     * 获取服务中列表
+     * 获取服务取消列表
      *
      * @param context
      * @param params

@@ -6,15 +6,17 @@
 
     <ImageView
         android:id="@+id/iv_load"
-        android:layout_width="@dimen/dimen_50dp"
-        android:layout_height="@dimen/dimen_50dp"
+        android:layout_width="@dimen/dimen_35dp"
+        android:layout_height="@dimen/dimen_35dp"
         android:layout_centerInParent="true"
         android:src="@drawable/zhy_ptr_loading" />
 
     <ImageView
         android:id="@+id/iv_rotate"
-        android:layout_width="@dimen/dimen_70dp"
-        android:layout_height="@dimen/dimen_70dp"
+        android:layout_width="@dimen/dimen_50dp"
+        android:layout_height="@dimen/dimen_50dp"
         android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/dimen_12dp"
+        android:layout_marginTop="@dimen/dimen_12dp"
         android:src="@drawable/zhy_ptr_load_rotate" />
 </RelativeLayout>

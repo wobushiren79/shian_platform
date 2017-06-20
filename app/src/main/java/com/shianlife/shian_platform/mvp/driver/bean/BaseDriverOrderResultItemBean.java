@@ -18,6 +18,7 @@ public class BaseDriverOrderResultItemBean extends BaseDataResult {
     private String target;//目的地
     private String remark;//备注
     private String takeCarLocation;//取车地
+    private String reason;//用车目的
     /**
      * 出发地_经度
      */
@@ -181,5 +182,13 @@ public class BaseDriverOrderResultItemBean extends BaseDataResult {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 }

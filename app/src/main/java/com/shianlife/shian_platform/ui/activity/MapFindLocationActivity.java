@@ -80,6 +80,7 @@ public class MapFindLocationActivity extends BaseActivity implements BaiduMap.On
 
 
     private void initMap() {
+        searchLocation = "";
         //去掉百度图标
         View child = mMapView.getChildAt(1);
         if (child != null && (child instanceof ImageView || child instanceof ZoomControls)) {
@@ -101,6 +102,7 @@ public class MapFindLocationActivity extends BaseActivity implements BaiduMap.On
         //在地图上添加Marker，并显示
         mBaiduMap.setOnMarkerClickListener(this);
         listMark.add(mBaiduMap.addOverlay(option));
+
 
         poiSearch.searchInCity((new PoiCitySearchOption())
                 .city(Constants.LOCAL_CITY)
@@ -133,6 +135,8 @@ public class MapFindLocationActivity extends BaseActivity implements BaiduMap.On
         if (poiInfos != null) {
             for (PoiInfo poiInfo : poiInfos) {
                 LatLng point = poiInfo.location;
+                if (point == null)
+                    continue;
                 //构建Marker图标
                 BitmapDescriptor bitmap = BitmapDescriptorFactory
                         .fromResource(R.drawable.zhy_map_point_1);
@@ -176,7 +180,7 @@ public class MapFindLocationActivity extends BaseActivity implements BaiduMap.On
             public void onClick(DialogInterface dialog, int which) {
                 // TODO Auto-generated method stub
                 if (which == 0) {
-                    AppUtils.intentOtherMap(MapFindLocationActivity.this, myLocation, marker.getPosition(),Constants.LOCAL_ADDRESS,searchLocation);
+                    AppUtils.intentOtherMap(MapFindLocationActivity.this, myLocation, marker.getPosition(), Constants.LOCAL_ADDRESS, searchLocation);
                 }
             }
         });

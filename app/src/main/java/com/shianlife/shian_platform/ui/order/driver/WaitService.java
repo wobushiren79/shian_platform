@@ -63,8 +63,8 @@ public class WaitService extends BaseDriverLayout implements IWaitServiceListVie
     protected void initData() {
         pageSize = 10;
         pageNum = 1;
+
         mWaitServiceListPresenter = new WaitServiceListPresenterImpl(this);
-        ptrLayout.autoRefresh();
         mWaitServiceListPresenter.getWaitServiceListData();
     }
 
