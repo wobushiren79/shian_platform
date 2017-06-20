@@ -98,11 +98,15 @@ public class FailServiceListAdapter extends BaseRCSAdapter<FailServiceListResult
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, failServiceItemData.getSource())
+                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, failServiceItemData.getSourceLongitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, failServiceItemData.getSourceLatitude())
                             .start();
                 } else if (view == layoutFinallocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, failServiceItemData.getTarget())
+                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, failServiceItemData.getTargetLongitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, failServiceItemData.getTargetLatitude())
                             .start();
                 }
             }
@@ -164,11 +168,15 @@ public class FailServiceListAdapter extends BaseRCSAdapter<FailServiceListResult
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, failServiceItemData.getSource())
+                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, failServiceItemData.getSourceLongitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, failServiceItemData.getSourceLatitude())
                             .start();
                 } else if (view == layoutFinallocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, failServiceItemData.getTarget())
+                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, failServiceItemData.getTargetLongitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, failServiceItemData.getTargetLatitude())
                             .start();
                 }
             }

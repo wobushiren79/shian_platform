@@ -137,11 +137,15 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, inServiceItemData.getSource())
+                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, inServiceItemData.getSourceLongitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, inServiceItemData.getSourceLatitude())
                             .start();
                 } else if (view == layoutFinallocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, inServiceItemData.getTarget())
+                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, inServiceItemData.getTargetLongitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, inServiceItemData.getTargetLatitude())
                             .start();
                 }
             }
@@ -210,11 +214,15 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, inServiceItemData.getSource())
+                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, inServiceItemData.getSourceLongitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, inServiceItemData.getSourceLatitude())
                             .start();
                 } else if (view == layoutFinallocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, inServiceItemData.getTarget())
+                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, inServiceItemData.getTargetLongitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, inServiceItemData.getTargetLatitude())
                             .start();
                 }
             }
@@ -282,11 +290,15 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, inServiceItemData.getSource())
+                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, inServiceItemData.getSourceLongitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, inServiceItemData.getSourceLatitude())
                             .start();
                 } else if (view == layoutFinallocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, inServiceItemData.getTarget())
+                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, inServiceItemData.getTargetLongitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, inServiceItemData.getTargetLatitude())
                             .start();
                 }
             }
@@ -355,11 +367,15 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, inServiceItemData.getSource())
+                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, inServiceItemData.getSourceLongitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, inServiceItemData.getSourceLatitude())
                             .start();
                 } else if (view == layoutFinallocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, inServiceItemData.getTarget())
+                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, inServiceItemData.getTargetLongitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, inServiceItemData.getTargetLatitude())
                             .start();
                 }
             }

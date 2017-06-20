@@ -93,11 +93,15 @@ public class SuccessServiceListAdapter extends BaseRCSAdapter<SuccessServiceList
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, successServiceItemData.getSource())
+                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, successServiceItemData.getSourceLongitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, successServiceItemData.getSourceLatitude())
                             .start();
                 } else if (view == layoutFinallocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, successServiceItemData.getTarget())
+                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, successServiceItemData.getTargetLongitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, successServiceItemData.getTargetLatitude())
                             .start();
                 }
             }

@@ -129,15 +129,15 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, waitServiceItemData.getSource())
-//                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, waitServiceItemData.getSourceLongitude())
-//                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, waitServiceItemData.getSourceLatitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, waitServiceItemData.getSourceLongitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, waitServiceItemData.getSourceLatitude())
                             .start();
                 } else if (view == layoutFinallocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, waitServiceItemData.getTarget())
-//                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, waitServiceItemData.getTargetLongitude())
-//                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, waitServiceItemData.getTargetLatitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, waitServiceItemData.getTargetLongitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, waitServiceItemData.getTargetLatitude())
                             .start();
                 }
             }
@@ -207,22 +207,22 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, waitServiceItemData.getSource())
-//                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, waitServiceItemData.getSourceLongitude())
-//                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, waitServiceItemData.getSourceLatitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, waitServiceItemData.getSourceLongitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, waitServiceItemData.getSourceLatitude())
                             .start();
                 } else if (view == layoutFinallocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, waitServiceItemData.getTarget())
-//                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, waitServiceItemData.getTargetLongitude())
-//                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, waitServiceItemData.getTargetLatitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, waitServiceItemData.getTargetLongitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, waitServiceItemData.getTargetLatitude())
                             .start();
                 } else if (view == layoutCarlocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, waitServiceItemData.getTakeCarLocation())
-//                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, waitServiceItemData.getTakeCarLocationLongitude())
-//                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, waitServiceItemData.getTakeCarLocationLatitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, waitServiceItemData.getTakeCarLocationLongitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, waitServiceItemData.getTakeCarLocationLatitude())
                             .start();
                 }
             }
@@ -290,15 +290,15 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, waitServiceItemData.getSource())
-//                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, waitServiceItemData.getSourceLongitude())
-//                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, waitServiceItemData.getSourceLatitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, waitServiceItemData.getSourceLongitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, waitServiceItemData.getSourceLatitude())
                             .start();
                 } else if (view == layoutFinallocation) {
                     new IntentUtils
                             .Build(getContext(), MapFindLocationActivity.class)
                             .setString(IntentUtils.INTENT_LOCATION, waitServiceItemData.getTarget())
-//                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, waitServiceItemData.getTargetLongitude())
-//                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, waitServiceItemData.getTargetLatitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LONGITUDE, waitServiceItemData.getTargetLongitude())
+                            .setString(IntentUtils.INTENT_LOCATION_LATITUDE, waitServiceItemData.getTargetLatitude())
                             .start();
                 }
             }

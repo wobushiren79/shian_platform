@@ -58,6 +58,9 @@ public class MapFindLocationActivity extends BaseActivity implements BaiduMap.On
     private LatLng myLocation;
     private CustomDialog dialog;
 
+    private String mLongitude;
+    private String mLatitude;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +79,8 @@ public class MapFindLocationActivity extends BaseActivity implements BaiduMap.On
     protected void initData() {
         listMark = new ArrayList<>();
         searchLocation = getIntent().getStringExtra(IntentUtils.INTENT_LOCATION);
+        mLongitude = getIntent().getStringExtra(IntentUtils.INTENT_LOCATION_LONGITUDE);
+        mLatitude = getIntent().getStringExtra(IntentUtils.INTENT_LOCATION_LATITUDE);
     }
 
 
@@ -91,22 +96,25 @@ public class MapFindLocationActivity extends BaseActivity implements BaiduMap.On
         //初始化搜索
         poiSearch = PoiSearch.newInstance();
         poiSearch.setOnGetPoiSearchResultListener(this);
-
-        //构建Marker图标
-        BitmapDescriptor bitmap = BitmapDescriptorFactory.fromResource(R.drawable.zhy_map_point_2);
-        //构建MarkerOption，用于在地图上添加Marker
         myLocation = new LatLng(Constants.LOCAL_latitude, Constants.LOCAL_longitude);
-        OverlayOptions option = new MarkerOptions()
-                .position(myLocation)
-                .icon(bitmap);
-        //在地图上添加Marker，并显示
+        addMarker(myLocation, R.drawable.zhy_map_point_2);
         mBaiduMap.setOnMarkerClickListener(this);
-        listMark.add(mBaiduMap.addOverlay(option));
 
+        if (mLatitude != null && mLongitude != null) {
+            try {
+                LatLng tempLocation = new LatLng(Double.valueOf(mLatitude), Double.valueOf(mLongitude));
+                addMarker(tempLocation, R.drawable.zhy_map_point_1);
+                zoomToSpan(listMark);
+            } catch (Exception e) {
+                Toast.makeText(MapFindLocationActivity.this, "沒有找到位置", Toast.LENGTH_LONG).show();
+                finish();
+            }
+        } else {
+            poiSearch.searchInCity((new PoiCitySearchOption())
+                    .city(Constants.LOCAL_CITY)
+                    .keyword(searchLocation));
+        }
 
-        poiSearch.searchInCity((new PoiCitySearchOption())
-                .city(Constants.LOCAL_CITY)
-                .keyword(searchLocation));
 
         dialog = new CustomDialog(this);
         dialog.show();
@@ -137,16 +145,7 @@ public class MapFindLocationActivity extends BaseActivity implements BaiduMap.On
                 LatLng point = poiInfo.location;
                 if (point == null)
                     continue;
-                //构建Marker图标
-                BitmapDescriptor bitmap = BitmapDescriptorFactory
-                        .fromResource(R.drawable.zhy_map_point_1);
-                //构建MarkerOption，用于在地图上添加Marker
-                OverlayOptions option = new MarkerOptions()
-                        .position(point)
-                        .icon(bitmap);
-                //在地图上添加Marker，并显示
-                listMark.add(mBaiduMap.addOverlay(option));
-
+                addMarker(point, R.drawable.zhy_map_point_1);
             }
             zoomToSpan(listMark);
 //            setCenter(poiInfos.get(0).location.latitude, poiInfos.get(0).location.longitude);
@@ -154,6 +153,20 @@ public class MapFindLocationActivity extends BaseActivity implements BaiduMap.On
             Toast.makeText(MapFindLocationActivity.this, "沒有找到位置", Toast.LENGTH_LONG).show();
             finish();
         }
+    }
+
+
+    //增加点
+    private void addMarker(LatLng point, int drawableId) {
+        //构建Marker图标
+        BitmapDescriptor bitmap = BitmapDescriptorFactory
+                .fromResource(drawableId);
+        //构建MarkerOption，用于在地图上添加Marker
+        OverlayOptions option = new MarkerOptions()
+                .position(point)
+                .icon(bitmap);
+        //在地图上添加Marker，并显示
+        listMark.add(mBaiduMap.addOverlay(option));
     }
 
     @Override
