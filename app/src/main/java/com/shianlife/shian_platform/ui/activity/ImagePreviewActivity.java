@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
 import com.shianlife.shian_platform.R;
+import com.shianlife.shian_platform.appenum.BaseTitleEnum;
 import com.shianlife.shian_platform.base.BaseActivity;
 import com.shianlife.shian_platform.common.PinchImageView;
 import com.shianlife.shian_platform.utils.FilePathUtils;
@@ -44,7 +45,6 @@ public class ImagePreviewActivity extends BaseActivity implements View.OnLongCli
                         mImageView.setImageBitmap(bmp);
                     }
 //                    mImageView.setImageBitmap(bitmap);
-
                     mImageView.setVisibility(View.VISIBLE);
                     break;
                 case 1:
@@ -70,7 +70,7 @@ public class ImagePreviewActivity extends BaseActivity implements View.OnLongCli
 //        mImageView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
         flBase.setBackgroundColor(getResources().getColor(R.color.main_blackground));
         setContentView(mImageView);
-        setTitle("查看图片");
+        setTitle(getString(R.string.title_name_pic), BaseTitleEnum.BACKNORMALTITLE.getTitleType());
         url = getIntent().getStringExtra(IntentUtils.INTENT_URL);
         mHandlerThread = new HandlerThread(getClass().getSimpleName());
         mHandlerThread.start();

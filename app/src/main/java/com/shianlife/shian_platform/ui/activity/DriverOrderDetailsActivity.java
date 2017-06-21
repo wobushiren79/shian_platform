@@ -21,7 +21,7 @@ import com.shianlife.shian_platform.utils.ToastUtils;
 
 import butterknife.BindView;
 
-public class DriverOrderDetailsActivity extends BaseActivity implements IOrderDetailsView {
+public class  DriverOrderDetailsActivity extends BaseActivity implements IOrderDetailsView {
 
     @BindView(R.id.tv_orderid)
     TextView tvOrderid;
@@ -59,8 +59,8 @@ public class DriverOrderDetailsActivity extends BaseActivity implements IOrderDe
     @Override
     public void getOrderDetailsSuccess(OrderDetailsResultBean result) {
 //        addAcceptOrderView("test");
-        if (result.getSysOrderNo() != null && !result.getSysOrderNo().isEmpty())
-            tvOrderid.setText(result.getSysOrderNo());
+        if (result.getOrderNo() != null && !result.getOrderNo().isEmpty())
+            tvOrderid.setText(result.getOrderNo());
         if (result.getOrderDetailsList() != null) {
             for (OrderDetailsResultBean.CarOrderDetail itemData : result.getOrderDetailsList()) {
                 String location = itemData.getAddress();

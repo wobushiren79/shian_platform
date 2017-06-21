@@ -92,6 +92,7 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
         final TextShowLayout layoutResaon = holder.getView(R.id.layout_resaon);
+        final TextShowLayout layoutRemark = holder.getView(R.id.layout_remark);
         TextView tvGo = holder.getView(R.id.tv_go);
         layoutResaon.setContent(inServiceItemData.getReason());
 
@@ -100,6 +101,7 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
         layoutCarnum.setStateText(DriverStateEnum.callFor.getName());
         layoutPersonnum.setContent(inServiceItemData.getPersonNum());
         layoutPersonnum.setRemark(inServiceItemData.getRemark());
+        layoutRemark.setContent(inServiceItemData.getRemark());
         layoutTime.setContent(inServiceItemData.getGetPersonTime());
         layoutCustomer.setContent(inServiceItemData.getCustomer());
         layoutCustomer.setPhone(inServiceItemData.getCustomerPhone());
@@ -170,6 +172,7 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
         final TextShowLayout layoutResaon = holder.getView(R.id.layout_resaon);
+        final TextShowLayout layoutRemark = holder.getView(R.id.layout_remark);
         TextView tvGo = holder.getView(R.id.tv_go);
         layoutResaon.setContent(inServiceItemData.getReason());
 
@@ -178,6 +181,7 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
         layoutCarnum.setStateText(DriverStateEnum.waitGoOnCar.getName());
         layoutPersonnum.setContent(inServiceItemData.getPersonNum());
         layoutPersonnum.setRemark(inServiceItemData.getRemark());
+        layoutRemark.setContent(inServiceItemData.getRemark());
         layoutTime.setContent(inServiceItemData.getGetPersonTime());
         layoutCustomer.setContent(inServiceItemData.getCustomer());
         layoutCustomer.setPhone(inServiceItemData.getCustomerPhone());
@@ -247,6 +251,7 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
         final TextShowLayout layoutResaon = holder.getView(R.id.layout_resaon);
+        final TextShowLayout layoutRemark = holder.getView(R.id.layout_remark);
         TextView tvGo = holder.getView(R.id.tv_go);
         layoutResaon.setContent(inServiceItemData.getReason());
 
@@ -255,6 +260,7 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
         layoutCarnum.setStateText(DriverStateEnum.alreadyGoOnCar.getName());
         layoutPersonnum.setContent(inServiceItemData.getPersonNum());
         layoutPersonnum.setRemark(inServiceItemData.getRemark());
+        layoutRemark.setContent(inServiceItemData.getRemark());
         layoutTime.setContent(inServiceItemData.getGetPersonTime());
         layoutCustomer.setContent(inServiceItemData.getCustomer());
         layoutCustomer.setPhone(inServiceItemData.getCustomerPhone());
@@ -323,6 +329,7 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
         final TextShowLayout layoutResaon = holder.getView(R.id.layout_resaon);
+        final TextShowLayout layoutRemark = holder.getView(R.id.layout_remark);
         TextView tvGo = holder.getView(R.id.tv_go);
         layoutResaon.setContent(inServiceItemData.getReason());
 
@@ -331,6 +338,7 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
         layoutCarnum.setStateText(DriverStateEnum.deliverd.getName());
         layoutPersonnum.setContent(inServiceItemData.getPersonNum());
         layoutPersonnum.setRemark(inServiceItemData.getRemark());
+        layoutRemark.setContent(inServiceItemData.getRemark());
         layoutTime.setContent(inServiceItemData.getGetPersonTime());
         layoutCustomer.setContent(inServiceItemData.getCustomer());
         layoutCustomer.setPhone(inServiceItemData.getCustomerPhone());

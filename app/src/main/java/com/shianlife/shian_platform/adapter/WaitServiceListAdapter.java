@@ -97,6 +97,8 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
         final TextShowLayout layoutResaon = holder.getView(R.id.layout_resaon);
+        final TextShowLayout layoutRemark = holder.getView(R.id.layout_remark);
+
         TextView tvReject = holder.getView(R.id.tv_reject);
         TextView tvAccept = holder.getView(R.id.tv_accept);
 
@@ -105,6 +107,7 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
         layoutCarnum.setStateText(DriverStateEnum.isAttribute.getName());
         layoutPersonnum.setContent(waitServiceItemData.getPersonNum());
         layoutPersonnum.setRemark(waitServiceItemData.getRemark());
+        layoutRemark.setContent(waitServiceItemData.getRemark());
         layoutTime.setContent(waitServiceItemData.getGetPersonTime());
         layoutMeetlocation.setContent(waitServiceItemData.getSource());
         layoutFinallocation.setContent(waitServiceItemData.getTarget());
@@ -121,7 +124,6 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
                 rejectOrderPresenter.rejectOrder(waitServiceItemData.getOrderId());
             }
         });
-
         TextShowLayout.CallBack buttonClick = new TextShowLayout.CallBack() {
             @Override
             public void clickMap(View view) {
@@ -163,6 +165,7 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
         final TextShowLayout layoutCarlocation = holder.getView(R.id.layout_carlocation);
         final TextShowLayout layoutResaon = holder.getView(R.id.layout_resaon);
+        final TextShowLayout layoutRemark = holder.getView(R.id.layout_remark);
         TextView tvGo = holder.getView(R.id.tv_go);
         layoutResaon.setContent(waitServiceItemData.getReason());
         layoutCarnum.setContent(waitServiceItemData.getCarNum());
@@ -170,6 +173,7 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
         layoutCarnum.setStateText(DriverStateEnum.waitGetCar.getName());
         layoutPersonnum.setContent(waitServiceItemData.getPersonNum());
         layoutPersonnum.setRemark(waitServiceItemData.getRemark());
+        layoutRemark.setContent(waitServiceItemData.getRemark());
         layoutTime.setContent(waitServiceItemData.getGetPersonTime());
         layoutCustomer.setContent(waitServiceItemData.getCustomer());
         layoutCustomer.setPhone(waitServiceItemData.getCustomerPhone());
@@ -248,6 +252,7 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
         final TextShowLayout layoutResaon = holder.getView(R.id.layout_resaon);
+        final TextShowLayout layoutRemark = holder.getView(R.id.layout_remark);
         TextView tvGo = holder.getView(R.id.tv_go);
 
         layoutResaon.setContent(waitServiceItemData.getReason());
@@ -256,6 +261,7 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
         layoutCarnum.setStateText(DriverStateEnum.setOff.getName());
         layoutPersonnum.setContent(waitServiceItemData.getPersonNum());
         layoutPersonnum.setRemark(waitServiceItemData.getRemark());
+        layoutRemark.setContent(waitServiceItemData.getRemark());
         layoutTime.setContent(waitServiceItemData.getGetPersonTime());
         layoutCustomer.setContent(waitServiceItemData.getCustomer());
         layoutCustomer.setPhone(waitServiceItemData.getCustomerPhone());

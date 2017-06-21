@@ -132,6 +132,7 @@ public class HttpRequestExecutor {
         Map<String, String> header = setHeader(cookie);
         requestPost(context, method, data, params, responseHandler, isShowDialog, baseUrl, header);
     }
+
     public <T> void requestCemeteryPost(final Context context,
                                         final String method,
                                         final Class<T> data,
@@ -246,6 +247,9 @@ public class HttpRequestExecutor {
         if (response != null && (!((Activity) context).isFinishing()) && error != null) {
             if (showToast(context, error)) {
                 response.onError(error);
+                if (error.contains("405") || error.contains("503")) {
+                    jumpLogin(context);
+                }
             }
         }
     }
@@ -289,9 +293,7 @@ public class HttpRequestExecutor {
                         responseHandler.onSuccess(result);
                     }
                 } else if ("1009".equals(code)) {
-                    Intent intent = new Intent(context, LoginActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(intent);
+                    jumpLogin(context);
                 } else {
                     onErrorCallBack(responseHandler, errorMsg, context);
                 }
@@ -299,6 +301,12 @@ public class HttpRequestExecutor {
                 onErrorCallBack(responseHandler, "", context);
             }
         }
+    }
+
+    private void jumpLogin(Context context) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
     }
 
 }

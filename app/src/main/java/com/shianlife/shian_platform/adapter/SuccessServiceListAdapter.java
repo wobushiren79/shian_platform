@@ -61,6 +61,7 @@ public class SuccessServiceListAdapter extends BaseRCSAdapter<SuccessServiceList
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
         final TextShowLayout layoutResaon = holder.getView(R.id.layout_resaon);
+        final TextShowLayout layoutRemark = holder.getView(R.id.layout_remark);
         TextView tvGo = holder.getView(R.id.tv_go);
         layoutResaon.setContent(successServiceItemData.getReason());
 
@@ -69,6 +70,7 @@ public class SuccessServiceListAdapter extends BaseRCSAdapter<SuccessServiceList
         layoutCarnum.setStateText(DriverStateEnum.successService.getName());
         layoutPersonnum.setContent(successServiceItemData.getPersonNum());
         layoutPersonnum.setRemark(successServiceItemData.getRemark());
+        layoutRemark.setContent(successServiceItemData.getRemark());
         layoutTime.setContent(successServiceItemData.getGetPersonTime());
         layoutCustomer.setContent(successServiceItemData.getCustomer());
         layoutCustomer.setPhone(successServiceItemData.getCustomerPhone());

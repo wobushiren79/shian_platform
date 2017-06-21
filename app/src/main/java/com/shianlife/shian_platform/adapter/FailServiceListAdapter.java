@@ -66,14 +66,17 @@ public class FailServiceListAdapter extends BaseRCSAdapter<FailServiceListResult
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
         final TextShowLayout layoutResaon = holder.getView(R.id.layout_resaon);
+        final TextShowLayout layoutRemark = holder.getView(R.id.layout_remark);
+
         TextView tvGo = holder.getView(R.id.tv_go);
 
         layoutResaon.setContent(failServiceItemData.getReason());
         layoutCarnum.setContent(failServiceItemData.getCarNum());
         layoutCarnum.setContentBold();
-        layoutCarnum.setStateText(DriverStateEnum.successService.getName());
+        layoutCarnum.setStateText(DriverStateEnum.cancel.getName());
         layoutPersonnum.setContent(failServiceItemData.getPersonNum());
         layoutPersonnum.setRemark(failServiceItemData.getRemark());
+        layoutRemark.setContent(failServiceItemData.getRemark());
         layoutTime.setContent(failServiceItemData.getGetPersonTime());
         layoutCustomer.setContent(failServiceItemData.getCustomer());
         layoutCustomer.setPhone(failServiceItemData.getCustomerPhone());
@@ -124,6 +127,7 @@ public class FailServiceListAdapter extends BaseRCSAdapter<FailServiceListResult
         final TextShowLayout layoutMeetlocation = holder.getView(R.id.layout_meetlocation);
         final TextShowLayout layoutFinallocation = holder.getView(R.id.layout_finallocation);
         final TextShowLayout layoutResaon = holder.getView(R.id.layout_resaon);
+        final TextShowLayout layoutRemark = holder.getView(R.id.layout_remark);
         TextView tvGo = holder.getView(R.id.tv_go);
         layoutResaon.setContent(failServiceItemData.getReason());
 
@@ -132,6 +136,7 @@ public class FailServiceListAdapter extends BaseRCSAdapter<FailServiceListResult
         layoutCarnum.setStateText(DriverStateEnum.deliverd.getName());
         layoutPersonnum.setContent(failServiceItemData.getPersonNum());
         layoutPersonnum.setRemark(failServiceItemData.getRemark());
+        layoutRemark.setContent(failServiceItemData.getRemark());
         layoutTime.setContent(failServiceItemData.getGetPersonTime());
         layoutCustomer.setContent(failServiceItemData.getCustomer());
         layoutCustomer.setPhone(failServiceItemData.getCustomerPhone());
