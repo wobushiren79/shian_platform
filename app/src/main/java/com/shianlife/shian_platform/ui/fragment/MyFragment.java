@@ -13,6 +13,7 @@ import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.appenum.FindDataEnum;
 import com.shianlife.shian_platform.appenum.UserCenterEnum;
 import com.shianlife.shian_platform.base.BaseFragment;
+import com.shianlife.shian_platform.common.Constants;
 import com.shianlife.shian_platform.http.base.BaseDataResult;
 import com.shianlife.shian_platform.mvp.main.bean.AppUpDateResultBean;
 import com.shianlife.shian_platform.mvp.main.presenter.IAppUpDatePresenter;
@@ -113,6 +114,12 @@ public class MyFragment extends BaseFragment implements IAppUpDateView {
         }
 
         appUpDatePresenter = new AppUpDatePresenterImpl(this);
+
+        if (Constants.userCemetery.getUserData() != null) {
+            mTVName.setText(Constants.userCemetery.getUserData().getName());
+            mTVPhone.setText(Constants.userCemetery.getUserData().getMobile());
+        }
+
     }
 
     @Override

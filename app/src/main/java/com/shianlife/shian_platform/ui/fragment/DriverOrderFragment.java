@@ -69,7 +69,7 @@ public class DriverOrderFragment extends BaseFragment {
                 DriverOrderListEnum.failservice
         };
 
-        List<View> viewList = new ArrayList<>();
+        final List<View> viewList = new ArrayList<>();
 
         for (int i = 0; i < mDriverOrderListEna.length; i++) {
             BaseDriverLayout baseView = null;
@@ -84,6 +84,17 @@ public class DriverOrderFragment extends BaseFragment {
             } else {
                 baseView = new WaitService(getContext());
             }
+
+            baseView.setCallBack(new BaseDriverLayout.CallBack() {
+                @Override
+                public void refeshAll() {
+                    for (View itemView : viewList) {
+                        BaseDriverLayout driverItem = (BaseDriverLayout) itemView;
+                        driverItem.refesh();
+                    }
+                }
+            });
+
             viewList.add(baseView);
         }
         mDriverPagerAdapter = new DriverOrderViewPagerAdapter(getContext(), viewList);

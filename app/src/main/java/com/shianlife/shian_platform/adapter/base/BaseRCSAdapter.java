@@ -108,5 +108,6 @@ public abstract class BaseRCSAdapter<T> extends RecyclerView.Adapter<BaseViewHol
 
     public interface CallBack {
         void refesh();
+        void refeshAll();
     }
 }

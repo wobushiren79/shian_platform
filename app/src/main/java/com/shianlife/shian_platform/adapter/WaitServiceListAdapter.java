@@ -278,7 +278,7 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
                     @Override
                     public void getDataSuccess(ServiceOngoingResultBean result) {
                         if (callBack != null)
-                            callBack.refesh();
+                            callBack.refeshAll();
                     }
 
                     @Override

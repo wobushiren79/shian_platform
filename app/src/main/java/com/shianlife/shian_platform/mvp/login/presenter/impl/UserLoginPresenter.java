@@ -1,5 +1,6 @@
 package com.shianlife.shian_platform.mvp.login.presenter.impl;
 
+import com.shianlife.shian_platform.common.Constants;
 import com.shianlife.shian_platform.common.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginBean;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginConfig;
@@ -36,6 +37,7 @@ public class UserLoginPresenter implements IUserLoginPresenter {
         params.setUsername(userLoginView.getUserName());
         params.setPassword(userLoginView.getPassWord());
         params.setSystemType("2");
+        params.setChannelId(Constants.ChannelId);
         userLoginModel.loginCemetery(userLoginView.getContext(), params, new OnGetDataListener<UserLoginResultBean>() {
             @Override
             public void getDataSuccess(UserLoginResultBean result) {

@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.baidu.android.pushservice.PushConstants;
+import com.baidu.android.pushservice.PushManager;
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.appenum.AdvertisementEnum;
 import com.shianlife.shian_platform.base.BaseActivity;
@@ -22,6 +24,7 @@ import com.shianlife.shian_platform.mvp.login.presenter.IUserLoginPresenter;
 import com.shianlife.shian_platform.mvp.login.presenter.impl.UserLoginPresenter;
 import com.shianlife.shian_platform.mvp.login.view.IUserLoginView;
 import com.shianlife.shian_platform.utils.IntentUtils;
+import com.shianlife.shian_platform.utils.PushUtils;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -49,7 +52,7 @@ public class SplashActivity extends BaseActivity implements IUserLoginView {
 
     @Override
     protected void initView() {
-
+        PushManager.startWork(this, PushConstants.LOGIN_TYPE_API_KEY, PushUtils.getMetaValue(this, "push_api_key"));
     }
 
     @Override

@@ -130,6 +130,8 @@
     <string name="driver_order_details_title_7_time">还车时间</string>
     <string name="driver_order_details_title_7_mileage">还车里程</string>
     <string name="driver_order_details_title_7_pic">里程图片</string>
+    <string name="driver_order_details_title_8">合计</string>
+    <string name="driver_order_details_title_8_mileage">合计里程</string>
     <string name="map_select_1">到这里去</string>
 
     <string name="driver_order_accept_fail">接单失败</string>

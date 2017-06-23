@@ -355,7 +355,7 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
                     @Override
                     public void getDataSuccess(ServiceOngoingResultBean result) {
                         if (callBack != null)
-                            callBack.refesh();
+                            callBack.refeshAll();
                     }
 
                     @Override

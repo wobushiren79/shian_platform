@@ -32,5 +32,7 @@ public abstract class BaseOrderListLayout extends LinearLayout {
 
     protected abstract void initData();
 
-    protected abstract void refesh();
+    public  abstract void refesh();
+
+    protected abstract void refeshAll();
 }

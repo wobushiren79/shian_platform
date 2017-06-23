@@ -27,6 +27,8 @@ public class Constants {
     public static final String phonePHPURL = PHP_URL + "/home/index/phone";//通讯宝
     public static final String DiDichannel = "55455";//滴滴渠道号
 
+    public static String ChannelId = "";
+
     //公墓账号
     public static UserLoginResultBean userCemetery = null;
     //当前的sessionId

@@ -93,8 +93,6 @@ public class FailServiceListAdapter extends BaseRCSAdapter<FailServiceListResult
             }
         });
         TextShowLayout.CallBack buttonClick = new TextShowLayout.CallBack() {
-
-
             @Override
             public void clickMap(View view) {
                 if (view == layoutMeetlocation) {
@@ -165,8 +163,6 @@ public class FailServiceListAdapter extends BaseRCSAdapter<FailServiceListResult
             }
         });
         TextShowLayout.CallBack buttonClick = new TextShowLayout.CallBack() {
-
-
             @Override
             public void clickMap(View view) {
                 if (view == layoutMeetlocation) {

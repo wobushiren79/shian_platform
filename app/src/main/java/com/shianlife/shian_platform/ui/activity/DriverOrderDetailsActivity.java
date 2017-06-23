@@ -21,7 +21,7 @@ import com.shianlife.shian_platform.utils.ToastUtils;
 
 import butterknife.BindView;
 
-public class  DriverOrderDetailsActivity extends BaseActivity implements IOrderDetailsView {
+public class DriverOrderDetailsActivity extends BaseActivity implements IOrderDetailsView {
 
     @BindView(R.id.tv_orderid)
     TextView tvOrderid;
@@ -62,6 +62,8 @@ public class  DriverOrderDetailsActivity extends BaseActivity implements IOrderD
         if (result.getOrderNo() != null && !result.getOrderNo().isEmpty())
             tvOrderid.setText(result.getOrderNo());
         if (result.getOrderDetailsList() != null) {
+            String startM = null;
+            String endM = null;
             for (OrderDetailsResultBean.CarOrderDetail itemData : result.getOrderDetailsList()) {
                 String location = itemData.getAddress();
                 String time = "";
@@ -79,6 +81,7 @@ public class  DriverOrderDetailsActivity extends BaseActivity implements IOrderD
 
                 } else if (itemData.getOpeType() == DriverStateEnum.waitGetCar.getCode()) {
                     addGetCarView(location, time, km, files);
+                    startM = km;
                 } else if (itemData.getOpeType() == DriverStateEnum.setOff.getCode()) {
                     addGoView(location, time, km);
                 } else if (itemData.getOpeType() == DriverStateEnum.callFor.getCode()) {
@@ -89,11 +92,16 @@ public class  DriverOrderDetailsActivity extends BaseActivity implements IOrderD
                     addArriveFinalLocation(location, time, km);
                 } else if (itemData.getOpeType() == DriverStateEnum.deliverd.getCode()) {
                     addReturnCarView(location, time, km, files);
+                    endM = km;
                 } else if (itemData.getOpeType() == DriverStateEnum.successService.getCode()) {
 
                 } else if (itemData.getOpeType() == DriverStateEnum.cancel.getCode()) {
                     addReturnCarView(location, time, km, files);
+                    endM = km;
                 }
+            }
+            if (startM != null && !startM.isEmpty() && endM != null && !endM.isEmpty()) {
+                addTotalView(startM, endM);
             }
         }
 
@@ -199,5 +207,21 @@ public class  DriverOrderDetailsActivity extends BaseActivity implements IOrderD
         detailsLayout.addTextView(getString(R.string.driver_order_details_title_7_mileage), getCarMilieage);
         detailsLayout.addPicView(getString(R.string.driver_order_details_title_7_pic), getCarPic);
         llContent.addView(detailsLayout);
+    }
+
+    /**
+     * 增加還車数据
+     */
+    private void addTotalView(String startMilieage, String endMilieage) {
+        try {
+            DetailsLayout detailsLayout = new DetailsLayout(this, getString(R.string.driver_order_details_title_8));
+            detailsLayout.setLayoutParams(getLayoutParams());
+            float total = Float.valueOf(endMilieage) - Float.valueOf(startMilieage);
+            detailsLayout.addTextView(getString(R.string.driver_order_details_title_8_mileage), total + "");
+            llContent.addView(detailsLayout);
+        } catch (Exception e) {
+
+        }
+
     }
 }

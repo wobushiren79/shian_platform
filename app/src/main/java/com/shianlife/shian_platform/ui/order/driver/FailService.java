@@ -71,6 +71,11 @@ public class FailService extends BaseDriverLayout implements IFailServiceListVie
     }
 
     @Override
+    public void refeshAll() {
+        if (callBack != null)
+            callBack.refeshAll();
+    }
+    @Override
     public void getFailServiceListDataSuccess(FailServiceListResultBean result) {
         if (result.getPageNum() < pageNum && pageNum > 1) {
             pageNum--;

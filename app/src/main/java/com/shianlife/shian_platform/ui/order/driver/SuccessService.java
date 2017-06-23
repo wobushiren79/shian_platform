@@ -73,6 +73,11 @@ public class SuccessService extends BaseDriverLayout implements ISuccessServiceL
     }
 
     @Override
+    public void refeshAll() {
+        if (callBack != null)
+            callBack.refeshAll();
+    }
+    @Override
     public long getPageSize() {
         return pageSize;
     }

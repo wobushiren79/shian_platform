@@ -11,6 +11,9 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.FrameLayout;
 
+import com.baidu.android.pushservice.CustomPushNotificationBuilder;
+import com.baidu.android.pushservice.PushConstants;
+import com.baidu.android.pushservice.PushManager;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.shianlife.shian_platform.R;
@@ -36,6 +39,7 @@ import com.shianlife.shian_platform.ui.fragment.HomeFragment;
 import com.shianlife.shian_platform.ui.fragment.MyFragment;
 import com.shianlife.shian_platform.utils.AppUtils;
 import com.shianlife.shian_platform.utils.CheckUtils;
+import com.shianlife.shian_platform.utils.PushUtils;
 import com.shianlife.shian_platform.utils.ToastUtils;
 
 import java.util.List;

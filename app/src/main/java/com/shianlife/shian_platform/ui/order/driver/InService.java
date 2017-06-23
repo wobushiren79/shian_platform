@@ -73,6 +73,11 @@ public class InService extends BaseDriverLayout implements IInServiceListView,In
     }
 
     @Override
+    public void refeshAll() {
+        if (callBack != null)
+            callBack.refeshAll();
+    }
+    @Override
     public long getPageSize() {
         return pageSize;
     }

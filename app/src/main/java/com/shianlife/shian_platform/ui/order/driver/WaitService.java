@@ -75,6 +75,12 @@ public class WaitService extends BaseDriverLayout implements IWaitServiceListVie
     }
 
     @Override
+    public void refeshAll() {
+        if (callBack != null)
+            callBack.refeshAll();
+    }
+
+    @Override
     public long getPageSize() {
         return pageSize;
     }
@@ -117,4 +123,6 @@ public class WaitService extends BaseDriverLayout implements IWaitServiceListVie
             mWaitServiceListPresenter.getWaitServiceListData();
         }
     };
+
+
 }
