@@ -60,8 +60,17 @@ public class IntentUtils {
             return this;
         }
 
+        public Build addFlags(int flags) {
+            intent.addFlags(flags);
+            return this;
+        }
+
         public void start() {
             context.startActivity(intent);
+        }
+
+        public void startApplication() {
+            context.getApplicationContext().startActivity(intent);
         }
     }
 }

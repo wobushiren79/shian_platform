@@ -8,8 +8,9 @@ import com.shianlife.shian_platform.mvp.login.bean.UserLoginResultBean;
 
 public class Constants {
     //公墓地址
-//    public static final String CEMETERY_URL = "http://115.28.163.211:7088/shianlife-advisor-cemetery-1.0-SNAPSHOT";
-    public static final String CEMETERY_URL = "http://192.168.0.37:8088/app";
+    public static final String CEMETERY_URL = "http://115.28.163.211:7088/shianlife-advisor-cemetery-1.0-SNAPSHOT";
+//    public static final String CEMETERY_URL = "http://192.168.0.37:8088/app";
+//    public static final String CEMETERY_URL = "http://192.168.0.35:8100/advisor";
     //PHP地址
     public static final String PHP_URL = "http://app.e-funeral.cn";
     //阿里云文件上传

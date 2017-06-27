@@ -29,6 +29,15 @@
         <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\classes_9629357af2b688b7d6237863bdacba9c1a9acbcc.jar" />
     </item>
     <item
+        is-multidex="false"
+        jar="E:\Android\AndroidProjects\shian_platform\app\libs\pushservice-5.7.0.95.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="26a56a683509e36c956844105df334a93d7c8cc3">
+        <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\pre-dexed\release\pushservice-5.7.0.95_9c949ac856d1bc0e4d240d26345a03cebbd70d62.jar" />
+    </item>
+    <item
         is-multidex="true"
         jar="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
@@ -43,7 +52,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="d48ef1042b309e1cdda69d68366ab34d5c56c8e1">
+        sha1="6a0ef7ac2847f6e25f01c02969d6ee56824cfff5">
         <dex dex="E:\Android\AndroidProjects\shian_platform\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_d5a936da56bea3ef21cbf21fe4293fd22dab029e\classes.dex" />
     </item>
     <item

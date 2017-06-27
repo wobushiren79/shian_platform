@@ -1,9 +1,12 @@
 package com.shianlife.shian_platform.receiver;
 
 import android.content.Context;
+import android.content.Intent;
 
 import com.baidu.android.pushservice.PushMessageReceiver;
 import com.shianlife.shian_platform.common.Constants;
+import com.shianlife.shian_platform.ui.activity.MessageDetailsActivity;
+import com.shianlife.shian_platform.utils.IntentUtils;
 
 import java.util.List;
 
@@ -15,7 +18,7 @@ public class PushReceiver extends PushMessageReceiver {
 
     @Override
     public void onBind(Context context, int errorCode, String appid, String userId, String channelId, String requestId) {
-        Constants.ChannelId=channelId;
+        Constants.ChannelId = channelId;
     }
 
     @Override
@@ -47,7 +50,10 @@ public class PushReceiver extends PushMessageReceiver {
     //通知点击事件
     @Override
     public void onNotificationClicked(Context context, String title, String description, String customContentString) {
-
+        new IntentUtils
+                .Build(context.getApplicationContext(), MessageDetailsActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                .startApplication();
     }
 
     //通知
