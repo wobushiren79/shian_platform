@@ -244,7 +244,7 @@ public class HttpRequestExecutor {
      */
     private <T> void onErrorCallBack(HttpResponseHandler<T> response, String error,
                                      Context context) {
-        if (response != null && (!((Activity) context).isFinishing()) && error != null) {
+        if (response != null && error != null) {
             if (showToast(context, error)) {
                 response.onError(error);
                 if (error.contains("405") || error.contains("503")) {
