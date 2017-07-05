@@ -123,7 +123,7 @@ public class CheckUtils {
             if (ContextCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
                 //权限为获取，检查用户是否被询问过并且拒绝了，如果是这样的话，给予更多
                 //解释
-                if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) context, permission)) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(scanForActivity(context), permission)) {
                     //在界面上展示为什么需要該權限
                     Toast.makeText(context, toastContent, Toast.LENGTH_SHORT).show();
                 }
@@ -134,7 +134,7 @@ public class CheckUtils {
         if (isPermission) {
             return isPermission;
         } else {
-            ActivityCompat.requestPermissions((Activity) context, permissions, requestCode);
+            ActivityCompat.requestPermissions(scanForActivity(context), permissions, requestCode);
             return isPermission;
         }
     }

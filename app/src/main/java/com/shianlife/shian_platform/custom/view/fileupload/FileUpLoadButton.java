@@ -76,7 +76,7 @@ public class FileUpLoadButton extends BaseLayout implements IFileUpLoadView {
 
     @Override
     public String getFileName() {
-        return mFileData.getFileName();
+        return mFileData.getFilePath();
     }
 
     @Override
