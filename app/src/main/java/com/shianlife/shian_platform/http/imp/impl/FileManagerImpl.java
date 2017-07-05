@@ -14,6 +14,7 @@ import com.shianlife.shian_platform.http.result.HrUploadFile;
 import com.shianlife.shian_platform.mvp.fileup.bean.FileUpLoadResultBean;
 import com.shianlife.shian_platform.ui.activity.LoginActivity;
 import com.shianlife.shian_platform.utils.LogUtils;
+import com.shianlife.shian_platform.utils.PicUtils;
 import com.shianlife.shian_platform.utils.SharePerfrenceUtils;
 import com.shianlife.shian_platform.utils.ToastUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -57,6 +58,7 @@ public class FileManagerImpl implements FileManager {
                            String path,
                            final FileHttpResponseHandler<FileUpLoadResultBean> responseHandler) {
         File file = new File(path);
+        file = PicUtils.scaledFile(file);
 //        setCookie(Constants.sessionId);
         OkHttpUtils
                 .post()
