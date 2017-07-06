@@ -6,9 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.ViewDragHelper;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
@@ -27,6 +30,7 @@ import com.shianlife.shian_platform.base.BaseActivity;
 import com.shianlife.shian_platform.common.Constants;
 import com.yongchun.library.view.ImageSelectorActivity;
 
+import java.lang.reflect.Field;
 import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -144,6 +148,7 @@ public class AppUtils {
 
     /**
      * 调用地图导航
+     *
      * @param context
      * @param startLatLng
      * @param endLatLng
@@ -184,9 +189,6 @@ public class AppUtils {
     }
 
 
-
-
-
     /**
      * 時間戳轉換
      *
@@ -201,5 +203,38 @@ public class AppUtils {
     public static String formatTime(long time, String data) {
         SimpleDateFormat format = new SimpleDateFormat(data, Locale.CHINA);
         return format.format(new Date(time));
+    }
+
+
+    /**
+     * drawerLayout設置全屏滑动
+     *
+     * @param activity
+     * @param drawerLayout
+     * @param displayWidthPercentage
+     */
+    public static void setDrawerLeftEdgeSize(Activity activity, DrawerLayout drawerLayout, float displayWidthPercentage) {
+        if (activity == null || drawerLayout == null) return;
+        try {
+            // 找到 ViewDragHelper 并设置 Accessible 为true
+            Field leftDraggerField =
+                    drawerLayout.getClass().getDeclaredField("mLeftDragger");//Right
+            leftDraggerField.setAccessible(true);
+            ViewDragHelper leftDragger = (ViewDragHelper) leftDraggerField.get(drawerLayout);
+
+            // 找到 edgeSizeField 并设置 Accessible 为true
+            Field edgeSizeField = leftDragger.getClass().getDeclaredField("mEdgeSize");
+            edgeSizeField.setAccessible(true);
+            int edgeSize = edgeSizeField.getInt(leftDragger);
+
+            // 设置新的边缘大小
+            Point displaySize = new Point();
+            activity.getWindowManager().getDefaultDisplay().getSize(displaySize);
+            edgeSizeField.setInt(leftDragger, Math.max(edgeSize, (int) (displaySize.x *
+                    displayWidthPercentage)));
+        } catch (NoSuchFieldException e) {
+        } catch (IllegalArgumentException e) {
+        } catch (IllegalAccessException e) {
+        }
     }
 }

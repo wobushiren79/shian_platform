@@ -5,10 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.ViewDragHelper;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +24,14 @@ import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.appenum.BaseTitleEnum;
 import com.shianlife.shian_platform.custom.title.BackNormalTitle;
 import com.shianlife.shian_platform.custom.title.NormalTitle;
+import com.shianlife.shian_platform.custom.view.drawerlayout.MainDrawerLayout;
+import com.shianlife.shian_platform.listener.MainDrawerLayoutListener;
 import com.shianlife.shian_platform.utils.AppUtils;
 import com.shianlife.shian_platform.utils.CheckUtils;
 import com.shianlife.shian_platform.utils.ToastUtils;
 import com.yongchun.library.view.ImageSelectorActivity;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
@@ -46,6 +53,7 @@ public abstract class BaseActivity extends FragmentActivity {
 
     protected RelativeLayout rlHead;
     protected FrameLayout flBase;
+    protected DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +63,7 @@ public abstract class BaseActivity extends FragmentActivity {
 
         rlHead = (RelativeLayout) findViewById(R.id.rl_head);
         flBase = (FrameLayout) findViewById(R.id.fl_base);
+        drawerLayout = (DrawerLayout) findViewById(R.id.main_drawerlayout);
 
         ((BaseApplication) getApplicationContext()).addActivity(this);
         //设置状态栏颜色
@@ -105,6 +114,19 @@ public abstract class BaseActivity extends FragmentActivity {
             rlHead.setVisibility(View.GONE);
         }
     }
+
+    /**
+     * 增加抽屉布局
+     */
+    public void addMainDrawerLayout() {
+        MainDrawerLayout mainDrawerLayout = new MainDrawerLayout(this);
+        int dp200 = this.getResources().getDimensionPixelOffset(R.dimen.dimen_200dp);
+        DrawerLayout.LayoutParams layoutPrams = new DrawerLayout.LayoutParams(metrics.widthPixels - dp200, metrics.heightPixels, Gravity.START);
+        mainDrawerLayout.setLayoutParams(layoutPrams);
+        drawerLayout.addView(mainDrawerLayout);
+        drawerLayout.addDrawerListener(new MainDrawerLayoutListener(this, drawerLayout, metrics.widthPixels, metrics.heightPixels));
+    }
+
 
     /**
      * @param titleName

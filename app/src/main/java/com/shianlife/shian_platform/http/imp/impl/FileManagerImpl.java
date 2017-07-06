@@ -58,7 +58,7 @@ public class FileManagerImpl implements FileManager {
                            String path,
                            final FileHttpResponseHandler<FileUpLoadResultBean> responseHandler) {
         File file = new File(path);
-        file = PicUtils.scaledFile(file);
+//        file = PicUtils.scaledFile(file);
 //        setCookie(Constants.sessionId);
         OkHttpUtils
                 .post()
