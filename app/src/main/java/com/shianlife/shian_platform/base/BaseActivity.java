@@ -120,8 +120,8 @@ public abstract class BaseActivity extends FragmentActivity {
      */
     public void addMainDrawerLayout() {
         MainDrawerLayout mainDrawerLayout = new MainDrawerLayout(this);
-        int dp200 = this.getResources().getDimensionPixelOffset(R.dimen.dimen_200dp);
-        DrawerLayout.LayoutParams layoutPrams = new DrawerLayout.LayoutParams(metrics.widthPixels - dp200, metrics.heightPixels, Gravity.START);
+        int dp120 = this.getResources().getDimensionPixelOffset(R.dimen.dimen_120dp);
+        DrawerLayout.LayoutParams layoutPrams = new DrawerLayout.LayoutParams(metrics.widthPixels - dp120, ViewGroup.LayoutParams.MATCH_PARENT, Gravity.START);
         mainDrawerLayout.setLayoutParams(layoutPrams);
         drawerLayout.addView(mainDrawerLayout);
         drawerLayout.addDrawerListener(new MainDrawerLayoutListener(this, drawerLayout, metrics.widthPixels, metrics.heightPixels));

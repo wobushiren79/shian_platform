@@ -27,8 +27,8 @@ public class MainDrawerLayoutListener implements DrawerLayout.DrawerListener {
     @Override
     public void onDrawerSlide(View drawerView, float slideOffset) {
         View mContent = mDrawerLayout.getChildAt(0);
-        int dp200 = context.getResources().getDimensionPixelOffset(R.dimen.dimen_200dp);
-        mContent.setTranslationX((windowW - dp200) * slideOffset);
+        int dp120 = context.getResources().getDimensionPixelOffset(R.dimen.dimen_120dp);
+        mContent.setTranslationX((windowW - dp120) * slideOffset);
     }
 
     @Override

@@ -1,29 +1,40 @@
 package com.shianlife.shian_platform;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.Button;
 
 import com.shianlife.shian_platform.base.BaseActivity;
-import com.shianlife.shian_platform.custom.view.ptr.CustomPtrFramelayout;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.builder.PostFormBuilder;
+import com.zhy.http.okhttp.callback.Callback;
+import com.zhy.http.okhttp.request.RequestCall;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import in.srain.cube.views.ptr.PtrDefaultHandler2;
-import in.srain.cube.views.ptr.PtrFrameLayout;
+import butterknife.OnClick;
+import okhttp3.Call;
+import okhttp3.Cookie;
+import okhttp3.Headers;
+import okhttp3.HttpUrl;
+import okhttp3.Response;
 
 public class TestActivity extends BaseActivity {
 
-    @BindView(R.id.listview)
-    ListView listview;
-    @BindView(R.id.ll_content)
-    RelativeLayout llContent;
-    @BindView(R.id.ptr)
-    CustomPtrFramelayout ptr;
+
+    @BindView(R.id.bt_login)
+    Button btLogin;
+    @BindView(R.id.bt_other)
+    Button btOther;
+    @BindView(R.id.bt_other1)
+    Button btOther1;
+
+    private String tempCookie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,54 +47,113 @@ public class TestActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        ptr.setPtrHandler(new PtrDefaultHandler2() {
-            @Override
-            public void onLoadMoreBegin(PtrFrameLayout frame) {
-                try {
-                    Thread.sleep(1000);
-                    ptr.refreshComplete();
-                } catch (InterruptedException e) {
 
-
-                }
-            }
-
-            @Override
-            public void onRefreshBegin(PtrFrameLayout frame) {
-                try {
-                    Thread.sleep(1000);
-                    ptr.refreshComplete();
-                } catch (InterruptedException e) {
-
-
-                }
-            }
-        });
     }
 
     @Override
     protected void initData() {
-        listview.setAdapter(new BaseAdapter() {
-            @Override
-            public int getCount() {
-                return 100;
-            }
 
+    }
+
+    @OnClick({R.id.bt_login, R.id.bt_other, R.id.bt_other1})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.bt_login:
+                login();
+                break;
+            case R.id.bt_other:
+                other();
+                break;
+            case R.id.bt_other1:
+                other1();
+                break;
+        }
+    }
+
+
+    private void login() {
+        Map<String, String> header = new HashMap<>();
+        header.put("systemType", "2");
+
+
+        final PostFormBuilder getBuilder = OkHttpUtils.post();
+
+        getBuilder.url("http://192.168.0.199:8080/ki4so-web/api_login");
+        getBuilder.headers(header);
+        getBuilder.addParams("username", "admin");
+        getBuilder.addParams("password", "1");
+        final RequestCall requestCall = getBuilder.build();
+        requestCall.execute(new Callback() {
             @Override
-            public Object getItem(int position) {
+            public Object parseNetworkResponse(Response response, int id) throws Exception {
+                List<String> cookie = response.headers("Set-Cookie");
+                StringBuffer stringBuffer = new StringBuffer();
+                for (String itemCookie : cookie) {
+                    stringBuffer.append(itemCookie);
+                }
+
+                tempCookie = stringBuffer.toString();
                 return null;
             }
 
             @Override
-            public long getItemId(int position) {
-                return 0;
+            public void onError(Call call, Exception e, int id) {
+
             }
 
             @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                TextView textView = new TextView(TestActivity.this);
-                textView.setText(position + "");
-                return textView;
+            public void onResponse(Object response, int id) {
+                Object obj = response;
+            }
+        });
+
+    }
+
+    private void other() {
+
+        final PostFormBuilder getBuilder = OkHttpUtils.post();
+        getBuilder.url("http://192.168.0.199:8299/goods/demo/A");
+        final RequestCall requestCall = getBuilder.build();
+        requestCall.execute(new Callback() {
+            @Override
+            public Object parseNetworkResponse(Response response, int id) throws Exception {
+                Response response1 = response;
+                return null;
+            }
+
+            @Override
+            public void onError(Call call, Exception e, int id) {
+
+            }
+
+            @Override
+            public void onResponse(Object response, int id) {
+                Object obj = response;
+            }
+        });
+    }
+
+    private void other1() {
+
+
+        final PostFormBuilder getBuilder = OkHttpUtils.post();
+        getBuilder.url("http://192.168.0.199:8299/goods/demo/B");
+        final RequestCall requestCall = getBuilder.build();
+        requestCall.execute(new Callback() {
+            @Override
+            public Object parseNetworkResponse(Response response, int id) throws Exception {
+                Response response2 = response;
+                return null;
+            }
+
+            @Override
+            public void onError(Call call, Exception e, int id) {
+
+            }
+
+            @Override
+            public void onResponse(Object response, int id) {
+                Object obj = response;
             }
         });
     }

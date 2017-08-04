@@ -37,6 +37,8 @@ import com.shianlife.shian_platform.ui.fragment.DriverOrderFragment;
 import com.shianlife.shian_platform.ui.fragment.FindFragment;
 import com.shianlife.shian_platform.ui.fragment.HomeFragment;
 import com.shianlife.shian_platform.ui.fragment.MyFragment;
+import com.shianlife.shian_platform.ui.fragment.StoreFragment;
+import com.shianlife.shian_platform.ui.fragment.TheOrderFragment;
 import com.shianlife.shian_platform.utils.AppUtils;
 import com.shianlife.shian_platform.utils.CheckUtils;
 import com.shianlife.shian_platform.utils.PushUtils;
@@ -69,7 +71,7 @@ public class MainActivity extends BaseActivity implements IChangeItemView, IAppU
     @Override
     protected void initView() {
         mainChangeLayout.setChangeCallBack(mainChangeCallBack);
-//        addMainDrawerLayout();
+        addMainDrawerLayout();
     }
 
     MainChangeLayout.MainChangeCallBack mainChangeCallBack = new MainChangeLayout.MainChangeCallBack() {
@@ -88,6 +90,12 @@ public class MainActivity extends BaseActivity implements IChangeItemView, IAppU
             } else if (itemId == MainChangeItemEnum.MY.getItemId()) {
                 baseFragment = new MyFragment();
                 setTitle(MainChangeItemEnum.MY.getTitle(), BaseTitleEnum.NORMALTITLE.getTitleType());
+            } else if (itemId == MainChangeItemEnum.ORDER.getItemId()) {
+                baseFragment = new TheOrderFragment();
+                setTitle(MainChangeItemEnum.ORDER.getTitle(), BaseTitleEnum.NORMALTITLE.getTitleType());
+            } else if (itemId == MainChangeItemEnum.STORE.getItemId()) {
+                baseFragment = new StoreFragment();
+                setTitle(MainChangeItemEnum.STORE.getTitle(), BaseTitleEnum.NORMALTITLE.getTitleType());
             }
             changeContent(baseFragment);
         }

@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/ll_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     tools:context="com.shianlife.shian_platform.TestActivity">
 
-    <com.shianlife.shian_platform.custom.view.ptr.CustomPtrFramelayout
-        android:id="@+id/ptr"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <ListView
-            android:id="@+id/listview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></ListView>
-    </com.shianlife.shian_platform.custom.view.ptr.CustomPtrFramelayout>
+    <Button
+        android:id="@+id/bt_login"
+        android:text="登陆"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-</RelativeLayout>
+    <Button
+        android:text="功能"
+        android:id="@+id/bt_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="功能2"
+        android:id="@+id/bt_other1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

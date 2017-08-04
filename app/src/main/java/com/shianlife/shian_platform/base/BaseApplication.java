@@ -5,9 +5,13 @@ import android.app.Application;
 
 import com.baidu.mapapi.SDKInitializer;
 import com.shianlife.shian_platform.common.local.LocationService;
+import com.shianlife.shian_platform.http.base.CustomCookieStore;
 import com.shianlife.shian_platform.http.base.SSLSocketFactoryCompat;
 import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.cookie.CookieJarImpl;
+import com.zhy.http.okhttp.cookie.store.PersistentCookieStore;
 
+import java.net.CookieManager;
 import java.security.cert.CertificateException;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.concurrent.TimeUnit;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.X509TrustManager;
 
+import okhttp3.Cookie;
+import okhttp3.CookieJar;
+import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 
 /**
@@ -85,12 +92,19 @@ public class BaseApplication extends Application {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
+        CookieJarImpl cookieJar = new CookieJarImpl(new CustomCookieStore(getApplicationContext()));
         OkHttpClient okHttpClient = builder.connectTimeout(10000L, TimeUnit.MILLISECONDS)
                 .readTimeout(10000L, TimeUnit.MILLISECONDS)
                 //其他配置
+                .followRedirects(true)
+                .followSslRedirects(true)
+                .cookieJar(cookieJar)
                 .build();
         OkHttpUtils.initClient(okHttpClient);
     }
+
+
 
     /**
      * acitivity关闭时候，删除activity列表中的activity对象
