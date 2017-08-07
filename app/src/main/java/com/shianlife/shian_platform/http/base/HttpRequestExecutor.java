@@ -17,6 +17,7 @@ import com.shianlife.shian_platform.utils.LogUtils;
 import com.shianlife.shian_platform.utils.ToastUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.builder.GetBuilder;
+import com.zhy.http.okhttp.builder.HeadBuilder;
 import com.zhy.http.okhttp.builder.PostStringBuilder;
 import com.zhy.http.okhttp.callback.StringCallback;
 import com.zhy.http.okhttp.request.RequestCall;
@@ -27,6 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import okhttp3.Call;
+import okhttp3.MediaType;
 import okhttp3.Request;
 
 
@@ -74,7 +76,7 @@ public class HttpRequestExecutor {
 
         GetBuilder getBuilder = OkHttpUtils.get();
         getBuilder.url(baseUrl + "/" + method);
-        getBuilder.headers(header);
+//        getBuilder.headers(header);
         getBuilder.params(params.getMapParams());
         RequestCall requestCall = getBuilder.build();
         requestCall.execute(new StringCallback() {
@@ -162,8 +164,11 @@ public class HttpRequestExecutor {
         LogUtils.LogTagE(params.getContentJson());
 
         PostStringBuilder getBuilder = OkHttpUtils.postString();
+
         getBuilder.url(baseUrl + "/" + method);
-        getBuilder.headers(header);
+//        if (header != null)
+//            getBuilder.headers(header);
+        getBuilder.mediaType(MediaType.parse("application/json; charset=utf-8"));
         getBuilder.content(params.getContentJson());
         RequestCall requestCall = getBuilder.build();
         requestCall.execute(new StringCallback() {

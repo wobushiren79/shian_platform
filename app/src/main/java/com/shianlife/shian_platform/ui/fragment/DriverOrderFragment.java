@@ -90,7 +90,7 @@ public class DriverOrderFragment extends BaseFragment {
                 public void refeshAll() {
                     for (View itemView : viewList) {
                         BaseDriverLayout driverItem = (BaseDriverLayout) itemView;
-                        driverItem.refesh();
+                        driverItem.refresh();
                     }
                 }
             });

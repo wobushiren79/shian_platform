@@ -151,7 +151,7 @@ public class FailServiceListAdapter extends BaseRCSAdapter<FailServiceListResult
                     @Override
                     public void getDataSuccess(ServiceOngoingResultBean result) {
                         if (callBack != null)
-                            callBack.refesh();
+                            callBack.refresh();
                     }
 
                     @Override

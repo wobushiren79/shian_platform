@@ -13,6 +13,8 @@ public class Constants {
 //    public static final String CEMETERY_URL = "http://192.168.0.200:8000/shianlife-advisor-cemetery-1.0-SNAPSHOT";
 //    public static final String CEMETERY_URL = "http://192.168.0.49:8080/app";
 //    public static final String CEMETERY_URL = "http://192.168.0.35:8100/advisor";
+    //单项地址
+    public static final String StoreURL = "http://192.168.0.37:8089";
     //PHP地址
     public static final String PHP_URL = "http://app.e-funeral.cn";
     //阿里云文件上传

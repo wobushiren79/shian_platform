@@ -192,7 +192,7 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
                     @Override
                     public void getDataSuccess(ServiceOngoingResultBean result) {
                         if (callBack != null)
-                            callBack.refesh();
+                            callBack.refresh();
                     }
 
                     @Override
@@ -278,7 +278,7 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
                     @Override
                     public void getDataSuccess(ServiceOngoingResultBean result) {
                         if (callBack != null)
-                            callBack.refeshAll();
+                            callBack.refreshAll();
                     }
 
                     @Override
@@ -338,7 +338,7 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
     @Override
     public void rejectOrderSuccess(RejectOrderResultBean result) {
         if (callBack != null)
-            callBack.refesh();
+            callBack.refresh();
         ToastUtils.showToastShort(mContext, mContext.getString(R.string.driver_order_reject_success));
     }
 
@@ -350,7 +350,7 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
     @Override
     public void acceptOrderSuccess(AcceptOrderResultBean result) {
         if (callBack != null)
-            callBack.refesh();
+            callBack.refresh();
         ToastUtils.showToastShort(mContext, mContext.getString(R.string.driver_order_accept_success));
     }
 

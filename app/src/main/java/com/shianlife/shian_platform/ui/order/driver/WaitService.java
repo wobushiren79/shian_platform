@@ -37,45 +37,45 @@ public class WaitService extends BaseDriverLayout implements IWaitServiceListVie
 
     public WaitService(Context context) {
         super(context, R.layout.layout_driver_order_waitservice);
-        init();
+        initView();
+        initData();
     }
 
-    private void init() {
+
+
+    private void initView() {
         ptrLayout.setPtrHandler(ptrDefaultHandler2);
-    }
-
-    @Override
-    protected void initView() {
-     /* 延时100秒,自动刷新 */
-        ptrLayout.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                ptrLayout.autoRefresh();
-            }
-        }, 100);
         mListAdapter = new WaitServiceListAdapter(getContext());
         mListAdapter.setCallBack(this);
         rcContent.setLayoutManager(new LinearLayoutManager(getContext()));
         rcContent.setAdapter(mListAdapter);
     }
 
-    @Override
-    protected void initData() {
+
+    private void initData() {
         pageSize = 10;
         pageNum = 1;
 
         mWaitServiceListPresenter = new WaitServiceListPresenterImpl(this);
         mWaitServiceListPresenter.getWaitServiceListData();
+
+             /* 延时100秒,自动刷新 */
+        ptrLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ptrLayout.autoRefresh();
+            }
+        }, 100);
     }
 
     @Override
-    public void refesh() {
+    public void refresh() {
         pageNum = 1;
         mWaitServiceListPresenter.getWaitServiceListData();
     }
 
     @Override
-    public void refeshAll() {
+    public void refreshAll() {
         if (callBack != null)
             callBack.refeshAll();
     }

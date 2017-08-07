@@ -59,15 +59,13 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TestActivity">
+        <activity android:name=".TestActivity"></activity>
+        <activity android:name=".ui.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".ui.activity.SplashActivity">
-
         </activity>
         <activity
             android:name=".ui.activity.LoginActivity"
@@ -91,7 +89,8 @@
         <activity android:name=".ui.activity.DriverOrderDetailsActivity" />
         <activity android:name=".ui.activity.MapFindLocationActivity" />
         <activity android:name=".ui.activity.MessageDetailsActivity" />
-        <activity android:name=".ui.activity.StoreOrderAuditListActivity"></activity>
+        <activity android:name=".ui.activity.StoreOrderAuditListActivity" />
+        <activity android:name=".ui.activity.StoreOrderAuditPerformActivity"></activity>
 
         <service android:name=".service.UpDataService" />
         <service

@@ -198,7 +198,7 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
                     @Override
                     public void getDataSuccess(ServiceOngoingResultBean result) {
                         if (callBack != null)
-                            callBack.refesh();
+                            callBack.refresh();
                     }
 
                     @Override
@@ -276,7 +276,7 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
                     @Override
                     public void getDataSuccess(ServiceOngoingResultBean result) {
                         if (callBack != null)
-                            callBack.refesh();
+                            callBack.refresh();
                     }
 
                     @Override
@@ -355,7 +355,7 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
                     @Override
                     public void getDataSuccess(ServiceOngoingResultBean result) {
                         if (callBack != null)
-                            callBack.refeshAll();
+                            callBack.refreshAll();
                     }
 
                     @Override
@@ -418,7 +418,7 @@ public class InServiceListAdapter extends BaseRCSAdapter<InServiceListResultBean
     @Override
     public void saveServiceOngoingSuccess(ServiceOngoingResultBean result) {
         if (callBack != null)
-            callBack.refesh();
+            callBack.refresh();
         ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_serviceonoing_success));
     }
 

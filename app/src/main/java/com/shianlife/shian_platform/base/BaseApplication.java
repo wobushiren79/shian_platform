@@ -14,6 +14,7 @@ import com.zhy.http.okhttp.cookie.store.PersistentCookieStore;
 import java.net.CookieManager;
 import java.security.cert.CertificateException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -93,17 +94,42 @@ public class BaseApplication extends Application {
             throw new RuntimeException(e);
         }
 
-        CookieJarImpl cookieJar = new CookieJarImpl(new CustomCookieStore(getApplicationContext()));
+//        CookieJarImpl cookieJar = new CookieJarImpl(new PersistentCookieStore(getApplicationContext()));
         OkHttpClient okHttpClient = builder.connectTimeout(10000L, TimeUnit.MILLISECONDS)
                 .readTimeout(10000L, TimeUnit.MILLISECONDS)
                 //其他配置
-                .followRedirects(true)
-                .followSslRedirects(true)
-                .cookieJar(cookieJar)
+                .followRedirects(false)
+                .followSslRedirects(false)
+                .cookieJar(new LocalCookieJar())
                 .build();
         OkHttpUtils.initClient(okHttpClient);
     }
 
+    //CookieJar是用于保存Cookie的
+    class LocalCookieJar implements CookieJar {
+        private final HashMap<String, List<Cookie>> cookieStore = new HashMap<>();
+
+        @Override
+        public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
+            String tempUrl = getBaseUrl(url.toString());
+            cookieStore.put(tempUrl, cookies);
+
+        }
+
+        @Override
+        public List<Cookie> loadForRequest(HttpUrl url) {
+            String tempUrl = getBaseUrl(url.toString());
+            List<Cookie> cookies = cookieStore.get(tempUrl);
+            return cookies != null ? cookies : new ArrayList<Cookie>();
+        }
+
+        private String getBaseUrl(String url) {
+            int hostLocation = url.indexOf("/", 8);
+            int urlLocation = url.indexOf("/", hostLocation + 1);
+            String temp = url.substring(0, urlLocation);
+            return temp;
+        }
+    }
 
 
     /**

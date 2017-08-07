@@ -35,48 +35,48 @@ public class SuccessService extends BaseDriverLayout implements ISuccessServiceL
 
     public SuccessService(Context context) {
         super(context, R.layout.layout_driver_order_successservice);
-        init();
+        initView();
+        initData();
     }
 
-    private void init() {
+
+    private void initView() {
         ptrLayout.setPtrHandler(ptrDefaultHandler2);
-    }
-
-    @Override
-    protected void initView() {
-                /* 延时100秒,自动刷新 */
-        ptrLayout.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                ptrLayout.autoRefresh();
-            }
-        }, 100);
         mListAdapter = new SuccessServiceListAdapter(getContext());
         mListAdapter.setCallBack(this);
         rcContent.setLayoutManager(new LinearLayoutManager(getContext()));
         rcContent.setAdapter(mListAdapter);
     }
 
-    @Override
-    protected void initData() {
+
+    private void initData() {
         pageSize = 10;
         pageNum = 1;
 
         successServiceListPresenter = new SuccessServiceListPresenterImpl(this);
         successServiceListPresenter.getSuccessServiceListData();
+
+                     /* 延时100秒,自动刷新 */
+        ptrLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ptrLayout.autoRefresh();
+            }
+        }, 100);
     }
 
     @Override
-    public void refesh() {
+    public void refresh() {
         pageNum = 1;
         successServiceListPresenter.getSuccessServiceListData();
     }
 
     @Override
-    public void refeshAll() {
+    public void refreshAll() {
         if (callBack != null)
             callBack.refeshAll();
     }
+
     @Override
     public long getPageSize() {
         return pageSize;

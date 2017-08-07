@@ -23,16 +23,10 @@ public abstract class BaseOrderListLayout extends LinearLayout {
         super(context, attrs);
         view = View.inflate(context, layoutId, this);
         ButterKnife.bind(this);
-        initView();
-        initData();
     }
 
 
-    protected abstract void initView();
+    public  abstract void refresh();
 
-    protected abstract void initData();
-
-    public  abstract void refesh();
-
-    protected abstract void refeshAll();
+    protected abstract void refreshAll();
 }

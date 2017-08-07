@@ -35,45 +35,42 @@ public class InService extends BaseDriverLayout implements IInServiceListView,In
 
     public InService(Context context) {
         super(context, R.layout.layout_driver_order_inservice);
-        init();
+        initView();
+        initData();
     }
 
-    private void init() {
+    private void initView() {
         ptrLayout.setPtrHandler(ptrDefaultHandler2);
-    }
-
-    @Override
-    protected void initView() {
-         /* 延时100秒,自动刷新 */
-        ptrLayout.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                ptrLayout.autoRefresh();
-            }
-        }, 100);
         mListAdapter = new InServiceListAdapter(getContext());
         mListAdapter.setCallBack(this);
         rcContent.setLayoutManager(new LinearLayoutManager(getContext()));
         rcContent.setAdapter(mListAdapter);
     }
 
-    @Override
-    protected void initData() {
+    private void initData() {
         pageSize = 10;
         pageNum = 1;
 
         inServiceListPresenter = new InServiceListPresenterImpl(this);
         inServiceListPresenter.getInServiceListData();
+
+            /* 延时100秒,自动刷新 */
+        ptrLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ptrLayout.autoRefresh();
+            }
+        }, 100);
     }
 
     @Override
-    public void refesh() {
+    public void refresh() {
         pageNum = 1;
         inServiceListPresenter.getInServiceListData();
     }
 
     @Override
-    public void refeshAll() {
+    public void refreshAll() {
         if (callBack != null)
             callBack.refeshAll();
     }

@@ -107,7 +107,7 @@ public abstract class BaseRCSAdapter<T> extends RecyclerView.Adapter<BaseViewHol
     public abstract void addLayout(List<Integer> mListLayoutId);
 
     public interface CallBack {
-        void refesh();
-        void refeshAll();
+        void refresh();
+        void refreshAll();
     }
 }

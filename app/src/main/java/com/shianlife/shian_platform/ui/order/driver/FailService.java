@@ -33,15 +33,28 @@ public class FailService extends BaseDriverLayout implements IFailServiceListVie
 
     public FailService(Context context) {
         super(context, R.layout.layout_driver_order_failservice);
-        init();
+        initView();
+        initData();
     }
 
-    private void init() {
+
+
+
+    private void initView() {
         ptrLayout.setPtrHandler(ptrDefaultHandler2);
+        mListAdapter = new FailServiceListAdapter(getContext());
+        mListAdapter.setCallBack(this);
+        rcContent.setLayoutManager(new LinearLayoutManager(getContext()));
+        rcContent.setAdapter(mListAdapter);
     }
 
-    @Override
-    protected void initView() {
+
+    private void initData() {
+        pageSize = 10;
+        pageNum = 1;
+
+        failServiceListPresenter = new FailServiceListPresenterImpl(this);
+        failServiceListPresenter.getFailServiceListData();
                  /* 延时100秒,自动刷新 */
         ptrLayout.postDelayed(new Runnable() {
             @Override
@@ -49,32 +62,20 @@ public class FailService extends BaseDriverLayout implements IFailServiceListVie
                 ptrLayout.autoRefresh();
             }
         }, 100);
-        mListAdapter = new FailServiceListAdapter(getContext());
-        mListAdapter.setCallBack(this);
-        rcContent.setLayoutManager(new LinearLayoutManager(getContext()));
-        rcContent.setAdapter(mListAdapter);
     }
 
     @Override
-    protected void initData() {
-        pageSize = 10;
-        pageNum = 1;
-
-        failServiceListPresenter = new FailServiceListPresenterImpl(this);
-        failServiceListPresenter.getFailServiceListData();
-    }
-
-    @Override
-    public void refesh() {
+    public void refresh() {
         pageNum = 1;
         failServiceListPresenter.getFailServiceListData();
     }
 
     @Override
-    public void refeshAll() {
+    public void refreshAll() {
         if (callBack != null)
             callBack.refeshAll();
     }
+
     @Override
     public void getFailServiceListDataSuccess(FailServiceListResultBean result) {
         if (result.getPageNum() < pageNum && pageNum > 1) {
