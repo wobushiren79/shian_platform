@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.adapter.StoreAuditPerformListApdapter;
@@ -16,8 +17,11 @@ import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformListResultBe
 import com.shianlife.shian_platform.mvp.order.presenter.IStoreAuditPerformListPresenter;
 import com.shianlife.shian_platform.mvp.order.presenter.impl.StoreAuditPerformListPresenterImpl;
 import com.shianlife.shian_platform.mvp.order.view.IStoreAuditPerformListView;
+import com.shianlife.shian_platform.ui.order.store.StoreOrderAuditList;
 import com.shianlife.shian_platform.utils.IntentUtils;
 import com.shianlife.shian_platform.utils.ToastUtils;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,6 +37,7 @@ public class StoreOrderAuditPerformActivity extends BaseActivity implements ISto
     private Intent intent;
     private StoreAuditPerformListApdapter listApdapter;
     private IStoreAuditPerformListPresenter storeAuditPerformListPresenter;
+    public static boolean isRefresh_Change;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,12 +103,12 @@ public class StoreOrderAuditPerformActivity extends BaseActivity implements ISto
 
     @Override
     public void refresh() {
-
+        ptrLayout.autoRefresh();
     }
 
     @Override
     public void refreshAll() {
-
+        ptrLayout.autoRefresh();
     }
 
     PtrDefaultHandler2 ptrDefaultHandler2 = new PtrDefaultHandler2() {
@@ -117,4 +122,19 @@ public class StoreOrderAuditPerformActivity extends BaseActivity implements ISto
             storeAuditPerformListPresenter.getAuditPerformListData();
         }
     };
+
+    @Override
+    public void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+        if (isRefresh_Change) {
+            refresh();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        isRefresh_Change = false;
+    }
 }

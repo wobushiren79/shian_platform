@@ -39,16 +39,16 @@ public class GoodsPerform extends BaseEntity {
     /**
      * 接单时间
      */
-    private Date acceptTime;
+    private String acceptTime;
 
     /**
      * 开始服务时间
      */
-    private Date startTime;
+    private String startTime;
     /**
      * 结束服务时间
      */
-    private Date endTime;
+    private String endTime;
 
     /**
      * 执行方式:0同城送达 1上门服务 2快递物流
@@ -110,27 +110,27 @@ public class GoodsPerform extends BaseEntity {
         this.performUserId = performUserId;
     }
 
-    public Date getAcceptTime() {
+    public String getAcceptTime() {
         return acceptTime;
     }
 
-    public void setAcceptTime(Date acceptTime) {
+    public void setAcceptTime(String acceptTime) {
         this.acceptTime = acceptTime;
     }
 
-    public Date getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 

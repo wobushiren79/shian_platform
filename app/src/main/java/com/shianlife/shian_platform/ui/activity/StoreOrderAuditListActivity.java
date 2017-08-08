@@ -73,4 +73,26 @@ public class StoreOrderAuditListActivity extends BaseActivity {
             tablayout.getTabAt(i).setText(mStoreOrderListEna[i].getName());
         }
     }
+
+    @Override
+    public void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+        if (viewList.size() > 0 && isRefresh_Change) {
+            refreshAll(viewList);
+        }
+    }
+
+    private void refreshAll(List<View> views) {
+        for (View view : views) {
+            StoreOrderAuditList tempView = (StoreOrderAuditList) view;
+            tempView.refresh();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        isRefresh_Change = false;
+    }
 }

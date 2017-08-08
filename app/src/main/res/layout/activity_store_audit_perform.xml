@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:CustomAttr="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="com.shianlife.shian_platform.ui.activity.StoreAuditPerformActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dimen_16dp"
+            android:orientation="vertical">
+
+            <com.shianlife.shian_platform.custom.show.store.StoreEditNormalView
+                android:id="@+id/perform_status"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                CustomAttr:showMode="true"
+                CustomAttr:titleName="执行单状态"></com.shianlife.shian_platform.custom.show.store.StoreEditNormalView>
+
+            <com.shianlife.shian_platform.custom.show.store.StoreEditNormalView
+                android:id="@+id/perform_way"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                CustomAttr:showMode="true"
+                CustomAttr:titleName="实际执行方式"></com.shianlife.shian_platform.custom.show.store.StoreEditNormalView>
+
+            <com.shianlife.shian_platform.custom.show.store.StoreEditNormalView
+                android:id="@+id/accept_time"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                CustomAttr:showMode="true"
+                CustomAttr:titleName="接单时间"></com.shianlife.shian_platform.custom.show.store.StoreEditNormalView>
+
+            <com.shianlife.shian_platform.custom.show.store.StoreEditNormalView
+                android:id="@+id/start_time"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                CustomAttr:showMode="true"
+                CustomAttr:titleName="开始服务时间"></com.shianlife.shian_platform.custom.show.store.StoreEditNormalView>
+
+            <com.shianlife.shian_platform.custom.show.store.StoreEditNormalView
+                android:id="@+id/end_time"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                CustomAttr:showMode="true"
+                CustomAttr:titleName="完成服务时间"></com.shianlife.shian_platform.custom.show.store.StoreEditNormalView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/dimen_34dp"
+                android:paddingLeft="@dimen/dimen_32dp"
+                android:paddingRight="@dimen/dimen_16dp"
+                android:paddingTop="@dimen/dimen_34dp"
+                android:text="执行反馈"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_28dp" />
+
+            <TextView
+                android:id="@+id/tv_perform_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/zhy_backgroud_1"
+                android:paddingBottom="@dimen/dimen_34dp"
+                android:paddingLeft="@dimen/dimen_32dp"
+                android:paddingRight="@dimen/dimen_16dp"
+                android:paddingTop="@dimen/dimen_34dp"
+                android:textColor="@color/zhy_text_color_20" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/dimen_34dp"
+                android:paddingLeft="@dimen/dimen_32dp"
+                android:paddingRight="@dimen/dimen_16dp"
+                android:paddingTop="@dimen/dimen_34dp"
+                android:text="图片反馈"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_28dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_130dp"
+                android:background="@color/zhy_backgroud_1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_perform_pic_1"
+                    android:layout_width="@dimen/dimen_172dp"
+                    android:layout_height="@dimen/dimen_106dp"
+                    android:layout_marginLeft="@dimen/dimen_32dp"
+                    android:background="@drawable/zhy_button_bg_uncheck_lightgray" />
+
+                <ImageView
+                    android:id="@+id/iv_perform_pic_2"
+                    android:layout_width="@dimen/dimen_172dp"
+                    android:layout_height="@dimen/dimen_106dp"
+                    android:layout_marginLeft="@dimen/dimen_32dp"
+                    android:background="@drawable/zhy_button_bg_uncheck_lightgray" />
+
+                <ImageView
+                    android:id="@+id/iv_perform_pic_3"
+                    android:layout_width="@dimen/dimen_172dp"
+                    android:layout_height="@dimen/dimen_106dp"
+                    android:layout_marginLeft="@dimen/dimen_32dp"
+                    android:background="@drawable/zhy_button_bg_uncheck_lightgray" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/dimen_34dp"
+                android:paddingLeft="@dimen/dimen_32dp"
+                android:paddingRight="@dimen/dimen_16dp"
+                android:paddingTop="@dimen/dimen_34dp"
+                android:text="审核评价"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_28dp" />
+
+            <EditText
+                android:id="@+id/et_audit_content"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_172dp"
+                android:layout_marginBottom="@dimen/dimen_32dp"
+                android:layout_marginLeft="@dimen/dimen_32dp"
+                android:layout_marginRight="@dimen/dimen_32dp"
+                android:background="@drawable/zhy_edittext_bg_1"
+                android:gravity="start"
+                android:padding="@dimen/dimen_16dp"
+                android:text=""
+                android:textSize="@dimen/dimen_28dp" />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_106dp"
+            android:background="@color/zhy_backgroud_1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_unpass"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="@dimen/dimen_96dp"
+                android:layout_weight="1"
+                android:background="@drawable/zhy_submit_button_style_2"
+                android:gravity="center"
+                android:text="不通过"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_28dp" />
+
+            <TextView
+                android:id="@+id/tv_pass"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="@dimen/dimen_96dp"
+                android:layout_weight="1"
+                android:background="@drawable/zhy_submit_button_style_1"
+                android:gravity="center"
+                android:text="通过"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_28dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</ScrollView>

@@ -23,6 +23,7 @@ public abstract class BaseLayout extends LinearLayout {
     protected String contentText;
     protected String hintText;
     protected int layoutType;
+    protected boolean showMode;
 
 
     public BaseLayout(Context context, int layoutId) {
@@ -44,6 +45,7 @@ public abstract class BaseLayout extends LinearLayout {
         hintText = typedArray.getString(R.styleable.CustomAttr_hintText);
         contentText = typedArray.getString(R.styleable.CustomAttr_contentText);
         layoutType = typedArray.getInt(R.styleable.CustomAttr_layoutType, -1);
+        showMode = typedArray.getBoolean(R.styleable.CustomAttr_showMode, false);
         typedArray.recycle();
     }
 

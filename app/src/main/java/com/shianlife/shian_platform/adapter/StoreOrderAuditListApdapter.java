@@ -83,11 +83,9 @@ public class StoreOrderAuditListApdapter extends BaseRCAdapter<StoreOrderAuditRe
                 if (v == tvOrderDetails) {
 
                 } else if (v == tvAuditDetails) {
-
+                    auditPerform(data);
                 } else if (v == tvOrderAudit) {
-                    new IntentUtils.Build(mContext, StoreOrderAuditPerformActivity.class)
-                            .setLong(IntentUtils.INTENT_ORDERID, data.getGoodsOrder().getId())
-                            .start();
+                    auditPerform(data);
                 }
             }
         };
@@ -105,6 +103,12 @@ public class StoreOrderAuditListApdapter extends BaseRCAdapter<StoreOrderAuditRe
             tvAuditDetails.setVisibility(View.GONE);
             tvOrderAudit.setVisibility(View.VISIBLE);
         }
+    }
+
+    private void auditPerform(StoreOrderAuditResultListBean.Content data) {
+        new IntentUtils.Build(mContext, StoreOrderAuditPerformActivity.class)
+                .setLong(IntentUtils.INTENT_ORDERID, data.getGoodsOrder().getId())
+                .start();
     }
 
 

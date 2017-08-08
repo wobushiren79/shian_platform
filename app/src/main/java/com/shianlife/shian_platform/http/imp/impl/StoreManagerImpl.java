@@ -7,8 +7,12 @@ import com.shianlife.shian_platform.http.base.BaseHttpParams;
 import com.shianlife.shian_platform.http.base.HttpRequestExecutor;
 import com.shianlife.shian_platform.http.base.HttpResponseHandler;
 import com.shianlife.shian_platform.http.imp.StoreManager;
+import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformBean;
 import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformListBean;
 import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformListResultBean;
+import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformResultBean;
+import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformSubmitBean;
+import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformSubmitResultBean;
 import com.shianlife.shian_platform.mvp.order.bean.StoreOrderAuditListBean;
 import com.shianlife.shian_platform.mvp.order.bean.StoreOrderAuditResultListBean;
 
@@ -61,5 +65,15 @@ public class StoreManagerImpl implements StoreManager {
     @Override
     public void getStoreAuditPerformList(Context context, StoreAuditPerformListBean params, HttpResponseHandler<StoreAuditPerformListResultBean> handler) {
         requestPost(context, "api/goods/aduit/aduitPerformByOrderId", StoreAuditPerformListResultBean.class, params, handler);
+    }
+
+    @Override
+    public void getStoreAuditPerformDetails(Context context, StoreAuditPerformBean params, HttpResponseHandler<StoreAuditPerformResultBean> handler) {
+        requestPost(context, "api/goods/aduit/aduitPerformDetailByPerformId", StoreAuditPerformResultBean.class, params, handler);
+    }
+
+    @Override
+    public void submitAuditPerform(Context context, StoreAuditPerformSubmitBean params, HttpResponseHandler<StoreAuditPerformSubmitResultBean> handler) {
+        requestPost(context, "api/goods/aduit/aduitPerformSubmit", StoreAuditPerformSubmitResultBean.class, params, handler);
     }
 }

@@ -98,8 +98,8 @@ public class BaseApplication extends Application {
         OkHttpClient okHttpClient = builder.connectTimeout(10000L, TimeUnit.MILLISECONDS)
                 .readTimeout(10000L, TimeUnit.MILLISECONDS)
                 //其他配置
-                .followRedirects(false)
-                .followSslRedirects(false)
+                .followRedirects(true)
+                .followSslRedirects(true)
                 .cookieJar(new LocalCookieJar())
                 .build();
         OkHttpUtils.initClient(okHttpClient);
