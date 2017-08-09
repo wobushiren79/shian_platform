@@ -208,8 +208,6 @@ public class StoreAuditPerformActivity extends BaseActivity implements IStoreAud
             AppUtils.loadPic(this, ivPerformPic3, urls.get(2));
             ivPerformPic3.setOnClickListener(onClickListener);
         }
-
-
     }
 
     @Override

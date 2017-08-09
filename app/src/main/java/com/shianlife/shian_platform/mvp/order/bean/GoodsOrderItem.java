@@ -66,7 +66,7 @@ public class GoodsOrderItem extends BaseEntity {
     private Integer specTotal;
 
     /**
-     * 商品分类属性名称
+     * 商品分类名称
      */
     private String  specOrderedAttr;
 

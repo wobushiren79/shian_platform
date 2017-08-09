@@ -60,14 +60,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".TestActivity">
+
+        </activity>
+        <activity android:name=".ui.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".ui.activity.SplashActivity">
-
         </activity>
         <activity
             android:name=".ui.activity.LoginActivity"
@@ -173,7 +173,8 @@
             android:name="push_api_key"
             android:value="nk8sqFigNn0D0eQPPdgkXSsjCPCUpF6G" />
 
-        <activity android:name=".ui.activity.StoreAuditPerformActivity"></activity>
+        <activity android:name=".ui.activity.StoreAuditPerformActivity" />
+        <activity android:name=".ui.activity.StoreOrderDetailsActivity"></activity>
     </application>
 
 </manifest>

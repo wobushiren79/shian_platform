@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.shianlife.shian_platform.R;
-import com.shianlife.shian_platform.adapter.StoreOrderAuditListApdapter;
+import com.shianlife.shian_platform.adapter.StoreOrderAuditListAdapter;
 import com.shianlife.shian_platform.base.BaseOrderListLayout;
 import com.shianlife.shian_platform.custom.view.ptr.CustomPtrFramelayout;
 import com.shianlife.shian_platform.mvp.order.bean.StoreOrderAuditResultListBean;
@@ -26,7 +26,7 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
  * Created by zm.
  */
 
-public class StoreOrderAuditList extends BaseOrderListLayout implements IStoreOrderAuditListView, StoreOrderAuditListApdapter.CallBack {
+public class StoreOrderAuditList extends BaseOrderListLayout implements IStoreOrderAuditListView, StoreOrderAuditListAdapter.CallBack {
     @BindView(R.id.rc_content)
     RecyclerView rcContent;
     @BindView(R.id.ptr_layout)
@@ -35,7 +35,7 @@ public class StoreOrderAuditList extends BaseOrderListLayout implements IStoreOr
     private CallBack callBack;
     private List<Integer> orderStatus;
     private Integer performStatus;
-    private StoreOrderAuditListApdapter listApdapter;
+    private StoreOrderAuditListAdapter listApdapter;
     private IStoreOrderAuditListPresenter storeOrderAuditListPresenter;
 
     private int pageSize = 10;
@@ -67,7 +67,7 @@ public class StoreOrderAuditList extends BaseOrderListLayout implements IStoreOr
 
 
     private void initView() {
-        listApdapter = new StoreOrderAuditListApdapter(getContext());
+        listApdapter = new StoreOrderAuditListAdapter(getContext());
         listApdapter.setCallBack(this);
         rcContent.setAdapter(listApdapter);
         rcContent.setLayoutManager(new LinearLayoutManager(getContext()));

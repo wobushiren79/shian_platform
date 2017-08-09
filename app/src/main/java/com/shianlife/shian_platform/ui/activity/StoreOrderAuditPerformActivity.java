@@ -5,11 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import com.shianlife.shian_platform.R;
-import com.shianlife.shian_platform.adapter.StoreAuditPerformListApdapter;
-import com.shianlife.shian_platform.adapter.StoreOrderAuditListApdapter;
+import com.shianlife.shian_platform.adapter.StoreAuditPerformListAdapter;
 import com.shianlife.shian_platform.appenum.BaseTitleEnum;
 import com.shianlife.shian_platform.base.BaseActivity;
 import com.shianlife.shian_platform.custom.view.ptr.CustomPtrFramelayout;
@@ -17,25 +15,22 @@ import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformListResultBe
 import com.shianlife.shian_platform.mvp.order.presenter.IStoreAuditPerformListPresenter;
 import com.shianlife.shian_platform.mvp.order.presenter.impl.StoreAuditPerformListPresenterImpl;
 import com.shianlife.shian_platform.mvp.order.view.IStoreAuditPerformListView;
-import com.shianlife.shian_platform.ui.order.store.StoreOrderAuditList;
 import com.shianlife.shian_platform.utils.IntentUtils;
 import com.shianlife.shian_platform.utils.ToastUtils;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import in.srain.cube.views.ptr.PtrDefaultHandler2;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 
-public class StoreOrderAuditPerformActivity extends BaseActivity implements IStoreAuditPerformListView, StoreAuditPerformListApdapter.CallBack {
+public class StoreOrderAuditPerformActivity extends BaseActivity implements IStoreAuditPerformListView, StoreAuditPerformListAdapter.CallBack {
     @BindView(R.id.rc_content)
     RecyclerView rcContent;
     @BindView(R.id.ptr_layout)
     CustomPtrFramelayout ptrLayout;
 
     private Intent intent;
-    private StoreAuditPerformListApdapter listApdapter;
+    private StoreAuditPerformListAdapter listApdapter;
     private IStoreAuditPerformListPresenter storeAuditPerformListPresenter;
     public static boolean isRefresh_Change;
 
@@ -51,7 +46,7 @@ public class StoreOrderAuditPerformActivity extends BaseActivity implements ISto
     protected void initView() {
         setTitle(getString(R.string.title_name_order_audit_perform), BaseTitleEnum.BACKNORMALTITLE.getTitleType());
 
-        listApdapter = new StoreAuditPerformListApdapter(getContext());
+        listApdapter = new StoreAuditPerformListAdapter(getContext());
         listApdapter.setCallBack(this);
         rcContent.setAdapter(listApdapter);
         rcContent.setLayoutManager(new LinearLayoutManager(getContext()));

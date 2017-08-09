@@ -37,7 +37,9 @@ public enum GoodsOrderStatusEnum {
         this.name = name;
     }
 
-    public static String getValueText(int status) {
+    public static String getValueText(Integer status) {
+        if (status == null)
+            return null;
         for (GoodsOrderStatusEnum e : GoodsOrderStatusEnum.values()) {
             if (e.getCode() == status) {
                 return e.getName();

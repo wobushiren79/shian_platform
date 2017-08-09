@@ -18,6 +18,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 
 import com.baidu.mapapi.model.LatLng;
@@ -36,7 +38,9 @@ import java.lang.reflect.Field;
 import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * Created by zm.
@@ -240,4 +244,15 @@ public class AppUtils {
         }
     }
 
+    /**
+     * 展开下拉
+     *
+     * @param listView
+     * @param listAdapter
+     */
+    public static void expandGroup(ExpandableListView listView, BaseExpandableListAdapter listAdapter) {
+        for (int i = 0; i < listAdapter.getGroupCount(); i++) {
+            listView.expandGroup(i);
+        }
+    }
 }

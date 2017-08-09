@@ -142,8 +142,10 @@
 
     <string name="driver_order_serviceonoing_success">保存成功</string>
     <string name="driver_order_serviceonoing_fail">保存失败</string>
+
     <string name="title_name_goods_audit">单项审核</string>
     <string name="title_name_order_audit_perform">审核执行</string>
     <string name="title_name_goods_audit_perform">审核</string>
+    <string name="title_name_order_details">订单详情</string>
 
 </resources>
