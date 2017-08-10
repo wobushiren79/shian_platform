@@ -18,6 +18,7 @@ import com.shianlife.shian_platform.mvp.advert.bean.AdvertResultBean;
 import com.shianlife.shian_platform.mvp.advert.presenter.IAdvertPresenter;
 import com.shianlife.shian_platform.mvp.advert.presenter.impl.AdvertPresenterImpl;
 import com.shianlife.shian_platform.mvp.advert.view.IAdvertView;
+import com.shianlife.shian_platform.mvp.login.bean.SystemLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginConfig;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.presenter.IUserLoginPresenter;
@@ -121,6 +122,16 @@ public class SplashActivity extends BaseActivity implements IUserLoginView {
     @Override
     public void loginFail(String message) {
         sleepActivity(LoginAdvertActivity.LOGIN);
+    }
+
+    @Override
+    public void loginSystemSuccess(SystemLoginResultBean result) {
+
+    }
+
+    @Override
+    public void loginSystemFail(String message) {
+
     }
 
     /**

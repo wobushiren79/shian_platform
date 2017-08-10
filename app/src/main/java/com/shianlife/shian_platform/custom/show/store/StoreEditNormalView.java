@@ -3,6 +3,7 @@ package com.shianlife.shian_platform.custom.show.store;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -23,8 +24,7 @@ public class StoreEditNormalView extends BaseLayout {
     TextView tvTitle;
     @BindView(R.id.et_content)
     EditText etContent;
-    @BindView(R.id.tv_temp)
-    TextView tvTemp;
+
 
     public StoreEditNormalView(Context context) {
         super(context, R.layout.layout_store_edit_normal_view);
@@ -63,10 +63,11 @@ public class StoreEditNormalView extends BaseLayout {
     public void setEnabled(boolean enabled) {
         etContent.setEnabled(enabled);
         if (enabled) {
-            tvTemp.setVisibility(GONE);
+            etContent.setGravity(Gravity.CENTER_VERTICAL );
         } else {
-            tvTemp.setVisibility(VISIBLE);
+            etContent.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
         }
     }
+
 
 }

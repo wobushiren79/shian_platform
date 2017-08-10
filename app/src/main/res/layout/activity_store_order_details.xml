@@ -21,13 +21,122 @@
             android:layout_marginTop="@dimen/dimen_24dp"
             CustomAttr:titleName="商品清单"></com.shianlife.shian_platform.custom.show.store.StoreExpandableTitleView>
 
-        <com.shianlife.shian_platform.custom.list.ScrollExpandableListView
+        <com.shianlife.shian_platform.custom.view.scrollview.ScrollExpandableListView
             android:id="@+id/goods_expand_list_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:groupIndicator="@null"
-            android:visibility="gone"></com.shianlife.shian_platform.custom.list.ScrollExpandableListView>
+            android:visibility="gone"></com.shianlife.shian_platform.custom.view.scrollview.ScrollExpandableListView>
+
+        <com.shianlife.shian_platform.custom.show.store.StoreExpandableTitleView
+            android:id="@+id/invoice_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            CustomAttr:titleName="发票信息"></com.shianlife.shian_platform.custom.show.store.StoreExpandableTitleView>
+
+
+        <com.shianlife.shian_platform.custom.view.scrollview.ScrollRecyclerView
+            android:id="@+id/invoice_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"></com.shianlife.shian_platform.custom.view.scrollview.ScrollRecyclerView>
+
+        <com.shianlife.shian_platform.custom.show.store.StoreEditNormalView
+            android:id="@+id/tv_remark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            CustomAttr:showMode="true"
+            CustomAttr:titleName="备注："></com.shianlife.shian_platform.custom.show.store.StoreEditNormalView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_96dp"
+            android:background="@color/white"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/dimen_16dp"
+                android:gravity="center_vertical"
+                android:text="客户结算价"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_money_customer"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/dimen_16dp"
+                android:gravity="center_vertical"
+                android:text=""
+                android:textColor="@color/zhy_text_color_4" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_1dp"
+            android:background="@color/zhy_line_3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_96dp"
+            android:background="@color/white"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/dimen_16dp"
+                android:gravity="center_vertical"
+                android:text="顾问结算价"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_money_counselor"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/dimen_16dp"
+                android:gravity="center_vertical"
+                android:text=""
+                android:textColor="@color/zhy_text_color_4" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_1dp"
+            android:background="@color/zhy_line_3" />
+
+        <TextView
+            android:id="@+id/tv_order_number"
+            style="@style/store_order_details_text_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dimen_28dp"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/tv_order_time"
+            style="@style/store_order_details_text_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_order_pay_time"
+            style="@style/store_order_details_text_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_order_pay_number"
+            style="@style/store_order_details_text_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dimen_28dp" />
     </LinearLayout>
 
 

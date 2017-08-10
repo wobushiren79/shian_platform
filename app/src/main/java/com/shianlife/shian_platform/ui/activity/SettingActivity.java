@@ -67,7 +67,7 @@ public class SettingActivity extends BaseActivity implements IUserLoginOutView {
     }
 
     @Override
-    public Context getContent() {
+    public Context getContext() {
         return this;
     }
 

@@ -2,6 +2,8 @@ package com.shianlife.shian_platform.mvp.login.presenter.impl;
 
 import com.shianlife.shian_platform.common.Constants;
 import com.shianlife.shian_platform.common.OnGetDataListener;
+import com.shianlife.shian_platform.mvp.login.bean.SystemLoginBean;
+import com.shianlife.shian_platform.mvp.login.bean.SystemLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginBean;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginConfig;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginResultBean;
@@ -55,7 +57,7 @@ public class UserLoginPresenter implements IUserLoginPresenter {
 
     @Override
     public void loginOutCemetery() {
-        userLoginModel.loginOutCemetery(userLoginOutView.getContent(), new OnGetDataListener<Object>() {
+        userLoginModel.loginOutCemetery(userLoginOutView.getContext(), new OnGetDataListener<Object>() {
             @Override
             public void getDataSuccess(Object result) {
                 userLoginOutView.loginOutSuccess(null);
@@ -64,6 +66,24 @@ public class UserLoginPresenter implements IUserLoginPresenter {
             @Override
             public void getDataFail(String msg) {
                 userLoginOutView.loginOutFail(msg);
+            }
+        });
+    }
+
+    @Override
+    public void loginSystem() {
+        SystemLoginBean params = new SystemLoginBean();
+        params.setUserName(userLoginView.getUserName());
+        params.setUserPwd(userLoginView.getPassWord());
+        userLoginModel.loginSystem(userLoginView.getContext(), params, new OnGetDataListener<SystemLoginResultBean>() {
+            @Override
+            public void getDataSuccess(SystemLoginResultBean result) {
+                userLoginView.loginSystemSuccess(result);
+            }
+
+            @Override
+            public void getDataFail(String msg) {
+                userLoginView.loginSystemFail(msg);
             }
         });
     }

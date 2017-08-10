@@ -2,6 +2,7 @@ package com.shianlife.shian_platform.mvp.login.view;
 
 import android.content.Context;
 
+import com.shianlife.shian_platform.mvp.login.bean.SystemLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginConfig;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginResultBean;
 
@@ -79,7 +80,6 @@ public interface IUserLoginView {
      */
     Context getContext();
 
-
     /**
      * 登陆成功
      *
@@ -94,5 +94,17 @@ public interface IUserLoginView {
      */
     void loginFail(String message);
 
+    /**
+     * 登陆成功
+     *
+     * @param result
+     */
+    void loginSystemSuccess(SystemLoginResultBean result);
 
+    /**
+     * 登陆失败
+     *
+     * @param message
+     */
+    void loginSystemFail(String message);
 }

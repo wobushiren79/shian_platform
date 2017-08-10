@@ -9,12 +9,13 @@ import com.shianlife.shian_platform.mvp.login.bean.UserLoginResultBean;
 public class Constants {
     //公墓地址
     public static final String CEMETERY_URL = "http://115.28.163.211:7088/shianlife-advisor-cemetery-1.0-SNAPSHOT";
-//    public static final String CEMETERY_URL = "http://192.168.0.37:8088/app";
+    //    public static final String CEMETERY_URL = "http://192.168.0.37:8088/app";
 //    public static final String CEMETERY_URL = "http://192.168.0.200:8000/shianlife-advisor-cemetery-1.0-SNAPSHOT";
 //    public static final String CEMETERY_URL = "http://192.168.0.49:8080/app";
 //    public static final String CEMETERY_URL = "http://192.168.0.35:8100/advisor";
+    public static final String Login_BaseUrl = "http://192.168.0.35:8199/autho";
     //单项地址
-    public static final String StoreURL = "http://192.168.0.37:8089";
+    public static final String Store_BaseUrl = "http://192.168.0.37:8089";
     //PHP地址
     public static final String PHP_URL = "http://app.e-funeral.cn";
     //阿里云文件上传
@@ -25,6 +26,8 @@ public class Constants {
     public static final String FILE_QINIU_UPDATA = CEMETERY_URL + "/fileqiniu/upload";
     //七牛文件查看地址
     public static final String QINIUURL = "http://oq6rkq859.bkt.clouddn.com/";
+    //单项商品图片查看地址
+    public static final String Store_Pic_BaseUrl = "http://wechat.e-funeral.cn/Public/Uploads/";
 
     public static final String siftsPHPURL = PHP_URL + "/home/index/sifts";//精选
     public static final String helpsPHPURL = PHP_URL + "/home/index/helps";//帮助

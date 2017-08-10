@@ -69,6 +69,67 @@ public class GoodsOrderItem extends BaseEntity {
      * 商品分类名称
      */
     private String  specOrderedAttr;
+    /**
+     * 规格商品编号
+     */
+    private String specNumber;
+    /**
+     * 顾问结算价
+     */
+    private Double adviserPrice;
+    /**
+     * 标题图
+     */
+    private String titleImg;
+    /**
+     * 商家结算价
+     */
+    private Double ementPrice;
+    /**
+     * 单位
+     */
+    private String unit;
+
+
+    public String getSpecNumber() {
+        return specNumber;
+    }
+
+    public void setSpecNumber(String specNumber) {
+        this.specNumber = specNumber;
+    }
+
+    public Double getAdviserPrice() {
+        return adviserPrice;
+    }
+
+    public void setAdviserPrice(Double adviserPrice) {
+        this.adviserPrice = adviserPrice;
+    }
+
+    public String getTitleImg() {
+        return titleImg;
+    }
+
+    public void setTitleImg(String titleImg) {
+        this.titleImg = titleImg;
+    }
+
+    public Double getEmentPrice() {
+        return ementPrice;
+    }
+
+    public void setEmentPrice(Double ementPrice) {
+        this.ementPrice = ementPrice;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
 
     public Long getOrderId() {
         return orderId;

@@ -6,6 +6,8 @@ import com.shianlife.shian_platform.common.Constants;
 import com.shianlife.shian_platform.common.OnGetDataListener;
 import com.shianlife.shian_platform.http.MHttpManagerFactory;
 import com.shianlife.shian_platform.http.base.HttpResponseHandler;
+import com.shianlife.shian_platform.mvp.login.bean.SystemLoginBean;
+import com.shianlife.shian_platform.mvp.login.bean.SystemLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginBean;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginConfig;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginResultBean;
@@ -63,6 +65,28 @@ public class UserLoginModelImpl implements IUserLoginModel {
             }
         });
     }
+
+
+    @Override
+    public void loginSystem(Context context, SystemLoginBean params, final OnGetDataListener<SystemLoginResultBean> listener) {
+        MHttpManagerFactory.getLoginManager().loginSystem(context, params, new HttpResponseHandler<SystemLoginResultBean>() {
+            @Override
+            public void onStart(Request request, int id) {
+
+            }
+
+            @Override
+            public void onSuccess(SystemLoginResultBean result) {
+                listener.getDataSuccess(result);
+            }
+
+            @Override
+            public void onError(String message) {
+                listener.getDataFail(message);
+            }
+        });
+    }
+
 
     @Override
     public void saveLoginConfig(Context context, UserLoginConfig loginConfig) {

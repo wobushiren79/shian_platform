@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.base.BaseActivity;
 import com.shianlife.shian_platform.custom.view.loadbutton.LoadingButton;
+import com.shianlife.shian_platform.mvp.login.bean.SystemLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginConfig;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.presenter.IUserLoginPresenter;
@@ -114,6 +115,18 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
     }
 
     @Override
+    public void loginSystemSuccess(SystemLoginResultBean result) {
+        btnLogin.setComplete();
+        ToastUtils.showToastLong(getContext(), getString(R.string.login_success));
+    }
+
+    @Override
+    public void loginSystemFail(String message) {
+        btnLogin.setNormal();
+        ToastUtils.showToastLong(getContext(), getString(R.string.login_fail));
+    }
+
+    @Override
     public boolean getIsAutoLogin() {
         return cbLoginAuto.isChecked();
     }
@@ -153,5 +166,7 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
         btnLogin.setLoading();
         btnLogin.setOnClickListener(null);
         loginPresenter.loginCemetery();
+
+//        loginPresenter.loginSystem();
     }
 }

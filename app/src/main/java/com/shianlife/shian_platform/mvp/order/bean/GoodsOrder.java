@@ -106,10 +106,9 @@ public class GoodsOrder extends BaseEntity{
     }
 
 
-    public Object getTotalPrice() {
+    public int getTotalPrice() {
         return totalPrice;
     }
-
 
     public int getCheckOrder() {
         return checkOrder;

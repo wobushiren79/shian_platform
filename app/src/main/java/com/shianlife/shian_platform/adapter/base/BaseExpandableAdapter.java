@@ -104,7 +104,7 @@ public abstract class BaseExpandableAdapter<T, E> extends BaseExpandableListAdap
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(itemLayout, null);
         }
-        setitemView(itemData.get(groupPosition).get(childPosition), convertView, groupPosition, childPosition);
+        setItemView(itemData.get(groupPosition).get(childPosition), convertView, groupPosition, childPosition);
         return convertView;
     }
 
@@ -115,5 +115,5 @@ public abstract class BaseExpandableAdapter<T, E> extends BaseExpandableListAdap
 
     public abstract void setGroupView(T groupData, View convertView, int groupPosition);
 
-    public abstract void setitemView(E itemData, View convertView, int groupPosition, int childPosition);
+    public abstract void setItemView(E itemData, View convertView, int groupPosition, int childPosition);
 }

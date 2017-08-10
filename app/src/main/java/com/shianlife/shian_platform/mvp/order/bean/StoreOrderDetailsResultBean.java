@@ -26,6 +26,17 @@ public class StoreOrderDetailsResultBean {
     //发票信息
     private GoodsInvoice goodsInvoice;
 
+    //商品及执行单
+    private List<GoodsItemPerform> goodsItemPerforms;
+
+    public List<GoodsItemPerform> getGoodsItemPerforms() {
+        return goodsItemPerforms;
+    }
+
+    public void setGoodsItemPerforms(List<GoodsItemPerform> goodsItemPerforms) {
+        this.goodsItemPerforms = goodsItemPerforms;
+    }
+
     public GoodsOrder getGoodsOrder() {
         return goodsOrder;
     }

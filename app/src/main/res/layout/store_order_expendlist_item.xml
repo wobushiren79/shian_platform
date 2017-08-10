@@ -12,7 +12,8 @@
         android:layout_gravity="center_vertical"
         android:layout_marginBottom="@dimen/dimen_7dp"
         android:layout_marginLeft="@dimen/dimen_80dp"
-        android:layout_marginTop="@dimen/dimen_7dp" />
+        android:layout_marginTop="@dimen/dimen_7dp"
+        android:background="@color/zhy_backgroud_1" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,17 +45,30 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_16dp"
             android:layout_marginTop="@dimen/dimen_16dp"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tv_goods_money"
+                android:id="@+id/tv_goods_customer_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/zhy_text_color_4"
+                android:textSize="@dimen/dimen_24dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_marginLeft="@dimen/dimen_16dp"
+                android:layout_marginRight="@dimen/dimen_16dp"
+                android:id="@+id/tv_goods_counselor_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text=""
                 android:textColor="@color/zhy_text_color_4"
-                android:textSize="@dimen/dimen_24dp" />
+                android:textSize="@dimen/dimen_24dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_goods_numb"
@@ -66,6 +80,13 @@
 
         </LinearLayout>
 
-
+        <TextView
+            android:id="@+id/tv_perform_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/zhy_text_color_1"
+            android:textSize="@dimen/dimen_24dp"
+            android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>

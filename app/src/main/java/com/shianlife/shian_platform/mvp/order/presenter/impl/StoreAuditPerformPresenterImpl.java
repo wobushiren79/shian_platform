@@ -41,7 +41,10 @@ public class StoreAuditPerformPresenterImpl implements IStoreAuditPerformPresent
                 storeAuditPerformView.getStoreAuditPerformSuccess(result);
                 storeAuditPerformView.setAuditPerformContent(result.getCompleteInfo());
                 List<String> urls = new ArrayList<>();
-                String[] tempUrls = result.getCompletePic().split(",");
+                String[] tempUrls = new String[0];
+                if (result.getCompletePic() != null) {
+                    tempUrls = result.getCompletePic().split(",");
+                }
                 for (String url : tempUrls) {
                     urls.add(Constants.OSSURL + url);
                 }

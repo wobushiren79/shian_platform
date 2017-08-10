@@ -28,7 +28,7 @@ package com.shianlife.shian_platform.http.imp.impl;
 public class StoreManagerImpl implements StoreManager {
     public HttpRequestExecutor excutor = new HttpRequestExecutor();
     private static StoreManagerImpl manager;
-    private String BaseUrl = Constants.StoreURL;
+    private String BaseUrl = Constants.Store_BaseUrl;
 
     private StoreManagerImpl() {
     }
@@ -81,6 +81,6 @@ public class StoreManagerImpl implements StoreManager {
 
     @Override
     public void getStoreOrderDetails(Context context, StoreOrderDetailsBean params, HttpResponseHandler<StoreOrderDetailsResultBean> handler) {
-        requestPost(context, "api/goods/order/get", StoreOrderDetailsResultBean.class, params, handler, true);
+        requestPost(context, "api/goods/order/findOrderDetailById", StoreOrderDetailsResultBean.class, params, handler, true);
     }
 }

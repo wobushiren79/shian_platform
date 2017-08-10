@@ -14,7 +14,7 @@ public interface IUserLoginOutView {
      *
      * @return
      */
-    Context getContent();
+    Context getContext();
 
 
     /**
