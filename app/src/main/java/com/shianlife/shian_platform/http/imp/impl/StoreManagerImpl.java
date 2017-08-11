@@ -1,38 +1,40 @@
 package com.shianlife.shian_platform.http.imp.impl;
 
-        import android.content.Context;
+import android.content.Context;
 
-        import com.shianlife.shian_platform.common.Constants;
-        import com.shianlife.shian_platform.http.base.BaseHttpParams;
-        import com.shianlife.shian_platform.http.base.HttpRequestExecutor;
-        import com.shianlife.shian_platform.http.base.HttpResponseHandler;
-        import com.shianlife.shian_platform.http.imp.StoreManager;
-        import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformBean;
-        import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformListBean;
-        import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformListResultBean;
-        import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformResultBean;
-        import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformSubmitBean;
-        import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformSubmitResultBean;
-        import com.shianlife.shian_platform.mvp.order.bean.StoreOrderAuditListBean;
-        import com.shianlife.shian_platform.mvp.order.bean.StoreOrderAuditResultListBean;
-        import com.shianlife.shian_platform.mvp.order.bean.StoreOrderDetailsBean;
-        import com.shianlife.shian_platform.mvp.order.bean.StoreOrderDetailsResultBean;
+import com.shianlife.shian_platform.common.Constants;
+import com.shianlife.shian_platform.http.base.BaseHttpParams;
+import com.shianlife.shian_platform.http.base.BaseManagerImpl;
+import com.shianlife.shian_platform.http.base.HttpRequestExecutor;
+import com.shianlife.shian_platform.http.base.HttpResponseHandler;
+import com.shianlife.shian_platform.http.imp.StoreManager;
+import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformBean;
+import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformListBean;
+import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformListResultBean;
+import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformResultBean;
+import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformSubmitBean;
+import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformSubmitResultBean;
+import com.shianlife.shian_platform.mvp.order.bean.StoreOrderAuditListBean;
+import com.shianlife.shian_platform.mvp.order.bean.StoreOrderAuditResultListBean;
+import com.shianlife.shian_platform.mvp.order.bean.StoreOrderDetailsBean;
+import com.shianlife.shian_platform.mvp.order.bean.StoreOrderDetailsResultBean;
+import com.shianlife.shian_platform.mvp.order.bean.StoreOrderGetPerformBean;
+import com.shianlife.shian_platform.mvp.order.bean.StoreOrderGetPerformResultBean;
 
-        import java.util.HashMap;
-        import java.util.Map;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by zm.
  */
 
-public class StoreManagerImpl implements StoreManager {
-    public HttpRequestExecutor excutor = new HttpRequestExecutor();
+public class StoreManagerImpl extends BaseManagerImpl implements StoreManager {
     private static StoreManagerImpl manager;
-    private String BaseUrl = Constants.Store_BaseUrl;
 
     private StoreManagerImpl() {
+        super();
+        BaseUrl = Constants.Store_BaseUrl;
     }
-
 
     public static StoreManagerImpl getInstance() {
         if (manager == null) {
@@ -40,24 +42,6 @@ public class StoreManagerImpl implements StoreManager {
         }
         return manager;
     }
-
-    private <T> void requestPost(Context context,
-                                 String method,
-                                 Class<T> cls,
-                                 BaseHttpParams params,
-                                 HttpResponseHandler<T> response) {
-        excutor.requestPost(context, method, cls, params, response, false, BaseUrl, null);
-    }
-
-    private <T> void requestPost(Context context,
-                                 String method,
-                                 Class<T> cls,
-                                 BaseHttpParams params,
-                                 HttpResponseHandler<T> response,
-                                 boolean isDialog) {
-        excutor.requestPost(context, method, cls, params, response, isDialog, BaseUrl, null);
-    }
-
 
     @Override
     public void getStoreOrderAuditList(Context context, StoreOrderAuditListBean params, HttpResponseHandler<StoreOrderAuditResultListBean> handler) {
@@ -82,5 +66,10 @@ public class StoreManagerImpl implements StoreManager {
     @Override
     public void getStoreOrderDetails(Context context, StoreOrderDetailsBean params, HttpResponseHandler<StoreOrderDetailsResultBean> handler) {
         requestPost(context, "api/goods/order/findOrderDetailById", StoreOrderDetailsResultBean.class, params, handler, true);
+    }
+
+    @Override
+    public void getPerformInfo(Context context, StoreOrderGetPerformBean params, HttpResponseHandler<StoreOrderGetPerformResultBean> handler) {
+        requestPost(context, "api/goods/perform/findPerformInfoByPerformId", StoreOrderGetPerformResultBean.class, params, handler, true);
     }
 }

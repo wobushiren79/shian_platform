@@ -2,8 +2,10 @@ package com.shianlife.shian_platform.base;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 
 import com.baidu.mapapi.SDKInitializer;
+import com.shianlife.shian_platform.common.Constants;
 import com.shianlife.shian_platform.common.local.LocationService;
 import com.shianlife.shian_platform.http.base.CustomCookieStore;
 import com.shianlife.shian_platform.http.base.SSLSocketFactoryCompat;
@@ -113,7 +115,16 @@ public class BaseApplication extends Application {
         public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
             String tempUrl = getBaseUrl(url.toString());
             cookieStore.put(tempUrl, cookies);
-
+            //新增添加子系统KEY
+            if (tempUrl.contains(Constants.Login_BaseUrl) && cookies.size() >= 2) {
+                String setCookies = cookies.get(1).toString();
+                String[] cookiesList = setCookies.split(";");
+                for (String cookie : cookiesList) {
+                    if (cookie.contains("KI4SO_SERVER_EC")) {
+                        Constants.System_Ki4so_Client_Ec = cookie;
+                    }
+                }
+            }
         }
 
         @Override

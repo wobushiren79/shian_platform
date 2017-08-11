@@ -80,8 +80,7 @@ public abstract class BaseActivity extends FragmentActivity {
     @Override
     public void setContentView(int layoutResID) {
         View v = LayoutInflater.from(this).inflate(layoutResID, null);
-        flBase.addView(v, ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
+        flBase.addView(v, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         ButterKnife.bind(this);
         initView();
         initData();
@@ -90,8 +89,7 @@ public abstract class BaseActivity extends FragmentActivity {
     @Override
     public void setContentView(View view) {
         // TODO Auto-generated method stub
-        flBase.addView(view, ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
+        flBase.addView(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         ButterKnife.bind(this);
         initView();
         initData();

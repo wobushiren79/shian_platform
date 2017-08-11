@@ -8,39 +8,42 @@ import com.shianlife.shian_platform.mvp.login.bean.UserLoginResultBean;
 
 public class Constants {
     //公墓地址
-    public static final String CEMETERY_URL = "http://115.28.163.211:7088/shianlife-advisor-cemetery-1.0-SNAPSHOT";
+    public static final String Cemetery_BaseUrl = "http://115.28.163.211:7088/shianlife-advisor-cemetery-1.0-SNAPSHOT";
     //    public static final String CEMETERY_URL = "http://192.168.0.37:8088/app";
 //    public static final String CEMETERY_URL = "http://192.168.0.200:8000/shianlife-advisor-cemetery-1.0-SNAPSHOT";
 //    public static final String CEMETERY_URL = "http://192.168.0.49:8080/app";
 //    public static final String CEMETERY_URL = "http://192.168.0.35:8100/advisor";
-    public static final String Login_BaseUrl = "http://192.168.0.35:8199/autho";
+    public static final String Login_BaseUrl = "http://192.168.0.199:8080/ki4so-web";
     //单项地址
-    public static final String Store_BaseUrl = "http://192.168.0.37:8089";
+//    public static final String Store_BaseUrl = "http://192.168.0.37:8089";
+    public static final String Store_BaseUrl = "http://192.168.0.199:8299/goods";
     //PHP地址
-    public static final String PHP_URL = "http://app.e-funeral.cn";
+    public static final String PHP_BaseUrl = "http://app.e-funeral.cn";
     //阿里云文件上传
-    public static final String FILE_ALIYUN_UPDATA = CEMETERY_URL + "/file/upload";
+    public static final String FILE_ALIYUN_UPDATA = Cemetery_BaseUrl + "/file/upload";
     //阿里云文件查看地址
     public static final String OSSURL = "http://shianlife123.oss-cn-qingdao.aliyuncs.com/";
     //七牛文件上传
-    public static final String FILE_QINIU_UPDATA = CEMETERY_URL + "/fileqiniu/upload";
+    public static final String FILE_QINIU_UPDATA = Cemetery_BaseUrl + "/fileqiniu/upload";
     //七牛文件查看地址
     public static final String QINIUURL = "http://oq6rkq859.bkt.clouddn.com/";
     //单项商品图片查看地址
     public static final String Store_Pic_BaseUrl = "http://wechat.e-funeral.cn/Public/Uploads/";
 
-    public static final String siftsPHPURL = PHP_URL + "/home/index/sifts";//精选
-    public static final String helpsPHPURL = PHP_URL + "/home/index/helps";//帮助
-    public static final String dynamicsPHPURL = PHP_URL + "/home/index/dynamics";//动态
-    public static final String phonePHPURL = PHP_URL + "/home/index/phone";//通讯宝
+    public static final String siftsPHPURL = PHP_BaseUrl + "/home/index/sifts";//精选
+    public static final String helpsPHPURL = PHP_BaseUrl + "/home/index/helps";//帮助
+    public static final String dynamicsPHPURL = PHP_BaseUrl + "/home/index/dynamics";//动态
+    public static final String phonePHPURL = PHP_BaseUrl + "/home/index/phone";//通讯宝
     public static final String DiDichannel = "55455";//滴滴渠道号
+
+    //子系统-单项  登陆地址
+    public static final String Login_Store_Url = "http://192.168.0.199:8299/goods/login_sys_api";
+
 
     public static String ChannelId = "";
 
     //公墓账号
     public static UserLoginResultBean userCemetery = null;
-    //当前的sessionId
-    public static String sessionId = null;
     //当前的用户ID
     public static long userId;
 
@@ -65,4 +68,8 @@ public class Constants {
     //默认地图中心
     private final static double mapCenterlatitude = 30.6634450000;
     private final static double mapCenterlongitude = 104.0722210000;
+
+
+    //登陆系统KEY
+    public  static String System_Ki4so_Client_Ec;
 }

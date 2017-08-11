@@ -13,6 +13,8 @@ import com.shianlife.shian_platform.mvp.order.bean.StoreOrderAuditListBean;
 import com.shianlife.shian_platform.mvp.order.bean.StoreOrderAuditResultListBean;
 import com.shianlife.shian_platform.mvp.order.bean.StoreOrderDetailsBean;
 import com.shianlife.shian_platform.mvp.order.bean.StoreOrderDetailsResultBean;
+import com.shianlife.shian_platform.mvp.order.bean.StoreOrderGetPerformBean;
+import com.shianlife.shian_platform.mvp.order.bean.StoreOrderGetPerformResultBean;
 
 /**
  * Created by zm.
@@ -64,4 +66,13 @@ public interface StoreManager {
      * @param handler
      */
     void getStoreOrderDetails(Context context, StoreOrderDetailsBean params, HttpResponseHandler<StoreOrderDetailsResultBean> handler);
+
+    /**
+     * 获取执行信息
+     *
+     * @param context
+     * @param params
+     * @param handler
+     */
+    void getPerformInfo(Context context, StoreOrderGetPerformBean params, HttpResponseHandler<StoreOrderGetPerformResultBean> handler);
 }

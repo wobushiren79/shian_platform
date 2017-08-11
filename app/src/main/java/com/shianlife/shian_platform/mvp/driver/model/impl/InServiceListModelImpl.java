@@ -18,7 +18,7 @@ import okhttp3.Request;
 public class InServiceListModelImpl implements IInServiceListModel {
     @Override
     public void getInServiceListData(Context context, InServiceListBean params, final OnGetDataListener<InServiceListResultBean> listener) {
-        MHttpManagerFactory.getAccountManager().getInServiceList(context, params, new HttpResponseHandler<InServiceListResultBean>() {
+        MHttpManagerFactory.getCarManager().getInServiceList(context, params, new HttpResponseHandler<InServiceListResultBean>() {
             @Override
             public void onStart(Request request, int id) {
 

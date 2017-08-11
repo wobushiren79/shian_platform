@@ -132,7 +132,7 @@ public class LoginAdvertActivity extends BaseActivity implements IAdvertView {
         if (result.getItems() != null && result.getItems().size() > 0) {
             llAdvert.setVisibility(View.VISIBLE);
             advertData = result.getItems().get(0);
-            AppUtils.loadPic(this, ivAdvert, Constants.PHP_URL + result.getItems().get(0).getBanner());
+            AppUtils.loadPic(this, ivAdvert, Constants.PHP_BaseUrl + result.getItems().get(0).getBanner());
             startThread();
         } else {
             checkAndJump();

@@ -68,7 +68,7 @@ public class CheckUtils {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(context, UpDataService.class);
-                        intent.putExtra(IntentUtils.INTENT_APPUPDATE, Constants.PHP_URL + result.getItems().get(0).getAppDownLoadUrl());
+                        intent.putExtra(IntentUtils.INTENT_APPUPDATE, Constants.PHP_BaseUrl + result.getItems().get(0).getAppDownLoadUrl());
                         context.startService(intent);
                         dialog.cancel();
                     }

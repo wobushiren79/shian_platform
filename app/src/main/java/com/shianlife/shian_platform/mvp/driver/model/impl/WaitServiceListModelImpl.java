@@ -19,7 +19,7 @@ public class WaitServiceListModelImpl implements IWaitServiceListModel {
 
     @Override
     public void getWaitServiceListData(Context context, WaitServiceListBean params, final OnGetDataListener<WaitServiceListResultBean> listener) {
-        MHttpManagerFactory.getAccountManager().getWaitServiceList(context, params, new HttpResponseHandler<WaitServiceListResultBean>() {
+        MHttpManagerFactory.getCarManager().getWaitServiceList(context, params, new HttpResponseHandler<WaitServiceListResultBean>() {
             @Override
             public void onStart(Request request, int id) {
 

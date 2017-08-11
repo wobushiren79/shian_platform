@@ -19,7 +19,7 @@ import okhttp3.Request;
 public class RejectOrderModelImpl implements IRejectOrderModel {
     @Override
     public void rejectOrder(Context context, RejectOrderBean params, final OnGetDataListener<RejectOrderResultBean> listener) {
-        MHttpManagerFactory.getAccountManager().driverRejectOrder(context, params, new HttpResponseHandler<RejectOrderResultBean>() {
+        MHttpManagerFactory.getCarManager().driverRejectOrder(context, params, new HttpResponseHandler<RejectOrderResultBean>() {
             @Override
             public void onStart(Request request, int id) {
 

@@ -8,6 +8,7 @@ import android.widget.Button;
 import com.shianlife.shian_platform.base.BaseActivity;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.builder.PostFormBuilder;
+import com.zhy.http.okhttp.builder.PostStringBuilder;
 import com.zhy.http.okhttp.callback.Callback;
 import com.zhy.http.okhttp.request.RequestCall;
 
@@ -22,6 +23,7 @@ import okhttp3.Call;
 import okhttp3.Cookie;
 import okhttp3.Headers;
 import okhttp3.HttpUrl;
+import okhttp3.MediaType;
 import okhttp3.Response;
 
 public class TestActivity extends BaseActivity {
@@ -72,16 +74,21 @@ public class TestActivity extends BaseActivity {
 
 
     private void login() {
-        Map<String, String> header = new HashMap<>();
-        header.put("systemType", "2");
 
 
-        final PostFormBuilder getBuilder = OkHttpUtils.post();
 
-        getBuilder.url("http://192.168.0.199:8080/ki4so-web/api_login");
-        getBuilder.headers(header);
-        getBuilder.addParams("username", "admin");
-        getBuilder.addParams("password", "1");
+        final PostStringBuilder getBuilder = OkHttpUtils.postString();
+
+        getBuilder.url("http://192.168.0.35:8199/ki4so-web/applogin");
+//        if (header != null)
+//            getBuilder.headers(header);
+        getBuilder.mediaType(MediaType.parse("application/json; charset=utf-8"));
+        getBuilder.content("\n" +
+                "{\"content\":{\n" +
+                "\"userName\":\"test\",\n" +
+                "\"userPwd\":\"1\"\n" +
+                "}}");
+
         final RequestCall requestCall = getBuilder.build();
         requestCall.execute(new Callback() {
             @Override
@@ -112,7 +119,7 @@ public class TestActivity extends BaseActivity {
     private void other() {
 
         final PostFormBuilder getBuilder = OkHttpUtils.post();
-        getBuilder.url("http://192.168.0.199:8299/goods/demo/A");
+        getBuilder.url("http://192.168.0.35:8299/goods/demo/A");
         final RequestCall requestCall = getBuilder.build();
         requestCall.execute(new Callback() {
             @Override
@@ -137,7 +144,7 @@ public class TestActivity extends BaseActivity {
 
 
         final PostFormBuilder getBuilder = OkHttpUtils.post();
-        getBuilder.url("http://192.168.0.199:8299/goods/demo/B");
+        getBuilder.url("http://192.168.0.35:8299/goods/demo/B");
         final RequestCall requestCall = getBuilder.build();
         requestCall.execute(new Callback() {
             @Override

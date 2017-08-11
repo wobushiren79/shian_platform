@@ -26,6 +26,9 @@ import com.shianlife.shian_platform.common.Constants;
 import com.shianlife.shian_platform.common.local.LocationService;
 import com.shianlife.shian_platform.custom.view.mainchange.MainChangeLayout;
 import com.shianlife.shian_platform.http.base.BaseDataResult;
+import com.shianlife.shian_platform.mvp.login.presenter.ISubSystemLoginPresenter;
+import com.shianlife.shian_platform.mvp.login.presenter.impl.SubSystemLoginPresenterImpl;
+import com.shianlife.shian_platform.mvp.login.view.ISubSystemLoginView;
 import com.shianlife.shian_platform.mvp.main.bean.AppUpDateResultBean;
 import com.shianlife.shian_platform.mvp.main.presenter.IAppUpDatePresenter;
 import com.shianlife.shian_platform.mvp.main.presenter.IChangeItemPresenter;
@@ -43,12 +46,19 @@ import com.shianlife.shian_platform.utils.AppUtils;
 import com.shianlife.shian_platform.utils.CheckUtils;
 import com.shianlife.shian_platform.utils.PushUtils;
 import com.shianlife.shian_platform.utils.ToastUtils;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.builder.GetBuilder;
+import com.zhy.http.okhttp.builder.PostFormBuilder;
+import com.zhy.http.okhttp.callback.Callback;
+import com.zhy.http.okhttp.request.RequestCall;
 
 import java.util.List;
 
 import butterknife.BindView;
+import okhttp3.Call;
+import okhttp3.Response;
 
-public class MainActivity extends BaseActivity implements IChangeItemView, IAppUpDateView {
+public class MainActivity extends BaseActivity implements IChangeItemView, IAppUpDateView ,ISubSystemLoginView{
     @BindView(R.id.fl_fragment)
     FrameLayout flFragment;
     @BindView(R.id.main_change_layout)
@@ -56,6 +66,7 @@ public class MainActivity extends BaseActivity implements IChangeItemView, IAppU
 
     private IChangeItemPresenter changeItemPresenter;
     private IAppUpDatePresenter appUpDatePresenter;
+    private ISubSystemLoginPresenter subSystemLoginPresenter;
     private FragmentManager mFragmentManager;
     private FragmentTransaction mTranscation;
     private long firstTime = 0;
@@ -67,6 +78,7 @@ public class MainActivity extends BaseActivity implements IChangeItemView, IAppU
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
 
     @Override
     protected void initView() {
@@ -109,6 +121,10 @@ public class MainActivity extends BaseActivity implements IChangeItemView, IAppU
         appUpDatePresenter = new AppUpDatePresenterImpl(this);
         changeItemPresenter.setChangeItemData();
         appUpDatePresenter.getAppUpDateInfo();
+
+        //登陆子系统
+        subSystemLoginPresenter=new SubSystemLoginPresenterImpl(this);
+        subSystemLoginPresenter.loginStoreSystem();
     }
 
 
@@ -139,6 +155,7 @@ public class MainActivity extends BaseActivity implements IChangeItemView, IAppU
     public Context getContext() {
         return this;
     }
+
 
     @Override
     public void getAppUpDateInfoSuccess(AppUpDateResultBean result) {

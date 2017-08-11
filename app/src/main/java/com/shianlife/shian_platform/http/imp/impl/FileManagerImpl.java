@@ -32,15 +32,9 @@ import okhttp3.Request;
 
 public class FileManagerImpl implements FileManager {
     private static FileManager manager;
-    Map<String, String> header = new HashMap<>();
-
 
     private FileManagerImpl() {
-        header.put("systemType", "2");
-    }
 
-    public void setCookie(String cookie) {
-        header.put("Cookie", "sid=" + cookie);
     }
 
     public static FileManager getInstance() {
@@ -58,13 +52,10 @@ public class FileManagerImpl implements FileManager {
                            String path,
                            final FileHttpResponseHandler<FileUpLoadResultBean> responseHandler) {
         File file = new File(path);
-//        file = PicUtils.scaledFile(file);
-//        setCookie(Constants.sessionId);
         OkHttpUtils
                 .post()
                 .addFile(fileClass, fileName, file)
-                .addHeader("Cookie", "sid=" + Constants.sessionId)
-                .addHeader("systemType", "2")
+                .addHeader("client-Type", "androidapp")
                 .url(Constants.FILE_QINIU_UPDATA)
                 .build()
                 .execute(new StringCallback() {
@@ -153,26 +144,5 @@ public class FileManagerImpl implements FileManager {
         if (response != null && error != null) {
             response.onError(error);
         }
-
-//        if (response != null && ((context instanceof Activity) && !((Activity) context)
-//                .isFinishing()) && error != null) {
-//            if (showToast(context, error)) {
-//                response.onError(error);
-//            }
-//        }
-    }
-
-    /**
-     * 错误提示
-     *
-     * @param ctx
-     * @param msg
-     * @return
-     */
-    private boolean showToast(Context ctx, String msg) {
-        boolean flag = true;
-//        if (!"".equals(msg))
-//            ToastUtils.showToastShort(ctx, msg);
-        return flag;
     }
 }

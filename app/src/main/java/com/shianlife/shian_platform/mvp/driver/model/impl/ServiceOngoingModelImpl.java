@@ -18,7 +18,7 @@ import okhttp3.Request;
 public class ServiceOngoingModelImpl implements IServiceOngoingModel {
     @Override
     public void saveServiceOngoing(Context context, ServiceOngoingBean params, final OnGetDataListener<ServiceOngoingResultBean> listener) {
-        MHttpManagerFactory.getAccountManager().saveServiceOngoing(context, params, new HttpResponseHandler<ServiceOngoingResultBean>() {
+        MHttpManagerFactory.getCarManager().saveServiceOngoing(context, params, new HttpResponseHandler<ServiceOngoingResultBean>() {
             @Override
             public void onStart(Request request, int id) {
 

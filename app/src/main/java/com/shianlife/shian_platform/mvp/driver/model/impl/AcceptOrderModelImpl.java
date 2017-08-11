@@ -18,7 +18,7 @@ import okhttp3.Request;
 public class AcceptOrderModelImpl implements IAcceptOrderModel {
     @Override
     public void acceptOrder(Context context, AcceptOrderBean params, final OnGetDataListener<AcceptOrderResultBean> listener) {
-        MHttpManagerFactory.getAccountManager().driverAcceptOrder(context, params, new HttpResponseHandler<AcceptOrderResultBean>() {
+        MHttpManagerFactory.getCarManager().driverAcceptOrder(context, params, new HttpResponseHandler<AcceptOrderResultBean>() {
             @Override
             public void onStart(Request request, int id) {
 

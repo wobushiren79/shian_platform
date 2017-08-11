@@ -85,14 +85,14 @@ public interface IUserLoginView {
      *
      * @param result
      */
-    void loginSuccess(UserLoginResultBean result);
+    void loginCemeterySuccess(UserLoginResultBean result);
 
     /**
      * 登陆失败
      *
      * @param message
      */
-    void loginFail(String message);
+    void loginCemeteryFail(String message);
 
     /**
      * 登陆成功

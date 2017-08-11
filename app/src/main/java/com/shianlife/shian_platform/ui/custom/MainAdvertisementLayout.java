@@ -87,7 +87,7 @@ public class MainAdvertisementLayout extends BaseLayout implements IAdvertView {
     @Override
     public void showData(AdvertResultBean result) {
         data = result;
-        AppUtils.loadPic(getContext(), ivContent, Constants.PHP_URL + data.getItems().get(0).getBanner(), drawableRequestListener);
+        AppUtils.loadPic(getContext(), ivContent, Constants.PHP_BaseUrl + data.getItems().get(0).getBanner(), drawableRequestListener);
         MainAdvertisementLayout.this.setVisibility(VISIBLE);
     }
 

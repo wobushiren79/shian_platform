@@ -46,8 +46,8 @@ public class LoadingButton extends LinearLayout {
      * 设置3种状态
      */
     public void setComplete() {
-        this.setEnabled(false);
         endAnim(mIVLoading);
+        this.setEnabled(false);
         mIVLoading.setVisibility(GONE);
         mTVContent.setVisibility(GONE);
         mIVComplete.setVisibility(VISIBLE);
@@ -63,8 +63,8 @@ public class LoadingButton extends LinearLayout {
     }
 
     public void setNormal() {
-        this.setEnabled(true);
         endAnim(mIVLoading);
+        this.setEnabled(true);
         mIVLoading.setVisibility(GONE);
         mIVComplete.setVisibility(GONE);
         mTVContent.setVisibility(VISIBLE);

@@ -1,33 +1,23 @@
 package com.shianlife.shian_platform.ui.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.base.BaseActivity;
 import com.shianlife.shian_platform.custom.view.loadbutton.LoadingButton;
 import com.shianlife.shian_platform.mvp.login.bean.SystemLoginResultBean;
-import com.shianlife.shian_platform.mvp.login.bean.UserLoginConfig;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.presenter.IUserLoginPresenter;
-import com.shianlife.shian_platform.mvp.login.presenter.impl.UserLoginPresenter;
+import com.shianlife.shian_platform.mvp.login.presenter.impl.UserLoginPresenterImpl;
 import com.shianlife.shian_platform.mvp.login.view.IUserLoginView;
 import com.shianlife.shian_platform.utils.IntentUtils;
 import com.shianlife.shian_platform.utils.ToastUtils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class LoginActivity extends BaseActivity implements IUserLoginView {
 
@@ -57,7 +47,7 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
 
     @Override
     protected void initData() {
-        loginPresenter = new UserLoginPresenter(this);
+        loginPresenter = new UserLoginPresenterImpl(this);
         loginPresenter.getLoginConfig();
     }
 
@@ -99,7 +89,7 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
     }
 
     @Override
-    public void loginSuccess(UserLoginResultBean result) {
+    public void loginCemeterySuccess(UserLoginResultBean result) {
         loginPresenter.saveLoginConfig();
         btnLogin.setComplete();
         ToastUtils.showToastLong(getContext(), getString(R.string.login_success));
@@ -108,7 +98,7 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
     }
 
     @Override
-    public void loginFail(String message) {
+    public void loginCemeteryFail(String message) {
         btnLogin.setNormal();
         btnLogin.setOnClickListener(onViewClicked);
         ToastUtils.showToastLong(getContext(), message);
@@ -116,14 +106,15 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
 
     @Override
     public void loginSystemSuccess(SystemLoginResultBean result) {
-        btnLogin.setComplete();
-        ToastUtils.showToastLong(getContext(), getString(R.string.login_success));
+//        btnLogin.setComplete();
+//        ToastUtils.showToastLong(getContext(), getString(R.string.login_success));
     }
 
     @Override
     public void loginSystemFail(String message) {
         btnLogin.setNormal();
-        ToastUtils.showToastLong(getContext(), getString(R.string.login_fail));
+        btnLogin.setOnClickListener(onViewClicked);
+        ToastUtils.showToastLong(getContext(),message);
     }
 
     @Override
@@ -165,8 +156,6 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
         }
         btnLogin.setLoading();
         btnLogin.setOnClickListener(null);
-        loginPresenter.loginCemetery();
-
-//        loginPresenter.loginSystem();
+        loginPresenter.loginSystem();
     }
 }

@@ -6,16 +6,6 @@ package com.shianlife.shian_platform.mvp.login.presenter;
 
 public interface IUserLoginPresenter {
     /**
-     * 登陆公墓
-     */
-    void loginCemetery();
-
-    /**
-     * 退出公墓
-     */
-    void loginOutCemetery();
-
-    /**
      * 登陸平臺
      */
     void loginSystem();

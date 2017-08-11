@@ -11,6 +11,7 @@ import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.common.Constants;
 import com.shianlife.shian_platform.common.ObjectMapperFactory;
 import com.shianlife.shian_platform.custom.dialog.CustomDialog;
+import com.shianlife.shian_platform.mvp.fileup.bean.FileUpLoadResultBean;
 import com.shianlife.shian_platform.ui.activity.LoginActivity;
 import com.shianlife.shian_platform.utils.CheckUtils;
 import com.shianlife.shian_platform.utils.LogUtils;
@@ -19,17 +20,20 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.builder.GetBuilder;
 import com.zhy.http.okhttp.builder.HeadBuilder;
 import com.zhy.http.okhttp.builder.PostStringBuilder;
+import com.zhy.http.okhttp.callback.Callback;
 import com.zhy.http.okhttp.callback.StringCallback;
 import com.zhy.http.okhttp.request.RequestCall;
 
 import org.codehaus.jackson.JsonNode;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.MediaType;
 import okhttp3.Request;
+import okhttp3.Response;
 
 
 /**
@@ -37,10 +41,10 @@ import okhttp3.Request;
  */
 
 public class HttpRequestExecutor {
-    CustomDialog dialog;
+    private CustomDialog dialog;
 
     /**
-     * PHP接口get请求
+     * get请求
      *
      * @param context
      * @param method
@@ -49,18 +53,6 @@ public class HttpRequestExecutor {
      * @param responseHandler
      * @param <T>
      */
-    public <T> void requestPHPGet(final Context context,
-                                  final String method,
-                                  final Class<T> data,
-                                  final BaseHttpParams params,
-                                  final HttpResponseHandler<T> responseHandler,
-                                  final boolean isShowDialog) {
-        String baseUrl = Constants.PHP_URL;
-        String cookie = "";
-        Map<String, String> header = setHeader(cookie);
-        requestGet(context, method, data, params, responseHandler, isShowDialog, baseUrl, header);
-    }
-
     public <T> void requestGet(final Context context,
                                final String method,
                                final Class<T> data,
@@ -76,6 +68,7 @@ public class HttpRequestExecutor {
 
         GetBuilder getBuilder = OkHttpUtils.get();
         getBuilder.url(baseUrl + "/" + method);
+        getBuilder.addHeader("client-Type", "wechatapp");
 //        getBuilder.headers(header);
         getBuilder.params(params.getMapParams());
         RequestCall requestCall = getBuilder.build();
@@ -120,36 +113,6 @@ public class HttpRequestExecutor {
      * @param responseHandler
      * @param <T>
      */
-    public <T> void requestCemeteryPost(final Context context,
-                                        final String method,
-                                        final Class<T> data,
-                                        final BaseHttpParams params,
-                                        final HttpResponseHandler<T> responseHandler) {
-        boolean isShowDialog = false;
-        String baseUrl = Constants.CEMETERY_URL;
-        String cookie = "";
-        if (!method.contains("doLogin/marketing") && Constants.userCemetery != null) {
-            cookie = Constants.sessionId;
-        }
-        Map<String, String> header = setHeader(cookie);
-        requestPost(context, method, data, params, responseHandler, isShowDialog, baseUrl, header);
-    }
-
-    public <T> void requestCemeteryPost(final Context context,
-                                        final String method,
-                                        final Class<T> data,
-                                        final BaseHttpParams params,
-                                        final HttpResponseHandler<T> responseHandler,
-                                        final boolean isShowDialog) {
-        String baseUrl = Constants.CEMETERY_URL;
-        String cookie = "";
-        if (!method.contains("doLogin/marketing") && Constants.userCemetery != null) {
-            cookie = Constants.sessionId;
-        }
-        Map<String, String> header = setHeader(cookie);
-        requestPost(context, method, data, params, responseHandler, isShowDialog, baseUrl, header);
-    }
-
     public <T> void requestPost(final Context context,
                                 final String method,
                                 final Class<T> data,
@@ -164,12 +127,12 @@ public class HttpRequestExecutor {
         LogUtils.LogTagE(params.getContentJson());
 
         PostStringBuilder getBuilder = OkHttpUtils.postString();
-
         getBuilder.url(baseUrl + "/" + method);
 //        if (header != null)
 //            getBuilder.headers(header);
         getBuilder.mediaType(MediaType.parse("application/json; charset=utf-8"));
         getBuilder.content(params.getContentJson());
+        getBuilder.addHeader("client-Type", "wechatapp");
         RequestCall requestCall = getBuilder.build();
         requestCall.execute(new StringCallback() {
             @Override
@@ -202,21 +165,6 @@ public class HttpRequestExecutor {
 
     }
 
-    /**
-     * 设置头
-     *
-     * @return
-     */
-    @NonNull
-    private Map<String, String> setHeader(String cookie) {
-        Map<String, String> header = new HashMap<>();
-        header.put("systemType", "2");
-        header.put("Content-Type", "application/json");
-        if (cookie != null && !cookie.isEmpty()) {
-            header.put("Cookie", "sid=" + cookie);
-        }
-        return header;
-    }
 
     /**
      * 检测网络和弹窗
@@ -251,10 +199,10 @@ public class HttpRequestExecutor {
                                      Context context) {
         if (response != null && error != null) {
 //            if (showToast(context, error)) {
-                response.onError(error);
-                if (error.contains("405") || error.contains("503")) {
-                    jumpLogin(context);
-                }
+            response.onError(error);
+            if (error.contains("405") || error.contains("503")) {
+                jumpLogin(context);
+            }
 //            }
         }
     }

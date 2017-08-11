@@ -25,7 +25,7 @@ public class UserLoginModelImpl implements IUserLoginModel {
 
     @Override
     public void loginCemetery(Context context, UserLoginBean params, final OnGetDataListener listener) {
-        MHttpManagerFactory.getAccountManager().loginCemetery(context, params, new HttpResponseHandler<UserLoginResultBean>() {
+        MHttpManagerFactory.getCarManager().loginCemetery(context, params, new HttpResponseHandler<UserLoginResultBean>() {
             @Override
             public void onStart(Request request, int id) {
 
@@ -35,7 +35,6 @@ public class UserLoginModelImpl implements IUserLoginModel {
             public void onSuccess(UserLoginResultBean result) {
                 Constants.userCemetery = result;
                 Constants.userId = result.getUserId();
-                Constants.sessionId = result.getSessionId();
                 listener.getDataSuccess(result);
             }
 
@@ -48,7 +47,7 @@ public class UserLoginModelImpl implements IUserLoginModel {
 
     @Override
     public void loginOutCemetery(Context context, final OnGetDataListener listener) {
-        MHttpManagerFactory.getAccountManager().loginOutCemetery(context, new HttpResponseHandler<Object>() {
+        MHttpManagerFactory.getCarManager().loginOutCemetery(context, new HttpResponseHandler<Object>() {
             @Override
             public void onStart(Request request, int id) {
 
@@ -69,7 +68,7 @@ public class UserLoginModelImpl implements IUserLoginModel {
 
     @Override
     public void loginSystem(Context context, SystemLoginBean params, final OnGetDataListener<SystemLoginResultBean> listener) {
-        MHttpManagerFactory.getLoginManager().loginSystem(context, params, new HttpResponseHandler<SystemLoginResultBean>() {
+        MHttpManagerFactory.getSystemManager().loginSystem(context, params, new HttpResponseHandler<SystemLoginResultBean>() {
             @Override
             public void onStart(Request request, int id) {
 

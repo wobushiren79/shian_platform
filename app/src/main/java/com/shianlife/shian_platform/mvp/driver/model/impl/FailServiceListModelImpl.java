@@ -18,7 +18,7 @@ import okhttp3.Request;
 public class FailServiceListModelImpl implements IFailServiceListModel {
     @Override
     public void getFailServiceListData(Context context, FailServiceListBean params, final OnGetDataListener<FailServiceListResultBean> listener) {
-        MHttpManagerFactory.getAccountManager().getFailServiceList(context, params, new HttpResponseHandler<FailServiceListResultBean>() {
+        MHttpManagerFactory.getCarManager().getFailServiceList(context, params, new HttpResponseHandler<FailServiceListResultBean>() {
             @Override
             public void onStart(Request request, int id) {
 

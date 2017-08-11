@@ -18,7 +18,7 @@ import okhttp3.Request;
 public class OrderDetailsModelImpl implements IOrderDetailsModel {
     @Override
     public void getOrderDetails(Context context, OrderDetailsBean params, final OnGetDataListener<OrderDetailsResultBean> listener) {
-        MHttpManagerFactory.getAccountManager().getDriverOrderDetails(context, params, new HttpResponseHandler<OrderDetailsResultBean>() {
+        MHttpManagerFactory.getCarManager().getDriverOrderDetails(context, params, new HttpResponseHandler<OrderDetailsResultBean>() {
             @Override
             public void onStart(Request request, int id) {
 

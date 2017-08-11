@@ -1,28 +1,18 @@
 package com.shianlife.shian_platform.ui.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import com.baidu.android.pushservice.PushConstants;
 import com.baidu.android.pushservice.PushManager;
 import com.shianlife.shian_platform.R;
-import com.shianlife.shian_platform.appenum.AdvertisementEnum;
 import com.shianlife.shian_platform.base.BaseActivity;
-import com.shianlife.shian_platform.common.Constants;
-import com.shianlife.shian_platform.mvp.advert.bean.AdvertResultBean;
-import com.shianlife.shian_platform.mvp.advert.presenter.IAdvertPresenter;
-import com.shianlife.shian_platform.mvp.advert.presenter.impl.AdvertPresenterImpl;
-import com.shianlife.shian_platform.mvp.advert.view.IAdvertView;
 import com.shianlife.shian_platform.mvp.login.bean.SystemLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginConfig;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.presenter.IUserLoginPresenter;
-import com.shianlife.shian_platform.mvp.login.presenter.impl.UserLoginPresenter;
+import com.shianlife.shian_platform.mvp.login.presenter.impl.UserLoginPresenterImpl;
 import com.shianlife.shian_platform.mvp.login.view.IUserLoginView;
 import com.shianlife.shian_platform.utils.IntentUtils;
 import com.shianlife.shian_platform.utils.PushUtils;
@@ -59,7 +49,7 @@ public class SplashActivity extends BaseActivity implements IUserLoginView {
     @Override
     protected void initData() {
         loginConfig = new UserLoginConfig();
-        userLoginPresenter = new UserLoginPresenter(this);
+        userLoginPresenter = new UserLoginPresenterImpl(this);
         userLoginPresenter.getLoginConfig();
     }
 
@@ -115,12 +105,12 @@ public class SplashActivity extends BaseActivity implements IUserLoginView {
     }
 
     @Override
-    public void loginSuccess(UserLoginResultBean result) {
+    public void loginCemeterySuccess(UserLoginResultBean result) {
         sleepActivity(LoginAdvertActivity.MAIN);
     }
 
     @Override
-    public void loginFail(String message) {
+    public void loginCemeteryFail(String message) {
         sleepActivity(LoginAdvertActivity.LOGIN);
     }
 
@@ -131,7 +121,7 @@ public class SplashActivity extends BaseActivity implements IUserLoginView {
 
     @Override
     public void loginSystemFail(String message) {
-
+        sleepActivity(LoginAdvertActivity.LOGIN);
     }
 
     /**

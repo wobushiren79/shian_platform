@@ -10,9 +10,8 @@ import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.appenum.BaseTitleEnum;
 import com.shianlife.shian_platform.base.BaseActivity;
 import com.shianlife.shian_platform.custom.dialog.TipsDialog;
-import com.shianlife.shian_platform.mvp.login.bean.UserLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.presenter.IUserLoginPresenter;
-import com.shianlife.shian_platform.mvp.login.presenter.impl.UserLoginPresenter;
+import com.shianlife.shian_platform.mvp.login.presenter.impl.UserLoginPresenterImpl;
 import com.shianlife.shian_platform.mvp.login.view.IUserLoginOutView;
 import com.shianlife.shian_platform.utils.SharePerfrenceUtils;
 
@@ -39,7 +38,7 @@ public class SettingActivity extends BaseActivity implements IUserLoginOutView {
 
     @Override
     protected void initData() {
-        userLoginPresenter = new UserLoginPresenter(this);
+        userLoginPresenter = new UserLoginPresenterImpl(this);
     }
 
     @OnClick(R.id.tv_editorder)
@@ -49,7 +48,6 @@ public class SettingActivity extends BaseActivity implements IUserLoginOutView {
         mDialog.setTopButton(getString(R.string.dialog_true_1), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                userLoginPresenter.loginOutCemetery();
                 SharePerfrenceUtils.setShareAutoLogin(SettingActivity.this, false);
                 Intent intent = new Intent(SettingActivity.this, LoginActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

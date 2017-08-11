@@ -20,7 +20,7 @@ public class SuccessServiceListModelImpl implements ISuccessServiceListModel {
 
     @Override
     public void getSuccessServiceListData(Context context, SuccessServiceListBean params, final OnGetDataListener<SuccessServiceListResultBean> listener) {
-        MHttpManagerFactory.getAccountManager().getSuccessServiceList(context, params, new HttpResponseHandler<SuccessServiceListResultBean>() {
+        MHttpManagerFactory.getCarManager().getSuccessServiceList(context, params, new HttpResponseHandler<SuccessServiceListResultBean>() {
             @Override
             public void onStart(Request request, int id) {
 
