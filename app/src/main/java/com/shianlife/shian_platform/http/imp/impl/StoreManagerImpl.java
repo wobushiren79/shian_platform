@@ -33,7 +33,7 @@ public class StoreManagerImpl extends BaseManagerImpl implements StoreManager {
 
     private StoreManagerImpl() {
         super();
-        BaseUrl = Constants.Store_BaseUrl;
+        baseUrl = Constants.Store_BaseUrl;
     }
 
     public static StoreManagerImpl getInstance() {

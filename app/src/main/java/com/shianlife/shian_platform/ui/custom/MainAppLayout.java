@@ -50,7 +50,7 @@ public class MainAppLayout extends BaseLayout {
         appNameList = new APPEnum[]{
                 APPEnum.ZSPROJECT,
                 APPEnum.CEMETERY,
-                APPEnum.BEFORECONTRACT,
+                APPEnum.VRCEMETERY,
                 APPEnum.NAVIGATION,
                 APPEnum.CALENDAR,
                 APPEnum.ALL

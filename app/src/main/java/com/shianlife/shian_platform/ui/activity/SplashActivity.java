@@ -8,6 +8,7 @@ import com.baidu.android.pushservice.PushConstants;
 import com.baidu.android.pushservice.PushManager;
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.base.BaseActivity;
+import com.shianlife.shian_platform.common.Constants;
 import com.shianlife.shian_platform.mvp.login.bean.SystemLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginConfig;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginResultBean;
@@ -21,6 +22,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.BindView;
+
 public class SplashActivity extends BaseActivity implements IUserLoginView {
 
     @BindView(R.id.iv_icon)
@@ -49,7 +51,7 @@ public class SplashActivity extends BaseActivity implements IUserLoginView {
     @Override
     protected void initData() {
         loginConfig = new UserLoginConfig();
-        userLoginPresenter = new UserLoginPresenterImpl(this);
+        userLoginPresenter = new UserLoginPresenterImpl(this,null);
         userLoginPresenter.getLoginConfig();
     }
 
@@ -116,7 +118,7 @@ public class SplashActivity extends BaseActivity implements IUserLoginView {
 
     @Override
     public void loginSystemSuccess(SystemLoginResultBean result) {
-
+        Constants.systemUser = result;
     }
 
     @Override

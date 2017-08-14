@@ -10,11 +10,11 @@ import com.shianlife.shian_platform.R;
 public enum MainChangeItemEnum {
 
     MAIN("首页", R.drawable.ic_bar_home_press_2, R.drawable.ic_bar_home_default_2, 1),
-    DIRVERORDER("订单", R.drawable.ic_bar_order_press_2, R.drawable.ic_bar_order_default_2, 2),
+    DIRVERORDER("派车", R.drawable.ic_bar_order_press_2, R.drawable.ic_bar_order_default_2, 2),
     FIND("发现", R.drawable.ic_bar_find_press_2, R.drawable.ic_bar_find_default_2, 3),
     MY("我", R.drawable.ic_bar_my_press_2, R.drawable.ic_bar_my_default_2, 4),
 
-    ORDER("订单", R.drawable.ic_bar_order_press_2, R.drawable.ic_bar_order_default_2, 5),
+    ORDER("审核", R.drawable.ic_bar_order_press_2, R.drawable.ic_bar_order_default_2, 5),
     STORE("商城", R.drawable.ic_bar_orders_press_2, R.drawable.ic_bar_orders_default_2, 6);
 
     private String title;

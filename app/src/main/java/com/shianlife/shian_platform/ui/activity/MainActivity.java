@@ -26,9 +26,13 @@ import com.shianlife.shian_platform.common.Constants;
 import com.shianlife.shian_platform.common.local.LocationService;
 import com.shianlife.shian_platform.custom.view.mainchange.MainChangeLayout;
 import com.shianlife.shian_platform.http.base.BaseDataResult;
+import com.shianlife.shian_platform.mvp.login.bean.SystemLoginOutResultBean;
 import com.shianlife.shian_platform.mvp.login.presenter.ISubSystemLoginPresenter;
+import com.shianlife.shian_platform.mvp.login.presenter.IUserLoginPresenter;
 import com.shianlife.shian_platform.mvp.login.presenter.impl.SubSystemLoginPresenterImpl;
+import com.shianlife.shian_platform.mvp.login.presenter.impl.UserLoginPresenterImpl;
 import com.shianlife.shian_platform.mvp.login.view.ISubSystemLoginView;
+import com.shianlife.shian_platform.mvp.login.view.IUserLoginOutView;
 import com.shianlife.shian_platform.mvp.main.bean.AppUpDateResultBean;
 import com.shianlife.shian_platform.mvp.main.presenter.IAppUpDatePresenter;
 import com.shianlife.shian_platform.mvp.main.presenter.IChangeItemPresenter;
@@ -58,7 +62,7 @@ import butterknife.BindView;
 import okhttp3.Call;
 import okhttp3.Response;
 
-public class MainActivity extends BaseActivity implements IChangeItemView, IAppUpDateView ,ISubSystemLoginView{
+public class MainActivity extends BaseActivity implements IChangeItemView, IAppUpDateView, ISubSystemLoginView, IUserLoginOutView {
     @BindView(R.id.fl_fragment)
     FrameLayout flFragment;
     @BindView(R.id.main_change_layout)
@@ -67,6 +71,7 @@ public class MainActivity extends BaseActivity implements IChangeItemView, IAppU
     private IChangeItemPresenter changeItemPresenter;
     private IAppUpDatePresenter appUpDatePresenter;
     private ISubSystemLoginPresenter subSystemLoginPresenter;
+    private IUserLoginPresenter userLoginPresenter;
     private FragmentManager mFragmentManager;
     private FragmentTransaction mTranscation;
     private long firstTime = 0;
@@ -119,11 +124,12 @@ public class MainActivity extends BaseActivity implements IChangeItemView, IAppU
         mFragmentManager = getSupportFragmentManager();
         changeItemPresenter = new ChangeItemPresenterImpl(this);
         appUpDatePresenter = new AppUpDatePresenterImpl(this);
+        userLoginPresenter = new UserLoginPresenterImpl(null,this);
         changeItemPresenter.setChangeItemData();
         appUpDatePresenter.getAppUpDateInfo();
 
         //登陆子系统
-        subSystemLoginPresenter=new SubSystemLoginPresenterImpl(this);
+        subSystemLoginPresenter = new SubSystemLoginPresenterImpl(this);
         subSystemLoginPresenter.loginStoreSystem();
     }
 
@@ -154,6 +160,26 @@ public class MainActivity extends BaseActivity implements IChangeItemView, IAppU
     @Override
     public Context getContext() {
         return this;
+    }
+
+    @Override
+    public void loginOutCemeterySuccess(Object result) {
+
+    }
+
+    @Override
+    public void loginOutCemeteryFail(String message) {
+
+    }
+
+    @Override
+    public void loginOutSystemSuccess(SystemLoginOutResultBean result) {
+
+    }
+
+    @Override
+    public void loginOutSystemFail(String message) {
+
     }
 
 
@@ -206,6 +232,7 @@ public class MainActivity extends BaseActivity implements IChangeItemView, IAppU
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        userLoginPresenter.loginOutSystem();
         locationService.unregisterListener(mLocationListener); // 注销掉监听
         locationService.stop(); // 停止定位服务
     }

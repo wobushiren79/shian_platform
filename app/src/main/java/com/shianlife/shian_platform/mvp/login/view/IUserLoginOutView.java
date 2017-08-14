@@ -2,6 +2,7 @@ package com.shianlife.shian_platform.mvp.login.view;
 
 import android.content.Context;
 
+import com.shianlife.shian_platform.mvp.login.bean.SystemLoginOutResultBean;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginResultBean;
 
 /**
@@ -18,16 +19,31 @@ public interface IUserLoginOutView {
 
 
     /**
-     * 退出登陆成功
+     * 退出公墓成功
      *
      * @param result
      */
-    void loginOutSuccess(Object result);
+    void loginOutCemeterySuccess(Object result);
 
     /**
-     * 退出登陆失败
+     * 退出公墓失败
      *
      * @param message
      */
-    void loginOutFail(String message);
+    void loginOutCemeteryFail(String message);
+
+
+    /**
+     * 退出平臺成功
+     *
+     * @param result
+     */
+    void loginOutSystemSuccess(SystemLoginOutResultBean result);
+
+    /**
+     * 退出平臺失败
+     *
+     * @param message
+     */
+    void loginOutSystemFail(String message);
 }

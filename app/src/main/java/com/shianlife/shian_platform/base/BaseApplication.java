@@ -2,18 +2,11 @@ package com.shianlife.shian_platform.base;
 
 import android.app.Activity;
 import android.app.Application;
-import android.content.Context;
-
 import com.baidu.mapapi.SDKInitializer;
 import com.shianlife.shian_platform.common.Constants;
 import com.shianlife.shian_platform.common.local.LocationService;
-import com.shianlife.shian_platform.http.base.CustomCookieStore;
 import com.shianlife.shian_platform.http.base.SSLSocketFactoryCompat;
 import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.cookie.CookieJarImpl;
-import com.zhy.http.okhttp.cookie.store.PersistentCookieStore;
-
-import java.net.CookieManager;
 import java.security.cert.CertificateException;
 import java.util.ArrayList;
 import java.util.HashMap;

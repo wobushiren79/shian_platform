@@ -69,7 +69,8 @@ public class HttpRequestExecutor {
         GetBuilder getBuilder = OkHttpUtils.get();
         getBuilder.url(baseUrl + "/" + method);
         getBuilder.addHeader("client-Type", "wechatapp");
-//        getBuilder.headers(header);
+        if (header != null)
+            getBuilder.headers(header);
         getBuilder.params(params.getMapParams());
         RequestCall requestCall = getBuilder.build();
         requestCall.execute(new StringCallback() {
@@ -128,8 +129,8 @@ public class HttpRequestExecutor {
 
         PostStringBuilder getBuilder = OkHttpUtils.postString();
         getBuilder.url(baseUrl + "/" + method);
-//        if (header != null)
-//            getBuilder.headers(header);
+        if (header != null)
+            getBuilder.headers(header);
         getBuilder.mediaType(MediaType.parse("application/json; charset=utf-8"));
         getBuilder.content(params.getContentJson());
         getBuilder.addHeader("client-Type", "wechatapp");

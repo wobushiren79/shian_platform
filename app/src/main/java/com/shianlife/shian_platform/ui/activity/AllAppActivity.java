@@ -57,8 +57,8 @@ public class AllAppActivity extends BaseActivity {
         platformData = new APPEnum[]{
                 APPEnum.ZSPROJECT,
                 APPEnum.CEMETERY,
-                APPEnum.BEFORECONTRACT,
-                APPEnum.MICROMALL
+                APPEnum.VRCEMETERY,
+                APPEnum.BEFORECONTRACT
         };
         toolsData = new APPEnum[]{
                 APPEnum.NAVIGATION,

@@ -25,8 +25,7 @@ public class ChangeItemPresenterImpl implements IChangeItemPresenter {
 
     @Override
     public void setChangeItemData() {
-        RoleEnum role = RoleEnum.DRIVER;
-        List<MainChangeItemEnum> listData = changeItemModel.getChangeItemData(role);
+        List<MainChangeItemEnum> listData = changeItemModel.getChangeItemData();
         changeItemView.setItemData(listData);
     }
 }

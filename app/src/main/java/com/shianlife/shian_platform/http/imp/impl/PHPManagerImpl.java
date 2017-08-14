@@ -25,7 +25,7 @@ public class PHPManagerImpl extends BaseManagerImpl implements PHPManager {
 
     private PHPManagerImpl() {
         super();
-        BaseUrl = Constants.PHP_BaseUrl;
+        baseUrl = Constants.PHP_BaseUrl;
     }
 
     public static PHPManager getInstance() {
@@ -35,64 +35,47 @@ public class PHPManagerImpl extends BaseManagerImpl implements PHPManager {
         return manager;
     }
 
-    @Override
-    protected <T> void requestPost(Context context,
-                                   String method,
-                                   Class<T> cls,
-                                   BaseHttpParams params,
-                                   HttpResponseHandler<T> response) {
-        excutor.requestGet(context, method, cls, params, response, false, BaseUrl, null);
-    }
 
-    @Override
-    protected <T> void requestPost(Context context,
-                                   String method,
-                                   Class<T> cls,
-                                   BaseHttpParams params,
-                                   HttpResponseHandler<T> response,
-                                   boolean isDialog) {
-        excutor.requestGet(context, method, cls, params, response, isDialog, BaseUrl, null);
-    }
 
     @Override
     public void getAdvertisement(Context context, BaseHttpParams params, HttpResponseHandler<AdvertResultBean> handler) {
-        requestPost(context, "Home/index/advertising", AdvertResultBean.class,
+        requestGet(context, "Home/index/advertising", AdvertResultBean.class,
                 params, handler, false);
     }
 
     @Override
     public void getDynamicInfo(Context context, BaseHttpParams params, HttpResponseHandler<DynamicResultBean> handler) {
-        requestPost(context, "Home/index/dynamic", DynamicResultBean.class,
+        requestGet(context, "Home/index/dynamic", DynamicResultBean.class,
                 params, handler, false);
     }
 
     @Override
     public void getSiftListData(Context context, BaseHttpParams params, HttpResponseHandler<FindResultBean> handler) {
-        requestPost(context, "Home/index/sift", FindResultBean.class,
+        requestGet(context, "Home/index/sift", FindResultBean.class,
                 params, handler, false);
     }
 
     @Override
     public void setSiftData(Context context, BaseHttpParams params, HttpResponseHandler<Object> handler) {
-        requestPost(context, "Home/index/siftuser", Object.class,
+        requestGet(context, "Home/index/siftuser", Object.class,
                 params, handler, false);
     }
 
     @Override
     public void getHotIssue(Context context, BaseHttpParams params, HttpResponseHandler<PHPHrGetHotIssue> handler) {
-        requestPost(context, "Home/index/help", PHPHrGetHotIssue.class,
+        requestGet(context, "Home/index/help", PHPHrGetHotIssue.class,
                 params, handler, false);
     }
 
     @Override
     public void setOpinion(Context context, BaseHttpParams params, HttpResponseHandler<Object> handler, boolean isDialog) {
-        requestPost(context, "Home/index/opinion", Object.class,
+        requestGet(context, "Home/index/opinion", Object.class,
                 params, handler, isDialog);
     }
 
     @Override
     public void getVersion(Context context, AppUpDateBean params, HttpResponseHandler<AppUpDateResultBean> handler, boolean isDialog) {
-        requestPost(context, "Home/index/edition", AppUpDateResultBean.class,
+        requestGet(context, "Home/index/edition", AppUpDateResultBean.class,
                 params, handler, isDialog);
     }
 

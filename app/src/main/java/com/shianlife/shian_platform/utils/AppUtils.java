@@ -32,6 +32,7 @@ import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.adapter.base.BaseViewHolder;
 import com.shianlife.shian_platform.base.BaseActivity;
 import com.shianlife.shian_platform.common.Constants;
+import com.shianlife.shian_platform.ui.activity.LoginActivity;
 import com.yongchun.library.view.ImageSelectorActivity;
 
 import java.lang.reflect.Field;
@@ -254,5 +255,15 @@ public class AppUtils {
         for (int i = 0; i < listAdapter.getGroupCount(); i++) {
             listView.expandGroup(i);
         }
+    }
+
+    /**
+     * 跳转到登陆界面
+     * @param context
+     */
+    public static void jumpLogin(Context context) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
     }
 }

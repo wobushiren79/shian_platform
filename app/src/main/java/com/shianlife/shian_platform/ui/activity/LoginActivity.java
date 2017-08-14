@@ -8,12 +8,14 @@ import android.widget.EditText;
 
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.base.BaseActivity;
+import com.shianlife.shian_platform.common.Constants;
 import com.shianlife.shian_platform.custom.view.loadbutton.LoadingButton;
 import com.shianlife.shian_platform.mvp.login.bean.SystemLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.presenter.IUserLoginPresenter;
 import com.shianlife.shian_platform.mvp.login.presenter.impl.UserLoginPresenterImpl;
 import com.shianlife.shian_platform.mvp.login.view.IUserLoginView;
+import com.shianlife.shian_platform.utils.AppUtils;
 import com.shianlife.shian_platform.utils.IntentUtils;
 import com.shianlife.shian_platform.utils.ToastUtils;
 
@@ -47,7 +49,7 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
 
     @Override
     protected void initData() {
-        loginPresenter = new UserLoginPresenterImpl(this);
+        loginPresenter = new UserLoginPresenterImpl(this,null);
         loginPresenter.getLoginConfig();
     }
 
@@ -108,13 +110,14 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
     public void loginSystemSuccess(SystemLoginResultBean result) {
 //        btnLogin.setComplete();
 //        ToastUtils.showToastLong(getContext(), getString(R.string.login_success));
+        Constants.systemUser = result;
     }
 
     @Override
     public void loginSystemFail(String message) {
         btnLogin.setNormal();
         btnLogin.setOnClickListener(onViewClicked);
-        ToastUtils.showToastLong(getContext(),message);
+        ToastUtils.showToastLong(getContext(), message);
     }
 
     @Override

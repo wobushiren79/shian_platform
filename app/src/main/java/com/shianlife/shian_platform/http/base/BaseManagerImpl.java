@@ -11,7 +11,7 @@ import com.shianlife.shian_platform.http.imp.impl.CarManagerImpl;
 
 public class BaseManagerImpl {
     protected HttpRequestExecutor excutor = new HttpRequestExecutor();
-    protected String BaseUrl;
+    protected String baseUrl;
 
     protected BaseManagerImpl() {
     }
@@ -21,7 +21,7 @@ public class BaseManagerImpl {
                                    Class<T> cls,
                                    BaseHttpParams params,
                                    HttpResponseHandler<T> response) {
-        excutor.requestPost(context, method, cls, params, response, false, BaseUrl, null);
+        excutor.requestPost(context, method, cls, params, response, false, baseUrl, null);
     }
 
     protected <T> void requestPost(Context context,
@@ -30,6 +30,24 @@ public class BaseManagerImpl {
                                    BaseHttpParams params,
                                    HttpResponseHandler<T> response,
                                    boolean isDialog) {
-        excutor.requestPost(context, method, cls, params, response, isDialog, BaseUrl, null);
+        excutor.requestPost(context, method, cls, params, response, isDialog, baseUrl, null);
+    }
+
+    protected <T> void requestGet(Context context,
+                                  String method,
+                                  Class<T> cls,
+                                  BaseHttpParams params,
+                                  HttpResponseHandler<T> response) {
+        excutor.requestGet(context, method, cls, params, response, false, baseUrl, null);
+    }
+
+
+    protected <T> void requestGet(Context context,
+                                  String method,
+                                  Class<T> cls,
+                                  BaseHttpParams params,
+                                  HttpResponseHandler<T> response,
+                                  boolean isDialog) {
+        excutor.requestGet(context, method, cls, params, response, isDialog, baseUrl, null);
     }
 }

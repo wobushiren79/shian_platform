@@ -7,6 +7,8 @@ import com.shianlife.shian_platform.common.OnGetDataListener;
 import com.shianlife.shian_platform.http.MHttpManagerFactory;
 import com.shianlife.shian_platform.http.base.HttpResponseHandler;
 import com.shianlife.shian_platform.mvp.login.bean.SystemLoginBean;
+import com.shianlife.shian_platform.mvp.login.bean.SystemLoginOutBean;
+import com.shianlife.shian_platform.mvp.login.bean.SystemLoginOutResultBean;
 import com.shianlife.shian_platform.mvp.login.bean.SystemLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginBean;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginConfig;
@@ -76,6 +78,26 @@ public class UserLoginModelImpl implements IUserLoginModel {
 
             @Override
             public void onSuccess(SystemLoginResultBean result) {
+                listener.getDataSuccess(result);
+            }
+
+            @Override
+            public void onError(String message) {
+                listener.getDataFail(message);
+            }
+        });
+    }
+
+    @Override
+    public void loginOutSystem(Context context, SystemLoginOutBean params, final OnGetDataListener<SystemLoginOutResultBean> listener) {
+        MHttpManagerFactory.getSystemManager().loginOutSystem(context, params, new HttpResponseHandler<SystemLoginOutResultBean>() {
+            @Override
+            public void onStart(Request request, int id) {
+
+            }
+
+            @Override
+            public void onSuccess(SystemLoginOutResultBean result) {
                 listener.getDataSuccess(result);
             }
 

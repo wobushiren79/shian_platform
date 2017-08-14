@@ -118,11 +118,7 @@ public class FileManagerImpl implements FileManager {
                         responseHandler.onSuccess(result);
                     }
                 } else if ("1009".equals(code)) {
-                    if (context instanceof Activity) {
-                        BaseApplication.getApplication().exitAPP();
-                    }
-                    Intent in = new Intent(context, LoginActivity.class);
-                    context.startActivity(in);
+                    jumpLogin(context);
                 } else {
                     onErrorCallBack(responseHandler, errorMsg, context);
                 }
@@ -131,7 +127,11 @@ public class FileManagerImpl implements FileManager {
             }
         }
     }
-
+    private void jumpLogin(Context context) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
     /**
      * 异常回调
      *

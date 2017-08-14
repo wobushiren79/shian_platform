@@ -12,8 +12,7 @@ import java.util.List;
 public interface IChangeItemModel {
     /**
      * 根据角色获取主菜单数据
-     * @param role
      * @return
      */
-    List<MainChangeItemEnum> getChangeItemData(RoleEnum role);
+    List<MainChangeItemEnum> getChangeItemData();
 }

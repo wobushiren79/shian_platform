@@ -3,6 +3,8 @@ package com.shianlife.shian_platform.mvp.login.presenter.impl;
 import com.shianlife.shian_platform.common.Constants;
 import com.shianlife.shian_platform.common.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.login.bean.SystemLoginBean;
+import com.shianlife.shian_platform.mvp.login.bean.SystemLoginOutBean;
+import com.shianlife.shian_platform.mvp.login.bean.SystemLoginOutResultBean;
 import com.shianlife.shian_platform.mvp.login.bean.SystemLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginBean;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginConfig;
@@ -23,12 +25,8 @@ public class UserLoginPresenterImpl implements IUserLoginPresenter {
     IUserLoginOutView userLoginOutView;
     IUserLoginModel userLoginModel;
 
-    public UserLoginPresenterImpl(IUserLoginView userLoginView) {
+    public UserLoginPresenterImpl(IUserLoginView userLoginView, IUserLoginOutView userLoginOutView) {
         this.userLoginView = userLoginView;
-        userLoginModel = new UserLoginModelImpl();
-    }
-
-    public UserLoginPresenterImpl(IUserLoginOutView userLoginOutView) {
         this.userLoginOutView = userLoginOutView;
         userLoginModel = new UserLoginModelImpl();
     }
@@ -58,12 +56,12 @@ public class UserLoginPresenterImpl implements IUserLoginPresenter {
         userLoginModel.loginOutCemetery(userLoginOutView.getContext(), new OnGetDataListener<Object>() {
             @Override
             public void getDataSuccess(Object result) {
-                userLoginOutView.loginOutSuccess(null);
+                userLoginOutView.loginOutCemeterySuccess(null);
             }
 
             @Override
             public void getDataFail(String msg) {
-                userLoginOutView.loginOutFail(msg);
+                userLoginOutView.loginOutCemeteryFail(msg);
             }
         });
     }
@@ -83,6 +81,22 @@ public class UserLoginPresenterImpl implements IUserLoginPresenter {
             @Override
             public void getDataFail(String msg) {
                 userLoginView.loginSystemFail(msg);
+            }
+        });
+    }
+
+    @Override
+    public void loginOutSystem() {
+        SystemLoginOutBean params = new SystemLoginOutBean();
+        userLoginModel.loginOutSystem(userLoginOutView.getContext(), params, new OnGetDataListener<SystemLoginOutResultBean>() {
+            @Override
+            public void getDataSuccess(SystemLoginOutResultBean result) {
+                userLoginOutView.loginOutSystemSuccess(result);
+            }
+
+            @Override
+            public void getDataFail(String msg) {
+                userLoginOutView.loginOutSystemFail(msg);
             }
         });
     }

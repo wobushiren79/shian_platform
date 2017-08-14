@@ -20,6 +20,7 @@ import com.shianlife.shian_platform.common.Constants;
 import com.shianlife.shian_platform.ui.activity.AllAppActivity;
 import com.shianlife.shian_platform.ui.activity.WebActivity;
 import com.shianlife.shian_platform.utils.IntentUtils;
+import com.shianlife.shian_platform.utils.ToastUtils;
 
 import java.util.List;
 
@@ -76,7 +77,7 @@ public class MainAPPItems extends LinearLayout {
                     @Override
                     public void onAnimationEnd(Animation animation) {
                         if (url.equals("")) {
-
+                            ToastUtils.showToastShort(getContext(),"敬请期待！");
                         } else if (url.contains("all")) {
                             Intent intent = new Intent(getContext(), AllAppActivity.class);
                             getContext().startActivity(intent);

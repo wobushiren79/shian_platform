@@ -10,20 +10,20 @@ import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.appenum.BaseTitleEnum;
 import com.shianlife.shian_platform.base.BaseActivity;
 import com.shianlife.shian_platform.custom.dialog.TipsDialog;
+import com.shianlife.shian_platform.mvp.login.bean.SystemLoginOutResultBean;
 import com.shianlife.shian_platform.mvp.login.presenter.IUserLoginPresenter;
 import com.shianlife.shian_platform.mvp.login.presenter.impl.UserLoginPresenterImpl;
 import com.shianlife.shian_platform.mvp.login.view.IUserLoginOutView;
+import com.shianlife.shian_platform.utils.AppUtils;
 import com.shianlife.shian_platform.utils.SharePerfrenceUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class SettingActivity extends BaseActivity implements IUserLoginOutView {
+public class SettingActivity extends BaseActivity {
 
     @BindView(R.id.tv_editorder)
     TextView tvEditorder;
-
-    private IUserLoginPresenter userLoginPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,6 @@ public class SettingActivity extends BaseActivity implements IUserLoginOutView {
 
     @Override
     protected void initData() {
-        userLoginPresenter = new UserLoginPresenterImpl(this);
     }
 
     @OnClick(R.id.tv_editorder)
@@ -49,9 +48,7 @@ public class SettingActivity extends BaseActivity implements IUserLoginOutView {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 SharePerfrenceUtils.setShareAutoLogin(SettingActivity.this, false);
-                Intent intent = new Intent(SettingActivity.this, LoginActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                AppUtils.jumpLogin(SettingActivity.this);
                 finish();
             }
         });
@@ -62,21 +59,6 @@ public class SettingActivity extends BaseActivity implements IUserLoginOutView {
             }
         });
         mDialog.show();
-    }
-
-    @Override
-    public Context getContext() {
-        return this;
-    }
-
-    @Override
-    public void loginOutSuccess(Object result) {
-
-    }
-
-    @Override
-    public void loginOutFail(String message) {
-
     }
 
 }

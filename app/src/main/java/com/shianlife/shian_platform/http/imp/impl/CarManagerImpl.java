@@ -36,7 +36,7 @@ public class CarManagerImpl extends BaseManagerImpl implements CarManager {
 
     private CarManagerImpl() {
         super();
-        BaseUrl = Constants.Cemetery_BaseUrl;
+        baseUrl = Constants.Cemetery_BaseUrl;
     }
 
     public static CarManagerImpl getInstance() {

@@ -1,5 +1,6 @@
 package com.shianlife.shian_platform.common;
 
+import com.shianlife.shian_platform.mvp.login.bean.SystemLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginResultBean;
 
 /**
@@ -13,10 +14,10 @@ public class Constants {
 //    public static final String CEMETERY_URL = "http://192.168.0.200:8000/shianlife-advisor-cemetery-1.0-SNAPSHOT";
 //    public static final String CEMETERY_URL = "http://192.168.0.49:8080/app";
 //    public static final String CEMETERY_URL = "http://192.168.0.35:8100/advisor";
-    public static final String Login_BaseUrl = "http://192.168.0.199:8080/ki4so-web";
+    public static final String Login_BaseUrl = "http://192.168.0.37:8080/ki4so-web";
     //单项地址
 //    public static final String Store_BaseUrl = "http://192.168.0.37:8089";
-    public static final String Store_BaseUrl = "http://192.168.0.199:8299/goods";
+    public static final String Store_BaseUrl = "http://192.168.0.37:8089/goods";
     //PHP地址
     public static final String PHP_BaseUrl = "http://app.e-funeral.cn";
     //阿里云文件上传
@@ -37,13 +38,16 @@ public class Constants {
     public static final String DiDichannel = "55455";//滴滴渠道号
 
     //子系统-单项  登陆地址
-    public static final String Login_Store_Url = "http://192.168.0.199:8299/goods/login_sys_api";
+    public static final String Login_Store_Url = Store_BaseUrl+"/login_sys_api";
 
 
     public static String ChannelId = "";
 
     //公墓账号
     public static UserLoginResultBean userCemetery = null;
+    //平台账号
+    public static SystemLoginResultBean systemUser = null;
+
     //当前的用户ID
     public static long userId;
 
@@ -71,5 +75,5 @@ public class Constants {
 
 
     //登陆系统KEY
-    public  static String System_Ki4so_Client_Ec;
+    public static String System_Ki4so_Client_Ec;
 }
