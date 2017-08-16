@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.adapter.base.BaseExpandableAdapter;
 import com.shianlife.shian_platform.appenum.GoodsPerformStatusEnum;
+import com.shianlife.shian_platform.appenum.GoodsPerformWayEnum;
 import com.shianlife.shian_platform.appenum.GoodsServiceWayEnum;
 import com.shianlife.shian_platform.common.Constants;
 import com.shianlife.shian_platform.custom.dialog.DataShowDialog;
@@ -58,7 +59,7 @@ public class StoreOrderGoodsListAdapter extends BaseExpandableAdapter<String, Go
         TextView tvPerformStatus = (TextView) convertView.findViewById(R.id.tv_perform_status);
 
         tvGoodsName.setText(itemData.getSpecOrderedVolume());
-        tvGoodsSpecification.setText("规格：" + itemData.getSpecAlias());
+        tvGoodsSpecification.setText("规格：" + itemData.getSpecName());
 
         if (itemData.getEmentPrice() == null)
             tvGoodsCustomerMoney.setText("客户￥：" + "未知");
@@ -97,7 +98,7 @@ public class StoreOrderGoodsListAdapter extends BaseExpandableAdapter<String, Go
         List<DataShowDialog.DataShowDialogResultBean> listData = new ArrayList<>();
         if (resultBean.getGoodsPerform() != null) {
             StoreOrderGetPerformResultBean.GoodsPerform goodsPerform = resultBean.getGoodsPerform();
-            listData.add(new DataShowDialog.DataShowDialogResultBean("执行方式", GoodsServiceWayEnum.getValueText(goodsPerform.getPerformWay())));
+            listData.add(new DataShowDialog.DataShowDialogResultBean("执行方式", GoodsPerformWayEnum.getValueText(goodsPerform.getPerformWay())));
             listData.add(new DataShowDialog.DataShowDialogResultBean("执行人姓名", goodsPerform.getPerformUserName()));
             listData.add(new DataShowDialog.DataShowDialogResultBean("执行人电话", goodsPerform.getPerformUserPhone()));
             listData.add(new DataShowDialog.DataShowDialogResultBean("备注", goodsPerform.getPerformComment()));

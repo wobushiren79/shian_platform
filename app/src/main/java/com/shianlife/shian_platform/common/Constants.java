@@ -3,6 +3,11 @@ package com.shianlife.shian_platform.common;
 import com.shianlife.shian_platform.mvp.login.bean.SystemLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginResultBean;
 
+import java.util.HashMap;
+import java.util.List;
+
+import okhttp3.Cookie;
+
 /**
  * Created by zm.
  */
@@ -76,4 +81,7 @@ public class Constants {
 
     //登陆系统KEY
     public static String System_Ki4so_Client_Ec;
+
+    //cookie保存
+    public static final HashMap<String, List<Cookie>> cookieStore = new HashMap<>();
 }

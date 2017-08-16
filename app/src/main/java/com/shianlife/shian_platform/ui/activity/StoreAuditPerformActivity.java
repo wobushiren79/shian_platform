@@ -14,6 +14,7 @@ import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.appenum.BaseTitleEnum;
 import com.shianlife.shian_platform.appenum.GoodsAduitResultEnum;
 import com.shianlife.shian_platform.appenum.GoodsPerformStatusEnum;
+import com.shianlife.shian_platform.appenum.GoodsPerformWayEnum;
 import com.shianlife.shian_platform.appenum.GoodsServiceWayEnum;
 import com.shianlife.shian_platform.base.BaseActivity;
 import com.shianlife.shian_platform.common.Constants;
@@ -101,14 +102,14 @@ public class StoreAuditPerformActivity extends BaseActivity implements IStoreAud
             return;
         }
         performStatus.setData(GoodsPerformStatusEnum.getValueText(goodsPerform.getPerformStatus()));
-        performWay.setData(GoodsServiceWayEnum.getValueText(goodsPerform.getPerformWay()));
+        performWay.setData(GoodsPerformWayEnum.getValueText(goodsPerform.getPerformWay()));
         acceptTime.setData(goodsPerform.getAcceptTime());
         startTime.setData(goodsPerform.getStartTime());
         endTime.setData(goodsPerform.getEndTime());
 
         storeAuditPerformPresenter = new StoreAuditPerformPresenterImpl(this);
         storeAuditPerformPresenter.getAuditPerformDetails();
-        storeAuditPerformSubmitPresenter=new StoreAuditPerformSubmitPresenterImpl(this);
+        storeAuditPerformSubmitPresenter = new StoreAuditPerformSubmitPresenterImpl(this);
     }
 
     @OnClick({R.id.tv_unpass, R.id.tv_pass})
@@ -193,20 +194,26 @@ public class StoreAuditPerformActivity extends BaseActivity implements IStoreAud
     @Override
     public void setAuditPerformPic(List<String> urls) {
         this.picUrls = urls;
+        ivPerformPic1.setVisibility(View.GONE);
+        ivPerformPic2.setVisibility(View.GONE);
+        ivPerformPic3.setVisibility(View.GONE);
         if (urls.size() == 0) {
             return;
         }
         if (urls.size() >= 1) {
             AppUtils.loadPic(this, ivPerformPic1, urls.get(0));
             ivPerformPic1.setOnClickListener(onClickListener);
+            ivPerformPic1.setVisibility(View.VISIBLE);
         }
         if (urls.size() >= 2) {
             AppUtils.loadPic(this, ivPerformPic2, urls.get(1));
             ivPerformPic2.setOnClickListener(onClickListener);
+            ivPerformPic2.setVisibility(View.VISIBLE);
         }
         if (urls.size() >= 3) {
             AppUtils.loadPic(this, ivPerformPic3, urls.get(2));
             ivPerformPic3.setOnClickListener(onClickListener);
+            ivPerformPic3.setVisibility(View.VISIBLE);
         }
     }
 

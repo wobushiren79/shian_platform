@@ -11,6 +11,7 @@ import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.adapter.base.BaseRCAdapter;
 import com.shianlife.shian_platform.adapter.base.BaseViewHolder;
 import com.shianlife.shian_platform.appenum.GoodsPerformStatusEnum;
+import com.shianlife.shian_platform.appenum.GoodsPerformWayEnum;
 import com.shianlife.shian_platform.appenum.GoodsServiceWayEnum;
 import com.shianlife.shian_platform.mvp.order.bean.GoodsOrderItem;
 import com.shianlife.shian_platform.mvp.order.bean.GoodsPerform;
@@ -39,7 +40,7 @@ public class StoreAuditPerformListAdapter extends BaseRCAdapter<StoreAuditPerfor
     }
 
     @Override
-    public void convert(BaseViewHolder holder, final StoreAuditPerformListResultBean.Content content, int index) {
+    public void convert(BaseViewHolder holder, final StoreAuditPerformListResultBean.Content data, int index) {
         TextView tvGoodsClass = holder.getView(R.id.tv_goods_class);
         TextView tvPerformStatus = holder.getView(R.id.tv_perform_status);
         TextView tvGoodsName = holder.getView(R.id.tv_goods_name);
@@ -53,22 +54,23 @@ public class StoreAuditPerformListAdapter extends BaseRCAdapter<StoreAuditPerfor
         TextView tvPerformAuditCheck = holder.getView(R.id.tv_perform_audit_check);
         TextView tvPerformAuditUncheck = holder.getView(R.id.tv_perform_audit_uncheck);
 
-        if (content.getGoodsOrderItem() == null
-                || content.getGoodsPerform() == null) {
+        if (data.getGoodsOrderItem() == null
+                || data.getGoodsPerform() == null) {
             tvGoodsClass.setText("数据有误，请重新登陆");
         }
-        GoodsOrderItem goodsOrderItem = content.getGoodsOrderItem();
-        GoodsPerform goodsPerform = content.getGoodsPerform();
+        GoodsOrderItem goodsOrderItem = data.getGoodsOrderItem();
+        GoodsPerform goodsPerform = data.getGoodsPerform();
 
         tvGoodsClass.setText(goodsOrderItem.getSpecOrderedAttr());
         tvPerformStatus.setText(GoodsPerformStatusEnum.getValueText(goodsPerform.getPerformStatus()));
         tvGoodsName.setText(goodsOrderItem.getSpecOrderedVolume() + "(" + goodsOrderItem.getSpecAlias() + ")" + "x" + goodsOrderItem.getSpecOrderedNum());
-        tvPerformBusiness.setText("执行商家：待完善");
-        tvPerformMan.setText("执行人员：待完善");
-        tvServiceWay.setText("实际执行方式：" + GoodsServiceWayEnum.getValueText(goodsPerform.getPerformWay()));
+        tvPerformBusiness.setText("执行商家：" + data.getPerformUserName());
+        tvPerformMan.setText("执行人员：" + goodsPerform.getPerformUserName());
+        tvServiceWay.setText("实际执行方式：" + GoodsPerformWayEnum.getValueText(goodsPerform.getPerformWay()));
 
-        AppUtils.call(llBusinessPhone, "15198088403");
-        AppUtils.call(llCounselorPhone, "15198088403");
+        AppUtils.call(llBusinessPhone,data.getPerformUserPhone());
+        AppUtils.call(llCounselorPhone, goodsPerform.getPerformUserPhone());
+
         if (goodsPerform.getPerformStatus() == GoodsPerformStatusEnum.auditing.getCode()) {
             tvPerformAuditCheck.setVisibility(View.VISIBLE);
             tvPerformAuditUncheck.setVisibility(View.GONE);
@@ -83,7 +85,7 @@ public class StoreAuditPerformListAdapter extends BaseRCAdapter<StoreAuditPerfor
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                auditPerform(content);
+                auditPerform(data);
             }
         };
 

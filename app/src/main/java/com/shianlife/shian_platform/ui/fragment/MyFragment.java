@@ -115,7 +115,7 @@ public class MyFragment extends BaseFragment implements IAppUpDateView {
 
         appUpDatePresenter = new AppUpDatePresenterImpl(this);
 
-        if (Constants.userCemetery.getUserData() != null) {
+        if (Constants.userCemetery != null && Constants.userCemetery.getUserData() != null) {
             mTVName.setText(Constants.userCemetery.getUserData().getName());
             mTVPhone.setText(Constants.userCemetery.getUserData().getMobile());
         }

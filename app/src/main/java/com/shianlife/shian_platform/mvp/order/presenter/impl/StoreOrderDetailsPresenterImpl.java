@@ -56,7 +56,7 @@ public class StoreOrderDetailsPresenterImpl implements IStoreOrderDetailsPresent
                 GoodsServiceInfo goodsServiceInfo = result.getGoodsServiceInfo();
                 GoodsOrder goodsOrder = result.getGoodsOrder();
                 GoodsInvoice goodsInvoice = result.getGoodsInvoice();
-                List<GoodsItemPerform> goodsItemPerforms=  result.getGoodsItemPerforms();
+                List<GoodsItemPerform> goodsItemPerforms = result.getGoodsItemPerforms();
                 if (goodsServiceInfo == null
                         || goodsOrder == null
                         || goodsItemPerforms == null) {
@@ -121,12 +121,21 @@ public class StoreOrderDetailsPresenterImpl implements IStoreOrderDetailsPresent
                 storeOrderDetailsView.setCustomerMoney("￥" + goodsOrder.getShowTotalPrice() / 100);
                 storeOrderDetailsView.setCounselorMoney("￥" + goodsOrder.getTotalPrice() / 100);
                 //设置订单数据
-                storeOrderDetailsView.setOrderNumber("订单编号："+goodsOrder.getOrderNumber());
-                storeOrderDetailsView.setOrderTime("订单时间："+goodsOrder.getCreatedAt());
+                storeOrderDetailsView.setOrderNumber("订单编号：" + goodsOrder.getOrderNumber());
+                storeOrderDetailsView.setOrderTime("订单时间：" + goodsOrder.getCreatedAt());
                 if (result.getGoodsFinance() != null) {
                     GoodsFinance goodsFinance = result.getGoodsFinance();
-                    storeOrderDetailsView.setOrderPayNumber("付款时间："+goodsFinance.getPaymentNumber());
-                    storeOrderDetailsView.setOrderPayTime("付款流水："+goodsFinance.getPaymentTime());
+                    if (goodsFinance.getPaymentNumber() != null) {
+                        storeOrderDetailsView.setOrderPayNumber("付款时间：" + goodsFinance.getPaymentNumber());
+                    } else {
+                        storeOrderDetailsView.setOrderPayNumber("付款时间：还未付款");
+                    }
+                    if (goodsFinance.getPaymentTime() != null) {
+                        storeOrderDetailsView.setOrderPayTime("付款流水：" + goodsFinance.getPaymentTime());
+                    } else {
+                        storeOrderDetailsView.setOrderPayTime("付款流水：还未付款");
+                    }
+
                 }
 
             }

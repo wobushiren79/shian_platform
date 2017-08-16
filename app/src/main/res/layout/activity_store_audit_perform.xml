@@ -48,6 +48,7 @@
                 CustomAttr:titleName="开始服务时间"></com.shianlife.shian_platform.custom.show.store.StoreEditNormalView>
 
             <com.shianlife.shian_platform.custom.show.store.StoreEditNormalView
+                android:visibility="gone"
                 android:id="@+id/end_time"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

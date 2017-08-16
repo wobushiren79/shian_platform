@@ -62,6 +62,8 @@ import butterknife.BindView;
 import okhttp3.Call;
 import okhttp3.Response;
 
+import static com.shianlife.shian_platform.utils.AppUtils.startForegroundService;
+
 public class MainActivity extends BaseActivity implements IChangeItemView, IAppUpDateView, ISubSystemLoginView, IUserLoginOutView {
     @BindView(R.id.fl_fragment)
     FrameLayout flFragment;
@@ -121,10 +123,12 @@ public class MainActivity extends BaseActivity implements IChangeItemView, IAppU
 
     @Override
     protected void initData() {
+        startForegroundService(this);
+
         mFragmentManager = getSupportFragmentManager();
         changeItemPresenter = new ChangeItemPresenterImpl(this);
         appUpDatePresenter = new AppUpDatePresenterImpl(this);
-        userLoginPresenter = new UserLoginPresenterImpl(null,this);
+        userLoginPresenter = new UserLoginPresenterImpl(null, this);
         changeItemPresenter.setChangeItemData();
         appUpDatePresenter.getAppUpDateInfo();
 

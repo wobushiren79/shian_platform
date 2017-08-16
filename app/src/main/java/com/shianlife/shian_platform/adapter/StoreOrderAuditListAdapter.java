@@ -68,11 +68,11 @@ public class StoreOrderAuditListAdapter extends BaseRCAdapter<StoreOrderAuditRes
         GoodsServiceInfo goodsServiceInfoBean = data.getGoodsServiceInfo();
 
         tvGoodsNumber.setText(goodsOrder.getOrderNumber());
-        tvGoodsAttr.setText("订单属性：" + goodsOrder.getConnectId() + "");
+        tvGoodsAttr.setText("订单属性：" + goodsOrder.getOrderChannel() + "");
         tvCustomerName.setText("客户姓名：" + goodsOrder.getCustomerName());
         tvServiceWay.setText("执行方式：" + GoodsServiceWayEnum.getValueText(goodsServiceInfoBean.getServiceWay()));
         tvServiceTime.setText("预约服务时间：" + goodsServiceInfoBean.getBookTime());
-        tvCounselorName.setText("顾问姓名：" + "待完善");
+        tvCounselorName.setText("顾问姓名：" + data.getCreatedName());
 
         //电话设置
         AppUtils.call(llCustomerPhone, data.getGoodsOrder().getCustomerPhone());

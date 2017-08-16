@@ -18,8 +18,7 @@ import com.shianlife.shian_platform.utils.PushUtils;
  */
 
 public class PushService extends Service {
-    Thread thread;
-    boolean isRun = true;
+
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -29,39 +28,18 @@ public class PushService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        final Context context = this.getApplicationContext();
-        thread = new Thread() {
-            @Override
-            public void run() {
-                super.run();
-                while (isRun) {
-                    try {
-                        sleep(10000);
-                        if (!PushManager.isPushEnabled(context)) {
-                            PushManager.startWork(getApplicationContext(),
-                                    PushConstants.LOGIN_TYPE_API_KEY,
-                                    PushUtils.getMetaValue(context, "push_api_key"));
-                        }
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        };
-        thread.start();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             Notification.Builder builder = new Notification.Builder(this.getApplicationContext());
-//            Intent nfIntent = new Intent(this, SplashActivity.class);
             builder
 //                    .setContentIntent(PendingIntent.getActivity(this, 0, nfIntent, 0)) // 设置PendingIntent
                     .setLargeIcon(BitmapFactory.decodeResource(this.getResources(), R.mipmap.ic_launcher)) // 设置下拉列表中的图标(大图标)
                     .setContentTitle("圆满人生平台") // 设置下拉列表里的标题
                     .setSmallIcon(R.mipmap.ic_launcher) // 设置状态栏内的小图标
-                    .setContentText("已开启消息通知"); // 设置上下文内容
+                    .setContentText("已开始为您服务"); // 设置上下文内容
 //                    .setWhen(System.currentTimeMillis()); // 设置该通知发生的时间
             Notification notification = null; // 获取构建好的Notification
 
@@ -85,7 +63,6 @@ public class PushService extends Service {
     @Override
     public void onDestroy() {
         stopForeground(true);
-        isRun = false;
         super.onDestroy();
     }
 }

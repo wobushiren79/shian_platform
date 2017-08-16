@@ -42,6 +42,7 @@ public class StoreOrderAuditResultListBean {
         private Long id;
         private GoodsOrder goodsOrder;
         private GoodsServiceInfo goodsServiceInfo;
+        private String createdName;
 
         public Long getId() {
             return id;
@@ -65,6 +66,14 @@ public class StoreOrderAuditResultListBean {
 
         public void setGoodsServiceInfo(GoodsServiceInfo goodsServiceInfo) {
             this.goodsServiceInfo = goodsServiceInfo;
+        }
+
+        public String getCreatedName() {
+            return createdName;
+        }
+
+        public void setCreatedName(String createdName) {
+            this.createdName = createdName;
         }
     }
 }

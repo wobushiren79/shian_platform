@@ -89,7 +89,18 @@ public class GoodsOrderItem extends BaseEntity {
      * 单位
      */
     private String unit;
+    /**
+     * 规格名称
+     */
+    private String  specName;
 
+    public String getSpecName() {
+        return specName;
+    }
+
+    public void setSpecName(String specName) {
+        this.specName = specName;
+    }
 
     public String getSpecNumber() {
         return specNumber;

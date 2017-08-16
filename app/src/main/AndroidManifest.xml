@@ -93,7 +93,10 @@
         <activity android:name=".ui.activity.MessageDetailsActivity" />
         <activity android:name=".ui.activity.StoreOrderAuditListActivity" />
         <activity android:name=".ui.activity.StoreOrderAuditPerformActivity" />
+        <activity android:name=".ui.activity.StoreAuditPerformActivity" />
+        <activity android:name=".ui.activity.StoreOrderDetailsActivity"></activity>
 
+        <service android:name=".service.PushService" />
         <service android:name=".service.UpDataService" />
         <service
             android:name="com.baidu.location.f"
@@ -173,8 +176,7 @@
             android:name="push_api_key"
             android:value="nk8sqFigNn0D0eQPPdgkXSsjCPCUpF6G" />
 
-        <activity android:name=".ui.activity.StoreAuditPerformActivity" />
-        <activity android:name=".ui.activity.StoreOrderDetailsActivity"></activity>
+
     </application>
 
 </manifest>

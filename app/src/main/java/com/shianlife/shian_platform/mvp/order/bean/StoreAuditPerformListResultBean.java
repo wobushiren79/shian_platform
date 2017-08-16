@@ -41,6 +41,32 @@ public class StoreAuditPerformListResultBean {
          */
         private GoodsPerformHistory goodsPerformHistory;
 
+        /**
+         * 执行商家姓名
+         */
+        private String performUserName;
+
+        /**
+         * 执行商家电话
+         */
+        private String performUserPhone;
+
+        public String getPerformUserPhone() {
+            return performUserPhone;
+        }
+
+        public void setPerformUserPhone(String performUserPhone) {
+            this.performUserPhone = performUserPhone;
+        }
+
+        public String getPerformUserName() {
+            return performUserName;
+        }
+
+        public void setPerformUserName(String performUserName) {
+            this.performUserName = performUserName;
+        }
+
         public Long getId() {
             return id;
         }
