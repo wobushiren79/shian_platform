@@ -7,8 +7,8 @@ import com.shianlife.shian_platform.base.BaseEntity;
  */
 
 public class GoodsServiceInfo extends BaseEntity {
-    private int orderId;
-    private int serviceWay;
+    private Long orderId;
+    private Integer serviceWay;
     private String selfDelivery;
     private String selfDeliveryTime;
     private String bookTime;
@@ -17,19 +17,19 @@ public class GoodsServiceInfo extends BaseEntity {
     private String serviceLocation;
 
 
-    public int getOrderId() {
+    public Long getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(int orderId) {
+    public void setOrderId(Long orderId) {
         this.orderId = orderId;
     }
 
-    public int getServiceWay() {
+    public Integer getServiceWay() {
         return serviceWay;
     }
 
-    public void setServiceWay(int serviceWay) {
+    public void setServiceWay(Integer serviceWay) {
         this.serviceWay = serviceWay;
     }
 

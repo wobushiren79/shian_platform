@@ -41,8 +41,27 @@ public class StoreOrderAuditResultListBean {
 
         private Long id;
         private GoodsOrder goodsOrder;
+        private GoodsPerform        goodsPerform;
         private GoodsServiceInfo goodsServiceInfo;
         private String createdName;
+        private String orderAttr;//订单属性
+
+
+        public GoodsPerform getGoodsPerform() {
+            return goodsPerform;
+        }
+
+        public void setGoodsPerform(GoodsPerform goodsPerform) {
+            this.goodsPerform = goodsPerform;
+        }
+
+        public String getOrderAttr() {
+            return orderAttr;
+        }
+
+        public void setOrderAttr(String orderAttr) {
+            this.orderAttr = orderAttr;
+        }
 
         public Long getId() {
             return id;

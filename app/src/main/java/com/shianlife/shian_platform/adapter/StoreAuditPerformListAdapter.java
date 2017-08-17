@@ -64,11 +64,23 @@ public class StoreAuditPerformListAdapter extends BaseRCAdapter<StoreAuditPerfor
         tvGoodsClass.setText(goodsOrderItem.getSpecOrderedAttr());
         tvPerformStatus.setText(GoodsPerformStatusEnum.getValueText(goodsPerform.getPerformStatus()));
         tvGoodsName.setText(goodsOrderItem.getSpecOrderedVolume() + "(" + goodsOrderItem.getSpecAlias() + ")" + "x" + goodsOrderItem.getSpecOrderedNum());
-        tvPerformBusiness.setText("执行商家：" + data.getPerformUserName());
-        tvPerformMan.setText("执行人员：" + goodsPerform.getPerformUserName());
-        tvServiceWay.setText("实际执行方式：" + GoodsPerformWayEnum.getValueText(goodsPerform.getPerformWay()));
 
-        AppUtils.call(llBusinessPhone,data.getPerformUserPhone());
+        if (data.getPerformUserName() != null)
+            tvPerformBusiness.setText("执行商家：" + data.getPerformUserName());
+        else
+            tvPerformBusiness.setText("执行商家：暂无" );
+
+        if (goodsPerform.getPerformUserName() != null)
+            tvPerformMan.setText("执行人员：" + goodsPerform.getPerformUserName());
+        else
+            tvPerformMan.setText("执行人员：暂无" );
+
+        if (goodsPerform.getPerformWay() != null)
+            tvServiceWay.setText("实际执行方式：" + GoodsPerformWayEnum.getValueText(goodsPerform.getPerformWay()));
+        else
+            tvServiceWay.setText("实际执行方式：暂无" );
+
+        AppUtils.call(llBusinessPhone, data.getPerformUserPhone());
         AppUtils.call(llCounselorPhone, goodsPerform.getPerformUserPhone());
 
         if (goodsPerform.getPerformStatus() == GoodsPerformStatusEnum.auditing.getCode()) {

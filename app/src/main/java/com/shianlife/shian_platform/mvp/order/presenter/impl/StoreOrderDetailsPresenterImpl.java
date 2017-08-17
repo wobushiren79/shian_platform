@@ -128,12 +128,12 @@ public class StoreOrderDetailsPresenterImpl implements IStoreOrderDetailsPresent
                     if (goodsFinance.getPaymentNumber() != null) {
                         storeOrderDetailsView.setOrderPayNumber("付款时间：" + goodsFinance.getPaymentNumber());
                     } else {
-                        storeOrderDetailsView.setOrderPayNumber("付款时间：还未付款");
+                        storeOrderDetailsView.setOrderPayNumber("付款时间：暂无");
                     }
                     if (goodsFinance.getPaymentTime() != null) {
                         storeOrderDetailsView.setOrderPayTime("付款流水：" + goodsFinance.getPaymentTime());
                     } else {
-                        storeOrderDetailsView.setOrderPayTime("付款流水：还未付款");
+                        storeOrderDetailsView.setOrderPayTime("付款流水：暂无");
                     }
 
                 }

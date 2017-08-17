@@ -10,8 +10,10 @@ import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.adapter.base.BaseRCAdapter;
 import com.shianlife.shian_platform.adapter.base.BaseViewHolder;
 import com.shianlife.shian_platform.appenum.GoodsOrderStatusEnum;
+import com.shianlife.shian_platform.appenum.GoodsPerformWayEnum;
 import com.shianlife.shian_platform.appenum.GoodsServiceWayEnum;
 import com.shianlife.shian_platform.mvp.order.bean.GoodsOrder;
+import com.shianlife.shian_platform.mvp.order.bean.GoodsPerform;
 import com.shianlife.shian_platform.mvp.order.bean.GoodsServiceInfo;
 import com.shianlife.shian_platform.mvp.order.bean.StoreOrderAuditResultListBean;
 import com.shianlife.shian_platform.ui.activity.StoreOrderAuditPerformActivity;
@@ -60,19 +62,52 @@ public class StoreOrderAuditListAdapter extends BaseRCAdapter<StoreOrderAuditRes
         final TextView tvAuditDetails = holder.getView(R.id.tv_audit_details);
         final TextView tvOrderAudit = holder.getView(R.id.tv_order_audit);
 
-        if (data.getGoodsOrder() == null || data.getGoodsServiceInfo() == null) {
+        if (data.getGoodsOrder() == null || data.getGoodsServiceInfo() == null || data.getGoodsPerform() == null) {
             tvGoodsNumber.setText("数据错误");
             return;
         }
         GoodsOrder goodsOrder = data.getGoodsOrder();
+        GoodsPerform goodsPerform = data.getGoodsPerform();
         GoodsServiceInfo goodsServiceInfoBean = data.getGoodsServiceInfo();
 
         tvGoodsNumber.setText(goodsOrder.getOrderNumber());
-        tvGoodsAttr.setText("订单属性：" + goodsOrder.getOrderChannel() + "");
-        tvCustomerName.setText("客户姓名：" + goodsOrder.getCustomerName());
-        tvServiceWay.setText("执行方式：" + GoodsServiceWayEnum.getValueText(goodsServiceInfoBean.getServiceWay()));
-        tvServiceTime.setText("预约服务时间：" + goodsServiceInfoBean.getBookTime());
-        tvCounselorName.setText("顾问姓名：" + data.getCreatedName());
+
+        if (data.getOrderAttr() != null)
+            tvGoodsAttr.setText("订单属性：" + data.getOrderAttr());
+        else
+            tvGoodsAttr.setText("订单属性：暂无");
+
+        if (goodsOrder.getCustomerName() != null)
+            tvCustomerName.setText("客户姓名：" + goodsOrder.getCustomerName());
+        else
+            tvCustomerName.setText("客户姓名：暂无");
+
+        if (goodsPerform.getPerformWay() != null)
+            tvServiceWay.setText("执行方式：" + GoodsPerformWayEnum.getValueText(goodsPerform.getPerformWay()));
+        else
+            tvServiceWay.setText("执行方式：暂无");
+
+        if (data.getCreatedName() != null)
+            tvCounselorName.setText("顾问姓名：" + data.getCreatedName());
+        else
+            tvCounselorName.setText("顾问姓名：暂无");
+
+
+        goodsServiceInfoBean.getServiceWay();
+        String serviceTitle = "";
+        if (goodsServiceInfoBean.getServiceWay() != null) {
+            tvServiceTime.setVisibility(View.VISIBLE);
+            if (goodsServiceInfoBean.getServiceWay() == GoodsServiceWayEnum.now_service.getCode()) {
+                serviceTitle = "及时服务时间：";
+                tvServiceTime.setText(serviceTitle + goodsServiceInfoBean.getCreatedAt());
+            } else if (goodsServiceInfoBean.getServiceWay() == GoodsServiceWayEnum.plan_service.getCode()) {
+                serviceTitle = "预约服务时间：";
+                tvServiceTime.setText(serviceTitle + goodsServiceInfoBean.getBookTime());
+            }
+        } else {
+            tvServiceTime.setVisibility(View.GONE);
+        }
+
 
         //电话设置
         AppUtils.call(llCustomerPhone, data.getGoodsOrder().getCustomerPhone());
@@ -101,10 +136,14 @@ public class StoreOrderAuditListAdapter extends BaseRCAdapter<StoreOrderAuditRes
             tvOrderDetails.setVisibility(View.VISIBLE);
             tvAuditDetails.setVisibility(View.VISIBLE);
             tvOrderAudit.setVisibility(View.GONE);
-        } else {
+        } else if (goodsOrder.getOrderStatus() == GoodsOrderStatusEnum.execute.getCode()) {
             tvOrderDetails.setVisibility(View.VISIBLE);
             tvAuditDetails.setVisibility(View.GONE);
             tvOrderAudit.setVisibility(View.VISIBLE);
+        } else {
+            tvOrderDetails.setVisibility(View.VISIBLE);
+            tvAuditDetails.setVisibility(View.GONE);
+            tvOrderAudit.setVisibility(View.GONE);
         }
     }
 

@@ -32,9 +32,11 @@ public enum GoodsInvoiceTitleTypeEnum {
         this.name = name;
     }
 
-    public static String getValueText(int channel) {
+    public static String getValueText(Integer status) {
+        if (status == null)
+            return null;
         for (GoodsInvoiceTitleTypeEnum e : GoodsInvoiceTitleTypeEnum.values()) {
-            if (e.getCode() == channel) {
+            if (e.getCode() == status) {
                 return e.getName();
             }
         }
