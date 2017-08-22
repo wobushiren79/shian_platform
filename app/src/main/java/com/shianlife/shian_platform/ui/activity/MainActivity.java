@@ -90,7 +90,7 @@ public class MainActivity extends BaseActivity implements IChangeItemView, IAppU
     @Override
     protected void initView() {
         mainChangeLayout.setChangeCallBack(mainChangeCallBack);
-        addMainDrawerLayout();
+//        addMainDrawerLayout();
     }
 
     MainChangeLayout.MainChangeCallBack mainChangeCallBack = new MainChangeLayout.MainChangeCallBack() {

@@ -64,28 +64,26 @@ public class StoreOrderGoodsListAdapter extends BaseExpandableAdapter<String, Go
         if (itemData.getEmentPrice() == null)
             tvGoodsCustomerMoney.setText("客户￥：" + "未知");
         else
-            tvGoodsCustomerMoney.setText("客户￥：" + itemData.getEmentPrice() / 100);
+            tvGoodsCustomerMoney.setText("客户￥：" + (float) itemData.getEmentPrice() / 100f);
 
         if (itemData.getAdviserPrice() == null)
             tvGoodsCounselorMoney.setText("顾问￥：" + "未知");
         else
-            tvGoodsCounselorMoney.setText("顾问￥：" + itemData.getAdviserPrice() / 100);
+            tvGoodsCounselorMoney.setText("顾问￥：" + (float) itemData.getAdviserPrice() / 100f);
 
 
         tvGoodsNumb.setText("x" + itemData.getSpecOrderedNum());
         AppUtils.loadPic(mContext, ivGoodsPic, Constants.Store_Pic_BaseUrl + itemData.getTitleImg());
         if (itemData.getGoodsPerform() != null) {
-            GoodsPerform goodsPerform = itemData.getGoodsPerform();
+            final GoodsPerform goodsPerform = itemData.getGoodsPerform();
             tvPerformStatus.setText(GoodsPerformStatusEnum.getValueText(goodsPerform.getPerformStatus()));
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    storeOrderGetPerformPresenter.getPerformInfo(goodsPerform.getId());
+                }
+            });
         }
-
-
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                storeOrderGetPerformPresenter.getPerformInfo(itemData.getGoodsPerform().getId());
-            }
-        });
     }
 
     @Override

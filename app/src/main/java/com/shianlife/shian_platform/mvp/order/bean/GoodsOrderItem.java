@@ -76,7 +76,7 @@ public class GoodsOrderItem extends BaseEntity {
     /**
      * 顾问结算价
      */
-    private Double adviserPrice;
+    private Integer adviserPrice;
     /**
      * 标题图
      */
@@ -84,7 +84,7 @@ public class GoodsOrderItem extends BaseEntity {
     /**
      * 商家结算价
      */
-    private Double ementPrice;
+    private Integer ementPrice;
     /**
      * 单位
      */
@@ -93,54 +93,6 @@ public class GoodsOrderItem extends BaseEntity {
      * 规格名称
      */
     private String  specName;
-
-    public String getSpecName() {
-        return specName;
-    }
-
-    public void setSpecName(String specName) {
-        this.specName = specName;
-    }
-
-    public String getSpecNumber() {
-        return specNumber;
-    }
-
-    public void setSpecNumber(String specNumber) {
-        this.specNumber = specNumber;
-    }
-
-    public Double getAdviserPrice() {
-        return adviserPrice;
-    }
-
-    public void setAdviserPrice(Double adviserPrice) {
-        this.adviserPrice = adviserPrice;
-    }
-
-    public String getTitleImg() {
-        return titleImg;
-    }
-
-    public void setTitleImg(String titleImg) {
-        this.titleImg = titleImg;
-    }
-
-    public Double getEmentPrice() {
-        return ementPrice;
-    }
-
-    public void setEmentPrice(Double ementPrice) {
-        this.ementPrice = ementPrice;
-    }
-
-    public String getUnit() {
-        return unit;
-    }
-
-    public void setUnit(String unit) {
-        this.unit = unit;
-    }
 
     public Long getOrderId() {
         return orderId;
@@ -236,5 +188,53 @@ public class GoodsOrderItem extends BaseEntity {
 
     public void setSpecOrderedAttr(String specOrderedAttr) {
         this.specOrderedAttr = specOrderedAttr;
+    }
+
+    public String getSpecNumber() {
+        return specNumber;
+    }
+
+    public void setSpecNumber(String specNumber) {
+        this.specNumber = specNumber;
+    }
+
+    public Integer getAdviserPrice() {
+        return adviserPrice;
+    }
+
+    public void setAdviserPrice(Integer adviserPrice) {
+        this.adviserPrice = adviserPrice;
+    }
+
+    public String getTitleImg() {
+        return titleImg;
+    }
+
+    public void setTitleImg(String titleImg) {
+        this.titleImg = titleImg;
+    }
+
+    public Integer getEmentPrice() {
+        return ementPrice;
+    }
+
+    public void setEmentPrice(Integer ementPrice) {
+        this.ementPrice = ementPrice;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public String getSpecName() {
+        return specName;
+    }
+
+    public void setSpecName(String specName) {
+        this.specName = specName;
     }
 }

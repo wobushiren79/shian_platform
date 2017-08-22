@@ -64,10 +64,14 @@ public class StoreOrderDetailsPresenterImpl implements IStoreOrderDetailsPresent
                     return;
                 }
                 //服务信息
-                storeOrderDetailsView.setCustomerName(goodsServiceInfo.getContact());
-                storeOrderDetailsView.setCustomerPhone(goodsServiceInfo.getContactPhone());
-                storeOrderDetailsView.setServiceLocation(goodsServiceInfo.getServiceLocation());
-                storeOrderDetailsView.setServiceTime(goodsServiceInfo.getBookTime());
+                if (goodsServiceInfo.getContact() != null)
+                    storeOrderDetailsView.setCustomerName(goodsServiceInfo.getContact());
+                if (goodsServiceInfo.getContactPhone() != null)
+                    storeOrderDetailsView.setCustomerPhone(goodsServiceInfo.getContactPhone());
+                if (goodsServiceInfo.getServiceLocation() != null)
+                    storeOrderDetailsView.setServiceLocation(goodsServiceInfo.getServiceLocation());
+                if (goodsServiceInfo.getBookTime() != null)
+                    storeOrderDetailsView.setServiceTime(goodsServiceInfo.getBookTime());
                 storeOrderDetailsView.setGoodsItemNumber(goodsItemPerforms.size() + "");
                 //商品信息
                 Map<String, List<GoodsItemPerform>> goodsListData = getStringListMap(goodsItemPerforms);
@@ -118,22 +122,22 @@ public class StoreOrderDetailsPresenterImpl implements IStoreOrderDetailsPresent
                 //订单备注
                 storeOrderDetailsView.setRemark(goodsOrder.getOrderComment());
                 //设置价钱
-                storeOrderDetailsView.setCustomerMoney("￥" + goodsOrder.getShowTotalPrice() / 100);
-                storeOrderDetailsView.setCounselorMoney("￥" + goodsOrder.getTotalPrice() / 100);
+                storeOrderDetailsView.setCustomerMoney("￥" + (float) goodsOrder.getShowTotalPrice() / 100f);
+                storeOrderDetailsView.setCounselorMoney("￥" + (float) goodsOrder.getTotalPrice() / 100f);
                 //设置订单数据
                 storeOrderDetailsView.setOrderNumber("订单编号：" + goodsOrder.getOrderNumber());
                 storeOrderDetailsView.setOrderTime("订单时间：" + goodsOrder.getCreatedAt());
                 if (result.getGoodsFinance() != null) {
                     GoodsFinance goodsFinance = result.getGoodsFinance();
-                    if (goodsFinance.getPaymentNumber() != null) {
-                        storeOrderDetailsView.setOrderPayNumber("付款时间：" + goodsFinance.getPaymentNumber());
-                    } else {
-                        storeOrderDetailsView.setOrderPayNumber("付款时间：暂无");
-                    }
                     if (goodsFinance.getPaymentTime() != null) {
-                        storeOrderDetailsView.setOrderPayTime("付款流水：" + goodsFinance.getPaymentTime());
+                        storeOrderDetailsView.setOrderPayTime("付款时间：" + goodsFinance.getPaymentTime());
                     } else {
-                        storeOrderDetailsView.setOrderPayTime("付款流水：暂无");
+                        storeOrderDetailsView.setOrderPayTime("付款时间：暂无");
+                    }
+                    if (goodsFinance.getPaymentNumber() != null) {
+                        storeOrderDetailsView.setOrderPayNumber("付款流水：" + goodsFinance.getPaymentNumber());
+                    } else {
+                        storeOrderDetailsView.setOrderPayNumber("付款流水：暂无");
                     }
 
                 }

@@ -82,10 +82,10 @@ public class StoreOrderAuditListAdapter extends BaseRCAdapter<StoreOrderAuditRes
         else
             tvCustomerName.setText("客户姓名：暂无");
 
-        if (goodsPerform.getPerformWay() != null)
-            tvServiceWay.setText("执行方式：" + GoodsPerformWayEnum.getValueText(goodsPerform.getPerformWay()));
+        if (goodsServiceInfoBean.getServiceWay() != null)
+            tvServiceWay.setText("服务方式：" + GoodsServiceWayEnum.getValueText(goodsServiceInfoBean.getServiceWay()));
         else
-            tvServiceWay.setText("执行方式：暂无");
+            tvServiceWay.setText("服务方式：暂无");
 
         if (data.getCreatedName() != null)
             tvCounselorName.setText("顾问姓名：" + data.getCreatedName());
@@ -103,6 +103,12 @@ public class StoreOrderAuditListAdapter extends BaseRCAdapter<StoreOrderAuditRes
             } else if (goodsServiceInfoBean.getServiceWay() == GoodsServiceWayEnum.plan_service.getCode()) {
                 serviceTitle = "预约服务时间：";
                 tvServiceTime.setText(serviceTitle + goodsServiceInfoBean.getBookTime());
+            } else if (goodsServiceInfoBean.getServiceWay() == GoodsServiceWayEnum.self_service.getCode()) {
+                serviceTitle = "自提时间：";
+                tvServiceTime.setText(serviceTitle + goodsServiceInfoBean.getSelfDeliveryTime());
+            } else {
+                serviceTitle = "";
+                tvServiceTime.setText(serviceTitle);
             }
         } else {
             tvServiceTime.setVisibility(View.GONE);
@@ -136,14 +142,10 @@ public class StoreOrderAuditListAdapter extends BaseRCAdapter<StoreOrderAuditRes
             tvOrderDetails.setVisibility(View.VISIBLE);
             tvAuditDetails.setVisibility(View.VISIBLE);
             tvOrderAudit.setVisibility(View.GONE);
-        } else if (goodsOrder.getOrderStatus() == GoodsOrderStatusEnum.execute.getCode()) {
-            tvOrderDetails.setVisibility(View.VISIBLE);
-            tvAuditDetails.setVisibility(View.GONE);
-            tvOrderAudit.setVisibility(View.VISIBLE);
         } else {
             tvOrderDetails.setVisibility(View.VISIBLE);
             tvAuditDetails.setVisibility(View.GONE);
-            tvOrderAudit.setVisibility(View.GONE);
+            tvOrderAudit.setVisibility(View.VISIBLE);
         }
     }
 

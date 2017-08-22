@@ -63,7 +63,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="@dimen/dimen_16dp"
                 android:gravity="center_vertical"
-                android:text="客户结算价"
+                android:text="推荐价"
                 android:textColor="@color/black" />
 
             <TextView
@@ -93,7 +93,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="@dimen/dimen_16dp"
                 android:gravity="center_vertical"
-                android:text="顾问结算价"
+                android:text="圆满价"
                 android:textColor="@color/black" />
 
             <TextView

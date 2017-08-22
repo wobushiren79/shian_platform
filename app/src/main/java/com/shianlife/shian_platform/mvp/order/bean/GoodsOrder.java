@@ -21,18 +21,10 @@ public class GoodsOrder extends BaseEntity{
     private Long customerReceiveId;
     private Long customerDistributeId;
     private Long financeId;
-    private int totalPrice;
+    private Integer totalPrice;
     private int checkOrder;
-    private int showTotalPrice;
+    private Integer showTotalPrice;
     private int waitAssignNum;
-
-    public Long getAuditorId() {
-        return auditorId;
-    }
-
-    public void setAuditorId(Long auditorId) {
-        this.auditorId = auditorId;
-    }
 
     public int getOrderStatus() {
         return orderStatus;
@@ -82,6 +74,13 @@ public class GoodsOrder extends BaseEntity{
         this.orderNumber = orderNumber;
     }
 
+    public String getOrderComment() {
+        return orderComment;
+    }
+
+    public void setOrderComment(String orderComment) {
+        this.orderComment = orderComment;
+    }
 
     public int getNeedInvoice() {
         return needInvoice;
@@ -91,6 +90,13 @@ public class GoodsOrder extends BaseEntity{
         this.needInvoice = needInvoice;
     }
 
+    public int getAuditStatus() {
+        return auditStatus;
+    }
+
+    public void setAuditStatus(int auditStatus) {
+        this.auditStatus = auditStatus;
+    }
 
     public int getAllotAuditor() {
         return allotAuditor;
@@ -100,39 +106,16 @@ public class GoodsOrder extends BaseEntity{
         this.allotAuditor = allotAuditor;
     }
 
+    public Long getAuditorId() {
+        return auditorId;
+    }
 
-    public Object getCustomerReceiveId() {
+    public void setAuditorId(Long auditorId) {
+        this.auditorId = auditorId;
+    }
+
+    public Long getCustomerReceiveId() {
         return customerReceiveId;
-    }
-
-
-    public int getTotalPrice() {
-        return totalPrice;
-    }
-
-    public int getCheckOrder() {
-        return checkOrder;
-    }
-
-    public void setCheckOrder(int checkOrder) {
-        this.checkOrder = checkOrder;
-    }
-
-
-    public String getOrderComment() {
-        return orderComment;
-    }
-
-    public void setOrderComment(String orderComment) {
-        this.orderComment = orderComment;
-    }
-
-    public int getAuditStatus() {
-        return auditStatus;
-    }
-
-    public void setAuditStatus(int auditStatus) {
-        this.auditStatus = auditStatus;
     }
 
     public void setCustomerReceiveId(Long customerReceiveId) {
@@ -155,15 +138,27 @@ public class GoodsOrder extends BaseEntity{
         this.financeId = financeId;
     }
 
-    public void setTotalPrice(int totalPrice) {
+    public Integer getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Integer totalPrice) {
         this.totalPrice = totalPrice;
     }
 
-    public int getShowTotalPrice() {
+    public int getCheckOrder() {
+        return checkOrder;
+    }
+
+    public void setCheckOrder(int checkOrder) {
+        this.checkOrder = checkOrder;
+    }
+
+    public Integer getShowTotalPrice() {
         return showTotalPrice;
     }
 
-    public void setShowTotalPrice(int showTotalPrice) {
+    public void setShowTotalPrice(Integer showTotalPrice) {
         this.showTotalPrice = showTotalPrice;
     }
 
