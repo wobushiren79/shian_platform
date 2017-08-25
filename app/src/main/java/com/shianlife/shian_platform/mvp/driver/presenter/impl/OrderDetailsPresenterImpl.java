@@ -1,6 +1,6 @@
 package com.shianlife.shian_platform.mvp.driver.presenter.impl;
 
-import com.shianlife.shian_platform.common.OnGetDataListener;
+import com.shianlife.shian_platform.mvp.base.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.driver.bean.OrderDetailsBean;
 import com.shianlife.shian_platform.mvp.driver.bean.OrderDetailsResultBean;
 import com.shianlife.shian_platform.mvp.driver.model.IOrderDetailsModel;

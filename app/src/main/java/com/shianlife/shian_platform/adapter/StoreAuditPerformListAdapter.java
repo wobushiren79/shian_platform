@@ -1,6 +1,7 @@
 package com.shianlife.shian_platform.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,12 +14,15 @@ import com.shianlife.shian_platform.adapter.base.BaseViewHolder;
 import com.shianlife.shian_platform.appenum.GoodsPerformStatusEnum;
 import com.shianlife.shian_platform.appenum.GoodsPerformWayEnum;
 import com.shianlife.shian_platform.appenum.GoodsServiceWayEnum;
+import com.shianlife.shian_platform.custom.dialog.TipsDialog;
 import com.shianlife.shian_platform.mvp.order.bean.GoodsOrderItem;
 import com.shianlife.shian_platform.mvp.order.bean.GoodsPerform;
+import com.shianlife.shian_platform.mvp.order.bean.GoodsPerformCancel;
 import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformListResultBean;
 import com.shianlife.shian_platform.ui.activity.StoreAuditPerformActivity;
 import com.shianlife.shian_platform.utils.AppUtils;
 import com.shianlife.shian_platform.utils.IntentUtils;
+import com.shianlife.shian_platform.utils.ToastUtils;
 
 import butterknife.BindView;
 
@@ -47,11 +51,12 @@ public class StoreAuditPerformListAdapter extends BaseRCAdapter<StoreAuditPerfor
         TextView tvPerformBusiness = holder.getView(R.id.tv_perform_business);
         TextView tvPerformMan = holder.getView(R.id.tv_perform_man);
         TextView tvServiceWay = holder.getView(R.id.tv_service_way);
-        ImageView ivOrderMore = holder.getView(R.id.iv_order_more);
+        final TextView tvCancelReason = holder.getView(R.id.tv_cancel_reason);
+        final ImageView ivOrderMore = holder.getView(R.id.iv_order_more);
         LinearLayout llContent = holder.getView(R.id.ll_content);
         LinearLayout llBusinessPhone = holder.getView(R.id.ll_business_phone);
         LinearLayout llCounselorPhone = holder.getView(R.id.ll_counselor_phone);
-        TextView tvPerformAuditCheck = holder.getView(R.id.tv_perform_audit_check);
+        final TextView tvPerformAuditCheck = holder.getView(R.id.tv_perform_audit_check);
         TextView tvPerformAuditUncheck = holder.getView(R.id.tv_perform_audit_uncheck);
 
         if (data.getGoodsOrderItem() == null
@@ -68,40 +73,67 @@ public class StoreAuditPerformListAdapter extends BaseRCAdapter<StoreAuditPerfor
         if (data.getPerformUserName() != null)
             tvPerformBusiness.setText("执行商家：" + data.getPerformUserName());
         else
-            tvPerformBusiness.setText("执行商家：暂无" );
+            tvPerformBusiness.setText("执行商家：暂无");
 
         if (goodsPerform.getPerformUserName() != null)
             tvPerformMan.setText("执行人员：" + goodsPerform.getPerformUserName());
         else
-            tvPerformMan.setText("执行人员：暂无" );
+            tvPerformMan.setText("执行人员：暂无");
 
         if (goodsPerform.getPerformWay() != null)
             tvServiceWay.setText("实际执行方式：" + GoodsPerformWayEnum.getValueText(goodsPerform.getPerformWay()));
         else
-            tvServiceWay.setText("实际执行方式：暂无" );
+            tvServiceWay.setText("实际执行方式：暂无");
 
         AppUtils.call(llBusinessPhone, data.getPerformUserPhone());
         AppUtils.call(llCounselorPhone, goodsPerform.getPerformUserPhone());
 
+        tvPerformAuditCheck.setVisibility(View.GONE);
+        tvPerformAuditUncheck.setVisibility(View.GONE);
+        tvCancelReason.setVisibility(View.GONE);
+
         if (goodsPerform.getPerformStatus() == GoodsPerformStatusEnum.auditing.getCode()) {
             tvPerformAuditCheck.setVisibility(View.VISIBLE);
-            tvPerformAuditUncheck.setVisibility(View.GONE);
         } else if (goodsPerform.getPerformStatus() == GoodsPerformStatusEnum.success.getCode()) {
-            tvPerformAuditCheck.setVisibility(View.GONE);
             tvPerformAuditUncheck.setVisibility(View.VISIBLE);
-        } else {
-            tvPerformAuditCheck.setVisibility(View.GONE);
-            tvPerformAuditUncheck.setVisibility(View.GONE);
+        } else if (goodsPerform.getPerformStatus() == GoodsPerformStatusEnum.cancel.getCode()) {
+            tvCancelReason.setVisibility(View.VISIBLE);
         }
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                auditPerform(data);
+                if (v == tvPerformAuditCheck)
+                    auditPerform(data);
+                else if (v == tvCancelReason)
+                    cancelReason(data);
             }
         };
 
         tvPerformAuditCheck.setOnClickListener(onClickListener);
+        tvCancelReason.setOnClickListener(onClickListener);
+    }
+
+    private void cancelReason(StoreAuditPerformListResultBean.Content data) {
+        GoodsPerformCancel goodsPerformCancel = data.getGoodsPerformCancel();
+        if (goodsPerformCancel == null) {
+            ToastUtils.showToastShort(mContext, "没有关闭原因");
+            return;
+        }
+        String reason = "无";
+        if (goodsPerformCancel.getCancelReason() != null && !goodsPerformCancel.getCancelReason().isEmpty()) {
+            reason = goodsPerformCancel.getCancelReason();
+        }
+        TipsDialog dialog = new TipsDialog(mContext);
+        dialog.setTitle(reason);
+        dialog.setTop("交易关闭原因");
+        dialog.setBottomButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        dialog.show();
     }
 
     private void auditPerform(StoreAuditPerformListResultBean.Content content) {

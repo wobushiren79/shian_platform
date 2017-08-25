@@ -1,7 +1,6 @@
 package com.shianlife.shian_platform.mvp.advert.presenter.impl;
 
-import com.shianlife.shian_platform.common.OnGetDataListener;
-import com.shianlife.shian_platform.http.base.BaseDataResult;
+import com.shianlife.shian_platform.mvp.base.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.advert.bean.AdvertBean;
 import com.shianlife.shian_platform.mvp.advert.bean.AdvertResultBean;
 import com.shianlife.shian_platform.mvp.advert.model.IAdvertModel;

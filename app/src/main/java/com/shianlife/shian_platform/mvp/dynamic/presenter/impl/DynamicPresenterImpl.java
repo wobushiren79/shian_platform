@@ -1,7 +1,6 @@
 package com.shianlife.shian_platform.mvp.dynamic.presenter.impl;
 
-import com.shianlife.shian_platform.common.OnGetDataListener;
-import com.shianlife.shian_platform.http.base.BaseDataResult;
+import com.shianlife.shian_platform.mvp.base.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.dynamic.bean.DynamicBean;
 import com.shianlife.shian_platform.mvp.dynamic.bean.DynamicResultBean;
 import com.shianlife.shian_platform.mvp.dynamic.model.IDynamicModel;

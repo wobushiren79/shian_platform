@@ -1,6 +1,6 @@
 package com.shianlife.shian_platform.mvp.order.model;
 
-import com.shianlife.shian_platform.common.OnGetDataListener;
+import com.shianlife.shian_platform.mvp.base.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.order.bean.OrderShowResultBean;
 
 /**

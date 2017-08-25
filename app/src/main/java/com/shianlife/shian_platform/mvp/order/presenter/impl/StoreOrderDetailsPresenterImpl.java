@@ -1,16 +1,13 @@
 package com.shianlife.shian_platform.mvp.order.presenter.impl;
 
-import android.support.annotation.NonNull;
-
 import com.shianlife.shian_platform.appenum.GoodsFinanceDeliveryEnum;
 import com.shianlife.shian_platform.appenum.GoodsInvoiceTitleTypeEnum;
-import com.shianlife.shian_platform.common.OnGetDataListener;
+import com.shianlife.shian_platform.mvp.base.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.order.bean.GoodsFinance;
 import com.shianlife.shian_platform.mvp.order.bean.GoodsInvoice;
 import com.shianlife.shian_platform.mvp.order.bean.GoodsInvoiceDetailsItem;
 import com.shianlife.shian_platform.mvp.order.bean.GoodsItemPerform;
 import com.shianlife.shian_platform.mvp.order.bean.GoodsOrder;
-import com.shianlife.shian_platform.mvp.order.bean.GoodsOrderItem;
 import com.shianlife.shian_platform.mvp.order.bean.GoodsServiceInfo;
 import com.shianlife.shian_platform.mvp.order.bean.StoreOrderDetailsBean;
 import com.shianlife.shian_platform.mvp.order.bean.StoreOrderDetailsResultBean;

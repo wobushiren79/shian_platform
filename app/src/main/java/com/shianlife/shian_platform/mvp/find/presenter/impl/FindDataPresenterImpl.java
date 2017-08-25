@@ -2,7 +2,7 @@ package com.shianlife.shian_platform.mvp.find.presenter.impl;
 
 import com.shianlife.shian_platform.appenum.SystemTypeEnum;
 import com.shianlife.shian_platform.common.Constants;
-import com.shianlife.shian_platform.common.OnGetDataListener;
+import com.shianlife.shian_platform.mvp.base.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.find.bean.FindDataBean;
 import com.shianlife.shian_platform.mvp.find.bean.FindDataResultBean;
 import com.shianlife.shian_platform.mvp.find.model.IFindDataModel;

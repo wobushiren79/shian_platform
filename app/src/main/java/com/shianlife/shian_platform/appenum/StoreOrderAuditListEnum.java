@@ -4,9 +4,10 @@ package com.shianlife.shian_platform.appenum;
  * Created by zm.
  */
 
-public enum  StoreOrderAuditListEnum {
+public enum StoreOrderAuditListEnum {
     auditing(1, "审核中"),
-    servicesuccess(2, "服务完成");
+    servicesuccess(2, "服务完成"),
+    servicefail(3, "交易关闭");
 
     private int code;
     private String name;

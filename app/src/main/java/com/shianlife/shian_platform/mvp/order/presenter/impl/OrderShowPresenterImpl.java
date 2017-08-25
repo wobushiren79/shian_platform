@@ -1,7 +1,6 @@
 package com.shianlife.shian_platform.mvp.order.presenter.impl;
 
-import com.shianlife.shian_platform.appenum.RoleEnum;
-import com.shianlife.shian_platform.common.OnGetDataListener;
+import com.shianlife.shian_platform.mvp.base.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.order.bean.OrderShowResultBean;
 import com.shianlife.shian_platform.mvp.order.model.IOrderShowModel;
 import com.shianlife.shian_platform.mvp.order.model.impl.OrderShowModelImpl;

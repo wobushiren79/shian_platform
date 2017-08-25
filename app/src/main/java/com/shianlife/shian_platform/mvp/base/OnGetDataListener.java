@@ -1,4 +1,4 @@
-package com.shianlife.shian_platform.common;
+package com.shianlife.shian_platform.mvp.base;
 
 /**
  * Created by zm.

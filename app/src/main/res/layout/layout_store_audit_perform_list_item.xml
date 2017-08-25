@@ -181,6 +181,14 @@
                     android:layout_height="@dimen/dimen_50dp"
                     android:layout_gravity="center_vertical"
                     android:text="已审核" />
+
+                <TextView
+                    android:id="@+id/tv_cancel_reason"
+                    style="@style/order_button_level_2"
+                    android:layout_width="@dimen/dimen_132dp"
+                    android:layout_height="@dimen/dimen_50dp"
+                    android:layout_gravity="center_vertical"
+                    android:text="关闭原因" />
             </LinearLayout>
 
 

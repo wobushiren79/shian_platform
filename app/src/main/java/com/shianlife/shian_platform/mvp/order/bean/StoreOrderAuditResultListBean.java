@@ -43,9 +43,34 @@ public class StoreOrderAuditResultListBean {
         private GoodsOrder goodsOrder;
         private GoodsPerform        goodsPerform;
         private GoodsServiceInfo goodsServiceInfo;
+        /**
+         * 订单取消记录
+         */
+        private GoodsOrderCancel goodsOrderCancel;
+
+        /**
+         * 执行单交易关闭
+         */
+        private GoodsPerformCancel goodsPerformCancel;
+
         private String createdName;
         private String orderAttr;//订单属性
 
+        public GoodsOrderCancel getGoodsOrderCancel() {
+            return goodsOrderCancel;
+        }
+
+        public void setGoodsOrderCancel(GoodsOrderCancel goodsOrderCancel) {
+            this.goodsOrderCancel = goodsOrderCancel;
+        }
+
+        public GoodsPerformCancel getGoodsPerformCancel() {
+            return goodsPerformCancel;
+        }
+
+        public void setGoodsPerformCancel(GoodsPerformCancel goodsPerformCancel) {
+            this.goodsPerformCancel = goodsPerformCancel;
+        }
 
         public GoodsPerform getGoodsPerform() {
             return goodsPerform;

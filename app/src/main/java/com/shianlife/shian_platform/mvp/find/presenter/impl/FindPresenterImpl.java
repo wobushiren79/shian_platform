@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.shianlife.shian_platform.appenum.SystemTypeEnum;
 import com.shianlife.shian_platform.common.Constants;
-import com.shianlife.shian_platform.common.OnGetDataListener;
+import com.shianlife.shian_platform.mvp.base.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.find.bean.FindBean;
 import com.shianlife.shian_platform.mvp.find.bean.FindResultBean;
 import com.shianlife.shian_platform.mvp.find.model.IFindModel;

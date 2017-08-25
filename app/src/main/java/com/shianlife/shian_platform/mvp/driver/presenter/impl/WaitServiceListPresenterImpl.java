@@ -1,15 +1,12 @@
 package com.shianlife.shian_platform.mvp.driver.presenter.impl;
 
-import com.shianlife.shian_platform.common.OnGetDataListener;
+import com.shianlife.shian_platform.mvp.base.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.driver.bean.WaitServiceListBean;
 import com.shianlife.shian_platform.mvp.driver.bean.WaitServiceListResultBean;
 import com.shianlife.shian_platform.mvp.driver.model.IWaitServiceListModel;
 import com.shianlife.shian_platform.mvp.driver.model.impl.WaitServiceListModelImpl;
 import com.shianlife.shian_platform.mvp.driver.presenter.IWaitServiceListPresenter;
 import com.shianlife.shian_platform.mvp.driver.view.IWaitServiceListView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by zm.

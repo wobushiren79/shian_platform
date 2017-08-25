@@ -1,8 +1,7 @@
 package com.shianlife.shian_platform.mvp.main.presenter.impl;
 
 import com.shianlife.shian_platform.appenum.APPTypeEnum;
-import com.shianlife.shian_platform.common.OnGetDataListener;
-import com.shianlife.shian_platform.http.base.BaseDataResult;
+import com.shianlife.shian_platform.mvp.base.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.main.bean.AppUpDateBean;
 import com.shianlife.shian_platform.mvp.main.bean.AppUpDateResultBean;
 import com.shianlife.shian_platform.mvp.main.model.IAppUpDateModel;

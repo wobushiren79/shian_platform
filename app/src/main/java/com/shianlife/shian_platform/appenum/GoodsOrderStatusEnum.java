@@ -11,7 +11,7 @@ public enum GoodsOrderStatusEnum {
     execute(2, "执行中"),
     servicecomplete(3, "服务完成"),
     servicesuccess(4, "成功服务"),
-    servicefail(10, "取消订单");
+    servicefail(10, "交易关闭");
 
     private int code;
     private String name;

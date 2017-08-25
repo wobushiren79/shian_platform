@@ -1,8 +1,7 @@
 package com.shianlife.shian_platform.mvp.ideaback.presenter.impl;
 
 import com.shianlife.shian_platform.appenum.SystemTypeEnum;
-import com.shianlife.shian_platform.common.OnGetDataListener;
-import com.shianlife.shian_platform.http.base.BaseDataResult;
+import com.shianlife.shian_platform.mvp.base.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.ideaback.bean.IdeaFeedBackBean;
 import com.shianlife.shian_platform.mvp.ideaback.bean.IdeaFeedBackResultBean;
 import com.shianlife.shian_platform.mvp.ideaback.model.IIdeaFeedBackModel;

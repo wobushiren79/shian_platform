@@ -1,15 +1,12 @@
 package com.shianlife.shian_platform.mvp.driver.presenter.impl;
 
-import com.shianlife.shian_platform.common.OnGetDataListener;
+import com.shianlife.shian_platform.mvp.base.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.driver.bean.FailServiceListBean;
 import com.shianlife.shian_platform.mvp.driver.bean.FailServiceListResultBean;
 import com.shianlife.shian_platform.mvp.driver.model.IFailServiceListModel;
 import com.shianlife.shian_platform.mvp.driver.model.impl.FailServiceListModelImpl;
 import com.shianlife.shian_platform.mvp.driver.presenter.IFailServiceListPresenter;
 import com.shianlife.shian_platform.mvp.driver.view.IFailServiceListView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by zm.

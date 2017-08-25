@@ -51,7 +51,8 @@ public class StoreOrderAuditListActivity extends BaseActivity {
     protected void initData() {
         mStoreOrderListEna = new StoreOrderAuditListEnum[]{
                 StoreOrderAuditListEnum.auditing,
-                StoreOrderAuditListEnum.servicesuccess
+                StoreOrderAuditListEnum.servicesuccess,
+                StoreOrderAuditListEnum.servicefail
         };
         viewList = new ArrayList<>();
 
@@ -62,6 +63,11 @@ public class StoreOrderAuditListActivity extends BaseActivity {
         StoreOrderAuditList successList = new StoreOrderAuditList
                 (this, new Integer[]{GoodsOrderStatusEnum.servicecomplete.getCode(), GoodsOrderStatusEnum.servicesuccess.getCode()}, null);
         viewList.add(successList);
+
+        StoreOrderAuditList failList = new StoreOrderAuditList
+                (this, new Integer[]{GoodsOrderStatusEnum.servicefail.getCode()}, null);
+        viewList.add(failList);
+
 
         tablayout.setupWithViewPager(viewpager);
         mStoreAdapter = new StoreOrderAuditViewPageAdapter(this, viewList);

@@ -1,7 +1,7 @@
 package com.shianlife.shian_platform.mvp.order.presenter.impl;
 
 
-import com.shianlife.shian_platform.common.OnGetDataListener;
+import com.shianlife.shian_platform.mvp.base.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.order.bean.StoreOrderGetPerformBean;
 import com.shianlife.shian_platform.mvp.order.bean.StoreOrderGetPerformResultBean;
 import com.shianlife.shian_platform.mvp.order.model.IStoreOrderGetPerformModel;

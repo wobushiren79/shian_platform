@@ -1,6 +1,6 @@
 package com.shianlife.shian_platform.mvp.fileup.presenter.impl;
 
-import com.shianlife.shian_platform.common.OnGetDataListener;
+import com.shianlife.shian_platform.mvp.base.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.fileup.bean.FileUpLoadBean;
 import com.shianlife.shian_platform.mvp.fileup.bean.FileUpLoadResultBean;
 import com.shianlife.shian_platform.mvp.fileup.model.IFileUpLoadModel;

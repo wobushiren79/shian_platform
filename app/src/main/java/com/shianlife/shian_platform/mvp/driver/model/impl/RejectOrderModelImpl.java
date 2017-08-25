@@ -2,10 +2,9 @@ package com.shianlife.shian_platform.mvp.driver.model.impl;
 
 import android.content.Context;
 
-import com.shianlife.shian_platform.common.OnGetDataListener;
+import com.shianlife.shian_platform.mvp.base.OnGetDataListener;
 import com.shianlife.shian_platform.http.MHttpManagerFactory;
 import com.shianlife.shian_platform.http.base.HttpResponseHandler;
-import com.shianlife.shian_platform.mvp.driver.bean.AcceptOrderBean;
 import com.shianlife.shian_platform.mvp.driver.bean.RejectOrderBean;
 import com.shianlife.shian_platform.mvp.driver.bean.RejectOrderResultBean;
 import com.shianlife.shian_platform.mvp.driver.model.IRejectOrderModel;

@@ -14,15 +14,16 @@ import okhttp3.Cookie;
 
 public class Constants {
     //公墓地址
-    public static final String Cemetery_BaseUrl = "http://115.28.163.211:7088/shianlife-advisor-cemetery-1.0-SNAPSHOT";
-    //    public static final String CEMETERY_URL = "http://192.168.0.37:8088/app";
-//    public static final String CEMETERY_URL = "http://192.168.0.200:8000/shianlife-advisor-cemetery-1.0-SNAPSHOT";
-//    public static final String CEMETERY_URL = "http://192.168.0.49:8080/app";
-//    public static final String CEMETERY_URL = "http://192.168.0.35:8100/advisor";
+//    public static final String Cemetery_BaseUrl = "http://115.28.163.211:7088/shianlife-advisor-cemetery-1.0-SNAPSHOT";
+    public static final String Cemetery_BaseUrl  = "http://192.168.0.37:8088/app";
+    //public static final String Cemetery_BaseUrl  = "http://192.168.0.200:8000/shianlife-advisor-cemetery-1.0-SNAPSHOT";
+
     public static final String Login_BaseUrl = "http://192.168.0.37:8080/ki4so-web";
+//    public static final String Login_BaseUrl = "http://192.168.0.200:8012/kiso-platform-1.0.1-SNAPSHOT";
+
     //单项地址
-//    public static final String Store_BaseUrl = "http://192.168.0.37:8089";
     public static final String Store_BaseUrl = "http://192.168.0.37:8089/goods";
+    //    public static final String Store_BaseUrl = "http://192.168.0.200:8013/goods-1.0.1-SNAPSHOT/";
     //PHP地址
     public static final String PHP_BaseUrl = "http://app.e-funeral.cn";
     //阿里云文件上传

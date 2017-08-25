@@ -1,7 +1,7 @@
 package com.shianlife.shian_platform.mvp.login.presenter.impl;
 
 import com.shianlife.shian_platform.common.Constants;
-import com.shianlife.shian_platform.common.OnGetDataListener;
+import com.shianlife.shian_platform.mvp.base.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.login.bean.SystemLoginBean;
 import com.shianlife.shian_platform.mvp.login.bean.SystemLoginOutBean;
 import com.shianlife.shian_platform.mvp.login.bean.SystemLoginOutResultBean;

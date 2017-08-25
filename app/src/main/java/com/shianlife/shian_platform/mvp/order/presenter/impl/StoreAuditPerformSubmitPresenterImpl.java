@@ -1,6 +1,6 @@
 package com.shianlife.shian_platform.mvp.order.presenter.impl;
 
-import com.shianlife.shian_platform.common.OnGetDataListener;
+import com.shianlife.shian_platform.mvp.base.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformSubmitBean;
 import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformSubmitResultBean;
 import com.shianlife.shian_platform.mvp.order.model.IStoreAuditPerformSubmitModel;

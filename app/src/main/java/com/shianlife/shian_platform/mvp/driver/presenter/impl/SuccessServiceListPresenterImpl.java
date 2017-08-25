@@ -1,15 +1,12 @@
 package com.shianlife.shian_platform.mvp.driver.presenter.impl;
 
-import com.shianlife.shian_platform.common.OnGetDataListener;
+import com.shianlife.shian_platform.mvp.base.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.driver.bean.SuccessServiceListBean;
 import com.shianlife.shian_platform.mvp.driver.bean.SuccessServiceListResultBean;
 import com.shianlife.shian_platform.mvp.driver.model.ISuccessServiceListModel;
 import com.shianlife.shian_platform.mvp.driver.model.impl.SuccessServiceListModelImpl;
 import com.shianlife.shian_platform.mvp.driver.presenter.ISuccessServiceListPresenter;
 import com.shianlife.shian_platform.mvp.driver.view.ISuccessServiceListView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by zm.

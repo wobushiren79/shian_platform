@@ -51,6 +51,33 @@ public class StoreAuditPerformListResultBean {
          */
         private String performUserPhone;
 
+
+        /**
+         * 订单取消记录
+         */
+        private GoodsOrderCancel goodsOrderCancel;
+
+        /**
+         * 执行单交易关闭
+         */
+        private GoodsPerformCancel goodsPerformCancel;
+
+        public GoodsOrderCancel getGoodsOrderCancel() {
+            return goodsOrderCancel;
+        }
+
+        public void setGoodsOrderCancel(GoodsOrderCancel goodsOrderCancel) {
+            this.goodsOrderCancel = goodsOrderCancel;
+        }
+
+        public GoodsPerformCancel getGoodsPerformCancel() {
+            return goodsPerformCancel;
+        }
+
+        public void setGoodsPerformCancel(GoodsPerformCancel goodsPerformCancel) {
+            this.goodsPerformCancel = goodsPerformCancel;
+        }
+
         public String getPerformUserPhone() {
             return performUserPhone;
         }

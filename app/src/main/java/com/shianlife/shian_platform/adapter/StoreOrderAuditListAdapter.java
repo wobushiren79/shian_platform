@@ -1,6 +1,7 @@
 package com.shianlife.shian_platform.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -12,14 +13,17 @@ import com.shianlife.shian_platform.adapter.base.BaseViewHolder;
 import com.shianlife.shian_platform.appenum.GoodsOrderStatusEnum;
 import com.shianlife.shian_platform.appenum.GoodsPerformWayEnum;
 import com.shianlife.shian_platform.appenum.GoodsServiceWayEnum;
+import com.shianlife.shian_platform.custom.dialog.TipsDialog;
 import com.shianlife.shian_platform.mvp.order.bean.GoodsOrder;
 import com.shianlife.shian_platform.mvp.order.bean.GoodsPerform;
+import com.shianlife.shian_platform.mvp.order.bean.GoodsPerformCancel;
 import com.shianlife.shian_platform.mvp.order.bean.GoodsServiceInfo;
 import com.shianlife.shian_platform.mvp.order.bean.StoreOrderAuditResultListBean;
 import com.shianlife.shian_platform.ui.activity.StoreOrderAuditPerformActivity;
 import com.shianlife.shian_platform.ui.activity.StoreOrderDetailsActivity;
 import com.shianlife.shian_platform.utils.AppUtils;
 import com.shianlife.shian_platform.utils.IntentUtils;
+import com.shianlife.shian_platform.utils.ToastUtils;
 
 
 /**
@@ -54,7 +58,7 @@ public class StoreOrderAuditListAdapter extends BaseRCAdapter<StoreOrderAuditRes
         TextView tvCounselorName = holder.getView(R.id.tv_counselor_name);
 
         ImageView ivOrderMore = holder.getView(R.id.iv_order_more);
-        LinearLayout llContent = holder.getView(R.id.ll_content);
+        final LinearLayout llContent = holder.getView(R.id.ll_content);
         final LinearLayout llCustomerPhone = holder.getView(R.id.ll_customer_phone);
         final LinearLayout llCounselorPhone = holder.getView(R.id.ll_counselor_phone);
 
@@ -128,6 +132,8 @@ public class StoreOrderAuditListAdapter extends BaseRCAdapter<StoreOrderAuditRes
                     auditPerform(data);
                 } else if (v == tvOrderAudit) {
                     auditPerform(data);
+                } else if (v == llContent) {
+                    cancelReason(data);
                 }
             }
 
@@ -136,6 +142,7 @@ public class StoreOrderAuditListAdapter extends BaseRCAdapter<StoreOrderAuditRes
         tvOrderDetails.setOnClickListener(onClickListener);
         tvAuditDetails.setOnClickListener(onClickListener);
         tvOrderAudit.setOnClickListener(onClickListener);
+        llContent.setOnClickListener(onClickListener);
 
         if (goodsOrder.getOrderStatus() == GoodsOrderStatusEnum.servicecomplete.getCode()
                 || goodsOrder.getOrderStatus() == GoodsOrderStatusEnum.servicesuccess.getCode()) {
@@ -147,6 +154,32 @@ public class StoreOrderAuditListAdapter extends BaseRCAdapter<StoreOrderAuditRes
             tvAuditDetails.setVisibility(View.GONE);
             tvOrderAudit.setVisibility(View.VISIBLE);
         }
+    }
+
+    /**
+     * 交易关闭原因
+     *
+     * @param data
+     */
+    private void cancelReason(StoreOrderAuditResultListBean.Content data) {
+        GoodsPerformCancel goodsPerformCancel = data.getGoodsPerformCancel();
+        if (goodsPerformCancel == null) {
+            return;
+        }
+        String reason = "无";
+        if (goodsPerformCancel.getCancelReason() != null && !goodsPerformCancel.getCancelReason().isEmpty()) {
+            reason = goodsPerformCancel.getCancelReason();
+        }
+        TipsDialog dialog = new TipsDialog(mContext);
+        dialog.setTitle(reason);
+        dialog.setTop("交易关闭原因");
+        dialog.setBottomButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        dialog.show();
     }
 
     private void orderDetails(StoreOrderAuditResultListBean.Content data) {

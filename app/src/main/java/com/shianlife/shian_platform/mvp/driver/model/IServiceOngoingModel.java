@@ -2,7 +2,7 @@ package com.shianlife.shian_platform.mvp.driver.model;
 
 import android.content.Context;
 
-import com.shianlife.shian_platform.common.OnGetDataListener;
+import com.shianlife.shian_platform.mvp.base.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.driver.bean.ServiceOngoingBean;
 import com.shianlife.shian_platform.mvp.driver.bean.ServiceOngoingResultBean;
 
