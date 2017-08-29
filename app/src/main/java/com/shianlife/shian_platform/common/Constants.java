@@ -14,15 +14,18 @@ import okhttp3.Cookie;
 
 public class Constants {
     //公墓地址
-//    public static final String Cemetery_BaseUrl = "http://115.28.163.211:7088/shianlife-advisor-cemetery-1.0-SNAPSHOT";
-    public static final String Cemetery_BaseUrl  = "http://192.168.0.37:8088/app";
+    public static final String Cemetery_BaseUrl = "http://115.28.163.211:7088/shianlife-advisor-cemetery-1.0-SNAPSHOT";
+//    public static final String Cemetery_BaseUrl = "http://192.168.0.37:8088/app";
     //public static final String Cemetery_BaseUrl  = "http://192.168.0.200:8000/shianlife-advisor-cemetery-1.0-SNAPSHOT";
 
-    public static final String Login_BaseUrl = "http://192.168.0.37:8080/ki4so-web";
+
+    public static final String Login_BaseUrl = "https://platform.shianlife.cn";
+    //    public static final String Login_BaseUrl = "http://192.168.0.73:8080/ki4so-web";
 //    public static final String Login_BaseUrl = "http://192.168.0.200:8012/kiso-platform-1.0.1-SNAPSHOT";
 
     //单项地址
-    public static final String Store_BaseUrl = "http://192.168.0.37:8089/goods";
+    public static final String Store_BaseUrl = "https://goods.shianlife.cn";
+//    public static final String Store_BaseUrl = "http://192.168.0.37:8089/goods";
     //    public static final String Store_BaseUrl = "http://192.168.0.200:8013/goods-1.0.1-SNAPSHOT/";
     //PHP地址
     public static final String PHP_BaseUrl = "http://app.e-funeral.cn";
@@ -44,18 +47,14 @@ public class Constants {
     public static final String DiDichannel = "55455";//滴滴渠道号
 
     //子系统-单项  登陆地址
-    public static final String Login_Store_Url = Store_BaseUrl+"/login_sys_api";
+    public static final String Login_Store_Url = Store_BaseUrl + "/login_sys_api";
 
 
     public static String ChannelId = "";
 
-    //公墓账号
-    public static UserLoginResultBean userCemetery = null;
     //平台账号
     public static SystemLoginResultBean systemUser = null;
 
-    //当前的用户ID
-    public static long userId;
 
     //跳转页停留时间
     public static long SPLASH_TIME = 2000;

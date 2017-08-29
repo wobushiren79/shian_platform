@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.appenum.BaseTitleEnum;
 import com.shianlife.shian_platform.base.BaseActivity;
+import com.shianlife.shian_platform.common.Constants;
 import com.shianlife.shian_platform.http.base.BaseDataResult;
 import com.shianlife.shian_platform.mvp.ideaback.bean.IdeaFeedBackResultBean;
 import com.shianlife.shian_platform.mvp.ideaback.presenter.IIdeaFeedBackPresenter;
@@ -104,11 +105,17 @@ public class IdeaFeedbackActivity extends BaseActivity implements IIdeaFeedBackV
 
     @Override
     public String getUserName() {
-        return "张三";
+        if (Constants.systemUser != null && Constants.systemUser.getUserObj() != null) {
+            return Constants.systemUser.getUserObj().getName();
+        }
+        return "";
     }
 
     @Override
     public String getUserPhone() {
-        return "110";
+        if (Constants.systemUser != null && Constants.systemUser.getUserObj() != null) {
+            return Constants.systemUser.getUserObj().getPhone();
+        }
+        return "";
     }
 }

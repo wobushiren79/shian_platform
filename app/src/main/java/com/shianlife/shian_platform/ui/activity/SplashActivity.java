@@ -84,6 +84,10 @@ public class SplashActivity extends BaseActivity implements IUserLoginView {
     @Override
     public void setIsAutoLogin(boolean isAutoLogin) {
         loginConfig.setAutoLogin(isAutoLogin);
+        if(isAutoLogin)
+            userLoginPresenter.loginSystem();
+        else
+            sleepActivity(LoginAdvertActivity.LOGIN);
     }
 
     @Override
@@ -94,11 +98,6 @@ public class SplashActivity extends BaseActivity implements IUserLoginView {
     @Override
     public void setIsKeepAccount(boolean isKeepAccount) {
         loginConfig.setKeepAccount(isKeepAccount);
-    }
-
-    @Override
-    public void setLoginConfig() {
-        sleepActivity(LoginAdvertActivity.LOGIN);
     }
 
     @Override
@@ -113,12 +112,13 @@ public class SplashActivity extends BaseActivity implements IUserLoginView {
 
     @Override
     public void loginCemeteryFail(String message) {
-        sleepActivity(LoginAdvertActivity.LOGIN);
+        sleepActivity(LoginAdvertActivity.MAIN);
     }
 
     @Override
     public void loginSystemSuccess(SystemLoginResultBean result) {
         Constants.systemUser = result;
+        userLoginPresenter.loginCemetery();
     }
 
     @Override

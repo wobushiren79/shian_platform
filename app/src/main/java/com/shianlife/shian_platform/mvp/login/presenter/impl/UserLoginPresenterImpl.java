@@ -31,7 +31,7 @@ public class UserLoginPresenterImpl implements IUserLoginPresenter {
         userLoginModel = new UserLoginModelImpl();
     }
 
-
+    @Override
     public void loginCemetery() {
         UserLoginBean params = new UserLoginBean();
         params.setUsername(userLoginView.getUserName());
@@ -51,7 +51,7 @@ public class UserLoginPresenterImpl implements IUserLoginPresenter {
         });
     }
 
-
+    @Override
     public void loginOutCemetery() {
         userLoginModel.loginOutCemetery(userLoginOutView.getContext(), new OnGetDataListener<Object>() {
             @Override
@@ -114,19 +114,9 @@ public class UserLoginPresenterImpl implements IUserLoginPresenter {
     @Override
     public void getLoginConfig() {
         UserLoginConfig loginConfig = userLoginModel.getLoginConfig(userLoginView.getContext());
-        if (loginConfig.isKeepAccount()) {
-            userLoginView.setUserName(loginConfig.getUserName());
-            userLoginView.setPassWord(loginConfig.getPassWord());
-            userLoginView.setIsAutoLogin(loginConfig.isAutoLogin());
-            userLoginView.setIsKeepAccount(loginConfig.isKeepAccount());
-        }
-        if (loginConfig.isAutoLogin()) {
-            userLoginView.setUserName(loginConfig.getUserName());
-            userLoginView.setPassWord(loginConfig.getPassWord());
-            userLoginView.setIsAutoLogin(loginConfig.isKeepAccount());
-            loginSystem();
-        }
-        if (!loginConfig.isAutoLogin())
-            userLoginView.setLoginConfig();
+        userLoginView.setUserName(loginConfig.getUserName());
+        userLoginView.setPassWord(loginConfig.getPassWord());
+        userLoginView.setIsKeepAccount(loginConfig.isKeepAccount());
+        userLoginView.setIsAutoLogin(loginConfig.isAutoLogin());
     }
 }

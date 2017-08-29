@@ -49,7 +49,7 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
 
     @Override
     protected void initData() {
-        loginPresenter = new UserLoginPresenterImpl(this,null);
+        loginPresenter = new UserLoginPresenterImpl(this, null);
         loginPresenter.getLoginConfig();
     }
 
@@ -94,16 +94,18 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
     public void loginCemeterySuccess(UserLoginResultBean result) {
         loginPresenter.saveLoginConfig();
         btnLogin.setComplete();
-        ToastUtils.showToastLong(getContext(), getString(R.string.login_success));
+//        ToastUtils.showToastLong(getContext(), getString(R.string.login_success));
         new IntentUtils.Build(LoginActivity.this, MainActivity.class).start();
         finish();
     }
 
     @Override
     public void loginCemeteryFail(String message) {
-        btnLogin.setNormal();
-        btnLogin.setOnClickListener(onViewClicked);
-        ToastUtils.showToastLong(getContext(), message);
+        loginPresenter.saveLoginConfig();
+        btnLogin.setComplete();
+//        ToastUtils.showToastLong(getContext(), getString(R.string.login_success));
+        new IntentUtils.Build(LoginActivity.this, MainActivity.class).start();
+        finish();
     }
 
     @Override
@@ -140,10 +142,6 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
         cbLoginRe.setChecked(isKeepAccount);
     }
 
-    @Override
-    public void setLoginConfig() {
-
-    }
 
     /**
      * 登陆

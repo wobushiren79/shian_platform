@@ -25,10 +25,12 @@ public class FindDataPresenterImpl implements IFindDataPresenter {
 
     @Override
     public void saveData(int type, int findId) {
+        if (Constants.systemUser == null || Constants.systemUser.getUserId() == null)
+            return;
         FindDataBean params = new FindDataBean();
         params.setType(findDataView.getChangeType());
         params.setSiftid(findDataView.getSiftid());
-        params.setUserid(Constants.userId);
+        params.setUserid(Constants.systemUser.getUserId());
         params.setUserType(SystemTypeEnum.platform.getCode());
         findDataModel.saveData(findDataView.getContext(), params, new OnGetDataListener<FindDataResultBean>() {
             @Override

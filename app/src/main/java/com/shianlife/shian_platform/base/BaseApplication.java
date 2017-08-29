@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.X509TrustManager;
 
@@ -87,6 +89,12 @@ public class BaseApplication extends Application {
                         }
                     };
             final SSLSocketFactory sslSocketFactory = new SSLSocketFactoryCompat(trustAllCert);
+            builder.hostnameVerifier(new HostnameVerifier() {
+                @Override
+                public boolean verify(String hostname, SSLSession session) {
+                    return true;
+                }
+            });
             builder.sslSocketFactory(sslSocketFactory, trustAllCert);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -129,9 +137,16 @@ public class BaseApplication extends Application {
         }
 
         private String getBaseUrl(String url) {
-            int hostLocation = url.indexOf("/", 8);
-            int urlLocation = url.indexOf("/", hostLocation + 1);
-            String temp = url.substring(0, urlLocation);
+            String temp = "";
+            if (!url.contains("https")) {
+                int hostLocation = url.indexOf("/", 8);
+                int urlLocation = url.indexOf("/", hostLocation + 1);
+                if (urlLocation != -1)
+                    temp = url.substring(0, urlLocation);
+            } else {
+                int hostLocation = url.indexOf("/", 8);
+                temp = url.substring(0, hostLocation);
+            }
             return temp;
         }
     }

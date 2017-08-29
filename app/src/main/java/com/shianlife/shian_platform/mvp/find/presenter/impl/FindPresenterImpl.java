@@ -27,12 +27,14 @@ public class FindPresenterImpl implements IFindPresenter {
 
     @Override
     public void getFindData() {
+        if (Constants.systemUser == null || Constants.systemUser.getUserId() == null)
+            return;
         Context context = findView.getContext();
         FindBean params = new FindBean();
         params.setNumber(findView.getPagerSize());
         params.setPagerNumber(findView.getPagerNum());
         params.setType(findView.getFindType());
-        params.setUserid(Constants.userId);
+        params.setUserid(Constants.systemUser.getUserId());
         params.setUserType(SystemTypeEnum.platform.getCode());
         findModel.getFindData(context, params, new OnGetDataListener<FindResultBean>() {
             @Override

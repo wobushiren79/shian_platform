@@ -1,6 +1,8 @@
 package com.shianlife.shian_platform.mvp.order.model.impl;
 
 import com.shianlife.shian_platform.appenum.OrderItemShowEnum;
+import com.shianlife.shian_platform.appenum.RoleEnum;
+import com.shianlife.shian_platform.common.Constants;
 import com.shianlife.shian_platform.mvp.base.OnGetDataListener;
 import com.shianlife.shian_platform.mvp.order.bean.OrderShowResultBean;
 import com.shianlife.shian_platform.mvp.order.model.IOrderShowModel;
@@ -20,7 +22,13 @@ public class OrderShowModelImpl implements IOrderShowModel {
         List<OrderShowResultBean.Item> listData = new ArrayList<>();
 
 //        listData.add(getItem(OrderItemShowEnum.funeral));
-        listData.add(getItem(OrderItemShowEnum.store, StoreOrderAuditListActivity.class));
+        if (Constants.systemUser != null) {
+            for (String role : Constants.systemUser.getResourceCodes()) {
+                if (role.equals(RoleEnum.Goods_Audit.getCode())) {
+                    listData.add(getItem(OrderItemShowEnum.store, StoreOrderAuditListActivity.class));
+                }
+            }
+        }
 
         resultBean.setList(listData);
         listener.getDataSuccess(resultBean);
