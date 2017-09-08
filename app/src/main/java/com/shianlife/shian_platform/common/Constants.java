@@ -37,8 +37,11 @@ public class Constants {
     public static final String FILE_QINIU_UPDATA = Cemetery_BaseUrl + "/fileqiniu/upload";
     //七牛文件查看地址
     public static final String QINIUURL = "http://oq6rkq859.bkt.clouddn.com/";
-    //单项商品图片查看地址
-    public static final String Store_Pic_BaseUrl = "http://wechat.e-funeral.cn/Public/Uploads/";
+    //商品地址
+    public static final String Goods_BaseUrl = "http://goodsmgr.e-funeral.cn";
+    //商品图片地址
+    public static final String Goods_PicUrl = Goods_BaseUrl + "/Public/Uploads";
+
 
     public static final String siftsPHPURL = PHP_BaseUrl + "/home/index/sifts";//精选
     public static final String helpsPHPURL = PHP_BaseUrl + "/home/index/helps";//帮助

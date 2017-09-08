@@ -73,7 +73,7 @@ public class StoreOrderGoodsListAdapter extends BaseExpandableAdapter<String, Go
 
 
         tvGoodsNumb.setText("x" + itemData.getSpecOrderedNum());
-        AppUtils.loadPic(mContext, ivGoodsPic, Constants.Store_Pic_BaseUrl + itemData.getTitleImg());
+        AppUtils.loadPic(mContext, ivGoodsPic, Constants.Goods_PicUrl + itemData.getTitleImg());
         if (itemData.getGoodsPerform() != null) {
             final GoodsPerform goodsPerform = itemData.getGoodsPerform();
             tvPerformStatus.setText(GoodsPerformStatusEnum.getValueText(goodsPerform.getPerformStatus()));
