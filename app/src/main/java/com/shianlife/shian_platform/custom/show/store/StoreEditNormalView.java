@@ -18,8 +18,6 @@ import butterknife.BindView;
  */
 
 public class StoreEditNormalView extends BaseLayout {
-
-
     @BindView(R.id.tv_title)
     TextView tvTitle;
     @BindView(R.id.et_content)
@@ -40,7 +38,7 @@ public class StoreEditNormalView extends BaseLayout {
         tvTitle.setText(titleName);
         etContent.setText(contentText);
         etContent.setHint(hintText);
-        setEnabled(!showMode);
+        setIsEnabled(!showMode);
     }
 
     @Override
@@ -60,7 +58,7 @@ public class StoreEditNormalView extends BaseLayout {
      *
      * @param enabled
      */
-    public void setEnabled(boolean enabled) {
+    public void setIsEnabled(boolean enabled) {
         etContent.setEnabled(enabled);
         if (enabled) {
             etContent.setGravity(Gravity.CENTER_VERTICAL );

@@ -3,7 +3,6 @@ package com.shianlife.shian_platform.mvp.order.bean;
 
 import com.shianlife.shian_platform.base.BaseEntity;
 
-import java.util.Date;
 
 
 /** 
@@ -23,7 +22,7 @@ public class GoodsOrderCancel extends BaseEntity {
 	/**
 	 * 取消订单时间
 	 */
-    private Date cancelTime;
+    private String cancelTime;
 
 	/**
 	 * 取消订单（交易关闭）原因
@@ -68,11 +67,11 @@ public class GoodsOrderCancel extends BaseEntity {
 		this.orderId = orderId;
 	}
 
-	public Date getCancelTime() {
+	public String getCancelTime() {
 		return cancelTime;
 	}
 
-	public void setCancelTime(Date cancelTime) {
+	public void setCancelTime(String cancelTime) {
 		this.cancelTime = cancelTime;
 	}
 

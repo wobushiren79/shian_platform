@@ -44,7 +44,7 @@ public class SettingActivity extends BaseActivity {
     public void onExit() {
         TipsDialog mDialog = new TipsDialog(this);
         mDialog.setTitle(getString(R.string.setting_exit));
-        mDialog.setTopButton(getString(R.string.dialog_true_1), new DialogInterface.OnClickListener() {
+        mDialog.setBottomButton(getString(R.string.dialog_true_1), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 SharePerfrenceUtils.setShareAutoLogin(SettingActivity.this, false);
@@ -52,7 +52,7 @@ public class SettingActivity extends BaseActivity {
                 finish();
             }
         });
-        mDialog.setBottomButton(getString(R.string.dialog_false_1), new DialogInterface.OnClickListener() {
+        mDialog.setTopButton(getString(R.string.dialog_false_1), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
