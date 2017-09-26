@@ -1,6 +1,7 @@
 package com.shianlife.shian_platform.http.imp.impl;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.shianlife.shian_platform.common.Constants;
 import com.shianlife.shian_platform.custom.dialog.CustomDialog;
@@ -28,6 +29,7 @@ import okhttp3.Call;
 
 public class SystemManagerImpl extends BaseManagerImpl implements SystemManager {
     private static SystemManagerImpl manager;
+    private CustomDialog customDialog;
 
     private SystemManagerImpl() {
         super();
@@ -61,6 +63,11 @@ public class SystemManagerImpl extends BaseManagerImpl implements SystemManager 
 
 
     private void loginSubSystem(final Context context, String storeUrl) {
+        if (customDialog == null || !customDialog.isShowing()) {
+            customDialog = new CustomDialog(context);
+            customDialog.show();
+        }
+        Log.v("tag", "storeUrl:" + storeUrl);
         GetBuilder getBuilder = OkHttpUtils.get();
         getBuilder.url(storeUrl);
         getBuilder.addHeader("client-Type", "wechatapp");
@@ -69,11 +76,17 @@ public class SystemManagerImpl extends BaseManagerImpl implements SystemManager 
             @Override
             public void onError(Call call, Exception e, int id) {
                 ToastUtils.showToastShort(context, e.getMessage());
+                customDialog.cancel();
+                if (customDialog != null)
+                    customDialog.cancel();
+//                Utils.jumpLogin(context);
             }
 
             @Override
             public void onResponse(String response, int id) {
-
+                Log.v("tag", "storeResponse:" + response);
+                if (customDialog != null)
+                    customDialog.cancel();
             }
         });
     }
