@@ -15,13 +15,18 @@ import com.shianlife.shian_platform.mvp.login.bean.UserLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.presenter.IUserLoginPresenter;
 import com.shianlife.shian_platform.mvp.login.presenter.impl.UserLoginPresenterImpl;
 import com.shianlife.shian_platform.mvp.login.view.IUserLoginView;
+import com.shianlife.shian_platform.mvp.main.bean.AppUpDateResultBean;
+import com.shianlife.shian_platform.mvp.main.presenter.IAppUpDatePresenter;
+import com.shianlife.shian_platform.mvp.main.presenter.impl.AppUpDatePresenterImpl;
+import com.shianlife.shian_platform.mvp.main.view.IAppUpDateView;
 import com.shianlife.shian_platform.utils.AppUtils;
+import com.shianlife.shian_platform.utils.CheckUtils;
 import com.shianlife.shian_platform.utils.IntentUtils;
 import com.shianlife.shian_platform.utils.ToastUtils;
 
 import butterknife.BindView;
 
-public class LoginActivity extends BaseActivity implements IUserLoginView {
+public class LoginActivity extends BaseActivity implements IUserLoginView, IAppUpDateView {
 
     @BindView(R.id.et_login_username)
     EditText etUsername;
@@ -35,6 +40,7 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
     LoadingButton btnLogin;
 
     private IUserLoginPresenter loginPresenter;
+    private IAppUpDatePresenter appUpDatePresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +57,9 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
     protected void initData() {
         loginPresenter = new UserLoginPresenterImpl(this, null);
         loginPresenter.getLoginConfig();
+
+        appUpDatePresenter = new AppUpDatePresenterImpl(this);
+        appUpDatePresenter.getAppUpDateInfo();
     }
 
 
@@ -88,6 +97,16 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
     @Override
     public Context getContext() {
         return LoginActivity.this;
+    }
+
+    @Override
+    public void getAppUpDateInfoSuccess(AppUpDateResultBean result) {
+        CheckUtils.checkAppUpDate(this, result, false);
+    }
+
+    @Override
+    public void getAppUpDateInfoFail(String msg) {
+
     }
 
     @Override
