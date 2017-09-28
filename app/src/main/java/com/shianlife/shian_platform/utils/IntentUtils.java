@@ -25,7 +25,10 @@ public class IntentUtils {
     public static final String INTENT_LOCATION_LATITUDE = "INTENT_LOCATION_LATITUDE";//纬度
 
     public static final String INTENT_ORDERID = "INTENT_ORDERID";//订单ID
-    public static final String INTENT_DATA = "INTENT_DATA";//订单數據
+    public static final String INTENT_LIST_DATA = "INTENT_LIST_DATA";//列表数据
+    public static final String INTENT_DATA = "INTENT_DATA";//数据
+
+    public static final String INTENT_ISTURE = "INTENT_ISTURE";//是否
 
     public static class Build {
         Context context;

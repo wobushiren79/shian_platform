@@ -15,6 +15,14 @@ import com.shianlife.shian_platform.mvp.login.bean.SystemLoginOutResultBean;
 import com.shianlife.shian_platform.mvp.login.bean.SystemLoginResultBean;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginBean;
 import com.shianlife.shian_platform.mvp.login.bean.UserLoginResultBean;
+import com.shianlife.shian_platform.mvp.userinfo.bean.ChangePassWordSMSBean;
+import com.shianlife.shian_platform.mvp.userinfo.bean.ChangePassWordSMSResultBean;
+import com.shianlife.shian_platform.mvp.userinfo.bean.UserInfoIntegralBean;
+import com.shianlife.shian_platform.mvp.userinfo.bean.UserInfoIntegralListBean;
+import com.shianlife.shian_platform.mvp.userinfo.bean.UserInfoIntegralListResultBean;
+import com.shianlife.shian_platform.mvp.userinfo.bean.UserInfoIntegralResultBean;
+import com.shianlife.shian_platform.mvp.userinfo.bean.UserInfoSignBean;
+import com.shianlife.shian_platform.mvp.userinfo.bean.UserInfoSignResultBean;
 import com.shianlife.shian_platform.utils.ToastUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.builder.GetBuilder;
@@ -61,6 +69,25 @@ public class SystemManagerImpl extends BaseManagerImpl implements SystemManager 
         loginSubSystem(context, storeUrl);
     }
 
+    @Override
+    public void userInfoSign(Context context, UserInfoSignBean params, HttpResponseHandler<UserInfoSignResultBean> handler) {
+        requestPost(context, "api/credit/checkin", UserInfoSignResultBean.class, params, handler, true);
+    }
+
+    @Override
+    public void getUserInfoIntegral(Context context, UserInfoIntegralBean params, HttpResponseHandler<UserInfoIntegralResultBean> handler) {
+        requestPost(context, "api/credit/getCredit", UserInfoIntegralResultBean.class, params, handler);
+    }
+
+    @Override
+    public void getUserInfoListIntegral(Context context, UserInfoIntegralListBean params, HttpResponseHandler<UserInfoIntegralListResultBean> handler) {
+        requestPost(context, "api/credit/queryUserCreditLogsForPage", UserInfoIntegralListResultBean.class, params, handler);
+    }
+
+    @Override
+    public void changePassWordSMS(Context context, ChangePassWordSMSBean params, HttpResponseHandler<ChangePassWordSMSResultBean> handler) {
+        requestPost(context, "api/usersInfo/forgetKeys", ChangePassWordSMSResultBean.class, params, handler, true);
+    }
 
     private void loginSubSystem(final Context context, String storeUrl) {
         if (customDialog == null || !customDialog.isShowing()) {

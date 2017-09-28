@@ -25,6 +25,7 @@ import com.shianlife.shian_platform.service.UpDataService;
 import com.shianlife.shian_platform.ui.activity.MainActivity;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Created by zm.
@@ -173,5 +174,14 @@ public class CheckUtils {
             }
         }
         return false;
+    }
+
+    public static boolean isPhoneNumber(CharSequence input) {
+        if (input == null) {
+            return false;
+        } else {
+            String regex = "(\\+\\d+)?1[3458]\\d{9}$";
+            return Pattern.matches(regex, input);
+        }
     }
 }

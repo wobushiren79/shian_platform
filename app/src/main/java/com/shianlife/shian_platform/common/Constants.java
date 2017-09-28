@@ -87,4 +87,9 @@ public class Constants {
 
     //cookie保存
     public static final HashMap<String, List<Cookie>> cookieStore = new HashMap<>();
+
+    //招商图片
+    public static final String Cooperation_Pic_1 = "http://ovjs2f1iz.bkt.clouddn.com/index1.png";
+    public static final String Cooperation_Pic_2 = "http://ovjs2f1iz.bkt.clouddn.com/index2.png";
+    public static final String Cooperation_Pic_3 = "http://ovjs2f1iz.bkt.clouddn.com/index3.png";
 }

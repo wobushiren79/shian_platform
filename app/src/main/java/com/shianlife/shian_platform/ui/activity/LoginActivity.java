@@ -1,10 +1,12 @@
 package com.shianlife.shian_platform.ui.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.base.BaseActivity;
@@ -24,6 +26,8 @@ import com.shianlife.shian_platform.utils.CheckUtils;
 import com.shianlife.shian_platform.utils.IntentUtils;
 import com.shianlife.shian_platform.utils.ToastUtils;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 
 public class LoginActivity extends BaseActivity implements IUserLoginView, IAppUpDateView {
@@ -39,6 +43,12 @@ public class LoginActivity extends BaseActivity implements IUserLoginView, IAppU
     @BindView(R.id.btn_login)
     LoadingButton btnLogin;
 
+    @BindView(R.id.tv_forget_password)
+    TextView tvForgetPassword;
+    @BindView(R.id.tv_no_password)
+    TextView tvNoPassword;
+
+
     private IUserLoginPresenter loginPresenter;
     private IAppUpDatePresenter appUpDatePresenter;
 
@@ -51,6 +61,8 @@ public class LoginActivity extends BaseActivity implements IUserLoginView, IAppU
     @Override
     protected void initView() {
         btnLogin.setOnClickListener(onViewClicked);
+        tvForgetPassword.setOnClickListener(onViewClicked);
+        tvNoPassword.setOnClickListener(onViewClicked);
     }
 
     @Override
@@ -69,6 +81,12 @@ public class LoginActivity extends BaseActivity implements IUserLoginView, IAppU
             switch (view.getId()) {
                 case R.id.btn_login:
                     checkLogin();
+                    break;
+                case R.id.tv_forget_password:
+                    forgetPassWord();
+                    break;
+                case R.id.tv_no_password:
+                    noPassWord();
                     break;
             }
         }
@@ -177,5 +195,28 @@ public class LoginActivity extends BaseActivity implements IUserLoginView, IAppU
         btnLogin.setLoading();
         btnLogin.setOnClickListener(null);
         loginPresenter.loginSystem();
+    }
+
+
+    /**
+     * 忘记密码
+     */
+    private void forgetPassWord() {
+        Intent intent = new Intent(this, LoginPhoneActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * 没有密码
+     */
+    private void noPassWord() {
+        Intent intent = new Intent(this, PicShowActivity.class);
+        ArrayList<String> listData = new ArrayList<>();
+        listData.add(Constants.Cooperation_Pic_1);
+        listData.add(Constants.Cooperation_Pic_2);
+        listData.add(Constants.Cooperation_Pic_3);
+        intent.putExtra(IntentUtils.INTENT_LIST_DATA, listData);
+        intent.putExtra(IntentUtils.INTENT_DATA, "招商");
+        startActivity(intent);
     }
 }

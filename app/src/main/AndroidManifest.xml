@@ -59,9 +59,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TestActivity">
-
-        </activity>
+        <activity android:name=".TestActivity" />
         <activity android:name=".ui.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -94,7 +92,9 @@
         <activity android:name=".ui.activity.StoreOrderAuditListActivity" />
         <activity android:name=".ui.activity.StoreOrderAuditPerformActivity" />
         <activity android:name=".ui.activity.StoreAuditPerformActivity" />
-        <activity android:name=".ui.activity.StoreOrderDetailsActivity"></activity>
+        <activity android:name=".ui.activity.StoreOrderDetailsActivity" />
+        <activity android:name=".ui.activity.LoginPhoneActivity" />
+        <activity android:name=".ui.activity.PicShowActivity"></activity>
 
         <service android:name=".service.PushService" />
         <service android:name=".service.UpDataService" />
@@ -175,7 +175,6 @@
         <meta-data
             android:name="push_api_key"
             android:value="nk8sqFigNn0D0eQPPdgkXSsjCPCUpF6G" />
-
 
     </application>
 
