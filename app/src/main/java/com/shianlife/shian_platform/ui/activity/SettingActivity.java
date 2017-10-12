@@ -49,7 +49,6 @@ public class SettingActivity extends BaseActivity {
             public void onClick(DialogInterface dialog, int which) {
                 SharePerfrenceUtils.setShareAutoLogin(SettingActivity.this, false);
                 AppUtils.jumpLogin(SettingActivity.this);
-                finish();
             }
         });
         mDialog.setTopButton(getString(R.string.dialog_false_1), new DialogInterface.OnClickListener() {

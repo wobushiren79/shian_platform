@@ -95,6 +95,7 @@
         <activity android:name=".ui.activity.StoreOrderDetailsActivity" />
         <activity android:name=".ui.activity.LoginPhoneActivity" />
         <activity android:name=".ui.activity.PicShowActivity"></activity>
+        <activity android:name=".ui.activity.GoodsDetailsListActivity"></activity>
 
         <service android:name=".service.PushService" />
         <service android:name=".service.UpDataService" />

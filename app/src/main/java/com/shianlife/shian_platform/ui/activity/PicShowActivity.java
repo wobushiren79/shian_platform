@@ -37,7 +37,7 @@ public class PicShowActivity extends BaseActivity {
         listData = (ArrayList<String>) getIntent().getSerializableExtra(IntentUtils.INTENT_LIST_DATA);
         titleName = getIntent().getStringExtra(IntentUtils.INTENT_DATA);
         if (!titleName.isEmpty())
-            setTitle(titleName);
+            setTitle(titleName, BaseTitleEnum.BACKNORMALTITLE.getTitleType());
         else
             setTitle("图片", BaseTitleEnum.BACKNORMALTITLE.getTitleType());
         layoutCarouse.setData(listData);

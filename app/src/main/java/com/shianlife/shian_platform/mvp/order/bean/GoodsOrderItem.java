@@ -3,12 +3,15 @@ package com.shianlife.shian_platform.mvp.order.bean;
 
 import com.shianlife.shian_platform.base.BaseEntity;
 
+import java.util.List;
+
 /**
  * 类名称：GoodsOrderItems 实体
  * 创建人： CQ
  * 创建时间：2017-07-20
  */
 public class GoodsOrderItem extends BaseEntity {
+
 
     /**
      * 订单ID
@@ -24,6 +27,7 @@ public class GoodsOrderItem extends BaseEntity {
      * 规格商品ID
      */
     private Long goodsSpecId;
+
 
     /**
      * 分类属性ID
@@ -68,7 +72,7 @@ public class GoodsOrderItem extends BaseEntity {
     /**
      * 商品分类名称
      */
-    private String  specOrderedAttr;
+    private String specOrderedAttr;
     /**
      * 规格商品编号
      */
@@ -92,7 +96,48 @@ public class GoodsOrderItem extends BaseEntity {
     /**
      * 规格名称
      */
-    private String  specName;
+    private String specName;
+
+    /**
+     * 套餐ID
+     */
+    private Long packageId;
+
+    /**
+     * 套餐规格ID
+     */
+    private Long packageSpecId;
+
+    /**
+     * 套餐商品
+     */
+    private List<GoodsOrderItem> goodsOrderItems;
+
+
+
+    public Long getPackageId() {
+        return packageId;
+    }
+
+    public void setPackageId(Long packageId) {
+        this.packageId = packageId;
+    }
+
+    public Long getPackageSpecId() {
+        return packageSpecId;
+    }
+
+    public void setPackageSpecId(Long packageSpecId) {
+        this.packageSpecId = packageSpecId;
+    }
+
+    public List<GoodsOrderItem> getGoodsOrderItems() {
+        return goodsOrderItems;
+    }
+
+    public void setGoodsOrderItems(List<GoodsOrderItem> goodsOrderItems) {
+        this.goodsOrderItems = goodsOrderItems;
+    }
 
     public Long getOrderId() {
         return orderId;

@@ -2,6 +2,7 @@ package com.shianlife.shian_platform.adapter;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,9 +22,13 @@ import com.shianlife.shian_platform.mvp.order.bean.StoreOrderGetPerformResultBea
 import com.shianlife.shian_platform.mvp.order.presenter.IStoreOrderGetPerformPresenter;
 import com.shianlife.shian_platform.mvp.order.presenter.impl.StoreOrderGetPerformPresenterImpl;
 import com.shianlife.shian_platform.mvp.order.view.IStoreOrderGetPerformView;
+import com.shianlife.shian_platform.ui.activity.GoodsDetailsListActivity;
+import com.shianlife.shian_platform.ui.activity.ImagePreviewActivity;
 import com.shianlife.shian_platform.utils.AppUtils;
+import com.shianlife.shian_platform.utils.IntentUtils;
 import com.shianlife.shian_platform.utils.ToastUtils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,10 +41,12 @@ import butterknife.BindView;
 public class StoreOrderGoodsListAdapter extends BaseExpandableAdapter<String, GoodsItemPerform> implements IStoreOrderGetPerformView {
 
     private IStoreOrderGetPerformPresenter storeOrderGetPerformPresenter;
+    private boolean isShowMode = false;
 
-    public StoreOrderGoodsListAdapter(Context context) {
+    public StoreOrderGoodsListAdapter(Context context, boolean isShowMode) {
         super(context, R.layout.store_order_expendlist_group, R.layout.store_order_expendlist_item);
         storeOrderGetPerformPresenter = new StoreOrderGetPerformPresenterImpl(this);
+        this.isShowMode = isShowMode;
     }
 
     @Override
@@ -51,6 +58,7 @@ public class StoreOrderGoodsListAdapter extends BaseExpandableAdapter<String, Go
     @Override
     public void setItemView(final GoodsItemPerform itemData, View convertView, int groupPosition, final int childPosition) {
         ImageView ivGoodsPic = (ImageView) convertView.findViewById(R.id.iv_goods_pic);
+        ImageView ivPackage = (ImageView) convertView.findViewById(R.id.iv_package);
         TextView tvGoodsName = (TextView) convertView.findViewById(R.id.tv_goods_name);
         TextView tvGoodsSpecification = (TextView) convertView.findViewById(R.id.tv_goods_specification);
         TextView tvGoodsCustomerMoney = (TextView) convertView.findViewById(R.id.tv_goods_customer_money);
@@ -61,19 +69,50 @@ public class StoreOrderGoodsListAdapter extends BaseExpandableAdapter<String, Go
         tvGoodsName.setText(itemData.getSpecOrderedVolume());
         tvGoodsSpecification.setText(itemData.getSpecAlias() + "：" + itemData.getSpecName());
 
-        if (itemData.getEmentPrice() == null)
-            tvGoodsCustomerMoney.setText("客户￥：" + "未知");
+        if (itemData.getSpecOrderedPrice() == null)
+            tvGoodsCustomerMoney.setText("");
         else
-            tvGoodsCustomerMoney.setText("客户￥：" + (float) itemData.getSpecOrderedPrice() / 100f);
+            tvGoodsCustomerMoney.setText("客户￥" + (float) itemData.getSpecOrderedPrice() / 100f);
 
-        if (itemData.getAdviserPrice() == null)
-            tvGoodsCounselorMoney.setText("顾问￥：" + "未知");
-        else
-            tvGoodsCounselorMoney.setText("顾问￥：" + (float) itemData.getAdviserPrice() / 100f);
+        if (isShowMode) {
+            if (itemData.getAdviserPrice() == null)
+                tvGoodsCounselorMoney.setText("");
+            else
+                tvGoodsCounselorMoney.setText("顾问￥" + (float) itemData.getAdviserPrice() / 100f);
+        }
 
+        View.OnClickListener onPackageDetailsClick = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), GoodsDetailsListActivity.class);
+                if (itemData.getGoodsOrderItems() != null)
+                    intent.putExtra(IntentUtils.INTENT_LIST_DATA, (Serializable) itemData.getGoodsOrderItems());
+                if (itemData.getGoodsItemPerforms() != null)
+                    intent.putExtra(IntentUtils.INTENT_LIST_DATA, (Serializable) itemData.getGoodsItemPerforms());
+                getContext().startActivity(intent);
+            }
+        };
+
+        //数据设置
+        if (itemData.getGoodsOrderItems() == null && itemData.getGoodsItemPerforms() == null) {
+            ivPackage.setVisibility(View.GONE);
+            convertView.setOnClickListener(null);
+        } else {
+            ivPackage.setVisibility(View.VISIBLE);
+            convertView.setOnClickListener(onPackageDetailsClick);
+        }
 
         tvGoodsNumb.setText("x" + itemData.getSpecOrderedNum());
+        //图片设置
         AppUtils.loadPic(mContext, ivGoodsPic, Constants.Goods_PicUrl + "/" + itemData.getTitleImg());
+        ivGoodsPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(getContext(), ImagePreviewActivity.class);
+                in.putExtra(IntentUtils.INTENT_URL, Constants.Goods_PicUrl + "/" + itemData.getTitleImg());
+                getContext().startActivity(in);
+            }
+        });
         if (itemData.getGoodsPerform() != null) {
             final GoodsPerform goodsPerform = itemData.getGoodsPerform();
             tvPerformStatus.setText(GoodsPerformStatusEnum.getValueText(goodsPerform.getPerformStatus()));

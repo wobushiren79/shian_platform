@@ -15,6 +15,7 @@ import com.shianlife.shian_platform.mvp.order.model.IStoreOrderDetailsModel;
 import com.shianlife.shian_platform.mvp.order.model.impl.StoreOrderDetailsModelImpl;
 import com.shianlife.shian_platform.mvp.order.presenter.IStoreOrderDetailsPresenter;
 import com.shianlife.shian_platform.mvp.order.view.IStoreOrderDetailsView;
+import com.shianlife.shian_platform.utils.DataUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,10 +54,16 @@ public class StoreOrderDetailsPresenterImpl implements IStoreOrderDetailsPresent
                 GoodsServiceInfo goodsServiceInfo = result.getGoodsServiceInfo();
                 GoodsOrder goodsOrder = result.getGoodsOrder();
                 GoodsInvoice goodsInvoice = result.getGoodsInvoice();
+
                 List<GoodsItemPerform> goodsItemPerforms = result.getGoodsItemPerforms();
-                if (goodsServiceInfo == null
-                        || goodsOrder == null
-                        || goodsItemPerforms == null) {
+                List<GoodsItemPerform> goodsPackage = result.getGoodsPackages();
+                List<GoodsItemPerform> allData = new ArrayList<>();
+                if (goodsItemPerforms != null)
+                    allData.addAll(goodsItemPerforms);
+                if (goodsPackage != null)
+                    allData.addAll(goodsPackage);
+
+                if (goodsServiceInfo == null || goodsOrder == null) {
                     storeOrderDetailsView.showToast("数据错误");
                     return;
                 }
@@ -69,9 +76,12 @@ public class StoreOrderDetailsPresenterImpl implements IStoreOrderDetailsPresent
                     storeOrderDetailsView.setServiceLocation(goodsServiceInfo.getServiceLocation());
                 if (goodsServiceInfo.getBookTime() != null)
                     storeOrderDetailsView.setServiceTime(goodsServiceInfo.getBookTime());
-                storeOrderDetailsView.setGoodsItemNumber(goodsItemPerforms.size() + "");
+
+                //数据数量
+                storeOrderDetailsView.setGoodsItemNumber(allData.size() + "");
                 //商品信息
-                Map<String, List<GoodsItemPerform>> goodsListData = getStringListMap(goodsItemPerforms);
+
+                Map<String, List<GoodsItemPerform>> goodsListData = DataUtils.getMapForGoodsItemPerform(allData);
                 storeOrderDetailsView.setGoodsListData(goodsListData);
                 //是否需要发票
                 if (goodsOrder.getNeedInvoice() == GoodsFinanceDeliveryEnum.notinvoicement.getCode()) {
@@ -148,42 +158,4 @@ public class StoreOrderDetailsPresenterImpl implements IStoreOrderDetailsPresent
         });
     }
 
-
-    private Map<String, List<GoodsItemPerform>> getStringListMap(List<GoodsItemPerform> goodsItemPerforms) {
-        Map<String, List<GoodsItemPerform>> goodsListData = new HashMap<>();
-        try {
-//            Map<Long, String> classList = new HashMap<>();
-//            for (GoodsOrderItem item : goodsOrderItem) {
-//                classList.put(item.getClassifyId(), item.getSpecOrderedAttr());
-//            }
-//            for (Map.Entry<Long, String> entry : classList.entrySet()) {
-//                List<GoodsOrderItem> listItemData = new ArrayList<>();
-//                Long key = entry.getKey();
-//                String value = entry.getValue();
-//                for (GoodsOrderItem item : goodsOrderItem) {
-//                    if (item.getClassifyId() == key) {
-//                        listItemData.add(item);
-//                    }
-//                }
-//                goodsListData.put(value ,listItemData);
-//            }
-            List<String> classList = new LinkedList<>();
-            for (GoodsItemPerform item : goodsItemPerforms) {
-                classList.add(item.getSpecOrderedAttr());
-            }
-            List<String> newClassList = new ArrayList(new HashSet(classList));
-            for (String className : newClassList) {
-                List<GoodsItemPerform> listItemData = new ArrayList<>();
-                for (GoodsItemPerform item : goodsItemPerforms) {
-                    if (item.getSpecOrderedAttr().equals(className)) {
-                        listItemData.add(item);
-                    }
-                }
-                goodsListData.put(className, listItemData);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return goodsListData;
-    }
 }

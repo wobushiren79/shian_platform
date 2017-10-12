@@ -19,14 +19,14 @@ public class Constants {
 
 
     //登陆地址
-    public static final String Login_BaseUrl = "https://platform.shianlife.cn";
-//    public static final String Login_BaseUrl = "http://prd-platform.xicp.cn";
+//    public static final String Login_BaseUrl = "https://platform.shianlife.cn";
+    public static final String Login_BaseUrl = "http://prd-platform.xicp.cn";
 //        public static final String Login_BaseUrl = "http://192.168.0.57:8099/ki4so-web";
 
     //单项地址
-    public static final String Store_BaseUrl = "https://goods.shianlife.cn";
-//    public static final String Store_BaseUrl = "http://prd-goods.xicp.cn";
-    //    public static final String Store_BaseUrl = "http://192.168.0.57:8080/goods";
+//    public static final String Store_BaseUrl = "https://goods.shianlife.cn";
+    public static final String Store_BaseUrl = "http://prd-goods.xicp.cn";
+//        public static final String Store_BaseUrl = "http://192.168.0.57:8080/goods";
     //PHP地址
     public static final String PHP_BaseUrl = "http://app.e-funeral.cn";
     //阿里云文件上传
@@ -38,6 +38,7 @@ public class Constants {
     //七牛文件查看地址
     public static final String QINIUURL = "http://oq6rkq859.bkt.clouddn.com/";
     //商品地址
+//    public static final String Goods_BaseUrl = "http://192.168.0.89/shian_goods";
     public static final String Goods_BaseUrl = "http://goodsmgr.e-funeral.cn";
     //商品图片地址
     public static final String Goods_PicUrl = Goods_BaseUrl + "/Public/Uploads";
