@@ -70,6 +70,12 @@ public class SystemManagerImpl extends BaseManagerImpl implements SystemManager 
     }
 
     @Override
+    public void loginOrderCenterSystem(Context context, String loginKey) {
+        String storeUrl = Constants.Login_OrderCenter_Url + "?" + loginKey;
+        loginSubSystem(context, storeUrl);
+    }
+
+    @Override
     public void userInfoSign(Context context, UserInfoSignBean params, HttpResponseHandler<UserInfoSignResultBean> handler) {
         requestPost(context, "api/credit/checkin", UserInfoSignResultBean.class, params, handler, true);
     }
@@ -89,14 +95,14 @@ public class SystemManagerImpl extends BaseManagerImpl implements SystemManager 
         requestPost(context, "api/usersInfo/forgetKeys", ChangePassWordSMSResultBean.class, params, handler, true);
     }
 
-    private void loginSubSystem(final Context context, String storeUrl) {
+    private void loginSubSystem(final Context context, String loginUrl) {
         if (customDialog == null || !customDialog.isShowing()) {
             customDialog = new CustomDialog(context);
             customDialog.show();
         }
-        Log.v("tag", "storeUrl:" + storeUrl);
+        Log.v("tag", "loginUrl:" + loginUrl);
         GetBuilder getBuilder = OkHttpUtils.get();
-        getBuilder.url(storeUrl);
+        getBuilder.url(loginUrl);
         getBuilder.addHeader("client-Type", "wechatapp");
         RequestCall requestCall = getBuilder.build();
         requestCall.execute(new StringCallback() {

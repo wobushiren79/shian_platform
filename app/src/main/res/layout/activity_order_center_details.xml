@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:CustomAttr="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.shianlife.shian_platform.ui.activity.OrderCenterDetailsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.shianlife.shian_platform.ui.order.ordercenter.OrderCenterInfoLayout
+            android:id="@+id/layout_order_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_24dp"></com.shianlife.shian_platform.ui.order.ordercenter.OrderCenterInfoLayout>
+
+
+        <com.shianlife.shian_platform.ui.order.ordercenter.OrderCenterHistoryList
+            android:id="@+id/layout_audit_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            CustomAttr:titleName="审核记录"></com.shianlife.shian_platform.ui.order.ordercenter.OrderCenterHistoryList>
+
+        <com.shianlife.shian_platform.ui.order.ordercenter.OrderCenterHistoryList
+            android:id="@+id/layout_performer_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            CustomAttr:titleName="处理记录"></com.shianlife.shian_platform.ui.order.ordercenter.OrderCenterHistoryList>
+    </LinearLayout>
+</ScrollView>

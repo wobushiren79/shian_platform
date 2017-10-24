@@ -19,8 +19,9 @@ public enum RoleEnum {
     Cemetery_Reception("cemetery.reception", "公墓-前台"),
     cemetery_Service("cemetery.service", "公墓-平台客服"),
     Cemetery_Burier_Stone("cemetery.burier.stone", "公墓-安葬工-立碑"),
-    Cemetery_Burier_Bury("cemetery.burier.bury", "公墓-安葬工-安葬");
-
+    Cemetery_Burier_Bury("cemetery.burier.bury", "公墓-安葬工-安葬"),
+    OrderC_Auditor("orderc.auditor", "订单-审核员"),
+    OrderC_Advisor("orderc.advisor", "订单-顾问员");
 
     private String code;
     private String name;

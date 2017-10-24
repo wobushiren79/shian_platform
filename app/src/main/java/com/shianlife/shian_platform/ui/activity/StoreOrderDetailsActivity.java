@@ -16,13 +16,12 @@ import com.shianlife.shian_platform.custom.show.store.StoreEditNormalView;
 import com.shianlife.shian_platform.custom.show.store.StoreExpandableTitleView;
 import com.shianlife.shian_platform.custom.view.scrollview.ScrollExpandableListView;
 import com.shianlife.shian_platform.custom.view.scrollview.ScrollRecyclerView;
-import com.shianlife.shian_platform.mvp.order.bean.GoodsInvoiceDetailsItem;
-import com.shianlife.shian_platform.mvp.order.bean.GoodsItemPerform;
-import com.shianlife.shian_platform.mvp.order.bean.GoodsOrderItem;
-import com.shianlife.shian_platform.mvp.order.bean.StoreOrderDetailsResultBean;
-import com.shianlife.shian_platform.mvp.order.presenter.IStoreOrderDetailsPresenter;
-import com.shianlife.shian_platform.mvp.order.presenter.impl.StoreOrderDetailsPresenterImpl;
-import com.shianlife.shian_platform.mvp.order.view.IStoreOrderDetailsView;
+import com.shianlife.shian_platform.mvp.store.bean.GoodsInvoiceDetailsItem;
+import com.shianlife.shian_platform.mvp.store.bean.GoodsItemPerform;
+import com.shianlife.shian_platform.mvp.store.bean.StoreOrderDetailsResultBean;
+import com.shianlife.shian_platform.mvp.store.presenter.IStoreOrderDetailsPresenter;
+import com.shianlife.shian_platform.mvp.store.presenter.impl.StoreOrderDetailsPresenterImpl;
+import com.shianlife.shian_platform.mvp.store.view.IStoreOrderDetailsView;
 import com.shianlife.shian_platform.utils.AppUtils;
 import com.shianlife.shian_platform.utils.IntentUtils;
 import com.shianlife.shian_platform.utils.ToastUtils;
@@ -31,7 +30,6 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class StoreOrderDetailsActivity extends BaseActivity implements IStoreOrderDetailsView, StoreExpandableTitleView.CallBack {
 

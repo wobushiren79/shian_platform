@@ -24,4 +24,9 @@ public class SubSystemLoginPresenterImpl implements ISubSystemLoginPresenter {
     public void loginStoreSystem() {
         subSystemLoginModel.subSystemStoreLogin(subSystemLoginView.getContext(), Constants.System_Ki4so_Client_Ec);
     }
+
+    @Override
+    public void loginOrderCenterSystem() {
+        subSystemLoginModel.subSystemOrderCenterLogin(subSystemLoginView.getContext(), Constants.System_Ki4so_Client_Ec);
+    }
 }

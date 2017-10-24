@@ -11,19 +11,17 @@ import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.adapter.base.BaseRCAdapter;
 import com.shianlife.shian_platform.adapter.base.BaseViewHolder;
 import com.shianlife.shian_platform.appenum.GoodsOrderStatusEnum;
-import com.shianlife.shian_platform.appenum.GoodsPerformWayEnum;
 import com.shianlife.shian_platform.appenum.GoodsServiceWayEnum;
 import com.shianlife.shian_platform.custom.dialog.TipsDialog;
-import com.shianlife.shian_platform.mvp.order.bean.GoodsOrder;
-import com.shianlife.shian_platform.mvp.order.bean.GoodsPerform;
-import com.shianlife.shian_platform.mvp.order.bean.GoodsPerformCancel;
-import com.shianlife.shian_platform.mvp.order.bean.GoodsServiceInfo;
-import com.shianlife.shian_platform.mvp.order.bean.StoreOrderAuditResultListBean;
+import com.shianlife.shian_platform.mvp.store.bean.GoodsOrder;
+import com.shianlife.shian_platform.mvp.store.bean.GoodsPerform;
+import com.shianlife.shian_platform.mvp.store.bean.GoodsPerformCancel;
+import com.shianlife.shian_platform.mvp.store.bean.GoodsServiceInfo;
+import com.shianlife.shian_platform.mvp.store.bean.StoreOrderAuditResultListBean;
 import com.shianlife.shian_platform.ui.activity.StoreOrderAuditPerformActivity;
 import com.shianlife.shian_platform.ui.activity.StoreOrderDetailsActivity;
 import com.shianlife.shian_platform.utils.AppUtils;
 import com.shianlife.shian_platform.utils.IntentUtils;
-import com.shianlife.shian_platform.utils.ToastUtils;
 
 
 /**

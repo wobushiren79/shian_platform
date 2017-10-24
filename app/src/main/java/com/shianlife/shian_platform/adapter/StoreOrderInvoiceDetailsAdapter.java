@@ -6,9 +6,7 @@ import android.widget.TextView;
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.adapter.base.BaseRCAdapter;
 import com.shianlife.shian_platform.adapter.base.BaseViewHolder;
-import com.shianlife.shian_platform.mvp.order.bean.GoodsInvoiceDetailsItem;
-
-import butterknife.BindView;
+import com.shianlife.shian_platform.mvp.store.bean.GoodsInvoiceDetailsItem;
 
 
 /**

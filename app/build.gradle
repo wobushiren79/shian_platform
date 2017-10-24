@@ -5,8 +5,9 @@ def releaseTime() {
 }
 //设置发布的名称
 def getAppName() {
-    return "圆满平台"
+    return "Platform"
 }
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -14,8 +15,8 @@ android {
         applicationId "com.shianlife.shian_platform"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 3
-        versionName "1.2"
+        versionCode 4
+        versionName "1.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

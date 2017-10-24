@@ -2,27 +2,23 @@ package com.shianlife.shian_platform.ui.fragment;
 
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.shianlife.shian_platform.R;
-import com.shianlife.shian_platform.adapter.FindAdapter;
 import com.shianlife.shian_platform.adapter.OrderShowListAdapter;
 import com.shianlife.shian_platform.base.BaseFragment;
 import com.shianlife.shian_platform.custom.view.ptr.CustomPtrFramelayout;
-import com.shianlife.shian_platform.mvp.order.bean.OrderShowResultBean;
-import com.shianlife.shian_platform.mvp.order.presenter.IOrderShowPresenter;
-import com.shianlife.shian_platform.mvp.order.presenter.impl.OrderShowPresenterImpl;
-import com.shianlife.shian_platform.mvp.order.view.IOrderShowView;
+import com.shianlife.shian_platform.mvp.store.bean.OrderShowResultBean;
+import com.shianlife.shian_platform.mvp.store.presenter.IOrderShowPresenter;
+import com.shianlife.shian_platform.mvp.store.presenter.impl.OrderShowPresenterImpl;
+import com.shianlife.shian_platform.mvp.store.view.IOrderShowView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import in.srain.cube.views.ptr.PtrDefaultHandler2;
-import in.srain.cube.views.ptr.PtrFrameLayout;
 
 
 /**

@@ -20,13 +20,19 @@ public class Constants {
 
     //登陆地址
 //    public static final String Login_BaseUrl = "https://platform.shianlife.cn";
-    public static final String Login_BaseUrl = "http://prd-platform.xicp.cn";
-//        public static final String Login_BaseUrl = "http://192.168.0.57:8099/ki4so-web";
+//    public static final String Login_BaseUrl = "http://prd-platform.xicp.cn";
+//      public static final String Login_BaseUrl = "http://192.168.0.71:8099/ki4so-web";
+    public static final String Login_BaseUrl = "http://192.168.0.86:8080/ki4so-web";
 
     //单项地址
 //    public static final String Store_BaseUrl = "https://goods.shianlife.cn";
-    public static final String Store_BaseUrl = "http://prd-goods.xicp.cn";
-//        public static final String Store_BaseUrl = "http://192.168.0.57:8080/goods";
+//    public static final String Store_BaseUrl = "http://prd-goods.xicp.cn";
+//        public static final String Store_BaseUrl = "http://192.168.0.71:8080/goods";
+    public static final String Store_BaseUrl = "http://192.168.0.86:8089/goods";
+
+    //分单地址
+    public static final String OrderCenter_BaseUrl = "http://192.168.0.86:8090/order";
+
     //PHP地址
     public static final String PHP_BaseUrl = "http://app.e-funeral.cn";
     //阿里云文件上传
@@ -52,7 +58,8 @@ public class Constants {
 
     //子系统-单项  登陆地址
     public static final String Login_Store_Url = Store_BaseUrl + "/login_sys_api";
-
+    //子系统-分单  登陆地址
+    public static final String Login_OrderCenter_Url = OrderCenter_BaseUrl + "/login_subsystem_api";
 
     public static String ChannelId = "";
 

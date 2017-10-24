@@ -2,7 +2,6 @@ package com.shianlife.shian_platform.adapter;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -13,18 +12,15 @@ import com.shianlife.shian_platform.adapter.base.BaseRCAdapter;
 import com.shianlife.shian_platform.adapter.base.BaseViewHolder;
 import com.shianlife.shian_platform.appenum.GoodsPerformStatusEnum;
 import com.shianlife.shian_platform.appenum.GoodsPerformWayEnum;
-import com.shianlife.shian_platform.appenum.GoodsServiceWayEnum;
 import com.shianlife.shian_platform.custom.dialog.TipsDialog;
-import com.shianlife.shian_platform.mvp.order.bean.GoodsOrderItem;
-import com.shianlife.shian_platform.mvp.order.bean.GoodsPerform;
-import com.shianlife.shian_platform.mvp.order.bean.GoodsPerformCancel;
-import com.shianlife.shian_platform.mvp.order.bean.StoreAuditPerformListResultBean;
+import com.shianlife.shian_platform.mvp.store.bean.GoodsOrderItem;
+import com.shianlife.shian_platform.mvp.store.bean.GoodsPerform;
+import com.shianlife.shian_platform.mvp.store.bean.GoodsPerformCancel;
+import com.shianlife.shian_platform.mvp.store.bean.StoreAuditPerformListResultBean;
 import com.shianlife.shian_platform.ui.activity.StoreAuditPerformActivity;
 import com.shianlife.shian_platform.utils.AppUtils;
 import com.shianlife.shian_platform.utils.IntentUtils;
 import com.shianlife.shian_platform.utils.ToastUtils;
-
-import butterknife.BindView;
 
 /**
  * Created by zm.

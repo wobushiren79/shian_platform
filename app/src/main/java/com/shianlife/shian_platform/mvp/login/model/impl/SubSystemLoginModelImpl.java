@@ -14,4 +14,9 @@ public class SubSystemLoginModelImpl implements ISubSystemLoginModel {
     public void subSystemStoreLogin(Context context, String loginKey) {
         MHttpManagerFactory.getSystemManager().loginStoreSystem(context, loginKey);
     }
+
+    @Override
+    public void subSystemOrderCenterLogin(Context context, String loginKey) {
+        MHttpManagerFactory.getSystemManager().loginOrderCenterSystem(context, loginKey);
+    }
 }

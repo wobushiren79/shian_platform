@@ -49,7 +49,13 @@ public interface SystemManager {
      */
     void loginStoreSystem(Context context, String loginKey);
 
-
+    /**
+     * 分单系统登陆
+     *
+     * @param context
+     * @param loginKey
+     */
+    void loginOrderCenterSystem(Context context, String loginKey);
     /**
      * 用户签到
      *

@@ -11,17 +11,14 @@ import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.adapter.base.BaseExpandableAdapter;
 import com.shianlife.shian_platform.appenum.GoodsPerformStatusEnum;
 import com.shianlife.shian_platform.appenum.GoodsPerformWayEnum;
-import com.shianlife.shian_platform.appenum.GoodsServiceWayEnum;
 import com.shianlife.shian_platform.common.Constants;
 import com.shianlife.shian_platform.custom.dialog.DataShowDialog;
-import com.shianlife.shian_platform.mvp.order.bean.GoodsExpress;
-import com.shianlife.shian_platform.mvp.order.bean.GoodsItemPerform;
-import com.shianlife.shian_platform.mvp.order.bean.GoodsOrderItem;
-import com.shianlife.shian_platform.mvp.order.bean.GoodsPerform;
-import com.shianlife.shian_platform.mvp.order.bean.StoreOrderGetPerformResultBean;
-import com.shianlife.shian_platform.mvp.order.presenter.IStoreOrderGetPerformPresenter;
-import com.shianlife.shian_platform.mvp.order.presenter.impl.StoreOrderGetPerformPresenterImpl;
-import com.shianlife.shian_platform.mvp.order.view.IStoreOrderGetPerformView;
+import com.shianlife.shian_platform.mvp.store.bean.GoodsItemPerform;
+import com.shianlife.shian_platform.mvp.store.bean.GoodsPerform;
+import com.shianlife.shian_platform.mvp.store.bean.StoreOrderGetPerformResultBean;
+import com.shianlife.shian_platform.mvp.store.presenter.IStoreOrderGetPerformPresenter;
+import com.shianlife.shian_platform.mvp.store.presenter.impl.StoreOrderGetPerformPresenterImpl;
+import com.shianlife.shian_platform.mvp.store.view.IStoreOrderGetPerformView;
 import com.shianlife.shian_platform.ui.activity.GoodsDetailsListActivity;
 import com.shianlife.shian_platform.ui.activity.ImagePreviewActivity;
 import com.shianlife.shian_platform.utils.AppUtils;
@@ -31,8 +28,6 @@ import com.shianlife.shian_platform.utils.ToastUtils;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.BindView;
 
 /**
  * Created by zm.

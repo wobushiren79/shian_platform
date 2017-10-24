@@ -9,10 +9,10 @@ import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.adapter.StoreOrderAuditListAdapter;
 import com.shianlife.shian_platform.base.BaseOrderListLayout;
 import com.shianlife.shian_platform.custom.view.ptr.CustomPtrFramelayout;
-import com.shianlife.shian_platform.mvp.order.bean.StoreOrderAuditResultListBean;
-import com.shianlife.shian_platform.mvp.order.presenter.IStoreOrderAuditListPresenter;
-import com.shianlife.shian_platform.mvp.order.presenter.impl.StoreOrderAuditListPresenterImpl;
-import com.shianlife.shian_platform.mvp.order.view.IStoreOrderAuditListView;
+import com.shianlife.shian_platform.mvp.store.bean.StoreOrderAuditResultListBean;
+import com.shianlife.shian_platform.mvp.store.presenter.IStoreOrderAuditListPresenter;
+import com.shianlife.shian_platform.mvp.store.presenter.impl.StoreOrderAuditListPresenterImpl;
+import com.shianlife.shian_platform.mvp.store.view.IStoreOrderAuditListView;
 import com.shianlife.shian_platform.utils.ToastUtils;
 
 import java.util.Arrays;

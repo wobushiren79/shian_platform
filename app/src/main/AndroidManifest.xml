@@ -94,8 +94,11 @@
         <activity android:name=".ui.activity.StoreAuditPerformActivity" />
         <activity android:name=".ui.activity.StoreOrderDetailsActivity" />
         <activity android:name=".ui.activity.LoginPhoneActivity" />
-        <activity android:name=".ui.activity.PicShowActivity"></activity>
-        <activity android:name=".ui.activity.GoodsDetailsListActivity"></activity>
+        <activity android:name=".ui.activity.PicShowActivity" />
+        <activity android:name=".ui.activity.GoodsDetailsListActivity" />
+        <activity android:name=".ui.activity.OrderCenterAuditListActivity" />
+        <activity android:name=".ui.activity.OrderCenterDetailsActivity" />
+        <activity android:name=".ui.activity.OrderCenterAuditActivity"></activity>
 
         <service android:name=".service.PushService" />
         <service android:name=".service.UpDataService" />

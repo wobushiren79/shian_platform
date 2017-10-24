@@ -8,7 +8,7 @@ import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.adapter.StoreOrderGoodsListAdapter;
 import com.shianlife.shian_platform.appenum.BaseTitleEnum;
 import com.shianlife.shian_platform.base.BaseActivity;
-import com.shianlife.shian_platform.mvp.order.bean.GoodsItemPerform;
+import com.shianlife.shian_platform.mvp.store.bean.GoodsItemPerform;
 import com.shianlife.shian_platform.utils.AppUtils;
 import com.shianlife.shian_platform.utils.DataUtils;
 import com.shianlife.shian_platform.utils.IntentUtils;

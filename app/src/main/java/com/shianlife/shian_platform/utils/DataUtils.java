@@ -2,7 +2,7 @@ package com.shianlife.shian_platform.utils;
 
 
 
-import com.shianlife.shian_platform.mvp.order.bean.GoodsItemPerform;
+import com.shianlife.shian_platform.mvp.store.bean.GoodsItemPerform;
 
 import java.util.ArrayList;
 import java.util.HashMap;

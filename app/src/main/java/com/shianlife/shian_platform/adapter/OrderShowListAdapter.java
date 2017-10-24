@@ -2,7 +2,6 @@ package com.shianlife.shian_platform.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.animation.Animation;
 import android.widget.ImageView;
@@ -12,7 +11,7 @@ import android.widget.TextView;
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.adapter.base.BaseRCAdapter;
 import com.shianlife.shian_platform.adapter.base.BaseViewHolder;
-import com.shianlife.shian_platform.mvp.order.bean.OrderShowResultBean;
+import com.shianlife.shian_platform.mvp.store.bean.OrderShowResultBean;
 import com.shianlife.shian_platform.utils.AnimUtils;
 
 

@@ -24,7 +24,7 @@ public class ChangeItemModelImpl implements IChangeItemModel {
                 if (permission.equals(RoleEnum.Car_Driver.getCode())) {
                     listData.add(MainChangeItemEnum.DIRVERORDER);
                 }
-                if (permission.equals(RoleEnum.Goods_Audit.getCode())) {
+                if (permission.equals(RoleEnum.OrderC_Auditor.getCode())) {
                     listData.add(MainChangeItemEnum.ORDER);
                 }
             }

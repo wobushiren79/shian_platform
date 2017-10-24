@@ -136,6 +136,7 @@ public class MainActivity extends BaseActivity implements IChangeItemView, IAppU
         //登陆子系统
         subSystemLoginPresenter = new SubSystemLoginPresenterImpl(this);
         subSystemLoginPresenter.loginStoreSystem();
+        subSystemLoginPresenter.loginOrderCenterSystem();
     }
 
 

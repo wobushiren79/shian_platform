@@ -8,4 +8,6 @@ import android.content.Context;
 
 public interface ISubSystemLoginModel {
     void subSystemStoreLogin(Context context, String loginKey);
+
+    void subSystemOrderCenterLogin(Context context, String loginKey);
 }
