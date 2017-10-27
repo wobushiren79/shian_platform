@@ -32,6 +32,7 @@ public class Constants {
 
     //分单地址
     public static final String OrderCenter_BaseUrl = "http://192.168.0.86:8090/order";
+//    public static final String OrderCenter_BaseUrl = "http://192.168.0.71:8085/center";
 
     //PHP地址
     public static final String PHP_BaseUrl = "http://app.e-funeral.cn";

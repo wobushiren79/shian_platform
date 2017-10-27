@@ -2,6 +2,7 @@ package com.shianlife.shian_platform.ui.activity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.appenum.BaseTitleEnum;
@@ -32,9 +33,12 @@ public class OrderCenterDetailsActivity extends BaseActivity implements IOrderCe
     OrderCenterHistoryList layoutAuditList;
     @BindView(R.id.layout_performer_list)
     OrderCenterHistoryList layoutPerformerList;
+    @BindView(R.id.ll_content)
+    LinearLayout llContent;
+
 
     private IOrderCenterDetailsPresenter orderCenterDetailsPresenter;
-    private Long orderId;
+    protected Long orderId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,8 +101,8 @@ public class OrderCenterDetailsActivity extends BaseActivity implements IOrderCe
     }
 
     @Override
-    public void setOrderCenterRemark(String remark) {
-        layoutOrderInfo.setOrderCenterRemark(remark);
+    public void setOrderCenterDescribe(String remark) {
+        layoutOrderInfo.setOrderCenterDescribe(remark);
     }
 
     @Override

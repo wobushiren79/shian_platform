@@ -8,12 +8,16 @@ import android.view.View;
 import com.shianlife.shian_platform.appenum.OrderCenterAuditListEnum;
 import com.shianlife.shian_platform.custom.view.tablist.BaseTabListView;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zm.
  */
 public class OrderCenterTabListLayout extends BaseTabListView {
+
 
     public OrderCenterTabListLayout(Context context) {
         this(context, null);
@@ -30,5 +34,13 @@ public class OrderCenterTabListLayout extends BaseTabListView {
                 new OrderCenterAuditList(getContext(), OrderCenterAuditListEnum.audit_complete.getCode()));
 
         setListView(listView);
+    }
+
+    public void refreshData() {
+        for (Map.Entry<String, View> entry : this.mapListView.entrySet()) {
+            View view = entry.getValue();
+            OrderCenterAuditList item = (OrderCenterAuditList) view;
+            item.refreshData();
+        }
     }
 }

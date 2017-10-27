@@ -7,6 +7,7 @@
     tools:context="com.shianlife.shian_platform.ui.activity.OrderCenterAuditListActivity">
 
     <com.shianlife.shian_platform.ui.order.ordercenter.OrderCenterTabListLayout
+        android:id="@+id/tab_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></com.shianlife.shian_platform.ui.order.ordercenter.OrderCenterTabListLayout>
 </LinearLayout>

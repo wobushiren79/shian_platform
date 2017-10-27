@@ -83,9 +83,9 @@ public class OrderCenterInfoLayout extends BaseLayout {
             tvPlanTime.append(time);
     }
 
-    public void setOrderCenterRemark(String remark) {
-        if (remark != null)
-            tvOrderRemark.append(remark);
+    public void setOrderCenterDescribe(String describe) {
+        if (describe != null)
+            tvOrderRemark.append(describe);
     }
 
     public void setOrderCenterServiceType(String type) {

@@ -9,8 +9,10 @@ import android.widget.TextView;
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.adapter.base.BaseRCAdapter;
 import com.shianlife.shian_platform.adapter.base.BaseViewHolder;
+import com.shianlife.shian_platform.appenum.ValidStatus;
 import com.shianlife.shian_platform.appenum.WorkOrderStatusEnum;
 import com.shianlife.shian_platform.appenum.WorkOrderTypeStatusEnum;
+import com.shianlife.shian_platform.mvp.ordercenter.bean.AuditorAssignRecord;
 import com.shianlife.shian_platform.mvp.ordercenter.bean.CustomerInfo;
 import com.shianlife.shian_platform.mvp.ordercenter.bean.OrderCenterAuditListResultBean;
 import com.shianlife.shian_platform.mvp.ordercenter.bean.OrderStatusChange;
@@ -54,6 +56,7 @@ public class OrderCenterAuditListAdapter extends BaseRCAdapter<OrderCenterAuditL
         CustomerInfo customerInfo = data.getCustomerInfo();
 
         List<OrderStatusChange> listOrderStatusChange = data.getListOrderStatusChange();
+        AuditorAssignRecord assignRecord = data.getAuditorAssignRecord();
 
         //点击事件
         View.OnClickListener onClick = new View.OnClickListener() {
@@ -76,8 +79,8 @@ public class OrderCenterAuditListAdapter extends BaseRCAdapter<OrderCenterAuditL
             if (workOrder.getAppointmentTime() != null)
                 tvPlanTime.setText(workOrder.getAppointmentTime());
             //备注
-            if (workOrder.getOrderRemark() != null)
-                tvRemark.setText(workOrder.getOrderRemark());
+            if (workOrder.getOrderDescribe() != null)
+                tvRemark.setText(workOrder.getOrderDescribe());
             //服务类型
             if (workOrder.getOrderType() != null) {
                 String orderType = WorkOrderTypeStatusEnum.getValueText(workOrder.getOrderType());
@@ -113,6 +116,16 @@ public class OrderCenterAuditListAdapter extends BaseRCAdapter<OrderCenterAuditL
                 tvSendTime.setText(sendTime);
         }
 
+        /**
+         * 设置审核按钮
+         */
+        if (assignRecord != null && workOrder != null && workOrder.getOrderStatus() != null)
+            if (assignRecord.getValid() == ValidStatus.valid.getCode() && workOrder.getOrderStatus() == WorkOrderStatusEnum.auditing.getCode())
+                tvOrderAudit.setVisibility(View.VISIBLE);
+            else
+                tvOrderAudit.setVisibility(View.GONE);
+        else
+            tvOrderAudit.setVisibility(View.GONE);
     }
 
 
@@ -124,14 +137,14 @@ public class OrderCenterAuditListAdapter extends BaseRCAdapter<OrderCenterAuditL
      * @return
      */
     private String getTimeByStatus(List<OrderStatusChange> listData, Integer status) {
-        StringBuffer time = new StringBuffer();
+        String time = new String();
         for (OrderStatusChange item : listData) {
             if (item.getUpdataStatus() != null && item.getUpdataStatus() == status && item.getUpdateTime() != null) {
-                time.append(item.getUpdateTime());
-                time.append(" ");
+                time = item.getUpdateTime();
+                break;
             }
         }
-        return time.toString();
+        return time;
     }
 
 

@@ -30,7 +30,7 @@ public class BaseTabListView extends LinearLayout {
     private TabListViewPagerAdapter pagerAdapter;
     private TabListViewPagerChangeListener pagerChangeListener;
 
-    LinkedHashMap<String, View> mapListView;//列表数据
+    protected LinkedHashMap<String, View> mapListView;//列表数据
 
     public BaseTabListView(Context context) {
         super(context, null);

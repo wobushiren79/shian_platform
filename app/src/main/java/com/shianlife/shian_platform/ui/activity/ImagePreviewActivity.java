@@ -12,10 +12,13 @@ import android.view.ViewGroup;
 
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.appenum.BaseTitleEnum;
 import com.shianlife.shian_platform.base.BaseActivity;
 import com.shianlife.shian_platform.common.PinchImageView;
+import com.shianlife.shian_platform.custom.dialog.CustomDialog;
 import com.shianlife.shian_platform.utils.FilePathUtils;
 import com.shianlife.shian_platform.utils.IntentUtils;
 import com.shianlife.shian_platform.utils.ToastUtils;
@@ -33,6 +36,8 @@ public class ImagePreviewActivity extends BaseActivity implements View.OnLongCli
 
     Bitmap mBitmap;
 
+    private CustomDialog customDialog;
+
     Handler mHandler = new Handler() {
 
         public void handleMessage(android.os.Message msg) {
@@ -46,6 +51,8 @@ public class ImagePreviewActivity extends BaseActivity implements View.OnLongCli
                     }
 //                    mImageView.setImageBitmap(bitmap);
                     mImageView.setVisibility(View.VISIBLE);
+                    if (customDialog != null)
+                        customDialog.cancel();
                     break;
                 case 1:
 
@@ -63,6 +70,8 @@ public class ImagePreviewActivity extends BaseActivity implements View.OnLongCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        customDialog = new CustomDialog(this);
+        customDialog.show();
         mImageView = new PinchImageView(this);
 
         mImageView.setBackgroundResource(R.color.viewfinder_mask);
@@ -140,6 +149,8 @@ public class ImagePreviewActivity extends BaseActivity implements View.OnLongCli
             mHandler.sendEmptyMessage(0);
             mImageView.setOnLongClickListener(this);
         } catch (Exception e) {
+            if (customDialog != null)
+                customDialog.cancel();
             ToastUtils.showToastShort(this, "获取图片失败！");
             e.printStackTrace();
         }

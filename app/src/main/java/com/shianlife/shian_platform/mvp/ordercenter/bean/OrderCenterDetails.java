@@ -20,6 +20,25 @@ public class OrderCenterDetails {
     private String auditorName;//审核人员名称
     private String auditorPhone;
 
+    private PerformerAssignRecord performerAssignRecord;//顾问分配信息
+    private AuditorAssignRecord auditorAssignRecord;//执行分配信息
+
+    public PerformerAssignRecord getPerformerAssignRecord() {
+        return performerAssignRecord;
+    }
+
+    public void setPerformerAssignRecord(PerformerAssignRecord performerAssignRecord) {
+        this.performerAssignRecord = performerAssignRecord;
+    }
+
+    public AuditorAssignRecord getAuditorAssignRecord() {
+        return auditorAssignRecord;
+    }
+
+    public void setAuditorAssignRecord(AuditorAssignRecord auditorAssignRecord) {
+        this.auditorAssignRecord = auditorAssignRecord;
+    }
+
     public WorkOrder getWorkOrder() {
         return workOrder;
     }

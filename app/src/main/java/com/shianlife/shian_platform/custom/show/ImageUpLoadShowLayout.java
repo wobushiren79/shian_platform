@@ -32,6 +32,18 @@ public class ImageUpLoadShowLayout extends BaseLayout implements ILayoutDataView
     private String fileClass;
     private String fileName;
 
+
+    public boolean isUpLoading() {
+        boolean isUpLoading = false;
+        for (FileUpLoadButton item : listFiles) {
+            if (item.isLoading()) {
+                isUpLoading = true;
+                break;
+            }
+        }
+        return isUpLoading;
+    }
+
     public ImageUpLoadShowLayout(Context context) {
         this(context, null);
     }

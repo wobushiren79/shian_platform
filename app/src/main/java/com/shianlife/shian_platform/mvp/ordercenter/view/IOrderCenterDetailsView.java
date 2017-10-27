@@ -46,7 +46,7 @@ public interface IOrderCenterDetailsView extends BaseMVPView {
      *
      * @param remark
      */
-    void setOrderCenterRemark(String remark);
+    void setOrderCenterDescribe(String remark);
 
     /**
      * 设置服务类型

@@ -47,6 +47,10 @@ public class FileUpLoadButton extends BaseLayout implements IFileUpLoadView {
     private FileUpLoadBean mFileData;
     private boolean isLoading = false;
 
+    public boolean isLoading() {
+        return isLoading;
+    }
+
     public FileUpLoadButton(Context context, String fileClass, String fileName) {
         super(context, R.layout.view_fileupload_button_normal);
         mFileData = new FileUpLoadBean();

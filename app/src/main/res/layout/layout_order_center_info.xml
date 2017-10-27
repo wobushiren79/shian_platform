@@ -111,7 +111,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_8dp"
                 android:gravity="center_vertical"
-                android:text="备        注："
+                android:text="描        述："
                 android:textColor="@color/zhy_text_color_20"
                 android:textSize="@dimen/dimen_24dp" />
 

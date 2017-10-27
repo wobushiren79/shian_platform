@@ -235,7 +235,7 @@ public class HttpRequestExecutor {
         if (response != null) {
             try {
                 JsonNode node = ObjectMapperFactory.getInstance().readTree(new String(response));
-                if (node.findValue("code") == null) {
+                if (node.findValue("code") == null || node.findValue("code").toString().equals("1500")) {
                     onErrorCallBack(responseHandler, "会话失效，请重新登陆", context);
                     jumpLogin(context);
                     return;
@@ -247,9 +247,18 @@ public class HttpRequestExecutor {
                     if (jn == null)
                         responseHandler.onSuccess(null);
                     else {
-                        T result = ObjectMapperFactory.getInstance().readValue(
-                                jn, data);
-                        responseHandler.onSuccess(result);
+                        T result;
+                        try {
+                            result = ObjectMapperFactory.getInstance().readValue(jn, data);
+                        } catch (Exception e) {
+                            result = null;
+                            e.printStackTrace();
+                        }
+                        if (result == null) {
+                            responseHandler.onSuccess(null);
+                        } else {
+                            responseHandler.onSuccess(result);
+                        }
                     }
                 } else if ("1009".equals(code)) {
                     jumpLogin(context);

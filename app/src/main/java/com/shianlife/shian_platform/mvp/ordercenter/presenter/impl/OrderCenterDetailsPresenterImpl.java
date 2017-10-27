@@ -56,9 +56,9 @@ public class OrderCenterDetailsPresenterImpl implements IOrderCenterDetailsPrese
                     //预约时间
                     if (workOrder.getAppointmentTime() != null)
                         orderCenterDetailsView.setOrderCenterPlanTime(workOrder.getAppointmentTime());
-                    //订单备注
-                    if (workOrder.getOrderRemark() != null)
-                        orderCenterDetailsView.setOrderCenterRemark(workOrder.getOrderRemark());
+                    //订单描述
+                    if (workOrder.getOrderDescribe() != null)
+                        orderCenterDetailsView.setOrderCenterDescribe(workOrder.getOrderDescribe());
                     //服务类型
                     if (workOrder.getOrderType() != null)
                         orderCenterDetailsView.setOrderCenterServiceType(WorkOrderTypeStatusEnum.getValueText(workOrder.getOrderType()));
