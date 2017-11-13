@@ -161,4 +161,14 @@ public class OrderCenterDetailsActivity extends BaseActivity implements IOrderCe
         }
         layoutAuditList.setListData(newListData);
     }
+
+    @Override
+    public void setOrderCenterAdvistorName(String advistorName) {
+        layoutOrderInfo.setAdvisorName(advistorName);
+    }
+
+    @Override
+    public void setOrderCenterAdvistorPhone(String phone) {
+        layoutOrderInfo.setAdvisorPhone(phone);
+    }
 }

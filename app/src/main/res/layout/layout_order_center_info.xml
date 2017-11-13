@@ -139,7 +139,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:text="联系人："
+                        android:text="联系人"
                         android:textColor="@color/zhy_text_color_1"
                         android:textSize="@dimen/dimen_24dp" />
                 </LinearLayout>
@@ -164,10 +164,34 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:text="经办人："
+                        android:text="经办人"
                         android:textColor="@color/zhy_text_color_19"
                         android:textSize="@dimen/dimen_24dp" />
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_advisor_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/zhy_button_state_ll_white"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/dimen_18dp"
+                    android:paddingTop="@dimen/dimen_18dp">
+
+                    <ImageView
+                        android:layout_width="@dimen/dimen_44dp"
+                        android:layout_height="@dimen/dimen_44dp"
+                        android:src="@drawable/ic_order_phone" />
+
+                    <TextView
+                        android:id="@+id/tv_advisor_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="执行人"
+                        android:textColor="@color/zhy_text_color_1"
+                        android:textSize="@dimen/dimen_24dp" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

@@ -111,4 +111,19 @@ public interface IOrderCenterDetailsView extends BaseMVPView {
      */
     void setOrderCenterAuditRecordList(List<AuditRecordDetails> listData);
 
+
+    /**
+     * 设置执行人员姓名
+     *
+     * @param advistorName
+     */
+    void setOrderCenterAdvistorName(String advistorName);
+
+    /**
+     * 设置执行人员电话
+     *
+     * @param phone
+     */
+    void setOrderCenterAdvistorPhone(String phone);
+
 }

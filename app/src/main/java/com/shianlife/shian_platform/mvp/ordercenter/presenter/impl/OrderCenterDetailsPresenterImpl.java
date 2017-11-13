@@ -96,6 +96,11 @@ public class OrderCenterDetailsPresenterImpl implements IOrderCenterDetailsPrese
                 if (listPerformRecord != null) {
                     orderCenterDetailsView.setOrderCenterPerformRecordList(listPerformRecord);
                 }
+
+                //设置执行人员姓名和电话
+                if (result.getAuditorName() != null)
+                    orderCenterDetailsView.setOrderCenterAdvistorName(result.getAuditorName());
+                orderCenterDetailsView.setOrderCenterAdvistorPhone(result.getAuditorPhone());
             }
 
             @Override

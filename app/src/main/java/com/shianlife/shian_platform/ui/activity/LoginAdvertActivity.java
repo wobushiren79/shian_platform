@@ -99,11 +99,11 @@ public class LoginAdvertActivity extends BaseActivity implements IAdvertView {
     }
 
     private void jumpMain() {
-        new IntentUtils.Build(this,MainActivity.class).start();
+        new IntentUtils.Build(this, MainActivity.class).start();
     }
 
     private void jumpLogin() {
-        new IntentUtils.Build(this,LoginActivity.class).start();
+        new IntentUtils.Build(this, LoginActivity.class).start();
     }
 
 
@@ -150,6 +150,8 @@ public class LoginAdvertActivity extends BaseActivity implements IAdvertView {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_advert:
+                if (advertData == null)
+                    return;
                 if (timerIntent != null)
                     timerIntent.cancel();
                 isForceOver = true;
@@ -157,6 +159,7 @@ public class LoginAdvertActivity extends BaseActivity implements IAdvertView {
                 new IntentUtils.Build(this, WebActivity.class)
                         .setString(IntentUtils.INTENT_URL, advertData.getUrl())
                         .start();
+
                 break;
             case R.id.bt_jump:
                 if (timerIntent != null)

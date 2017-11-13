@@ -11,8 +11,6 @@ import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.base.BaseLayout;
 import com.shianlife.shian_platform.utils.AppUtils;
 
-import java.util.List;
-
 import butterknife.BindView;
 
 /**
@@ -46,6 +44,10 @@ public class OrderCenterInfoLayout extends BaseLayout {
     LinearLayout llContent;
     @BindView(R.id.iv_more)
     ImageView ivMore;
+    @BindView(R.id.tv_advisor_name)
+    TextView tvAdvisorName;
+    @BindView(R.id.ll_advisor_phone)
+    LinearLayout llAdvisorPhone;
 
     public OrderCenterInfoLayout(Context context) {
         this(context, null);
@@ -104,22 +106,31 @@ public class OrderCenterInfoLayout extends BaseLayout {
     }
 
     public void setOrderCenterCustomerPhone(String customerPhone) {
-        if (customerPhone != null)
-            AppUtils.call(llCustomerPhone, customerPhone);
+        AppUtils.call(llCustomerPhone, customerPhone);
     }
 
     public void setOrderCenterCustomerName(String name) {
         if (name != null)
-            tvCustomerName.append( name);
+            tvCustomerName.append(name);
     }
 
     public void setOrderCenterAgentPhone(String agentPhone) {
-        if (agentPhone != null)
-            AppUtils.call(llAgentPhone, agentPhone);
+        AppUtils.call(llAgentPhone, agentPhone);
     }
 
     public void setOrderCenterAgentName(String name) {
         if (name != null)
             tvAgentName.append(name);
     }
+
+    public void setAdvisorName(String advisorName) {
+        if (advisorName != null)
+            tvAgentName.append(advisorName);
+    }
+
+    public void setAdvisorPhone(String advisorPhone) {
+        AppUtils.call(llAdvisorPhone, advisorPhone);
+    }
+
 }
+
