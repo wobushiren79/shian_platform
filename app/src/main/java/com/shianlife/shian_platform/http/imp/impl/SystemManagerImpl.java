@@ -76,6 +76,12 @@ public class SystemManagerImpl extends BaseManagerImpl implements SystemManager 
     }
 
     @Override
+    public void loginCemeterySystem(Context context, String loginKey) {
+        String cemeteryUrl = Constants.Login_Cemetery_Url + "?" + loginKey;
+        loginSubSystem(context, cemeteryUrl);
+    }
+
+    @Override
     public void userInfoSign(Context context, UserInfoSignBean params, HttpResponseHandler<UserInfoSignResultBean> handler) {
         requestPost(context, "api/credit/checkin", UserInfoSignResultBean.class, params, handler, true);
     }

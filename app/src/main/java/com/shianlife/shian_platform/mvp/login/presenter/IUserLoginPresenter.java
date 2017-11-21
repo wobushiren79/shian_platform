@@ -26,8 +26,4 @@ public interface IUserLoginPresenter {
     void getLoginConfig();
 
 
-    void loginCemetery();
-
-    void loginOutCemetery();
-
 }

@@ -32,41 +32,6 @@ public class UserLoginPresenterImpl implements IUserLoginPresenter {
     }
 
     @Override
-    public void loginCemetery() {
-        UserLoginBean params = new UserLoginBean();
-        params.setUsername(userLoginView.getUserName());
-        params.setPassword(userLoginView.getPassWord());
-        params.setSystemType("2");
-        params.setChannelId(Constants.ChannelId);
-        userLoginModel.loginCemetery(userLoginView.getContext(), params, new OnGetDataListener<UserLoginResultBean>() {
-            @Override
-            public void getDataSuccess(UserLoginResultBean result) {
-                userLoginView.loginCemeterySuccess(result);
-            }
-
-            @Override
-            public void getDataFail(String msg) {
-                userLoginView.loginCemeteryFail(msg);
-            }
-        });
-    }
-
-    @Override
-    public void loginOutCemetery() {
-        userLoginModel.loginOutCemetery(userLoginOutView.getContext(), new OnGetDataListener<Object>() {
-            @Override
-            public void getDataSuccess(Object result) {
-                userLoginOutView.loginOutCemeterySuccess(null);
-            }
-
-            @Override
-            public void getDataFail(String msg) {
-                userLoginOutView.loginOutCemeteryFail(msg);
-            }
-        });
-    }
-
-    @Override
     public void loginSystem() {
         SystemLoginBean params = new SystemLoginBean();
         params.setUserName(userLoginView.getUserName());
@@ -75,7 +40,6 @@ public class UserLoginPresenterImpl implements IUserLoginPresenter {
             @Override
             public void getDataSuccess(SystemLoginResultBean result) {
                 userLoginView.loginSystemSuccess(result);
-                loginCemetery();
             }
 
             @Override

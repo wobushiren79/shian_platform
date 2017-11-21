@@ -80,20 +80,6 @@ public interface IUserLoginView {
      *
      * @param result
      */
-    void loginCemeterySuccess(UserLoginResultBean result);
-
-    /**
-     * 登陆失败
-     *
-     * @param message
-     */
-    void loginCemeteryFail(String message);
-
-    /**
-     * 登陆成功
-     *
-     * @param result
-     */
     void loginSystemSuccess(SystemLoginResultBean result);
 
     /**

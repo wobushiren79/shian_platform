@@ -9,4 +9,5 @@ public interface ISubSystemLoginPresenter {
 
     void loginOrderCenterSystem();
 
+    void loginCemeterySystem();
 }

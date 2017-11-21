@@ -128,28 +128,13 @@ public class LoginActivity extends BaseActivity implements IUserLoginView, IAppU
     }
 
     @Override
-    public void loginCemeterySuccess(UserLoginResultBean result) {
-        loginPresenter.saveLoginConfig();
-        btnLogin.setComplete();
-//        ToastUtils.showToastLong(getContext(), getString(R.string.login_success));
-        new IntentUtils.Build(LoginActivity.this, MainActivity.class).start();
-        finish();
-    }
-
-    @Override
-    public void loginCemeteryFail(String message) {
-        loginPresenter.saveLoginConfig();
-        btnLogin.setComplete();
-//        ToastUtils.showToastLong(getContext(), getString(R.string.login_success));
-        new IntentUtils.Build(LoginActivity.this, MainActivity.class).start();
-        finish();
-    }
-
-    @Override
     public void loginSystemSuccess(SystemLoginResultBean result) {
-//        btnLogin.setComplete();
-//        ToastUtils.showToastLong(getContext(), getString(R.string.login_success));
         Constants.systemUser = result;
+        loginPresenter.saveLoginConfig();
+        btnLogin.setComplete();
+        new IntentUtils.Build(LoginActivity.this, MainActivity.class).start();
+        finish();
+//        ToastUtils.showToastLong(getContext(), getString(R.string.login_success));
     }
 
     @Override

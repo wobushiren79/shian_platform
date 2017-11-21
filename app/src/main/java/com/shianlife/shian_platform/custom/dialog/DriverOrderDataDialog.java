@@ -117,6 +117,8 @@ public class DriverOrderDataDialog extends BaseDialog implements IServiceOngoing
         } else if (styleType == STYLE_PIC) {
             showNowmileagePic.setVisibility(View.VISIBLE);
         }
+
+        setLocation();
     }
 
     private void setLocation() {

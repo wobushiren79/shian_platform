@@ -105,20 +105,11 @@ public class SplashActivity extends BaseActivity implements IUserLoginView {
         return this;
     }
 
-    @Override
-    public void loginCemeterySuccess(UserLoginResultBean result) {
-        sleepActivity(LoginAdvertActivity.MAIN);
-    }
-
-    @Override
-    public void loginCemeteryFail(String message) {
-        sleepActivity(LoginAdvertActivity.MAIN);
-    }
 
     @Override
     public void loginSystemSuccess(SystemLoginResultBean result) {
         Constants.systemUser = result;
-        userLoginPresenter.loginCemetery();
+        sleepActivity(LoginAdvertActivity.MAIN);
     }
 
     @Override
