@@ -16,16 +16,17 @@ import okhttp3.Cookie;
 public class Constants {
     //公墓地址
 //    public static final String Cemetery_BaseUrl = "http://115.28.163.211:7088/shianlife-advisor-cemetery-1.0-SNAPSHOT";
-//public static final String Cemetery_BaseUrl  = "http://192.168.0.200:8000/shianlife-advisor-cemetery-1.0-SNAPSHOT";
+//    public static final String Cemetery_BaseUrl = "http://192.168.0.200:8000/shianlife-advisor-cemetery-1.0-SNAPSHOT";
 //    public static final String Cemetery_BaseUrl = "http://192.168.0.50:8098/advisor";
+    public static final String Cemetery_BaseUrl = "http://120.76.246.249:8000";
 //public static final String Cemetery_BaseUrl = "http://192.168.0.59:8081/app";
-public static final String Cemetery_BaseUrl = "http://192.168.0.200:8120";
+//public static final String Cemetery_BaseUrl = "http://192.168.0.200:8120";
 //
 
     //登陆地址
-//    public static final String Login_BaseUrl = "https://platform.shianlife.cn";
+    public static final String Login_BaseUrl = "https://platform.shianlife.cn";
 //    public static final String Login_BaseUrl = "http://prd-platform.xicp.cn";
-    public static final String Login_BaseUrl = "http://192.168.0.199:8080";
+//    public static final String Login_BaseUrl = "http://192.168.0.199:8080";
 //      public static final String Login_BaseUrl = "http://192.168.0.71:8099/ki4so-web";
 //    public static final String Login_BaseUrl = "http://192.168.0.57:8080/ki4so-web";
 //    public static final String Login_BaseUrl = "http://192.168.0.50:8199/platform";
@@ -33,27 +34,28 @@ public static final String Cemetery_BaseUrl = "http://192.168.0.200:8120";
 
 
     //单项地址
-//    public static final String Store_BaseUrl = "https://goods.shianlife.cn";
+    public static final String Store_BaseUrl = "https://goods.shianlife.cn";
 //    public static final String Store_BaseUrl = "http://prd-goods.xicp.cn";
-    public static final String Store_BaseUrl = "http://192.168.0.199:8299/goods";
+//    public static final String Store_BaseUrl = "http://192.168.0.199:8299/goods";
+//    public static final String Store_BaseUrl = "http://192.168.0.59:8080/goods";
 //    public static final String Store_BaseUrl = "http://192.168.0.57:8089/goods";
 //        public static final String Store_BaseUrl = "http://192.168.0.71:8080/goods";
 //    public static final String Store_BaseUrl = "http://192.168.0.86:8089/goods";
 
     //分单地址
-//    public static final String OrderCenter_BaseUrl = "https://order.shianlife.cn";
-    public static final String OrderCenter_BaseUrl = "http://192.168.0.199:11080/order";
+    public static final String OrderCenter_BaseUrl = "https://order.shianlife.cn";
+//    public static final String OrderCenter_BaseUrl = "http://192.168.0.199:11080/order";
 //    public static final String OrderCenter_BaseUrl = "http://192.168.0.86:8090/order";
 //    public static final String OrderCenter_BaseUrl = "http://192.168.0.71:8085/center";
 
     //PHP地址
     public static final String PHP_BaseUrl = "http://app.e-funeral.cn";
     //阿里云文件上传
-    public static final String FILE_ALIYUN_UPDATA = Cemetery_BaseUrl + "/file/upload";
+    public static final String FILE_ALIYUN_UPDATA = Login_BaseUrl + "/file/upload";
     //阿里云文件查看地址
     public static final String OSSURL = "http://shianlife123.oss-cn-qingdao.aliyuncs.com/";
     //七牛文件上传
-    public static final String FILE_QINIU_UPDATA = Cemetery_BaseUrl + "/fileqiniu/upload";
+    public static final String FILE_QINIU_UPDATA = Login_BaseUrl + "/fileqiniu/upload";
     //七牛文件查看地址
     public static final String QINIUURL = "http://oq6rkq859.bkt.clouddn.com/";
     //商品地址
