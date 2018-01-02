@@ -18,6 +18,7 @@ import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.appenum.UpDataImportantEnum;
 import com.shianlife.shian_platform.base.BaseActivity;
 import com.shianlife.shian_platform.common.Constants;
+import com.shianlife.shian_platform.custom.dialog.AppUpdateDialog;
 import com.shianlife.shian_platform.custom.dialog.TipsDialog;
 import com.shianlife.shian_platform.http.base.BaseDataResult;
 import com.shianlife.shian_platform.mvp.main.bean.AppUpDateResultBean;
@@ -62,27 +63,37 @@ public class CheckUtils {
             float versionNew = Float.valueOf(result.getItems().get(0).getVersionNum());
 
             if (versionNew > versionOld) {
-                TipsDialog dialog = new TipsDialog(context);
-                dialog.setTop(context.getString(R.string.appupdate_text_1) + result.getItems().get(0).getUpdataTitle());
-                dialog.setTitle("" + result.getItems().get(0).getUpdataContent());
-                dialog.setBottomButton(context.getString(R.string.dialog_true_2), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(context, UpDataService.class);
-                        intent.putExtra(IntentUtils.INTENT_APPUPDATE, Constants.PHP_BaseUrl + result.getItems().get(0).getAppDownLoadUrl());
-                        context.startService(intent);
-                        dialog.cancel();
-                    }
-                });
-                if (Integer.valueOf(result.getItems().get(0).getIsImportant()) == UpDataImportantEnum.IMPORTANT.getCode()) {
-                    dialog.setCancelable(false);
+//                TipsDialog dialog = new TipsDialog(context);
+//                dialog.setTop(context.getString(R.string.appupdate_text_1) + result.getItems().get(0).getUpdataTitle());
+//                dialog.setTitle("" + result.getItems().get(0).getUpdataContent());
+//                dialog.setBottomButton(context.getString(R.string.dialog_true_2), new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        Intent intent = new Intent(context, UpDataService.class);
+//                        intent.putExtra(IntentUtils.INTENT_APPUPDATE, Constants.PHP_BaseUrl + result.getItems().get(0).getAppDownLoadUrl());
+//                        context.startService(intent);
+//                        dialog.cancel();
+//                    }
+//                });
+//                if (Integer.valueOf(result.getItems().get(0).getIsImportant()) == UpDataImportantEnum.IMPORTANT.getCode()) {
+//                    dialog.setCancelable(false);
+//                } else {
+//                    dialog.setTopButton(context.getString(R.string.dialog_false_2), new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            dialog.cancel();
+//                        }
+//                    });
+//                }
+//                dialog.show();
+                AppUpdateDialog dialog=new AppUpdateDialog(context,Constants.PHP_BaseUrl + result.getItems().get(0).getAppDownLoadUrl());
+//                AppUpdateDialog dialog = new AppUpdateDialog(context, "http://gdown.baidu.com/data/wisegame/21c41b43bf5a27b1/QQ_762.apk");
+                dialog.setTitleTest(result.getItems().get(0).getUpdataTitle());
+                dialog.setContentTest("" + result.getItems().get(0).getUpdataContent());
+                if (result.getItems().get(0).getIsImportant() == 1) {
+                    dialog.setMustBeUpdate(true);
                 } else {
-                    dialog.setTopButton(context.getString(R.string.dialog_false_2), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    });
+                    dialog.setMustBeUpdate(false);
                 }
                 dialog.show();
             } else {
@@ -124,10 +135,10 @@ public class CheckUtils {
             if (ContextCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
                 //权限为获取，检查用户是否被询问过并且拒绝了，如果是这样的话，给予更多
                 //解释
-                if (ActivityCompat.shouldShowRequestPermissionRationale(scanForActivity(context), permission)) {
-                    //在界面上展示为什么需要該權限
-                    Toast.makeText(context, toastContent, Toast.LENGTH_SHORT).show();
-                }
+//                if (ActivityCompat.shouldShowRequestPermissionRationale(scanForActivity(context), permission)) {
+//                    //在界面上展示为什么需要該權限
+//                    Toast.makeText(context, toastContent, Toast.LENGTH_SHORT).show();
+//                }
                 //发起请求获得用户许可,可以在此请求多个权限
                 isPermission = false;
             }
@@ -139,7 +150,6 @@ public class CheckUtils {
             return isPermission;
         }
     }
-
 
     /**
      * 判断能否转为Activity

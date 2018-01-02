@@ -51,7 +51,6 @@ public class LoginActivity extends BaseActivity implements IUserLoginView, IAppU
 
     private IUserLoginPresenter loginPresenter;
     private IAppUpDatePresenter appUpDatePresenter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,7 +128,6 @@ public class LoginActivity extends BaseActivity implements IUserLoginView, IAppU
 
     @Override
     public void loginSystemSuccess(SystemLoginResultBean result) {
-        Constants.systemUser = result;
         loginPresenter.saveLoginConfig();
         btnLogin.setComplete();
         new IntentUtils.Build(LoginActivity.this, MainActivity.class).start();

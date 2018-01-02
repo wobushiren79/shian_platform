@@ -39,6 +39,7 @@ public class UserLoginPresenterImpl implements IUserLoginPresenter {
         userLoginModel.loginSystem(userLoginView.getContext(), params, new OnGetDataListener<SystemLoginResultBean>() {
             @Override
             public void getDataSuccess(SystemLoginResultBean result) {
+                Constants.systemUser = result;
                 userLoginView.loginSystemSuccess(result);
             }
 

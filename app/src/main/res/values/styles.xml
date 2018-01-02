@@ -48,6 +48,11 @@
         <item name="android:backgroundDimEnabled">true</item>
     </style>
 
+    <style name="AppUpdateProgressStyle">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/appupdate_progressbar_horizontal</item><!-- progress_horizontal -->
+        <item name="android:indeterminateDrawable">@android:drawable/progress_indeterminate_horizontal</item>
+    </style>
 
 
 </resources>

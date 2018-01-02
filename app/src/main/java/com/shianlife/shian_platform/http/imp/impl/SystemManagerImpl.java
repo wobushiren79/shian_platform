@@ -64,21 +64,21 @@ public class SystemManagerImpl extends BaseManagerImpl implements SystemManager 
     }
 
     @Override
-    public void loginStoreSystem(final Context context, String loginKey) {
+    public void loginStoreSystem(final Context context, String loginKey, HttpResponseHandler handler) {
         String storeUrl = Constants.Login_Store_Url + "?" + loginKey;
-        loginSubSystem(context, storeUrl);
+        loginSubSystem(context, storeUrl, handler);
     }
 
     @Override
-    public void loginOrderCenterSystem(Context context, String loginKey) {
+    public void loginOrderCenterSystem(Context context, String loginKey, HttpResponseHandler handler) {
         String storeUrl = Constants.Login_OrderCenter_Url + "?" + loginKey;
-        loginSubSystem(context, storeUrl);
+        loginSubSystem(context, storeUrl, handler);
     }
 
     @Override
-    public void loginCemeterySystem(Context context, String loginKey) {
+    public void loginCemeterySystem(Context context, String loginKey, HttpResponseHandler handler) {
         String cemeteryUrl = Constants.Login_Cemetery_Url + "?" + loginKey;
-        loginSubSystem(context, cemeteryUrl);
+        loginSubSystem(context, cemeteryUrl, handler);
     }
 
     @Override
@@ -101,7 +101,7 @@ public class SystemManagerImpl extends BaseManagerImpl implements SystemManager 
         requestPost(context, "api/usersInfo/forgetKeys", ChangePassWordSMSResultBean.class, params, handler, true);
     }
 
-    private void loginSubSystem(final Context context, String loginUrl) {
+    private void loginSubSystem(final Context context, String loginUrl, final HttpResponseHandler handler) {
         if (customDialog == null || !customDialog.isShowing()) {
             customDialog = new CustomDialog(context);
             customDialog.show();
@@ -118,7 +118,7 @@ public class SystemManagerImpl extends BaseManagerImpl implements SystemManager 
                 customDialog.cancel();
                 if (customDialog != null)
                     customDialog.cancel();
-//                Utils.jumpLogin(context);
+                handler.onError(e.getMessage());
             }
 
             @Override
@@ -126,6 +126,7 @@ public class SystemManagerImpl extends BaseManagerImpl implements SystemManager 
                 Log.v("tag", "storeResponse:" + response);
                 if (customDialog != null)
                     customDialog.cancel();
+                handler.onSuccess(response);
             }
         });
     }

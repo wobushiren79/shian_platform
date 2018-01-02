@@ -108,7 +108,6 @@ public class SplashActivity extends BaseActivity implements IUserLoginView {
 
     @Override
     public void loginSystemSuccess(SystemLoginResultBean result) {
-        Constants.systemUser = result;
         sleepActivity(LoginAdvertActivity.MAIN);
     }
 

@@ -75,8 +75,7 @@ public class PHPManagerImpl extends BaseManagerImpl implements PHPManager {
 
     @Override
     public void getVersion(Context context, AppUpDateBean params, HttpResponseHandler<AppUpDateResultBean> handler, boolean isDialog) {
-        requestGet(context, "Home/index/edition", AppUpDateResultBean.class,
-                params, handler, isDialog);
+        requestGet(context, "Home/index/edition", AppUpDateResultBean.class, params, handler, isDialog);
     }
 
 }

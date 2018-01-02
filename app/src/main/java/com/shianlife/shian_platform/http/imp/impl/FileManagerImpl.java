@@ -3,6 +3,7 @@ package com.shianlife.shian_platform.http.imp.impl;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Environment;
 import android.util.Log;
 
 import com.shianlife.shian_platform.base.BaseApplication;
@@ -18,7 +19,9 @@ import com.shianlife.shian_platform.utils.PicUtils;
 import com.shianlife.shian_platform.utils.SharePerfrenceUtils;
 import com.shianlife.shian_platform.utils.ToastUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.FileCallBack;
 import com.zhy.http.okhttp.callback.StringCallback;
+import com.zhy.http.okhttp.request.RequestCall;
 
 import org.codehaus.jackson.JsonNode;
 
@@ -93,6 +96,33 @@ public class FileManagerImpl implements FileManager {
                 });
     }
 
+    @Override
+    public RequestCall downloadFile(Context context, String downloadUrl, final FileHttpResponseHandler<File> responseHandler) {
+        RequestCall call = OkHttpUtils
+                .get()
+                .url(downloadUrl)
+                .build();
+        call.execute(new FileCallBack(Environment.getExternalStorageDirectory().getAbsolutePath(), "test") {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                responseHandler.onError(call.toString());
+            }
+
+            @Override
+            public void onResponse(File response, int id) {
+                responseHandler.onSuccess(response);
+            }
+
+            @Override
+            public void inProgress(float progress, long total, int id) {
+                Log.v("this", "inProgress progress:" + progress + " total:" + total);
+                responseHandler.onProgress(total, progress);
+            }
+
+        });
+        return call;
+    }
+
     /**
      * 数据处理
      *
@@ -127,11 +157,13 @@ public class FileManagerImpl implements FileManager {
             }
         }
     }
+
     private void jumpLogin(Context context) {
         Intent intent = new Intent(context, LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
+
     /**
      * 异常回调
      *

@@ -175,7 +175,6 @@ public class DriverOrderDataDialog extends BaseDialog implements IServiceOngoing
         if (callBack != null)
             callBack.getDataFail(msg);
         ToastUtils.showToastShort(getContext(), getContext().getString(R.string.driver_order_serviceonoing_fail));
-
     }
 
     @Override

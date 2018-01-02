@@ -15,22 +15,6 @@ import com.shianlife.shian_platform.mvp.login.bean.UserLoginConfig;
  */
 
 public interface IUserLoginModel {
-    /**
-     * 登陆公墓系统
-     *
-     * @param context
-     * @param params
-     * @param listener
-     */
-    void loginCemetery(Context context, UserLoginBean params, OnGetDataListener listener);
-
-    /**
-     * 退出公墓登陆
-     *
-     * @param context
-     * @param listener
-     */
-    void loginOutCemetery(Context context, OnGetDataListener listener);
 
     /**
      * 登陆平台

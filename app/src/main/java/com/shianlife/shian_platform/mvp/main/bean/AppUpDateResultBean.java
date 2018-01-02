@@ -46,7 +46,7 @@ public class AppUpDateResultBean extends BaseDataResult {
         private String appId;
         private String versionName;
         private String versionNum;
-        private String isImportant;
+        private int isImportant;
         private String updataTime;
         private String updataTitle;
         private String updataContent;
@@ -87,11 +87,11 @@ public class AppUpDateResultBean extends BaseDataResult {
             this.versionNum = versionNum;
         }
 
-        public String getIsImportant() {
+        public int getIsImportant() {
             return isImportant;
         }
 
-        public void setIsImportant(String isImportant) {
+        public void setIsImportant(int isImportant) {
             this.isImportant = isImportant;
         }
 

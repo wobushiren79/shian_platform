@@ -47,7 +47,7 @@ public interface SystemManager {
      * @param context
      * @param loginKey
      */
-    void loginStoreSystem(Context context, String loginKey);
+    void loginStoreSystem(Context context, String loginKey, HttpResponseHandler handler);
 
     /**
      * 分单系统登陆
@@ -55,14 +55,14 @@ public interface SystemManager {
      * @param context
      * @param loginKey
      */
-    void loginOrderCenterSystem(Context context, String loginKey);
+    void loginOrderCenterSystem(Context context, String loginKey, HttpResponseHandler handler);
 
     /**
      * 公墓系统登陆
      * @param context
      * @param loginKey
      */
-    void loginCemeterySystem(Context context,String loginKey);
+    void loginCemeterySystem(Context context,String loginKey, HttpResponseHandler handler);
     /**
      * 用户签到
      *

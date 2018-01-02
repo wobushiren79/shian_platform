@@ -65,7 +65,7 @@ import okhttp3.Response;
 
 import static com.shianlife.shian_platform.utils.AppUtils.startForegroundService;
 
-public class MainActivity extends BaseActivity implements IChangeItemView, IAppUpDateView, ISubSystemLoginView, IUserLoginOutView {
+public class MainActivity extends BaseActivity implements IChangeItemView, IAppUpDateView,  IUserLoginOutView {
     @BindView(R.id.fl_fragment)
     FrameLayout flFragment;
     @BindView(R.id.main_change_layout)
@@ -73,7 +73,6 @@ public class MainActivity extends BaseActivity implements IChangeItemView, IAppU
 
     private IChangeItemPresenter changeItemPresenter;
     private IAppUpDatePresenter appUpDatePresenter;
-    private ISubSystemLoginPresenter subSystemLoginPresenter;
     private IUserLoginPresenter userLoginPresenter;
     private FragmentManager mFragmentManager;
     private FragmentTransaction mTranscation;
@@ -132,12 +131,6 @@ public class MainActivity extends BaseActivity implements IChangeItemView, IAppU
         userLoginPresenter = new UserLoginPresenterImpl(null, this);
         changeItemPresenter.setChangeItemData();
         appUpDatePresenter.getAppUpDateInfo();
-
-        //登陆子系统
-        subSystemLoginPresenter = new SubSystemLoginPresenterImpl(this);
-        subSystemLoginPresenter.loginStoreSystem();
-        subSystemLoginPresenter.loginOrderCenterSystem();
-        subSystemLoginPresenter.loginCemeterySystem();
     }
 
 
