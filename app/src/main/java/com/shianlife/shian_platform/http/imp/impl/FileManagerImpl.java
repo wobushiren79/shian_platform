@@ -97,12 +97,13 @@ public class FileManagerImpl implements FileManager {
     }
 
     @Override
-    public RequestCall downloadFile(Context context, String downloadUrl, final FileHttpResponseHandler<File> responseHandler) {
+    public RequestCall downloadFile(Context context, String downloadUrl,String fileName, final FileHttpResponseHandler<File> responseHandler) {
         RequestCall call = OkHttpUtils
                 .get()
                 .url(downloadUrl)
+                .addHeader("Accept-Encoding", "identity")
                 .build();
-        call.execute(new FileCallBack(Environment.getExternalStorageDirectory().getAbsolutePath(), "test") {
+        call.execute(new FileCallBack(Environment.getExternalStorageDirectory().getAbsolutePath(), fileName) {
             @Override
             public void onError(Call call, Exception e, int id) {
                 responseHandler.onError(call.toString());
@@ -115,7 +116,6 @@ public class FileManagerImpl implements FileManager {
 
             @Override
             public void inProgress(float progress, long total, int id) {
-                Log.v("this", "inProgress progress:" + progress + " total:" + total);
                 responseHandler.onProgress(total, progress);
             }
 

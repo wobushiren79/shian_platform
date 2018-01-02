@@ -33,9 +33,13 @@ public class DownLoadFilePresenterImpl implements IDownLoadFilePresenter {
             downLoadFileView.showToast("没有文件下载地址");
             return null;
         }
+        if (downLoadFileView.getDownLoadFileName() == null) {
+            downLoadFileView.showToast("没有文件下载名称");
+            return null;
+        }
         DownLoadFileBean params = new DownLoadFileBean();
         params.setDownloadUrl(downLoadFileView.getDownLoadFileUrl());
-
+        params.setFileName(downLoadFileView.getDownLoadFileName());
         RequestCall call = downLoadFileModel.startDownLoadFile(downLoadFileView.getContext(), params, new OnDownLoadDataListener<DownLoadFileResultBean>() {
             @Override
             public void downloadInProgress(long total, float progress) {

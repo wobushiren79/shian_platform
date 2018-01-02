@@ -21,7 +21,8 @@ public class DownLoadFileModelImpl implements IDownLoadFileModel {
     @Override
     public RequestCall startDownLoadFile(Context context, DownLoadFileBean params, final OnDownLoadDataListener listener) {
         String downloadUrl = params.getDownloadUrl();
-        RequestCall call = MHttpManagerFactory.getFileManager().downloadFile(context, downloadUrl, new FileHttpResponseHandler<File>() {
+        String fileName = params.getFileName();
+        RequestCall call = MHttpManagerFactory.getFileManager().downloadFile(context, downloadUrl, fileName, new FileHttpResponseHandler<File>() {
             @Override
             public void onStart() {
 

@@ -42,6 +42,7 @@ public class AppUpdateDialog extends Dialog implements View.OnClickListener, IDo
     private LinearLayout mLLDownLoad;
 
     private String appDownloadUrl;
+    private String appDownloadName;
     private String titleTest;
     private String contentTest;
 
@@ -50,9 +51,10 @@ public class AppUpdateDialog extends Dialog implements View.OnClickListener, IDo
 
     private boolean isMustBeUpdate;
 
-    public AppUpdateDialog(Context context, String appDownloadUrl) {
+    public AppUpdateDialog(Context context, String appDownloadUrl, String appDownloadName) {
         super(context, R.style.CustomDialog);
         this.appDownloadUrl = appDownloadUrl;
+        this.appDownloadName = appDownloadName;
         isMustBeUpdate = false;
         downLoadFilePresenter = new DownLoadFilePresenterImpl(this);
     }
@@ -120,7 +122,6 @@ public class AppUpdateDialog extends Dialog implements View.OnClickListener, IDo
                 "更新需要文件读写权限",
                 9999);
         if (hasPermission) {
-//            ToastUtils.showToastShort(getContext(), "开始下载");
             requestCall = downLoadFilePresenter.startDownLoad();
             mTvUpdate.setVisibility(View.GONE);
             mLLDownLoad.setVisibility(View.VISIBLE);
@@ -137,6 +138,11 @@ public class AppUpdateDialog extends Dialog implements View.OnClickListener, IDo
     @Override
     public String getDownLoadFileUrl() {
         return appDownloadUrl;
+    }
+
+    @Override
+    public String getDownLoadFileName() {
+        return appDownloadName;
     }
 
     @Override
@@ -163,7 +169,6 @@ public class AppUpdateDialog extends Dialog implements View.OnClickListener, IDo
 
     @Override
     public void downloadInProgress(long total, float progress) {
-        Log.v("tag", "total:" + total + " progress:" + progress);
         int progressInt = (int) (progress * 100);
         mTvProgress.setText(progressInt + "%");
         mProgressBar.setSecondaryProgress(progressInt);

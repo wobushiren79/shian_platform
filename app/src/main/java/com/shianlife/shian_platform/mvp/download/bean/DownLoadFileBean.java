@@ -6,6 +6,15 @@ package com.shianlife.shian_platform.mvp.download.bean;
 
 public class DownLoadFileBean {
     private String downloadUrl;
+    private String fileName;
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 
     public String getDownloadUrl() {
         return downloadUrl;

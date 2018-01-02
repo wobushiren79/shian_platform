@@ -29,5 +29,5 @@ public interface FileManager extends HttpManager {
      * @param downloadUrl
      * @param responseHandler
      */
-    public RequestCall downloadFile(Context context, String downloadUrl, final FileHttpResponseHandler<File> responseHandler);
+    public RequestCall downloadFile(Context context, String downloadUrl,String fileName, final FileHttpResponseHandler<File> responseHandler);
 }

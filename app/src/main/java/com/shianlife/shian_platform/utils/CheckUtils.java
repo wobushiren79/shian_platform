@@ -15,6 +15,7 @@ import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
 
 import com.shianlife.shian_platform.R;
+import com.shianlife.shian_platform.appenum.APPTypeEnum;
 import com.shianlife.shian_platform.appenum.UpDataImportantEnum;
 import com.shianlife.shian_platform.base.BaseActivity;
 import com.shianlife.shian_platform.common.Constants;
@@ -86,8 +87,7 @@ public class CheckUtils {
 //                    });
 //                }
 //                dialog.show();
-                AppUpdateDialog dialog=new AppUpdateDialog(context,Constants.PHP_BaseUrl + result.getItems().get(0).getAppDownLoadUrl());
-//                AppUpdateDialog dialog = new AppUpdateDialog(context, "http://gdown.baidu.com/data/wisegame/21c41b43bf5a27b1/QQ_762.apk");
+                AppUpdateDialog dialog = new AppUpdateDialog(context, Constants.PHP_BaseUrl + result.getItems().get(0).getAppDownLoadUrl(), APPTypeEnum.PLATFORM.getName());
                 dialog.setTitleTest(result.getItems().get(0).getUpdataTitle());
                 dialog.setContentTest("" + result.getItems().get(0).getUpdataContent());
                 if (result.getItems().get(0).getIsImportant() == 1) {
