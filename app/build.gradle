@@ -15,7 +15,7 @@ android {
         applicationId "com.shianlife.shian_platform"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 7
+        versionCode 8
         versionName "1.7"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

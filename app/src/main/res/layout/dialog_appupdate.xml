@@ -52,7 +52,7 @@
                     android:id="@+id/dialog_appupdate_content"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="1.safdsadfasdfasdf"
+                    android:text=""
                     android:textColor="@color/zhy_text_color_22"
                     android:textSize="@dimen/dimen_20dp" />
             </ScrollView>

@@ -1,30 +1,21 @@
 package com.shianlife.shian_platform.utils;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.widget.Toast;
 
 import com.shianlife.shian_platform.R;
 import com.shianlife.shian_platform.appenum.APPTypeEnum;
-import com.shianlife.shian_platform.appenum.UpDataImportantEnum;
 import com.shianlife.shian_platform.base.BaseActivity;
 import com.shianlife.shian_platform.common.Constants;
 import com.shianlife.shian_platform.custom.dialog.AppUpdateDialog;
-import com.shianlife.shian_platform.custom.dialog.TipsDialog;
-import com.shianlife.shian_platform.http.base.BaseDataResult;
 import com.shianlife.shian_platform.mvp.main.bean.AppUpDateResultBean;
-import com.shianlife.shian_platform.service.UpDataService;
-import com.shianlife.shian_platform.ui.activity.MainActivity;
 
 import java.util.List;
 import java.util.regex.Pattern;

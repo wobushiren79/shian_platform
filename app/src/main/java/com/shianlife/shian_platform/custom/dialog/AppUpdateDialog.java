@@ -151,7 +151,6 @@ public class AppUpdateDialog extends Dialog implements View.OnClickListener, IDo
             ToastUtils.showToastShort(getContext(), "没有File");
             return;
         }
-        // 核心是下面几句代码
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(Uri.fromFile(resultBean.getDownloadFile()),
                 "application/vnd.android.package-archive");
