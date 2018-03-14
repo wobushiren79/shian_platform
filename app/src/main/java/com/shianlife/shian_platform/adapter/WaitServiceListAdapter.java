@@ -318,11 +318,11 @@ public class WaitServiceListAdapter extends BaseRCSAdapter<WaitServiceListResult
     @Override
     public int getItemViewType(int position) {
         WaitServiceListResultBean.WaitServiceItemData waitServiceItemData = mDatas.get(position);
-        if (waitServiceItemData.getOrderState() == DriverStateEnum.isAttribute.getCode()) {
+        if (DriverStateEnum.isAttribute.getCode().equals(waitServiceItemData.getOrderState())) {
             return LAYOUT_WAITGETORDER;
-        } else if (waitServiceItemData.getOrderState() == DriverStateEnum.waitGetCar.getCode()) {
+        } else if (DriverStateEnum.waitGetCar.getCode().equals(waitServiceItemData.getOrderState())) {
             return LAYOUT_WAITGETCAR;
-        } else if (waitServiceItemData.getOrderState() == DriverStateEnum.setOff.getCode()) {
+        } else if (DriverStateEnum.setOff.getCode().equals(waitServiceItemData.getOrderState())) {
             return LAYOUT_WAITGO;
         } else {
             return LAYOUT_ERROR;

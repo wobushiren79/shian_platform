@@ -6,7 +6,7 @@ package com.shianlife.shian_platform.mvp.login.presenter;
 
 public interface IUserLoginPresenter {
     /**
-     * 登陆平台
+     * 登录平台
      */
     void loginSystem();
 

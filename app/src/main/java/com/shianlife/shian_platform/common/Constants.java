@@ -15,35 +15,35 @@ import okhttp3.Cookie;
 
 public class Constants {
     //公墓地址
-//    public static final String Cemetery_BaseUrl = "http://115.28.163.211:7088/shianlife-advisor-cemetery-1.0-SNAPSHOT";
+//    public static final String Cemetery_BaseUrl = "http://120.76.246.249:8000";
 //    public static final String Cemetery_BaseUrl = "http://192.168.0.200:8000/shianlife-advisor-cemetery-1.0-SNAPSHOT";
-//    public static final String Cemetery_BaseUrl = "http://192.168.0.50:8098/advisor";
-    public static final String Cemetery_BaseUrl = "http://120.76.246.249:8000";
-//public static final String Cemetery_BaseUrl = "http://192.168.0.59:8081/app";
-//public static final String Cemetery_BaseUrl = "http://192.168.0.200:8120";
+    public static final String Cemetery_BaseUrl = "http://192.168.0.48:8098/advisor";
+//      public static final String Cemetery_BaseUrl = "http://192.168.0.57:8081/app";
+//    public static final String Cemetery_BaseUrl = "http://192.168.0.200:8120";
+//        public static final String Cemetery_BaseUrl = "http://192.168.0.66:8088/cemetery";
 //
 
-    //登陆地址
-    public static final String Login_BaseUrl = "https://platform.shianlife.cn";
+    //登录地址
+//    public static final String Login_BaseUrl = "https://platform.shianlife.cn";
 //    public static final String Login_BaseUrl = "http://prd-platform.xicp.cn";
 //    public static final String Login_BaseUrl = "http://192.168.0.199:8080";
 //      public static final String Login_BaseUrl = "http://192.168.0.71:8099/ki4so-web";
-//    public static final String Login_BaseUrl = "http://192.168.0.57:8080/ki4so-web";
-//    public static final String Login_BaseUrl = "http://192.168.0.50:8199/platform";
-//    public static final String Login_BaseUrl = "http://192.168.0.59:8099/ki4so-web";
+    public static final String Login_BaseUrl = "http://192.168.0.48:8199/platform";
+//    public static final String Login_BaseUrl = "http://192.168.0.57:8099/ki4so-web";
+//public static final String Login_BaseUrl = "http://192.168.0.66:8080/ki4so-web";
 
 
-    //单项地址
+//单项地址
     public static final String Store_BaseUrl = "https://goods.shianlife.cn";
 //    public static final String Store_BaseUrl = "http://prd-goods.xicp.cn";
 //    public static final String Store_BaseUrl = "http://192.168.0.199:8299/goods";
-//    public static final String Store_BaseUrl = "http://192.168.0.59:8080/goods";
-//    public static final String Store_BaseUrl = "http://192.168.0.57:8089/goods";
+//    public static final String Store_BaseUrl = "http://192.168.0.57:8080/goods";
 //        public static final String Store_BaseUrl = "http://192.168.0.71:8080/goods";
-//    public static final String Store_BaseUrl = "http://192.168.0.86:8089/goods";
+//    public static final String Store_BaseUrl = "http://192.168.0.66:8089/goods";
 
     //分单地址
     public static final String OrderCenter_BaseUrl = "https://order.shianlife.cn";
+//    public static final String OrderCenter_BaseUrl = "http://192.168.0.57:8085/center";
 //    public static final String OrderCenter_BaseUrl = "http://192.168.0.199:11080/order";
 //    public static final String OrderCenter_BaseUrl = "http://192.168.0.86:8090/order";
 //    public static final String OrderCenter_BaseUrl = "http://192.168.0.71:8085/center";
@@ -71,11 +71,11 @@ public class Constants {
     public static final String phonePHPURL = PHP_BaseUrl + "/home/index/phone";//通讯宝
     public static final String DiDichannel = "55455";//滴滴渠道号
 
-    //子系统-单项  登陆地址
+    //子系统-单项  登录地址
     public static final String Login_Store_Url = Store_BaseUrl + "/login_sys_api";
-    //子系统-分单  登陆地址
+    //子系统-分单  登录地址
     public static final String Login_OrderCenter_Url = OrderCenter_BaseUrl + "/login_subsystem_api";
-    //子系统-公墓  登陆地址
+    //子系统-公墓  登录地址
     public static final String Login_Cemetery_Url = Cemetery_BaseUrl + "/login_subsystem_api";
 
     public static String ChannelId = "";
@@ -107,7 +107,7 @@ public class Constants {
     private final static double mapCenterlongitude = 104.0722210000;
 
 
-    //登陆系统KEY
+    //登录系统KEY
     public static String System_Ki4so_Client_Ec;
 
     //cookie保存

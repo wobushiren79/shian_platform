@@ -245,7 +245,7 @@ public class HttpRequestExecutor implements IUserLoginView {
             try {
                 JsonNode node = ObjectMapperFactory.getInstance().readTree(new String(response));
                 if (node.findValue("code") == null || node.findValue("code").toString().equals("1500")) {
-//                    onErrorCallBack(responseHandler, "会话失效，请重新登陆", context);
+//                    onErrorCallBack(responseHandler, "会话失效，请重新登录", context);
 //                    jumpLogin(context);
                     userLoginPresenter = new UserLoginPresenterImpl(HttpRequestExecutor.this, null);
                     userLoginPresenter.getLoginConfig();
@@ -290,7 +290,7 @@ public class HttpRequestExecutor implements IUserLoginView {
         context.startActivity(intent);
     }
 
-    //---------会话失效之后的自动登陆----------------------
+    //---------会话失效之后的自动登录----------------------
     private String userName;
     private String passWord;
     private boolean isAutoLogin;
@@ -344,7 +344,7 @@ public class HttpRequestExecutor implements IUserLoginView {
 
     @Override
     public void loginSystemSuccess(SystemLoginResultBean result) {
-        ToastUtils.showToastShort(context, "已重新登陆，请再次操作");
+        ToastUtils.showToastShort(context, "已重新登录，请再次操作");
     }
 
     @Override

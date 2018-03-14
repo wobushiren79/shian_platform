@@ -164,7 +164,7 @@ public class LoginActivity extends BaseActivity implements IUserLoginView, IAppU
 
 
     /**
-     * 登陆
+     * 登录
      */
     private void checkLogin() {
         if (getUserName().isEmpty()) {

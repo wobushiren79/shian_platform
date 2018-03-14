@@ -38,7 +38,7 @@ public class LoginAdvertActivity extends BaseActivity implements IAdvertView {
 
 
     public final static int LOGIN = 0;//結束之後需登陸
-    public final static int MAIN = 1;//结束之后无需登陆
+    public final static int MAIN = 1;//结束之后无需登录
 
     private int type = -1;
     private boolean isForceOver = false;//是否强制结束

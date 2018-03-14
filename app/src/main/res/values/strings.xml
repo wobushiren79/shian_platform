@@ -3,8 +3,8 @@
 
     <string name="app_name">圆满平台</string>
 
-    <string name="login_success">登陆成功</string>
-    <string name="login_fail">登陆失败</string>
+    <string name="login_success">登录成功</string>
+    <string name="login_fail">登录失败</string>
     <string name="login_username_empty">账号不能为空</string>
     <string name="login_password_empty">密码不能为空</string>
 

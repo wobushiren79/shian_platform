@@ -258,7 +258,7 @@ public class AppUtils {
     }
 
     /**
-     * 跳转到登陆界面
+     * 跳转到登录界面
      *
      * @param context
      */

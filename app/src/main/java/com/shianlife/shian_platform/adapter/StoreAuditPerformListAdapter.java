@@ -57,7 +57,7 @@ public class StoreAuditPerformListAdapter extends BaseRCAdapter<StoreAuditPerfor
 
         if (data.getGoodsOrderItem() == null
                 || data.getGoodsPerform() == null) {
-            tvGoodsClass.setText("数据有误，请重新登陆");
+            tvGoodsClass.setText("数据有误，请重新登录");
         }
         GoodsOrderItem goodsOrderItem = data.getGoodsOrderItem();
         GoodsPerform goodsPerform = data.getGoodsPerform();

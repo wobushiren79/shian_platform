@@ -99,12 +99,12 @@ public class StoreOrderGoodsListAdapter extends BaseExpandableAdapter<String, Go
 
         tvGoodsNumb.setText("x" + itemData.getSpecOrderedNum());
         //图片设置
-        AppUtils.loadPic(mContext, ivGoodsPic, Constants.Goods_PicUrl + "/" + itemData.getTitleImg());
+        AppUtils.loadPic(mContext, ivGoodsPic,  itemData.getTitleImg());
         ivGoodsPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent in = new Intent(getContext(), ImagePreviewActivity.class);
-                in.putExtra(IntentUtils.INTENT_URL, Constants.Goods_PicUrl + "/" + itemData.getTitleImg());
+                in.putExtra(IntentUtils.INTENT_URL, itemData.getTitleImg());
                 getContext().startActivity(in);
             }
         });
